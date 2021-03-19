@@ -495,16 +495,105 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第四章需求获取"><a href="#第四章需求获取" class="headerlink" title="第四章需求获取"></a>第四章需求获取</h1><p><strong>需求分析的实质</strong>：是对系统的理解与表达的过程，是一种软件工程的活动。</p>
-<p><strong>需求分析之后建立模型的名称</strong>：分析模型或需求模型需求分析的过程：<br><strong>需求分析的过程</strong>：<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/1.png" alt="在这里插入图片描述"><br> <strong>常用的需求分析的方法</strong>：<br>1：面向数据流的结构化分析方法（简称SA）<br>2：面向数据结构的Jackson方法（简称JSD）<br>3：面向对象的分析方法<br>4：建立动态模型的迁移图或Petri网等。<br><strong>软件需求的分类，根据分类的标准不同，结果也不同</strong>：<br><strong>1：按修饰对象的不同</strong>：<br><strong>Ø 产品需求</strong>：<br><strong>l 功能性需求</strong>：软件产品的功能特性<br><strong>l 非功能性需求</strong>：软件产品的质量属性，是在功能性需求满足情况下的进一步要求<br><strong>“FURPS“模型</strong>：<br><strong>功能性</strong>：需要考虑的额外的功能需求，如安全性；<br><strong>可用性</strong>：易用性、美观性、一致性和文档化；<br><strong>可靠性</strong>：指的是在特定操作环境下预期的系统故障频率、可恢复性、可预测性准确性以及平均故障时间；<br><strong>性能</strong>：响应时间、效率、资源利用率和吞吐量（在一个指定时间内系统可完成的工作量）<br><strong>可支持性</strong>：可测试性、适应性、可维护性、兼容性、可配置性、可扩展性和本地化<br><strong>Ø 过程需求</strong>——修饰或限制软件开发过程的要求<br><strong>2：按抽象层次详细程度</strong>：<br><strong>Ø 业务需求</strong><br><strong>Ø 用户需求</strong><br><strong>Ø 系统需求</strong><br><strong>Ø 软件设计规约</strong></p>
-<p><strong>需求优先级的等级：</strong><br><strong>1、基本的</strong>：使得客户能够黑手系统并且必须实现的要求<br><strong>2：可取的</strong>：非常可取但却不是必须的那些需求<br><strong>3：可选的</strong>：在时间和资源允许的情况下，可能会实现的需求<br><strong>4：未来的</strong>：不会在系统当前版本中实现，但考虑到系统后续的版本应该记录下来的需求</p>
-<p><strong>需求获取的技术有哪些</strong>：<br>1：面谈<br>2：问卷调查<br>3：群体诱导技术<br>4：头脑风暴<br>5：参与观察法<br>6：亲身实践<br>7：原型<br>8：情景分析<br>9：概念建模<br>10：A/B测试</p>
-<p><strong>结构化分析的主要工具</strong>：<br>1：数据流图(DFD)<br>2:数据字典(DD)<br>3：结构化语言<br>4：判定树<br>5：判定表</p>
-<p><strong>传统的软件建模中分析模型的核心及围绕核心的三个子模型</strong>：<br>分析模型的核心是数据字典，围绕数据字典3个层次的子模型有数据模型、功能模型和行为模型。<br><strong>数据字典</strong>：用于描述系统软件中使用或者产生的每一个数据元素，是系统数据信息定义的集合。<br><strong>数据模型</strong>：用于描述数据对象之间的关系。其应包含3种相关的信息，即数据对象、属性和关系<br><strong>功能模型</strong>：可以用数据流图描述（数据流图是一种图形化技术，可以表达软件系统必须完成的功能），所以又称数据流模型。<br><strong>行为模型</strong>：常用状态转化图（即状态图）来描述，又称状态机模型，可以理解为，在任一个时刻，系统处于有限可能的状态中的一个状态，当某一个激励条件到达时，它激发系统从一个状态转换到另一新状态。</p>
-<h1 id="第五章"><a href="#第五章" class="headerlink" title="第五章"></a>第五章</h1><p><strong>用例建模UML的九种图的画法，以及每种图的作用，在分析和设计的过程中怎么使用：</strong><br><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/2.png" alt="在这里插入图片描述"><br> <strong>1、用例图：</strong><br> <strong>作用</strong>：表示角色和用例之间的关系，其中用例代表的是一个系统或分类器的功能，外部交互者与这一分类器来进行交互呈现。<br> <strong>组成/使用</strong>：由一些角色、一组用例，还可能有一些接口以及这些组成元素之间的关系构成的图，其中关系是指角色和用例之间的联系。用例通常用矩形框起来以表示系统或分类器的边界。<br> <img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/3.png" alt="在这里插入图片描述"><br>  <strong>2、类图：</strong><br>  <strong>作用</strong>：静态描述性模型元素相互连接的集合图，可以表示不同实体（人，事务和数据）的内部构成<br>  <strong>组成/使用</strong>：名称，属性和方法，他们之间的关系。#表示受保护成员，+表示公有成员，“-”表示私有成员。<br>  <strong><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/4.png" alt="在这里插入图片描述"><br>   3、交互图</strong> ：包括顺序图和协作图，两种图在内容上是等效的，可以相互转换。<br>   <strong>顺序图</strong>：强调消息的时间排序<br>   <strong>作用</strong>：表示交互，指为得到一个期望的结果而在多个分类器角色之间进行的交互序列。<br>   <strong>组成/使用</strong>：顺序图有两维，垂直维代表时间，水平维代表对象。通常，垂直维自上至下代表时间向前推进。<br>  <strong>协作图</strong>：强调发送消息和接收消息的对象的结构组织<br>  <strong>作用</strong>：描述相互联系的对象之间的关系，或者分类器角色和关联角色之间的关系以下是同一个例子分别用两种图的表示<br>  <img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/5.png" alt="在这里插入图片描述"> 顺序图<br><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/6.png" alt="在这里插入图片描述"><br>协作图<br><strong>4、状态图</strong>：描述模型元素在接收到事件后的动态行为。<br><strong>作用</strong>：描述一个类的对象在生命周期里如何从一个状态转移到另外一个状态，类的迁移由事件触发。<br><strong>组成/使用</strong>：图形中的状态和各种其他类型的顶点（伪状态）用适当的状态或者伪状态符号表示，状态之间的转换则用有向弧连接表示。<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/7.png" alt="在这里插入图片描述"></p>
-<p> <strong>5、活动图</strong>：是状态图的一种特殊的情况，其中绝大部分状态是动作或子活动状态，并且绝大部分甚至所有的转换是通过动作或者子活动的完成所触发的。<br> <strong>作用</strong>：描述绝大多数甚至是所有的事件是由内部动作的完成所引起的情况。<br> <strong>组成</strong>：由一条路径组成。包含并发和分叉，并发：两个活动同时发生。  分叉：选择性活动的发生<br><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/8.png" alt="在这里插入图片描述"><br><strong>6、构件图：</strong><br><strong>作用</strong>：表示构建之间的依赖关系组成：软件构建包括源代码构建、二进制代码构建和可执行构建，一些构建存在于编译时刻，一些存在于链接时刻，一些存在于运行时刻，还有一些可能存在于不止一个时刻。<br><strong>组成/使用</strong>：使用箭头表示依赖关系<br><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/9.png" alt="在这里插入图片描述"><br><strong>7、配置图：</strong><br><strong>作用</strong>：表示系统运行时的处理元素、软件构件以及基于它们的进程和对象的配置情况<br><strong>组成/使用</strong>：不处于运行状态的实体的软件构件不出现（在构件图中表示），结点可能包含构件实例，构件可能包含对象，构件与构件之间的依赖关系用箭线表示<br><strong><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/10.png" alt="在这里插入图片描述"><br>用例之间的关系</strong>：泛化、包含、扩展</p>
-<p><strong>用例的场景：</strong><br>1：某个用例的一个实例，只描述完成给定的用例行为的若干可能途径中的一种  2：一个用例可能存在多个场景<br>3：系统会根据参与者提供的不同信息进入不同的场景<br>4：场景可以表达：正面行为需求，反面行为需求，不希望发生的交互，并行机制</p>
-<p><strong>类与类之间的关系</strong>：<br>1：关联关系：包含自返关联、二元关联、N元关联<br>2：泛化关系<br>3：依赖关系<br>4：实现关系</p>
+                <h1>第四章需求获取</h1>
+<p><strong>需求分析的实质</strong>：是对系统的理解与表达的过程，是一种软件工程的活动。</p>
+<p><strong>需求分析之后建立模型的名称</strong>：分析模型或需求模型需求分析的过程：<br>
+<strong>需求分析的过程</strong>：<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/1.png" alt="在这里插入图片描述"><br>
+<strong>常用的需求分析的方法</strong>：<br>
+1：面向数据流的结构化分析方法（简称SA）<br>
+2：面向数据结构的Jackson方法（简称JSD）<br>
+3：面向对象的分析方法<br>
+4：建立动态模型的迁移图或Petri网等。<br>
+<strong>软件需求的分类，根据分类的标准不同，结果也不同</strong>：<br>
+<strong>1：按修饰对象的不同</strong>：<br>
+<strong>Ø 产品需求</strong>：<br>
+<strong>l 功能性需求</strong>：软件产品的功能特性<br>
+<strong>l 非功能性需求</strong>：软件产品的质量属性，是在功能性需求满足情况下的进一步要求<br>
+<strong>“FURPS“模型</strong>：<br>
+<strong>功能性</strong>：需要考虑的额外的功能需求，如安全性；<br>
+<strong>可用性</strong>：易用性、美观性、一致性和文档化；<br>
+<strong>可靠性</strong>：指的是在特定操作环境下预期的系统故障频率、可恢复性、可预测性准确性以及平均故障时间；<br>
+<strong>性能</strong>：响应时间、效率、资源利用率和吞吐量（在一个指定时间内系统可完成的工作量）<br>
+<strong>可支持性</strong>：可测试性、适应性、可维护性、兼容性、可配置性、可扩展性和本地化<br>
+<strong>Ø 过程需求</strong>——修饰或限制软件开发过程的要求<br>
+<strong>2：按抽象层次详细程度</strong>：<br>
+<strong>Ø 业务需求</strong><br>
+<strong>Ø 用户需求</strong><br>
+<strong>Ø 系统需求</strong><br>
+<strong>Ø 软件设计规约</strong></p>
+<p><strong>需求优先级的等级：</strong><br>
+<strong>1、基本的</strong>：使得客户能够黑手系统并且必须实现的要求<br>
+<strong>2：可取的</strong>：非常可取但却不是必须的那些需求<br>
+<strong>3：可选的</strong>：在时间和资源允许的情况下，可能会实现的需求<br>
+<strong>4：未来的</strong>：不会在系统当前版本中实现，但考虑到系统后续的版本应该记录下来的需求</p>
+<p><strong>需求获取的技术有哪些</strong>：<br>
+1：面谈<br>
+2：问卷调查<br>
+3：群体诱导技术<br>
+4：头脑风暴<br>
+5：参与观察法<br>
+6：亲身实践<br>
+7：原型<br>
+8：情景分析<br>
+9：概念建模<br>
+10：A/B测试</p>
+<p><strong>结构化分析的主要工具</strong>：<br>
+1：数据流图(DFD)<br>
+2:数据字典(DD)<br>
+3：结构化语言<br>
+4：判定树<br>
+5：判定表</p>
+<p><strong>传统的软件建模中分析模型的核心及围绕核心的三个子模型</strong>：<br>
+分析模型的核心是数据字典，围绕数据字典3个层次的子模型有数据模型、功能模型和行为模型。<br>
+<strong>数据字典</strong>：用于描述系统软件中使用或者产生的每一个数据元素，是系统数据信息定义的集合。<br>
+<strong>数据模型</strong>：用于描述数据对象之间的关系。其应包含3种相关的信息，即数据对象、属性和关系<br>
+<strong>功能模型</strong>：可以用数据流图描述（数据流图是一种图形化技术，可以表达软件系统必须完成的功能），所以又称数据流模型。<br>
+<strong>行为模型</strong>：常用状态转化图（即状态图）来描述，又称状态机模型，可以理解为，在任一个时刻，系统处于有限可能的状态中的一个状态，当某一个激励条件到达时，它激发系统从一个状态转换到另一新状态。</p>
+<h1>第五章</h1>
+<p><strong>用例建模UML的九种图的画法，以及每种图的作用，在分析和设计的过程中怎么使用：</strong><br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/2.png" alt="在这里插入图片描述"><br>
+<strong>1、用例图：</strong><br>
+<strong>作用</strong>：表示角色和用例之间的关系，其中用例代表的是一个系统或分类器的功能，外部交互者与这一分类器来进行交互呈现。<br>
+<strong>组成/使用</strong>：由一些角色、一组用例，还可能有一些接口以及这些组成元素之间的关系构成的图，其中关系是指角色和用例之间的联系。用例通常用矩形框起来以表示系统或分类器的边界。<br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/3.png" alt="在这里插入图片描述"><br>
+<strong>2、类图：</strong><br>
+<strong>作用</strong>：静态描述性模型元素相互连接的集合图，可以表示不同实体（人，事务和数据）的内部构成<br>
+<strong>组成/使用</strong>：名称，属性和方法，他们之间的关系。#表示受保护成员，+表示公有成员，“-”表示私有成员。<br>
+<strong><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/4.png" alt="在这里插入图片描述"><br>
+3、交互图</strong> ：包括顺序图和协作图，两种图在内容上是等效的，可以相互转换。<br>
+<strong>顺序图</strong>：强调消息的时间排序<br>
+<strong>作用</strong>：表示交互，指为得到一个期望的结果而在多个分类器角色之间进行的交互序列。<br>
+<strong>组成/使用</strong>：顺序图有两维，垂直维代表时间，水平维代表对象。通常，垂直维自上至下代表时间向前推进。<br>
+<strong>协作图</strong>：强调发送消息和接收消息的对象的结构组织<br>
+<strong>作用</strong>：描述相互联系的对象之间的关系，或者分类器角色和关联角色之间的关系以下是同一个例子分别用两种图的表示<br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/5.png" alt="在这里插入图片描述"> 顺序图<br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/6.png" alt="在这里插入图片描述"><br>
+协作图<br>
+<strong>4、状态图</strong>：描述模型元素在接收到事件后的动态行为。<br>
+<strong>作用</strong>：描述一个类的对象在生命周期里如何从一个状态转移到另外一个状态，类的迁移由事件触发。<br>
+<strong>组成/使用</strong>：图形中的状态和各种其他类型的顶点（伪状态）用适当的状态或者伪状态符号表示，状态之间的转换则用有向弧连接表示。<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/7.png" alt="在这里插入图片描述"></p>
+<p><strong>5、活动图</strong>：是状态图的一种特殊的情况，其中绝大部分状态是动作或子活动状态，并且绝大部分甚至所有的转换是通过动作或者子活动的完成所触发的。<br>
+<strong>作用</strong>：描述绝大多数甚至是所有的事件是由内部动作的完成所引起的情况。<br>
+<strong>组成</strong>：由一条路径组成。包含并发和分叉，并发：两个活动同时发生。  分叉：选择性活动的发生<br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/8.png" alt="在这里插入图片描述"><br>
+<strong>6、构件图：</strong><br>
+<strong>作用</strong>：表示构建之间的依赖关系组成：软件构建包括源代码构建、二进制代码构建和可执行构建，一些构建存在于编译时刻，一些存在于链接时刻，一些存在于运行时刻，还有一些可能存在于不止一个时刻。<br>
+<strong>组成/使用</strong>：使用箭头表示依赖关系<br>
+<img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/9.png" alt="在这里插入图片描述"><br>
+<strong>7、配置图：</strong><br>
+<strong>作用</strong>：表示系统运行时的处理元素、软件构件以及基于它们的进程和对象的配置情况<br>
+<strong>组成/使用</strong>：不处于运行状态的实体的软件构件不出现（在构件图中表示），结点可能包含构件实例，构件可能包含对象，构件与构件之间的依赖关系用箭线表示<br>
+<strong><img src="/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/10.png" alt="在这里插入图片描述"><br>
+用例之间的关系</strong>：泛化、包含、扩展</p>
+<p><strong>用例的场景：</strong><br>
+1：某个用例的一个实例，只描述完成给定的用例行为的若干可能途径中的一种  2：一个用例可能存在多个场景<br>
+3：系统会根据参与者提供的不同信息进入不同的场景<br>
+4：场景可以表达：正面行为需求，反面行为需求，不希望发生的交互，并行机制</p>
+<p><strong>类与类之间的关系</strong>：<br>
+1：关联关系：包含自返关联、二元关联、N元关联<br>
+2：泛化关系<br>
+3：依赖关系<br>
+4：实现关系</p>
 
                 
             </div>
