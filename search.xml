@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>xbwcj的失败史</title>
+      <link href="2021/03/19/xbwcj-de-shi-bai-shi/"/>
+      <url>2021/03/19/xbwcj-de-shi-bai-shi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="分享一句话"><a class="header-anchor" href="#分享一句话">¶</a>分享一句话</h2><p><font face="微软雅黑" size=4>你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p><h2 id="个人失败历史"><a class="header-anchor" href="#个人失败历史">¶</a>个人失败历史</h2><p>入学以来大一参加计算机设计大赛失败。😟<br>入学以后第一场考试以及后面无数考试失利。😩<br>大一参加校内数学建模新生杯惨败。😞<br>大一参加华中赛数学建模无功而返。😑<br>大一参加互联网+因特殊原因退出。😔<br>……<br>大二开始接触DataFountain竞赛，一直徘徊在复赛圈，与决赛无缘。<br>开始学习acm算法，在各种比赛中被吊打。<br>开始学习一些简单的开发，但是没有完整做出一款属于自己的开发的应用。<br>大二参加华为软件精英挑战赛，被数据漏洞坑害（参赛经验不足，获取比赛信息时效性低），赛区64强止步。<br>大二参加全国k-code程序设计大赛，止步21名，倒在决赛圈（前二十名）门口。<br>参加MathorCup成功参赛。<br>大二暑期建模培训最终选拔全校第七名，特殊原因被淘汰。<br>……<br>大三参加天池Redis数据库中间件挑战赛止步决赛。<br>……<br>还有很多自己以及以往的失败历史。</p><h2 id="未来准备参加的比赛"><a class="header-anchor" href="#未来准备参加的比赛">¶</a>未来准备参加的比赛</h2><p>美赛成绩未出<br>继续准备参加计算机设计大赛、华为软件精英挑战赛、等之类的其他比赛。</p><h2 id="xbwcj的数学建模比赛的准备"><a class="header-anchor" href="#xbwcj的数学建模比赛的准备">¶</a>xbwcj的数学建模比赛的准备</h2><p>1、提高自己的编程能力，编程能力的提升是在平时就要锻炼的，平时写代码的时候不要马虎应付，多看博客等其他网站上的一些常用算法与伪代码，最重要的是了解算法的思维，严谨的思维+超强的编程能力才能轻松应对数模中的编程。<br>2、强烈推荐去看司守奎的《数学建模算法与应用》这本书，学习上面的一些比较常见的算法，自己一定要手动实现一次，自己不手动实现，就很难理解里面的编程思维。<br>3、多去准备一些比较新的智能优化算法，推荐公众号：数学算法实验室、智能优化算法。尝试自己改进一些算法，将这些算法做成接口的形式，在使用时只需要传参就可以。准备一些可以做出精美图片的数据分析的软件，例如Oracle提供的Data Visualization Desktop的软件，也可以使用Office的PPT功能。熟练使用可以在比赛过程中省时省力。或者准备一些Matlab或者Python的作图代码，例如简单的条形图、折线图、雷达图等，或者高级点的词云之类的，也以接口的形式封装。<br>4、如何上手？一定一定要自己独自去完成一次数模的全部流程，了解每个步骤应该做什么如何去做。只有全部接触才能知道自己的优势以及劣势，了解自己应该找什么样的队友来取长补短。<br>5、暑期培训前的准备：2020年由于疫情的原因，选拔赛是以组队的形式直接做题来选拔。在暑期培训前无论是校赛还是校外的数模比赛中，都可以自己去找队友，因此最好在暑期选拔培训前就确定好自己的队友，尽早开始磨合，利用其他的数模比赛找到队伍的不足，这样可以在选拔赛中发挥的更好一些。校外的数模比赛建议参加：华中赛、泰迪杯、数维杯、深圳杯、亚太赛。（挑选其中几个即可）</p><h2 id="xbwcj的校外比赛经验"><a class="header-anchor" href="#xbwcj的校外比赛经验">¶</a>xbwcj的校外比赛经验</h2><p>推荐几个我经常浪荡的比赛网站：<br><a href="https://tianchi.aliyun.com/competition/gameList/activeList">天池</a>、<a href="https://competition.huaweicloud.com/competitions">华为云</a>、<br><a href="https://www.datafountain.cn/competitions">DataFountain</a>、<a href="https://www.kaggle.com/competitions">kaggle</a>、<br>这些比赛有奖金，并且你会学习到很多平时在课堂里面学不到的知识技能。刚开始得奖会比较难，因为这些比赛中参加的不只是本科生，一般是面向所有在校学生，而且硕士生所占比例不低，所以开始大家可以去涨经验，后面能到何种地步就看大家自己的发挥了。🐶🐶🐶<br>如果想要提高自己的编程能力：<br><a href="https://ac.nowcoder.com/acm/problem/list">牛客</a>、<a href="https://www.luogu.com.cn/problem/list">洛谷</a>、<a href="http://acm.hdu.edu.cn/">hduOJ</a>、<a href="https://codeforces.com/problemset">CodeForces</a>、<a href="https://nanti.jisuanke.com/acm">计蒜客</a>。<br>去刷里面的题目，如果不是专门去训练acm，不需要去做太难的，达到中等就可以应付绝大多数公司的绝大多数笔试题了。也可以帮助你了解比较重要的基础算法。</p><h2 id="xbwcj个人大学总结经验（其实是自己的不足与后悔之处）"><a class="header-anchor" href="#xbwcj个人大学总结经验（其实是自己的不足与后悔之处）">¶</a>xbwcj个人大学总结经验（其实是自己的不足与后悔之处）</h2><p>1、一定要尽早规划，自己以后是找工作还是要读研，读研的话，是准备考研，还是A、B保，如果保研自己还欠缺什么，尽早做打算。<br>2、精心，静心去做一件事，贪多嚼不烂。<br>3、无论做什么，基础一定要扎实。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 个人分享 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构--线性表</title>
+      <link href="2021/03/08/shu-ju-jie-gou-xian-xing-biao/"/>
+      <url>2021/03/08/shu-ju-jie-gou-xian-xing-biao/</url>
+      
+        <content type="html"><![CDATA[<h2 id="什么是线性表？"><a class="header-anchor" href="#什么是线性表？">¶</a>什么是线性表？</h2><p>线性表（linear_list）是最常用且最简单的一种数据结构，一个线性表相当于是n个数据元素的有限序列，其中每个数据元素表示的内容在不同的情况下并不相同，有可能是一个数字、一个符号之类的。若将线性表用集合表示为:<br>$$<br>(a_{1}, …, a_{i-1}, a_{i}, a_{i+1}, …, a_{n})<br>$$</p><p>由集合中可以看出，除第一个外，集合中的每个数据元素均只有一个前驱，除最后一个外，集合中的每个数据元素均只有一个后继。</p><h2 id="线性表的两种表示形式"><a class="header-anchor" href="#线性表的两种表示形式">¶</a>线性表的两种表示形式</h2><p>（1）顺序表示：用一组地址连续的存储单元依次存储线性表的数据元素，称为线性表的顺序存储结构，可随机存取表中任一元素（其实就是数组）<br>（2）链式表示：用一组任意的存储单元存储线性表中的数据元素，称为线性表的链式存储结构。它的存储单元可以是连续的，也可以是不连续的。在表示数据元素之间的逻辑关系时，除了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置），这两部分信息组成数据元素的存储映像，称为结点（node）。它包括两个域；存储数据元素信息的域称为数据域；存储直接后继存储位置的域称为指针域。指针域中存储的信息称为指针或链。<br>可以用下图来更加直观的表示顺序结构和链式结构</p><h2 id="线性表的一般定义"><a class="header-anchor" href="#线性表的一般定义">¶</a>线性表的一般定义</h2><p>线性表的抽象数据类型定义如下：<br>数据对象：$$D , = , {a_{i} , | , a_{i} , \in , ElemSet, ,i = 1,2,\cdots,n, , n \geq 0}$$<br>数据关系：$$R1 , = , {&lt; a_{i-1},a_{i} &gt; |a_{i-1},a{i} \in D,,i=2,\cdots,n}$$</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ADT List &#123;    &#x2F;&#x2F;基本操作    InitList(&amp;L) &#x2F;&#x2F;构造空线性表L    DestoryList(&amp;L) &#x2F;&#x2F;销毁线性表L    ClearList(&amp;L) &#x2F;&#x2F;将线性表L变为空    ListEmpty(L) &#x2F;&#x2F;若线性表L为空表，返回TRUE，否则返回FASLSE    ListLength(L) &#x2F;&#x2F;返回线性表中的数据元素个数    GetElem(L, i, &amp;e) &#x2F;&#x2F;用e返回L中第i个数据元素的值    PriorElem(L, cur_e, &amp;pre_e) &#x2F;&#x2F; 如果cur_e是线性表中的元素，而且不是第一个，那么我们就可以返回该元素前一个元素的值    NextElem(L, cur_e, &amp;next_e) &#x2F;&#x2F; &#x2F;&#x2F;如果cur_e是线性表中的元素，而且不是最后一个，就返回它下一个元素的值    Listinsert(&amp;L, i, e)&#x2F;&#x2F;如果线性表存在了，而且i符合条件，则在i位置插入一个元素    ListDelete(&amp;L, i)&#x2F;&#x2F;删除i位置上的元素    ListDelete_data(&amp;L, e, order)&#x2F;&#x2F;删除指定的元素e，order决定是删除一个，还是全部。    Connect_two_List(L_a,L_b,&amp; L_c)&#x2F;&#x2F;连接两个线性表，除去重复的内容    print(L)&#x2F;&#x2F;打印线性表    &#x2F;*        此处省略部分其他常见的操作    *&#x2F;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在上述的函数中需要注意，如果要改变原本线性表的内容，则需要传入线性表的地址，如果只是对线性表进行查询等不改变原本的线性表内容的操作，则不需要以地址的形式传入。（这部分其实就是C/C++的对传入函数参数值改变的原理，在此做一个小的提醒）。</p><h2 id="顺序存储结构常见的结构体实现"><a class="header-anchor" href="#顺序存储结构常见的结构体实现">¶</a>顺序存储结构常见的结构体实现</h2><p>我们通过线性表顺序结构来实现线性表的一些基础操作。</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include&lt;bits&#x2F;stdc++.h&gt;#define SIZE 100#define SIZE_T 150using namespace std;typedef int ElemType;struct List &#123;    ElemType *data; &#x2F;&#x2F;数据    int length; &#x2F;&#x2F;长度    int size; &#x2F;&#x2F;线性表初始容量&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="顺序存储结构InitList-函数的实现"><a class="header-anchor" href="#顺序存储结构InitList-函数的实现">¶</a>顺序存储结构InitList()函数的实现</h2><p>线性表的顺序表示可以看作对数组进行一些操作，初始化函数就是将表的长度变为0，对data进行堆内存的分配和初始容量的初始化。</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;创建一个空的线性表void InitList(List &amp;newList) &#123;    &#x2F;&#x2F;初始容量为startsize    newList.size &#x3D; SIZE_T;    &#x2F;&#x2F;首先开辟空间    newList.data &#x3D; (int *)malloc(SIZE * sizeof(ElemType));    if(!newList.data)    &#123;        exit(OVERFLOW); &#x2F;&#x2F; 存储分配失败    &#125;    &#x2F;&#x2F;空表，长度是0    newList.length &#x3D; 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="顺序存储结构DestoryList-函数的实现"><a class="header-anchor" href="#顺序存储结构DestoryList-函数的实现">¶</a>顺序存储结构DestoryList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在void Destory (List &amp;newList)&#123;if (newList &#x3D;&#x3D; NULL)    &#123;        exit(OVERFLOW);&#x2F;&#x2F; 线性表不存在    &#125;    &#x2F;&#x2F;首先释放堆内存free(newList.data);    &#x2F;&#x2F;每次释放堆内存后，应将对应的指针指向NULL，这是一个比较好的编程习惯    newList.data &#x3D; NULL;    newList.length &#x3D; 0;    newList.size &#x3D; 0;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="顺序存储结构ClearList-函数的实现"><a class="header-anchor" href="#顺序存储结构ClearList-函数的实现">¶</a>顺序存储结构ClearList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在void ClearList(List &amp;newList) &#123;    if (newList &#x3D;&#x3D; NULL)    &#123;        exit(OVERFLOW);&#x2F;&#x2F; 线性表不存在    &#125;    newList.length &#x3D; 0;free(newList.data);    newList.data &#x3D; NULL;    &#x2F;&#x2F;重新开辟空间    newList.data &#x3D; (int *)malloc(SIZE * sizeof(ElemType));&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="2021/02/13/hello-world/"/>
+      <url>2021/02/13/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a class="header-anchor" href="#Quick-Start">¶</a>Quick Start</h2><h3 id="Create-a-new-post"><a class="header-anchor" href="#Create-a-new-post">¶</a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new &quot;My New Post&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a class="header-anchor" href="#Run-server">¶</a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a class="header-anchor" href="#Generate-static-files">¶</a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a class="header-anchor" href="#Deploy-to-remote-sites">¶</a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
