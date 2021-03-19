@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构--线性表, Live My Life">
+    <meta name="keywords" content="前缀和、二维前缀和与差分个人理解, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构--线性表 | Live My Life</title>
+    <title>前缀和、二维前缀和与差分个人理解 | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构--线性表</h1>
+                    <h1 class="description center-align post-title">前缀和、二维前缀和与差分个人理解</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +435,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/ACM/">
+                                <span class="chip bg-color">ACM</span>
                             </a>
                         
                     </div>
@@ -451,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-08
+                    2020-05-28
                 </div>
                 
 
@@ -465,14 +465,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -495,83 +495,98 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是线性表？"><a href="#什么是线性表？" class="headerlink" title="什么是线性表？"></a>什么是线性表？</h2><p>线性表（linear_list）是最常用且最简单的一种数据结构，一个线性表相当于是n个数据元素的有限序列，其中每个数据元素表示的内容在不同的情况下并不相同，有可能是一个数字、一个符号之类的。若将线性表用集合表示为:</p>
-<script type="math/tex; mode=display">
-(a_{1}, ..., a_{i-1}, a_{i}, a_{i+1}, ..., a_{n})</script><p>由集合中可以看出，除第一个外，集合中的每个数据元素均只有一个前驱，除最后一个外，集合中的每个数据元素均只有一个后继。</p>
-<h2 id="线性表的两种表示形式"><a href="#线性表的两种表示形式" class="headerlink" title="线性表的两种表示形式"></a>线性表的两种表示形式</h2><p>（1）顺序表示：用一组地址连续的存储单元依次存储线性表的数据元素，称为线性表的顺序存储结构，可随机存取表中任一元素（其实就是数组）<br>（2）链式表示：用一组任意的存储单元存储线性表中的数据元素，称为线性表的链式存储结构。它的存储单元可以是连续的，也可以是不连续的。在表示数据元素之间的逻辑关系时，除了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置），这两部分信息组成数据元素的存储映像，称为结点（node）。它包括两个域；存储数据元素信息的域称为数据域；存储直接后继存储位置的域称为指针域。指针域中存储的信息称为指针或链。<br>可以用下图来更加直观的表示顺序结构和链式结构</p>
-<h2 id="线性表的一般定义"><a href="#线性表的一般定义" class="headerlink" title="线性表的一般定义"></a>线性表的一般定义</h2><p>线性表的抽象数据类型定义如下：<br>数据对象：<script type="math/tex">D \, = \, {a_{i} \, | \, a_{i} \, \in \, ElemSet, \,i = 1,2,\cdots,n, \, n \geq 0}</script><br>数据关系：<script type="math/tex">R1 \, = \, {< a_{i-1},a_{i} > |a_{i-1},a{i} \in D,\,i=2,\cdots,n}</script><br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ADT List &#123;
-    &#x2F;&#x2F;基本操作
-    InitList(&amp;L) &#x2F;&#x2F;构造空线性表L
-    DestoryList(&amp;L) &#x2F;&#x2F;销毁线性表L
-    ClearList(&amp;L) &#x2F;&#x2F;将线性表L变为空
-    ListEmpty(L) &#x2F;&#x2F;若线性表L为空表，返回TRUE，否则返回FASLSE
-    ListLength(L) &#x2F;&#x2F;返回线性表中的数据元素个数
-    GetElem(L, i, &amp;e) &#x2F;&#x2F;用e返回L中第i个数据元素的值
-    PriorElem(L, cur_e, &amp;pre_e) &#x2F;&#x2F; 如果cur_e是线性表中的元素，而且不是第一个，那么我们就可以返回该元素前一个元素的值
-    NextElem(L, cur_e, &amp;next_e) &#x2F;&#x2F; &#x2F;&#x2F;如果cur_e是线性表中的元素，而且不是最后一个，就返回它下一个元素的值
-    Listinsert(&amp;L, i, e)&#x2F;&#x2F;如果线性表存在了，而且i符合条件，则在i位置插入一个元素
-    ListDelete(&amp;L, i)&#x2F;&#x2F;删除i位置上的元素
-    ListDelete_data(&amp;L, e, order)&#x2F;&#x2F;删除指定的元素e，order决定是删除一个，还是全部。
-    Connect_two_List(L_a,L_b,&amp; L_c)&#x2F;&#x2F;连接两个线性表，除去重复的内容
-    print(L)&#x2F;&#x2F;打印线性表
-    &#x2F;*
-        此处省略部分其他常见的操作
-    *&#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>在上述的函数中需要注意，如果要改变原本线性表的内容，则需要传入线性表的地址，如果只是对线性表进行查询等不改变原本的线性表内容的操作，则不需要以地址的形式传入。（这部分其实就是C/C++的对传入函数参数值改变的原理，在此做一个小的提醒）。</p>
-<h2 id="顺序存储结构常见的结构体实现"><a href="#顺序存储结构常见的结构体实现" class="headerlink" title="顺序存储结构常见的结构体实现"></a>顺序存储结构常见的结构体实现</h2><p>我们通过线性表顺序结构来实现线性表的一些基础操作。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include&lt;bits&#x2F;stdc++.h&gt;
-#define SIZE 100
-#define SIZE_T 150
-
-using namespace std;
-
-typedef int ElemType;
-
-struct List &#123;
-    ElemType *data; &#x2F;&#x2F;数据
-    int length; &#x2F;&#x2F;长度
-    int size; &#x2F;&#x2F;线性表初始容量
-&#125;;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h2 id="顺序存储结构InitList-函数的实现"><a href="#顺序存储结构InitList-函数的实现" class="headerlink" title="顺序存储结构InitList()函数的实现"></a>顺序存储结构InitList()函数的实现</h2><p>线性表的顺序表示可以看作对数组进行一些操作，初始化函数就是将表的长度变为0，对data进行堆内存的分配和初始容量的初始化。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;创建一个空的线性表
-void InitList(List &amp;newList) 
-&#123;
-    &#x2F;&#x2F;初始容量为startsize
-    newList.size &#x3D; SIZE_T;
-    &#x2F;&#x2F;首先开辟空间
-    newList.data &#x3D; (int *)malloc(SIZE * sizeof(ElemType));
-    if(!newList.data)
-    &#123;
-        exit(OVERFLOW); &#x2F;&#x2F; 存储分配失败
+                <h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h2 id="什么是前缀和"><a href="#什么是前缀和" class="headerlink" title="什么是前缀和"></a>什么是前缀和</h2><p>&emsp;&emsp;前缀和顾名思义就是指一个数组的某一个下标的（包括该下标）之前的所有数组元素的和。现在我们假设有某一数组a = [1, 2, 3, 4, 5, 6, 7, 8, 9]。其前缀和数组为sum，那么sum数组与a数组对应的关系如下图所示。<br><img src="/.io//myBlog\source\_posts\前缀和、二维前缀和与差分个人理解\1.png" alt="在这里插入图片描述"><br>&emsp;&emsp;由上面的对应关系我们可以得到他们满足如下的公式。</p>
+<p><img src="/.io//myBlog\source\_posts\前缀和、二维前缀和与差分个人理解\2.png" alt="在这里插入图片描述"><br>&emsp;&emsp;以上的公式即为<strong>一维前缀和</strong>一维前缀和的代码模板如下所示。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
+     * 一维前缀和
+     *
+     * @a 表示原数组
+     * @sum 表示a数组的一维前缀和
+     *&#x2F;
+     const int maxn &#x3D; 1e5 + 10;
+     int a[9] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;; 
+     int sum[maxn];
+    void oneDimen(int num) &#123;&#x2F;&#x2F;num表示数组a的长度
+        sum[0] &#x3D; a[0];
+        for (int i &#x3D; 1; i &lt; num; i++) &#123;
+            sum[i] &#x3D; sum[i - 1] + a[i];
+        &#125;
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="前缀和使用情况"><a href="#前缀和使用情况" class="headerlink" title="前缀和使用情况"></a>前缀和使用情况</h2><p>&emsp;&emsp;我们在做题的时候经常会遇到查询问题，例如给出一个数组a，再给出m次查询，每次查询都会给出两个数L，R，分表表示查询区间的左右范围。如果我们只是使用最简单的朴素查询的方法，每次遍历区间，进行m次的查询，这样在题目所给数据范围较小的情况下可以进行，但是当查询次数很大时，其时间复杂度为<strong>O（n*m）</strong>会使运行TLE，所以我们使用上述的前缀和可以使时间复杂度降低为<strong>O(m+n)</strong></p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int query(int L, int R)&#123;
+	retrun sum[R] - sum[L - 1];
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><h2 id="什么是差分"><a href="#什么是差分" class="headerlink" title="什么是差分"></a>什么是差分</h2><p>&emsp;&emsp;差分就是指相邻两个数的差，我们假设存在一个数组，如下图所示<br><img src="/.io//myBlog\source\_posts\前缀和、二维前缀和与差分个人理解\3.png" alt="在这里插入图片描述"><br>&emsp;&emsp;具体代码模板如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5 + 10;
+int a[9] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;; 
+int diff[maxn];
+&#x2F;&#x2F;求出差分数组
+void chafen(int num)&#123;&#x2F;&#x2F;num表示原数组的长度
+	diff[0] &#x3D; a[0];
+	for(int i &#x3D; 1; i &lt; num; i++)&#123;
+		diff[i] &#x3D; a[i] - a[i - 1];
+	&#125;
+&#125;
+&#x2F;&#x2F;对区间进行加操作
+void addarray(int L, int R, int k)&#123;
+	&#x2F;&#x2F;L和R分别代表对加区间的左右范围，k表示在区间里每个元素加的数字
+	diff[L] +&#x3D; k;
+	diff[R + 1] -&#x3D; k;&#x2F;&#x2F;这里特别要注意，因为在前面进行区间加后，后面一个数与前面这个数的差变小了，所以要在后面这个数的差分数组减去前面区间所增加的数字。
+&#125;
+&#x2F;&#x2F;通过差分数组和原数组a推理得到进行区间加后数组中某一个元素的值
+void get_a()&#123;
+	for(int i &#x3D; 1; i &lt;&#x3D; n; i++)&#123;
+		a[i] &#x3D; doff[i] + a[i - 1];
+	&#125; 
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="差分使用情况"><a href="#差分使用情况" class="headerlink" title="差分使用情况"></a>差分使用情况</h2><p>&emsp;&emsp;区间加：把数组a[l]到a[r]都加上k，这种操作称为区间加。在进行区间加的操作后得到的数组b，我们对数组b进行查询，但可以发现如果是L——-R非常大的情况下，通过朴素的区间范围内主次累加求和这个操作执行的次数又很多，那时间复杂度会很高。所以可以使用差分的思想来降低复杂度。</p>
+<h1 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h1><h2 id="什么是二维前缀和"><a href="#什么是二维前缀和" class="headerlink" title="什么是二维前缀和"></a>什么是二维前缀和</h2><p><img src="/.io//myBlog\source\_posts\前缀和、二维前缀和与差分个人理解\4.png" alt="在这里插入图片描述"><br>&emsp;&emsp;在上图中深蓝色的部分代表的是二维数组的索引，浅蓝色的部分代表的是二维数组的每个元素的值。其二维前缀和如下图所示<br><img src="/.io//myBlog\source\_posts\前缀和、二维前缀和与差分个人理解\5.png" alt="在这里插入图片描述"><br>&emsp;&emsp;前缀和数组里每一个位置都表示原数组当前索引左上方的数字的和。<br>如上表中的而为前缀和数组：prefixSum[3, 3] = src[0~2, 0~2]的和;<br>二维前缀和数组的计算步骤如下所示。<br>可以分为四种情况</p>
+<ol>
+<li>i == 0 &amp;&amp; j ==0，只有一个直接赋值即可：prefixSum[0, 0] = a[0, 0]。</li>
+<li>i == 0，最左边的一列，二维前缀和为元素上一行相同列的元素加该数字，公式为prefixSum[0, j] = prefixSum[0, j-1] + a[0, j]；</li>
+<li>j == 0，最上面一排，与i == 0类似prefixSum[i, o] = prefixSum[i-1, 0] + a[i, 0];</li>
+<li>i!=0 || j!=0，其公式为 prefixSum[i][j] = prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];<br>其代码模板如下所示</li>
+</ol>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
+ * 二维前缀和
+ *
+ * @param src 原数组
+ * @return 二维前缀和
+ *&#x2F;
+ const int maxn &#x3D; 100;
+ int prefixSum[maxn][maxn];
+void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维原始数组的行列长度
+    for (int i &#x3D; 0; i &lt; n; i++) &#123;
+        for (int j &#x3D; 0; j &lt; m; j++) &#123;
+            if (i &#x3D;&#x3D; 0 &amp;&amp; j &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第0个，最左上角
+                prefixSum[i][j] &#x3D; a[i][j];
+            &#125; else if (i &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第一行，最顶部一行
+                prefixSum[i][j] &#x3D; prefixSum[i][j - 1] + a[i][j];
+            &#125; else if (j &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第一列，最左边一列
+                prefixSum[i][j] &#x3D; prefixSum[i - 1][j] + a[i][j];
+            &#125; else &#123;&#x2F;&#x2F;其他
+                prefixSum[i][j] &#x3D; prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];
+            &#125;
+        &#125;
     &#125;
-    &#x2F;&#x2F;空表，长度是0
-    newList.length &#x3D; 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h2 id="顺序存储结构DestoryList-函数的实现"><a href="#顺序存储结构DestoryList-函数的实现" class="headerlink" title="顺序存储结构DestoryList()函数的实现"></a>顺序存储结构DestoryList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
-void Destory (List &amp;newList)
-&#123;
-	if (newList &#x3D;&#x3D; NULL)
-    &#123;
-        exit(OVERFLOW);&#x2F;&#x2F; 线性表不存在
-    &#125;
-    &#x2F;&#x2F;首先释放堆内存
-	free(newList.data);
-    &#x2F;&#x2F;每次释放堆内存后，应将对应的指针指向NULL，这是一个比较好的编程习惯
-    newList.data &#x3D; NULL;
-    newList.length &#x3D; 0;
-    newList.size &#x3D; 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="顺序存储结构ClearList-函数的实现"><a href="#顺序存储结构ClearList-函数的实现" class="headerlink" title="顺序存储结构ClearList()函数的实现"></a>顺序存储结构ClearList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
-void ClearList(List &amp;newList) &#123;
-    if (newList &#x3D;&#x3D; NULL)
-    &#123;
-        exit(OVERFLOW);&#x2F;&#x2F; 线性表不存在
-    &#125;
-    newList.length &#x3D; 0;
-	free(newList.data);
-    newList.data &#x3D; NULL;
-    &#x2F;&#x2F;重新开辟空间
-    newList.data &#x3D; (int *)malloc(SIZE * sizeof(ElemType));
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="二维前缀和的使用情况"><a href="#二维前缀和的使用情况" class="headerlink" title="二维前缀和的使用情况"></a>二维前缀和的使用情况</h2><p>&emsp;&emsp;一般使用二维前缀和可以求子矩阵的最大值。通过求解出整个矩阵的二维前缀和数组，然后对二位前缀和数组中的元素进行查询，找到其和最大的子矩阵。</p>
+<h2 id="二维前缀和的差分"><a href="#二维前缀和的差分" class="headerlink" title="二维前缀和的差分"></a>二维前缀和的差分</h2><p>&emsp;&emsp;二维前缀和也可以使用差分的形式。方法是和一维类似的，我们也是需要另开一个数组记录修改操作，最后求前缀和时统计修改操作，只是二维每一次操作需要记录4个位置，一维只需要记录2个位置。具体模板代码如下所示。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void chafen()&#123;
+	for(int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;m是修改操作次数 
+		int x1,y1,x2,y2,p;
+		cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2&gt;&gt;p;
+		b[x1][y1]+&#x3D;p;
+		b[x2+1][y2+1]+&#x3D;p;
+		b[x2+1][y1]-&#x3D;p;
+		b[x1][y2+1]-&#x3D;p;
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>&emsp;&emsp;以上部分来自个人理解以及从其他大佬的博客中领悟到的，有些内容可能与其他大佬相似，如有侵权，请及时指出，立马进行修正。有写的不好地方也请及时指出，本人菜鸡，勿喷。</p>
+<font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font>
+
+
                 
             </div>
             <hr/>
@@ -597,7 +612,7 @@ void ClearList(List &amp;newList) &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2021/03/08/shu-ju-jie-gou-xian-xing-biao/">http://xbwcj.github.io/2021/03/08/shu-ju-jie-gou-xian-xing-biao/</a>
+                    <a href="http://xbwcj.github.io/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/">http://xbwcj.github.io/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -635,8 +650,8 @@ void ClearList(List &amp;newList) &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/ACM/">
+                                    <span class="chip bg-color">ACM</span>
                                 </a>
                             
                         </div>
@@ -812,51 +827,6 @@ void ClearList(List &amp;newList) &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/03/19/xbwcj-de-shi-bai-shi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="xbwcj的失败史">
-                        
-                        <span class="card-title">xbwcj的失败史</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            xbwcj
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/">
-                        <span class="chip bg-color">个人分享</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/2021/02/13/hello-world/">
                     <div class="card-image">
                         
@@ -873,9 +843,9 @@ void ClearList(List &amp;newList) &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -893,6 +863,52 @@ void ClearList(List &amp;newList) &#123;
                     
                     <a href="/tags/hexo-blog/">
                         <span class="chip bg-color">hexo blog</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="前缀和、二维前缀和与差分个人理解">
+                        
+                        <span class="card-title">前缀和、二维前缀和与差分个人理解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            xbwcj
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
                     </a>
                     
                 </div>
