@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线段树个人理解, Live My Life">
+    <meta name="keywords" content="计算机系统概述（一）, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线段树个人理解 | Live My Life</title>
+    <title>计算机系统概述（一） | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线段树个人理解</h1>
+                    <h1 class="description center-align post-title">计算机系统概述（一）</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +435,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ACM/">
-                                <span class="chip bg-color">ACM</span>
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
                             </a>
                         
                     </div>
@@ -451,28 +451,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-27
+                    2021-03-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-19
+                    2021-03-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    8 分
                 </div>
                 
 
@@ -495,129 +495,57 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>线段树</h1>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/1.png" alt="在这里插入图片描述"></p>
-<h2 id="定义："><a class="header-anchor" href="#定义：">¶</a>定义：</h2>
-<p>  线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度为O(logN)。而未优化的空间复杂度为2N，实际应用时一般还要开4N的数组以免越界，因此有时需要离散化让空间压缩。对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。</p>
-<h2 id="作用范围："><a class="header-anchor" href="#作用范围：">¶</a>作用范围：</h2>
-<p>  线段树的适用范围很广，可以在线维护修改以及查询区间上的最值，求和。更可以扩充到二维线段树（矩阵树）和三维线段树（空间树）。对于一维线段树来说，每次更新以及查询的时间复杂度为O(logN)。还支持区间修改，单点修改等操作。</p>
-<h2 id="实现原理："><a class="header-anchor" href="#实现原理：">¶</a>实现原理：</h2>
-<p>  线段树主要是把一段大区间平均地划分成两段小区间进行维护，再用小区间的值来更新大区间。这样既能保证正确性，又能使时间保持在log级别（因为这棵线段树是平衡的）。也就是说，一个[L…R]的区间会被划分成[L…(L+R)/2]和[(L+R)/2+1…R]这两个小区间进行维护，直到L=R。但是在上述的过程中我们会遇到以下几个问题，就是我们该如何建树，建树的过程中每一个下标我们该如何去分配，分派到的每一个空间我们应该用来存放哪些数据。</p>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/2.png" alt="在这幅图片中"><br>
-  在这里我们仅对线段树中常见的区间最大值问题进行解释讨论。假设所给的区间为F[1:6] = {1, 9, 7, 8, 2, 3}。那么其对应的线段树的结构就如上图所示。其中红色的圆圈就代表线段树对应的每一个结点的下标。蓝色方框中的Max就是我们每一个结点所存放的内容，即每一个区间存放的最大值。Max下面的内容是对这个区间范围的一个说明，并不需要存放在数组中。<br>
-  仔细看这幅图我们会发现，其中结点的下标并不连续（在图中结点的标号并没有10，11）。这是因为我们在用数组对线段树进行模拟的时候，必须要提前对整个树的空间进行提前的开辟，所开辟的空间虽然并没有使用到，但是其仍然真是存在，这也是为什么我们在对数组进行开辟空间时一般会选择4<em>n的大小以避免出现RE。<br>
-  通过观察上面的线段树结点标号我们可以发现，对于一个区间[L,R]来说，最重要的数据当然就是区间的左右端点L和R，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。这种方式用指针好实现，定义两个左右子树递归即可，按时指针表示过于繁琐，而且不方便各种操作，大部分的线段树都是使用数组进行表示，那这里怎么快速使用下标找到左右子树呢。这就会涉及到每个结点下表数字的规律。我们发现在线段树中每个非叶子结点的度都为2，且父亲节点的左右两个孩子分别存储父亲一半的区间，而每个父亲结点存放的欧式孩子的最大值，而且左孩子的下标都为偶数，右孩子的下标都是奇数且左孩子下标数+1，即：<br>
-<strong><em><em>L = Father</em>2 （左子树下标为父亲下标的两倍）<br>
-R = Father</em>2+1（右子树下标为父亲下标的两倍+1）</strong></em>*<br>
-或<br>
-<strong>k&lt;&lt;1（结点k的左子树下标）<br>
-k&lt;&lt;1|1（结点k的右子树下标）</strong><br>
-所以建树的操作可用如下代码实现</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5+5;
-const int INF &#x3D; 0x3f3f3f3f;
-int tree[maxn&lt;&lt;2],temp[maxn];&#x2F;&#x2F;tree[]数组表示线段树数组，temp[]表示存放原始数据的数组
-void Build(int l,int r,int rt)&#123; &#x2F;&#x2F;l,r表示当前节点区间，rt表示当前节点编号  
-    if(l&#x3D;&#x3D;r) &#123;&#x2F;&#x2F;若到达叶节点，即区间的左右值相等   
-        tree[rt]&#x3D;temp[l];&#x2F;&#x2F;储存数组值   
-        return;  
-    &#125;  
-    int mid &#x3D; (l+r)&gt;&gt;1;  &#x2F;&#x2F;mid表示中间点
-    &#x2F;&#x2F;左右递归   
-    Build(l,mid,rt&lt;&lt;1);  
-    Build(mid+1,r,rt&lt;&lt;1|1);  
-    tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];&#x2F;&#x2F;更新信息
-&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="线段树的基本操作："><a class="header-anchor" href="#线段树的基本操作：">¶</a>线段树的基本操作：</h2>
-<h3 id="一、点更新"><a class="header-anchor" href="#一、点更新">¶</a>一、点更新</h3>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>
-  假设我们将上述的区间F[1:6] = {1, 9, 7, 8, 2, 3}中的F[3] = 7通过对其+3更改为10。那么我们应当对线段树进行如下的几个操作。</p>
-<ol>
-<li>我们通过线段树的根结点向下遍历，通过叶子结点所在的区间进行查询，在每一处根结点与我们改变的值相比较，如果F[3] = 10大于当前根结点中存储的Max值，那么将Max = 10，否则不变且继续向下遍历。</li>
-<li>直至到L=R时，即为我们改变的叶子结点，将其中存储的值变为我们上述的F[3] = 10，退出。<br>
-  具体代码实现如下：</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式更新 updata(p,v,1,n,1);
-void updata(int p,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;p为下标，v为要加上的值，l，r为结点区间，rt为结点下标
-    if(l &#x3D;&#x3D; r)&#123;    &#x2F;&#x2F;左端点等于右端点，即为叶子结点，直接加上v即可
-        temp[rt] +&#x3D; v;
-        tree[rt] +&#x3D; v;    &#x2F;&#x2F;原数组和线段树数组都得到更新
-        return ;
-    &#125;
-    int m &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-    if(p &lt;&#x3D; m)    &#x2F;&#x2F;如果需要更新的结点在左子树区间
-        updata(p,v,l,m,rt&lt;&lt;1);
-    else    &#x2F;&#x2F;如果需要更新的结点在右子树区间
-        updata(p,v,m+1,r,rt&lt;&lt;1|1);
-    tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];    &#x2F;&#x2F;更新父节点的值
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="二、区间查询"><a class="header-anchor" href="#二、区间查询">¶</a>二、区间查询</h3>
-<p>  线段树的每个结点存储的都是一段区间的信息 ，这就意味着如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息10即可，查询[1,2]直接返回9。但是有时题目中为了设置难度并不会轻易让我们查询每个结点所表示的区间。比如现在我要查询[2,5]区间的最值，这时候我们会发现并不存在某个节点的区间是[2,5]，那么这时我们应该采取一些什么方法来进行区间信息的查询呢？<br>
-<img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/4.png" alt="在这里插入图片描述"></p>
-<ol>
-<li>首先我们发现区间[2,5]在线段树中包括的节点有[2,2]，[3,3]，[4,4]，[5,5]，[4,5]。但是[4,4]，[5,5]这两个信息的区间已经被[4,5]区间所包含，所以我们真正需要查询的结点为[2,2]，[3,3]，[4,5]这三个区间所在的结点。</li>
-<li>其次从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归。<br>
-  具体代码如下</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式区间查询 query(Ld,Rd,1,n,1);
-int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为要查询的区间，l，r为结点区间，rt为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)    &#x2F;&#x2F;如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
-        return tree[rt];
-    int ans &#x3D; -INF;    &#x2F;&#x2F;返回值变量，根据具体线段树查询的什么而自定义
-    int mid &#x3D; (l+r)&gt;&gt;1;    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-    if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要查询的区间交集非空
-        ans &#x3D; max(ans, query(L,R,l,m,k&lt;&lt;1));
-    if(Rd &gt; m)    &#x2F;&#x2F;如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
-        ans &#x3D; max(ans, query(L,R,m+1,r,k&lt;&lt;1|1));
-    return ans;    &#x2F;&#x2F;返回当前结点得到的信息
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="三、区间更新"><a class="header-anchor" href="#三、区间更新">¶</a>三、区间更新</h3>
-<p>  在线段树的区间更新中我们引进了一个新的思想，Lazy_tag，字面意思就是懒惰标记的意思，实际上它的功能也就是偷懒= =，因为对于一个区间[L,R]来说，我们每次都更新区间中的每一个值，那样的话更新的复杂度将会是O(NlogN)，这太高了，所以引进了Lazy_tag，这个标记一般用于处理线段树的区间更新。<br>
-　　线段树在进行区间更新的时候，为了提高更新的效率，所以每次更新只更新到更新区间完全覆盖线段树结点区间为止，这样就会导致被更新结点的子孙结点的区间得不到需要更新的信息，所以在被更新结点上打上一个标记，称为lazy-tag，等到下次访问这个结点的子结点时再将这个标记传递给子结点，所以也可以叫延迟标记。<br>
-　　也就是说递归更新的过程，更新到结点区间为需要更新的区间的真子集不再往下更新，下次若是遇到需要用这下面的结点的信息，再去更新这些结点，所以这样的话使得区间更新的操作和区间查询类似，复杂度为O(logN)。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void Pushdown(int rt)&#123;    &#x2F;&#x2F;更新子树的lazy值，这里是RMQ的函数，要实现区间和等则需要修改函数内容
-    if(lazy[rt])&#123;    &#x2F;&#x2F;如果有lazy标记
-        lazy[rt&lt;&lt;1] +&#x3D; lazy[rt];    &#x2F;&#x2F;更新左子树的lazy值
-        lazy[rt&lt;&lt;1|1] +&#x3D; lazy[rt];    &#x2F;&#x2F;更新右子树的lazy值
-        t[rt&lt;&lt;1] +&#x3D; lazy[rt];        &#x2F;&#x2F;左子树的最值加上lazy值
-        t[rt&lt;&lt;1|1] +&#x3D; lazy[rt];    &#x2F;&#x2F;右子树的最值加上lazy值
-        lazy[rt] &#x3D; 0;    &#x2F;&#x2F;lazy值归0
-    &#125;
-&#125;
-
-&#x2F;&#x2F;递归更新区间 updata(L,R,v,1,n,1);
-void updata(int Ld,int Rd,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为要更新的区间，l，r为结点区间，k为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)&#123;    &#x2F;&#x2F;如果当前结点的区间真包含于要更新的区间内
-        lazy[rt] +&#x3D; v;    &#x2F;&#x2F;懒惰标记
-        t[rt] +&#x3D; v;    &#x2F;&#x2F;最大值加上v之后，此区间的最大值也肯定是加v
-    &#125;
-    else&#123;
-        Pushdown(k);    &#x2F;&#x2F;重难点，查询lazy标记，更新子树
-        int m &#x3D; l + ((r-l)&gt;&gt;1);
-        if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要更新的区间交集非空
-            update(Ld,Rd,v,l,m,rt&lt;&lt;1);
-        if(m &lt; Rd)    &#x2F;&#x2F;如果右子树和需要更新的区间交集非空
-            update(Ld,Rd,v,m+1,r,rt&lt;&lt;1|1);
-        Pushup(rt);    &#x2F;&#x2F;更新父节点
-    &#125;
-&#125;
-&#x2F;&#x2F;递归方式区间查询 query(Ld,Rd,1,n,1);
-int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要查询的区间，l，r为结点区间，k为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)    &#x2F;&#x2F;如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
-        return t[rt];
-    else&#123;
-        Pushdown(rt);    &#x2F;**每次都需要更新子树的Lazy标记*&#x2F;
-        int res &#x3D; -INF;    &#x2F;&#x2F;返回值变量，根据具体线段树查询的什么而自定义
-        int mid &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-        if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要查询的区间交集非空
-            res &#x3D; max(res, query(Ld,Rd,l,m,rt&lt;&lt;1));
-        if(Rd &gt; m)    &#x2F;&#x2F;如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
-            res &#x3D; max(res, query(Ld,Rd,m+1,r,rt&lt;&lt;1|1));
-
-        return res;    &#x2F;&#x2F;返回当前结点得到的信息
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p>
+                <h1>操作系统的基本概念</h1>
+<h2 id="什么是操作系统？"><a class="header-anchor" href="#什么是操作系统？">¶</a>什么是操作系统？</h2>
+<p>  操作系统（Operating System， OS）是指：控制和管理整个计算机系统的硬件与软件资源，合理地组织、调度计算机的工作与资源的分配，进而为用户和其他软件提供方便的接口和环境的程序集合。<strong>操作系统是计算机系统中最基本的系统软件</strong>。<br>
+  其作用简单来说：<br>
+（1）控制和管理整个计算机系统的硬件与软件资源。<br>
+（2）组织和调度计算机工作和资源的分配。<br>
+（3）提供给用户和其他软件方便的接口和环境。</p>
+<h2 id="操作系统的特征"><a class="header-anchor" href="#操作系统的特征">¶</a>操作系统的特征</h2>
+<p>  操作系统是一种系统软件，其基本特征包括<strong>并发、共享、虚拟和异步</strong>。</p>
+<h3 id="（1）并发（Concurrence）"><a class="header-anchor" href="#（1）并发（Concurrence）">¶</a>（1）并发（Concurrence）</h3>
+<p>  并发是指两个或多个事件在同一时间间隔内发生。操作系统的并发性是指计算机系统中同时存在多个运行的程序。因此我们可以认为它有上述的作用（2）.同时在整个操作系统中，我们引入进程的目的，也是为了使程序能并发执行。<br>
+  在上面我们需要注意的是，并发和并行的区别，通俗来说，并发是指事情同一时间段内发生，例如在我写这篇博客的整个时间段内，我顺便去偷看了旁边几个漂亮的妹纸，在宏观上来说，这些事情都是在这个时间段上是同时发生的，但是在微观上的其中几分钟，几秒钟来说，这些事情其实是交替发生的，整个过程大致就是“写博客-看妹纸-写博客-看妹纸-看妹纸-写博客”（不好意思，其实我只看了一次😇😇😇）而并行是指在同一时刻发生的，例如在我偷看妹纸的时候，发现我对面的哥们（经典无中生友😂😂😂）其实也在和我一样，不过他在偷看旁边的男生😳😳😳，那么我们两个人在相同的时刻做的这件事情，这就叫做并行。<br>
+  在我们进行提到的多线程中，如果你的电脑为单核CPU，那么即使你加再多的线程，也是并发执行，因为一个核心，只能处理一个任务。一个核心处理多任务的方法，（1）排队，一个一个执行。（2）一个执行一小段时间，在多个任务间切换，没有被服务的任务只能等待，表现就是你的电脑会有些卡顿。如果你的CPU有两个核心，那么它的每个核心，在此时此刻，可以分别服务一个任务，这样就可以实现并行。</p>
+<h3 id="（2）共享（Sharing）"><a class="header-anchor" href="#（2）共享（Sharing）">¶</a>（2）共享（Sharing）</h3>
+<p>  即资源共享，是指操作系统中的资源可供内存中多个并发执行的进程共同使用。共享主要分为<strong>互斥共享方式</strong>和<strong>同时访问方式</strong>。</p>
+<h4 id="互斥共享方式"><a class="header-anchor" href="#互斥共享方式">¶</a>互斥共享方式</h4>
+<p>  操作系统中的资源虽然可以同时提供给多个进程使用，但一个时间段内只允许一个进程访问该资源。<br>
+  举一个通俗的例子来解释，如果有一个妹纸问我有没有时间陪她出去玩，但是同时我的平时一个很讨厌的人也在问我能否陪他出去，这两个进程同时请求使用我嘴的资源，这时我不可能同时回答他们两个人的问题，是或者不是都会让其中一个人误会我的意思（当然是想和妹纸出去，拒绝另外一个人）。这就是互斥共享。<br>
+  我们把上述的资源共享方式称为互斥共享，把一段时间内只允许一个进程访问的资源称为<strong>临界资源</strong>或者<strong>独占资源</strong>，例如：打印机、磁带机等。</p>
+<h4 id="同时访问方式"><a class="header-anchor" href="#同时访问方式">¶</a>同时访问方式</h4>
+<p>  允许一个时间段内由多个进程“同时”对他们进行访问<br>
+  “同时”通常上是宏观的，而在微观上，这些进程可能是交替地对该资源进行访问即“分时共享”的。比如说：今天在图书馆的这一个下午，看妹纸和写博客这两件事情都可以向我的眼睛和大脑来发送请求，使用这两个资源，在这段时间内，我可以看一眼妹子，然后写几行博客，交替进行这两个进程。在计算机中可供多个进程“同时”访问的典型资源是磁盘设备。<br>
+  互斥共享要求一种资源在一段时间内（哪怕是一段很小的时间）只能，满足一个请求，否则就会出现严重的问题（例如打字机一行打印A文档内容，一行打印B文档内容）而同时访问共享通常要求一个请求分几个时间片段间隔地完成。<br>
+  并发和共享之间互为存在的条件：<strong>（1）资源共享是以程序的并发为条件的，若系统不允许程序并发执行则不存在资源共享的问题。（2）若系统不能对资源共享实施有效的管理，则影响到程序的并发执行，甚至根本无法存在并发执行</strong>。</p>
+<h3 id="（3）虚拟（Virtual）"><a class="header-anchor" href="#（3）虚拟（Virtual）">¶</a>（3）虚拟（Virtual）</h3>
+<p>  虚拟是指把一个物理上的实体转变为若干逻辑上的对应物。操作系统的虚拟技术可归纳为：<strong>（1）时分复用技术：处理器的分时共享</strong>。<strong>（2）空分复用技术：虚拟存储器</strong>。</p>
+<h3 id="（4）异步（Asynchronism）"><a class="header-anchor" href="#（4）异步（Asynchronism）">¶</a>（4）异步（Asynchronism）</h3>
+<p>  在多道程序环境中，允许多个程序并发执行，但由于资源优先，进程的执行不是一贯到底，而是走走停停，以不可预知的速度向前推进。</p>
+<h2 id="操作系统的目标和功能"><a class="header-anchor" href="#操作系统的目标和功能">¶</a>操作系统的目标和功能</h2>
+<p>  （1）为了给多道程序提供良好的运行环境，操作系统应具有以下几方面的功能：<strong>处理机管理、存储器管理、设备管理和文件管理</strong>。<br>
+  （2）为了方便用户使用操作系统，还必须向用户提供接口。<br>
+  （3）操作系统可用来扩充机器，以提供更方便的服务、更高的资源利用率。</p>
+<h3 id="操作系统作为计算机系统资源的管理者"><a class="header-anchor" href="#操作系统作为计算机系统资源的管理者">¶</a>操作系统作为计算机系统资源的管理者</h3>
+<h4 id="处理机管理"><a class="header-anchor" href="#处理机管理">¶</a>处理机管理</h4>
+<p>  在多道程序环境下，<strong>处理机的分配和运行都以进程(或线程)为基本单位，<strong>因而对处理机的管理可归结为对进程的管理。因此进程何时创建、何时撒销、如何管理、如何避免冲突、合理共享就是进程管理的最主要的任务。进程管理的主要功能包括</strong>进程控制、进程同步、进程通信、死锁处理、处理机调度等。</strong></p>
+<h4 id="存储器管理"><a class="header-anchor" href="#存储器管理">¶</a>存储器管理</h4>
+<p>  存储器管理是为了给多道程序的运行提供良好的环境，方便用户用及提高内存的利用率，主要包括<strong>内存分配与回收、地址映射、内存保护与共享和内存扩充等功能</strong>。</p>
+<h4 id="文件管理"><a class="header-anchor" href="#文件管理">¶</a>文件管理</h4>
+<p>  计算机中的信息都是以文件的形式存在的，操作系统中负责文件管理的部分称为文件系统，文件管理包括<strong>文件存储空间的管理、目录管理及文件读写管理和保护等</strong>。</p>
+<h4 id="设备管理"><a class="header-anchor" href="#设备管理">¶</a>设备管理</h4>
+<p>  设备管理的主要任务是完成用户的I/O请求，方便用户使用各种设备，并提高设备的利用率，主要包括<strong>缓冲管理、设备分配、设备处理和虚拟设备等功能</strong>。</p>
+<h3 id="操作系统作为用户与计算机硬件系统之间的接口"><a class="header-anchor" href="#操作系统作为用户与计算机硬件系统之间的接口">¶</a>操作系统作为用户与计算机硬件系统之间的接口</h3>
+<p>  为了方便用户对于计算机硬件的操作以及运行自己计算机上的程序，操作系统为用户提供了接口，接口分为两类，<strong>（1）命令接口，（2）程序接口</strong>。</p>
+<h4 id="命令接口"><a class="header-anchor" href="#命令接口">¶</a>命令接口</h4>
+<p>  命令接口的目的是，用户利用这些命令来组织和控制作业的执行。其分为<strong>联机命令接口</strong>和<strong>脱机命令接口</strong>。<br>
+  <strong>联机命令接口</strong>又称交互式命令接口，适用于分时或实时系统的接口，通常是用户在键盘通过控制台或者终端输入操作命令，操作系统的命令解释程序解释执行输入的命令后，完成功能后，将指挥权返回终端。<br>
+  <strong>脱机命令接口</strong>又称批处理命令接口，适用于批处理系统。用户不能直接干预作业的运行，而是事先用相应的作业控制命令以作业操作说明书的形式提交给操作系统，等待系统中命令解释器对作业进行逐条处理。</p>
+<h4 id="程序接口（系统调用）"><a class="header-anchor" href="#程序接口（系统调用）">¶</a>程序接口（系统调用）</h4>
+<p>  程序接口由一组系统调用命令(也称广义指令)组成。用户通过在程序中使用这些系统调用来请求操作系统为其提供服务。如使用各种外部设备、申请分配和回收内内存及其他用程序接口实现的，当前最为流行的是图形用户界面(GUT),即图形接口。</p>
+<h3 id="操作系统用作扩充机器"><a class="header-anchor" href="#操作系统用作扩充机器">¶</a>操作系统用作扩充机器</h3>
+<p>  裸机没有任何软件支持，而我们实际中的计算机系统是若干层软件改造之后的，在裸机的外层，就是操作系统，这也不难理解为什么我们称其为硬件与用户之间的中介，因为其提供了大量的资源管理功能和方便用户的各种服务功能。</p>
 
                 
             </div>
@@ -644,7 +572,7 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2020/05/27/xian-duan-shu-ge-ren-li-jie/">http://xbwcj.github.io/2020/05/27/xian-duan-shu-ge-ren-li-jie/</a>
+                    <a href="http://xbwcj.github.io/2021/03/20/ji-suan-ji-xi-tong-gai-shu-yi/">http://xbwcj.github.io/2021/03/20/ji-suan-ji-xi-tong-gai-shu-yi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -682,8 +610,8 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ACM/">
-                                    <span class="chip bg-color">ACM</span>
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
                                 </a>
                             
                         </div>
@@ -855,17 +783,18 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/">
+                <a href="/2021/03/20/ji-suan-ji-xi-tong-gai-shu-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="前缀和、二维前缀和与差分个人理解">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="计算机系统概述（一）">
                         
-                        <span class="card-title">前缀和、二维前缀和与差分个人理解</span>
+                        <span class="card-title">计算机系统概述（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -875,9 +804,9 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -886,11 +815,12 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ACM/">
-                        <span class="chip bg-color">ACM</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
@@ -904,13 +834,13 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/">
+                <a href="/2021/03/19/xbwcj-de-shi-bai-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="武汉理工大学《软件工程》复习总括三">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="xbwcj的失败史">
                         
-                        <span class="card-title">武汉理工大学《软件工程》复习总括三</span>
+                        <span class="card-title">xbwcj的失败史</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -921,7 +851,7 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-19
                             </span>
                         <span class="publish-author">
                             
@@ -934,8 +864,8 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                        <span class="chip bg-color">软件工程</span>
+                    <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/">
+                        <span class="chip bg-color">个人分享</span>
                     </a>
                     
                 </div>
