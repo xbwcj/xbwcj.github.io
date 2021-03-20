@@ -495,84 +495,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>第六章软件结构体系</h1>
-<h2 id="软件结构体系的内容："><a class="header-anchor" href="#软件结构体系的内容：">¶</a><strong>软件结构体系的内容：</strong></h2>
-<p><strong>1、构件</strong>：代表着一组基本的构成要素<br>
-<strong>2、连接件</strong>：也就是构件之间的连接关系<br>
-<strong>3、约束</strong>：是作用于构件或者连接关系上的一些限制条件<br>
-<strong>4、质量</strong>：是系统的质量属性，如性能、可扩展性、可修改性、可重用性、安全性等。<br>
-<strong>5、物理分布</strong>：代表着构件连接之后形成的拓扑结构，描述了软件到硬件之间的影射。</p>
-<h2 id="软件结构体系发展的阶段："><a class="header-anchor" href="#软件结构体系发展的阶段：">¶</a>软件结构体系发展的阶段：</h2>
-<p><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/1.png" alt="在这里插入图片描述"></p>
-<h2 id="体系结构、软件框架、设计模式三者的联系和区别："><a class="header-anchor" href="#体系结构、软件框架、设计模式三者的联系和区别：">¶</a>体系结构、软件框架、设计模式三者的联系和区别：</h2>
-<p><strong>体系结构</strong>：描述某一特定应用领域中系统组织的惯用模式，反映领域中众多系统所共有的结构和语义特性，例如：MVC<br>
-<strong>软件框架</strong>：由开发人员定制的应用系统骨架，整个或部分系统的可重用设计，由一组抽象构件和构件实例之间的交互方式组成。例如Django就是一个开放源代码的应运框架，由Python写成。<br>
-<strong>设计模式</strong>：描述软件系统设计过程中常见问题的一些解决方案，从大量的成功实践中总结出来的，且被广泛公认的实践和知识。<br>
-<strong>软件框架和体系结构的区别及关系：</strong><br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/2.png" alt="在这里插入图片描述"><br>
-<strong>软件框架和实际模式的区别及关系：</strong><br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/3.png" alt="在这里插入图片描述"></p>
-<h2 id="软件工程问题中的关键的角色："><a class="header-anchor" href="#软件工程问题中的关键的角色：">¶</a>软件工程问题中的关键的角色：</h2>
-<p><strong>用户</strong>：使用系统实现某种目标<br>
-<strong>软件系统</strong>：待开发的系统<br>
-<strong>环境</strong>：软件系统以外的任何事物</p>
-<h2 id="软件设计的原则（高内聚低耦合）："><a class="header-anchor" href="#软件设计的原则（高内聚低耦合）：">¶</a>软件设计的原则（高内聚低耦合）：</h2>
-<p><strong>内聚性</strong>：是一个模块或子系统内部的依赖程度。分为七种：功能内聚、信息内聚、通信内聚、过程内聚、时间内聚、逻辑内聚、巧合内聚。<br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/4.png" alt="在这里插入图片描述"><br>
-<strong>耦合性</strong>：是两个模块或者子系统之间依赖关系的强度，程序结构各个模块之间相互关联的度量。模块之间的联系方式一般有7中：非直接耦合、数据耦合、标记耦合、控制耦合、外部耦合、公共耦合、内容耦合。<br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/5.png" alt="在这里插入图片描述"></p>
-<h2 id="软件体系结构常见的风格："><a class="header-anchor" href="#软件体系结构常见的风格：">¶</a>软件体系结构常见的风格：</h2>
-<p>可以根据文字描述判断出风格的种类即可。<br>
-**<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/6.png" alt="在这里插入图片描述"><br>
-<strong>管道/过滤器风格</strong>：把系统任务分成若干连续的处理步骤，这些步骤由通过系统的数据流连接，一个步骤的输出是下一个步骤的输入。<br>
-<strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/7.png" alt="在这里插入图片描述"><br>
-主程序—子程序风格</strong>：结构化程序设计的一种典型风格，从功能的观点设计系统，逐步分解和细化，形成整个系统的体系结构。<br>
-<strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/8.png" alt="在这里插入图片描述"><br>
-面向对象风格</strong>：系统被看作是对象的集合，每个对象都有一个它自己的功能集合，数据及作用在数据上的操作被封装成抽象数据类型，只通过接口与外界交互，内部的设计决策则被封装起来。<br>
-**<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/9.png" alt="在这里插入图片描述"><br>
-<strong>层次结构风格----客户机／服务器体系结构</strong>：一种分布式系统模型<br>
-<strong>服务器</strong>：为客户机提供服务<br>
-<strong>客户机</strong>：负责与用户的交互       类似于网络编程交互的情景。<br>
-<strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/10.png" alt="在这里插入图片描述"><br>
-层次结构----浏览器/服务器结构</strong>：<br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/11.png" alt="在这里插入图片描述"><br>
-<strong>层次结构----模型/视图/控制器：（MVC）</strong><br>
-**<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/12.png" alt="在这里插入图片描述"><br>
-<strong>基于事件的隐式调用风格</strong>：将应用看成是一个构件集合，每个构件直至发生对它有影响的事件时才有所动作<br>
-**<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/13.png" alt="在这里插入图片描述"><br>
-<strong>仓库风格</strong>：以数据为中心，适合于数据由一个模块产生而由其他模块使用的情形<br>
-<img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/14.png" alt="在这里插入图片描述"></p>
-<h1>第七章面向对象设计</h1>
-<h2 id="面向对象的设计和分析中的三种类："><a class="header-anchor" href="#面向对象的设计和分析中的三种类：">¶</a>面向对象的设计和分析中的三种类：</h2>
-<p><strong>1、实体类</strong>：对应系统需求中的每个实体，它们通常需要保存在永久的存储体中，一般使用数据库表和文件来记录，实体类包括存储和传递数据的类，也包括操作数据的类<br>
-<strong>2、控制类</strong>：用于体现应用程序的执行逻辑，提供相应的业务操作，将控制类抽象出来可以降低界面和数据库之间的耦合度；<br>
-<strong>3、边界类</strong>：用于对外部用户与系统之间的交互对象进行抽象。主要包括界面类。</p>
-<h2 id="什么是领域模型："><a class="header-anchor" href="#什么是领域模型：">¶</a>什么是领域模型：</h2>
-<p>在面向对象分析和设计的初级阶段，通常先识别出实体类，绘制初始类图，此时的类图称为领域模型，包括实体类和它们之间的相互关系。</p>
-<h1>第八章编写高质量代码</h1>
-<h2 id="程序复杂度怎么计算（重点是第二种，第二种有三种小方法）："><a class="header-anchor" href="#程序复杂度怎么计算（重点是第二种，第二种有三种小方法）：">¶</a>程序复杂度怎么计算（重点是第二种，第二种有三种小方法）：</h2>
-<p><strong>基本思想</strong>：程序复杂性主要取决于程序控制流的复杂性，单一的顺序结构最简单，选择和循环结构构成的环路越多，程序越复杂。<br>
-<strong>实质</strong>：度量程序拓扑结构的复杂性程序图：把程序看成是有一个入口、一个出口的有向图程序图的<br>
-<strong>节点</strong>：每个语句、一个顺序流程的程序代码段、程序流程图中的每个处理符号程序图的<br>
-<strong>有向弧</strong>：程序中的流程控制、程序流程图中连接不同处理符号的、带箭头的线段<br>
-<strong>强连通图(Strongly Connected Graph)</strong>：是指一个有向图（Directed Graph）中任意两点v1、v2间存在v1到v2的路径（path）及v2到v1的路径的图。<br>
-<strong>三种方法</strong>：如果程序图中每个节点都可以由入口节点到达，则<strong>图中环的个数 = 环路复杂度</strong><br>
-如果程序图是强连通图，则计算环路数V(G)的方法 <strong>方法一：V(G) = e–n + p（e: 弧数，n: 节点数，p: 分离部分的数目,V(G)有向图G中的环数）</strong> <strong>方法二：包括强连通域在内的环路数</strong> <strong>方法三：判定节点数 +  1</strong><br>
-V(G)与程序复杂性呈正比关系 一般一个模块V(G) ≤ 10</p>
-<h1>第九章测试驱动的实现</h1>
-<h2 id="软件测试的类型："><a class="header-anchor" href="#软件测试的类型：">¶</a><strong>软件测试的类型</strong>：</h2>
-<p>1）从测试对象角度①单元测试 ②集成测试③功能测试 ④性能测试 ⑤安装测试2）测试技术角度①黑盒测试（功能测试）②白盒测试（结构测试）<br>
-3）是否运行程序角度①静态测试 ②动态测试<br>
-4）执行测试的方式①手工测试 ②自动化测试</p>
-<h2 id="白盒测试："><a class="header-anchor" href="#白盒测试：">¶</a>白盒测试：</h2>
-<p>在下一次更新中详写。</p>
-<h2 id="自己会设计测试用例：路径覆盖："><a class="header-anchor" href="#自己会设计测试用例：路径覆盖：">¶</a>自己会设计测试用例：路径覆盖：</h2>
-<p>在下一次更新中详写</p>
-<h2 id="软件测试的几个阶段：-每个阶段的名称作用测试的对象"><a class="header-anchor" href="#软件测试的几个阶段：-每个阶段的名称作用测试的对象">¶</a>软件测试的几个阶段：(每个阶段的名称作用测试的对象)</h2>
-<p><strong>1、单元测试</strong>：对软件中的最小可测试单元进行检查和验证 对象是单元。<br>
-<strong>2、集成测试</strong>：在单元测试的基础上，将所有模块按照总体设计的要求组装成为子系统或系统进行的测试 对象是系统或者子系统<br>
-<strong>3、确认测试</strong>：在开发过程中或结束时评估系统或组成部分的过程，目的是判断系统是否满足规定的要求。对象是系统<br>
-<strong>4、系统测试</strong>：检测软件系统运行时与其他相关要素的协调工作情况是否满足要求。对象是系统。</p>
+                <h1 id="第六章软件结构体系"><a href="#第六章软件结构体系" class="headerlink" title="第六章软件结构体系"></a>第六章软件结构体系</h1><h2 id="软件结构体系的内容："><a href="#软件结构体系的内容：" class="headerlink" title="软件结构体系的内容："></a><strong>软件结构体系的内容：</strong></h2><p><strong>1、构件</strong>：代表着一组基本的构成要素<br><strong>2、连接件</strong>：也就是构件之间的连接关系<br><strong>3、约束</strong>：是作用于构件或者连接关系上的一些限制条件<br><strong>4、质量</strong>：是系统的质量属性，如性能、可扩展性、可修改性、可重用性、安全性等。<br><strong>5、物理分布</strong>：代表着构件连接之后形成的拓扑结构，描述了软件到硬件之间的影射。</p>
+<h2 id="软件结构体系发展的阶段："><a href="#软件结构体系发展的阶段：" class="headerlink" title="软件结构体系发展的阶段："></a>软件结构体系发展的阶段：</h2><p><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/1.png" alt="在这里插入图片描述"></p>
+<h2 id="体系结构、软件框架、设计模式三者的联系和区别："><a href="#体系结构、软件框架、设计模式三者的联系和区别：" class="headerlink" title="体系结构、软件框架、设计模式三者的联系和区别："></a>体系结构、软件框架、设计模式三者的联系和区别：</h2><p><strong>体系结构</strong>：描述某一特定应用领域中系统组织的惯用模式，反映领域中众多系统所共有的结构和语义特性，例如：MVC<br><strong>软件框架</strong>：由开发人员定制的应用系统骨架，整个或部分系统的可重用设计，由一组抽象构件和构件实例之间的交互方式组成。例如Django就是一个开放源代码的应运框架，由Python写成。<br><strong>设计模式</strong>：描述软件系统设计过程中常见问题的一些解决方案，从大量的成功实践中总结出来的，且被广泛公认的实践和知识。<br><strong>软件框架和体系结构的区别及关系：</strong><br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/2.png" alt="在这里插入图片描述"><br><strong>软件框架和实际模式的区别及关系：</strong><br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/3.png" alt="在这里插入图片描述"></p>
+<h2 id="软件工程问题中的关键的角色："><a href="#软件工程问题中的关键的角色：" class="headerlink" title="软件工程问题中的关键的角色："></a>软件工程问题中的关键的角色：</h2><p> <strong>用户</strong>：使用系统实现某种目标<br> <strong>软件系统</strong>：待开发的系统<br>  <strong>环境</strong>：软件系统以外的任何事物</p>
+<h2 id="软件设计的原则（高内聚低耦合）："><a href="#软件设计的原则（高内聚低耦合）：" class="headerlink" title="软件设计的原则（高内聚低耦合）："></a>软件设计的原则（高内聚低耦合）：</h2><p><strong>内聚性</strong>：是一个模块或子系统内部的依赖程度。分为七种：功能内聚、信息内聚、通信内聚、过程内聚、时间内聚、逻辑内聚、巧合内聚。<br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/4.png" alt="在这里插入图片描述"><br><strong>耦合性</strong>：是两个模块或者子系统之间依赖关系的强度，程序结构各个模块之间相互关联的度量。模块之间的联系方式一般有7中：非直接耦合、数据耦合、标记耦合、控制耦合、外部耦合、公共耦合、内容耦合。<br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/5.png" alt="在这里插入图片描述">  </p>
+<h2 id="软件体系结构常见的风格："><a href="#软件体系结构常见的风格：" class="headerlink" title="软件体系结构常见的风格："></a>软件体系结构常见的风格：</h2><p>可以根据文字描述判断出风格的种类即可。<br><strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/6.png" alt="在这里插入图片描述">
+</strong>管道/过滤器风格<strong>：把系统任务分成若干连续的处理步骤，这些步骤由通过系统的数据流连接，一个步骤的输出是下一个步骤的输入。 
+</strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/7.png" alt="在这里插入图片描述"><br>主程序—-子程序风格<strong>：结构化程序设计的一种典型风格，从功能的观点设计系统，逐步分解和细化，形成整个系统的体系结构。 
+</strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/8.png" alt="在这里插入图片描述"><br>面向对象风格<strong>：系统被看作是对象的集合，每个对象都有一个它自己的功能集合，数据及作用在数据上的操作被封装成抽象数据类型，只通过接口与外界交互，内部的设计决策则被封装起来。 
+</strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/9.png" alt="在这里插入图片描述"><br><strong>层次结构风格——客户机／服务器体系结构</strong>：一种分布式系统模型<br><strong>服务器</strong>：为客户机提供服务<br><strong>客户机</strong>：负责与用户的交互       类似于网络编程交互的情景。<br><strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/10.png" alt="在这里插入图片描述"><br>层次结构——浏览器/服务器结构</strong>：<br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/11.png" alt="在这里插入图片描述"><br><strong>层次结构——模型/视图/控制器：（MVC）</strong><br><strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/12.png" alt="在这里插入图片描述">
+</strong>基于事件的隐式调用风格<strong>：将应用看成是一个构件集合，每个构件直至发生对它有影响的事件时才有所动作 
+</strong><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/13.png" alt="在这里插入图片描述"><br><strong>仓库风格</strong>：以数据为中心，适合于数据由一个模块产生而由其他模块使用的情形<br><img src="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/14.png" alt="在这里插入图片描述"></p>
+<h1 id="第七章面向对象设计"><a href="#第七章面向对象设计" class="headerlink" title="第七章面向对象设计"></a>第七章面向对象设计</h1><h2 id="面向对象的设计和分析中的三种类："><a href="#面向对象的设计和分析中的三种类：" class="headerlink" title="面向对象的设计和分析中的三种类："></a>面向对象的设计和分析中的三种类：</h2><p><strong>1、实体类</strong>：对应系统需求中的每个实体，它们通常需要保存在永久的存储体中，一般使用数据库表和文件来记录，实体类包括存储和传递数据的类，也包括操作数据的类<br><strong>2、控制类</strong>：用于体现应用程序的执行逻辑，提供相应的业务操作，将控制类抽象出来可以降低界面和数据库之间的耦合度；<br><strong>3、边界类</strong>：用于对外部用户与系统之间的交互对象进行抽象。主要包括界面类。</p>
+<h2 id="什么是领域模型："><a href="#什么是领域模型：" class="headerlink" title="什么是领域模型："></a>什么是领域模型：</h2><p>在面向对象分析和设计的初级阶段，通常先识别出实体类，绘制初始类图，此时的类图称为领域模型，包括实体类和它们之间的相互关系。</p>
+<h1 id="第八章编写高质量代码"><a href="#第八章编写高质量代码" class="headerlink" title="第八章编写高质量代码"></a>第八章编写高质量代码</h1><h2 id="程序复杂度怎么计算（重点是第二种，第二种有三种小方法）："><a href="#程序复杂度怎么计算（重点是第二种，第二种有三种小方法）：" class="headerlink" title="程序复杂度怎么计算（重点是第二种，第二种有三种小方法）："></a>程序复杂度怎么计算（重点是第二种，第二种有三种小方法）：</h2><p><strong>基本思想</strong>：程序复杂性主要取决于程序控制流的复杂性，单一的顺序结构最简单，选择和循环结构构成的环路越多，程序越复杂。<br><strong>实质</strong>：度量程序拓扑结构的复杂性程序图：把程序看成是有一个入口、一个出口的有向图程序图的<br><strong>节点</strong>：每个语句、一个顺序流程的程序代码段、程序流程图中的每个处理符号程序图的<br><strong>有向弧</strong>：程序中的流程控制、程序流程图中连接不同处理符号的、带箭头的线段<br><strong>强连通图(Strongly Connected Graph)</strong>：是指一个有向图（Directed Graph）中任意两点v1、v2间存在v1到v2的路径（path）及v2到v1的路径的图。<br><strong>三种方法</strong>：如果程序图中每个节点都可以由入口节点到达，则<strong>图中环的个数 = 环路复杂度</strong><br> 如果程序图是强连通图，则计算环路数V(G)的方法 <strong>方法一：V(G) = e–n + p（e: 弧数，n: 节点数，p: 分离部分的数目,V(G)有向图G中的环数）</strong> <strong>方法二：包括强连通域在内的环路数</strong> <strong>方法三：判定节点数 +  1</strong><br> V(G)与程序复杂性呈正比关系 一般一个模块V(G) ≤ 10   </p>
+<h1 id="第九章测试驱动的实现"><a href="#第九章测试驱动的实现" class="headerlink" title="第九章测试驱动的实现"></a>第九章测试驱动的实现</h1><h2 id="软件测试的类型："><a href="#软件测试的类型：" class="headerlink" title="软件测试的类型："></a><strong>软件测试的类型</strong>：</h2><p>1）从测试对象角度①单元测试 ②集成测试③功能测试 ④性能测试 ⑤安装测试2）测试技术角度①黑盒测试（功能测试）②白盒测试（结构测试）<br>3）是否运行程序角度①静态测试 ②动态测试<br>4）执行测试的方式①手工测试 ②自动化测试 </p>
+<h2 id="白盒测试："><a href="#白盒测试：" class="headerlink" title="白盒测试："></a>白盒测试：</h2><p>在下一次更新中详写。</p>
+<h2 id="自己会设计测试用例：路径覆盖："><a href="#自己会设计测试用例：路径覆盖：" class="headerlink" title="自己会设计测试用例：路径覆盖："></a>自己会设计测试用例：路径覆盖：</h2><p>在下一次更新中详写</p>
+<h2 id="软件测试的几个阶段：-每个阶段的名称作用测试的对象"><a href="#软件测试的几个阶段：-每个阶段的名称作用测试的对象" class="headerlink" title="软件测试的几个阶段：(每个阶段的名称作用测试的对象)"></a>软件测试的几个阶段：(每个阶段的名称作用测试的对象)</h2><p><strong>1、单元测试</strong>：对软件中的最小可测试单元进行检查和验证 对象是单元。<br><strong>2、集成测试</strong>：在单元测试的基础上，将所有模块按照总体设计的要求组装成为子系统或系统进行的测试 对象是系统或者子系统<br><strong>3、确认测试</strong>：在开发过程中或结束时评估系统或组成部分的过程，目的是判断系统是否满足规定的要求。对象是系统<br><strong>4、系统测试</strong>：检测软件系统运行时与其他相关要素的协调工作情况是否满足要求。对象是系统。 </p>
 
                 
             </div>
@@ -1100,7 +1041,7 @@ V(G)与程序复杂性呈正比关系 一般一个模块V(G) ≤ 10</p>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18k</span>&nbsp;字
+                class="white-color">18.1k</span>&nbsp;字
             
             
             
