@@ -474,14 +474,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -504,8 +504,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><h2 id="什么是前缀和"><a href="#什么是前缀和" class="headerlink" title="什么是前缀和"></a>什么是前缀和</h2><p>&emsp;&emsp;前缀和顾名思义就是指一个数组的某一个下标的（包括该下标）之前的所有数组元素的和。现在我们假设有某一数组a = [1, 2, 3, 4, 5, 6, 7, 8, 9]。其前缀和数组为sum，那么sum数组与a数组对应的关系如下图所示。<br><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/1.png" alt="在这里插入图片描述"><br>&emsp;&emsp;由上面的对应关系我们可以得到他们满足如下的公式。</p>
-<p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/2.png" alt="在这里插入图片描述"><br>&emsp;&emsp;以上的公式即为<strong>一维前缀和</strong>一维前缀和的代码模板如下所示。</p>
+                <h1>前缀和</h1>
+<h2 id="什么是前缀和"><a class="header-anchor" href="#什么是前缀和">¶</a>什么是前缀和</h2>
+<p>  前缀和顾名思义就是指一个数组的某一个下标的（包括该下标）之前的所有数组元素的和。现在我们假设有某一数组a = [1, 2, 3, 4, 5, 6, 7, 8, 9]。其前缀和数组为sum，那么sum数组与a数组对应的关系如下图所示。<br>
+<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/1.png" alt="在这里插入图片描述"><br>
+  由上面的对应关系我们可以得到他们满足如下的公式。</p>
+<p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/2.png" alt="在这里插入图片描述"><br>
+  以上的公式即为<strong>一维前缀和</strong>一维前缀和的代码模板如下所示。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
      * 一维前缀和
      *
@@ -521,11 +526,16 @@
             sum[i] &#x3D; sum[i - 1] + a[i];
         &#125;
     &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="前缀和使用情况"><a href="#前缀和使用情况" class="headerlink" title="前缀和使用情况"></a>前缀和使用情况</h2><p>&emsp;&emsp;我们在做题的时候经常会遇到查询问题，例如给出一个数组a，再给出m次查询，每次查询都会给出两个数L，R，分表表示查询区间的左右范围。如果我们只是使用最简单的朴素查询的方法，每次遍历区间，进行m次的查询，这样在题目所给数据范围较小的情况下可以进行，但是当查询次数很大时，其时间复杂度为<strong>O（n*m）</strong>会使运行TLE，所以我们使用上述的前缀和可以使时间复杂度降低为<strong>O(m+n)</strong></p>
+<h2 id="前缀和使用情况"><a class="header-anchor" href="#前缀和使用情况">¶</a>前缀和使用情况</h2>
+<p>  我们在做题的时候经常会遇到查询问题，例如给出一个数组a，再给出m次查询，每次查询都会给出两个数L，R，分表表示查询区间的左右范围。如果我们只是使用最简单的朴素查询的方法，每次遍历区间，进行m次的查询，这样在题目所给数据范围较小的情况下可以进行，但是当查询次数很大时，其时间复杂度为<strong>O（n*m）<strong>会使运行TLE，所以我们使用上述的前缀和可以使时间复杂度降低为</strong>O(m+n)</strong></p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int query(int L, int R)&#123;
 	retrun sum[R] - sum[L - 1];
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h1 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h1><h2 id="什么是差分"><a href="#什么是差分" class="headerlink" title="什么是差分"></a>什么是差分</h2><p>&emsp;&emsp;差分就是指相邻两个数的差，我们假设存在一个数组，如下图所示<br><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>&emsp;&emsp;具体代码模板如下：</p>
+<h1>差分</h1>
+<h2 id="什么是差分"><a class="header-anchor" href="#什么是差分">¶</a>什么是差分</h2>
+<p>  差分就是指相邻两个数的差，我们假设存在一个数组，如下图所示<br>
+<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>
+  具体代码模板如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5 + 10;
 int a[9] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;; 
 int diff[maxn];
@@ -548,13 +558,23 @@ void get_a()&#123;
 		a[i] &#x3D; doff[i] + a[i - 1];
 	&#125; 
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="差分使用情况"><a href="#差分使用情况" class="headerlink" title="差分使用情况"></a>差分使用情况</h2><p>&emsp;&emsp;区间加：把数组a[l]到a[r]都加上k，这种操作称为区间加。在进行区间加的操作后得到的数组b，我们对数组b进行查询，但可以发现如果是L——-R非常大的情况下，通过朴素的区间范围内主次累加求和这个操作执行的次数又很多，那时间复杂度会很高。所以可以使用差分的思想来降低复杂度。</p>
-<h1 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h1><h2 id="什么是二维前缀和"><a href="#什么是二维前缀和" class="headerlink" title="什么是二维前缀和"></a>什么是二维前缀和</h2><p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/4.png" alt="在这里插入图片描述"><br>&emsp;&emsp;在上图中深蓝色的部分代表的是二维数组的索引，浅蓝色的部分代表的是二维数组的每个元素的值。其二维前缀和如下图所示<br><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/5.png" alt="在这里插入图片描述"><br>&emsp;&emsp;前缀和数组里每一个位置都表示原数组当前索引左上方的数字的和。<br>如上表中的而为前缀和数组：prefixSum[3, 3] = src[0~2, 0~2]的和;<br>二维前缀和数组的计算步骤如下所示。<br>可以分为四种情况</p>
+<h2 id="差分使用情况"><a class="header-anchor" href="#差分使用情况">¶</a>差分使用情况</h2>
+<p>  区间加：把数组a[l]到a[r]都加上k，这种操作称为区间加。在进行区间加的操作后得到的数组b，我们对数组b进行查询，但可以发现如果是L——-R非常大的情况下，通过朴素的区间范围内主次累加求和这个操作执行的次数又很多，那时间复杂度会很高。所以可以使用差分的思想来降低复杂度。</p>
+<h1>二维前缀和</h1>
+<h2 id="什么是二维前缀和"><a class="header-anchor" href="#什么是二维前缀和">¶</a>什么是二维前缀和</h2>
+<p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/4.png" alt="在这里插入图片描述"><br>
+  在上图中深蓝色的部分代表的是二维数组的索引，浅蓝色的部分代表的是二维数组的每个元素的值。其二维前缀和如下图所示<br>
+<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/5.png" alt="在这里插入图片描述"><br>
+  前缀和数组里每一个位置都表示原数组当前索引左上方的数字的和。<br>
+如上表中的而为前缀和数组：prefixSum[3, 3] = src[0~2, 0~2]的和;<br>
+二维前缀和数组的计算步骤如下所示。<br>
+可以分为四种情况</p>
 <ol>
 <li>i == 0 &amp;&amp; j ==0，只有一个直接赋值即可：prefixSum[0, 0] = a[0, 0]。</li>
 <li>i == 0，最左边的一列，二维前缀和为元素上一行相同列的元素加该数字，公式为prefixSum[0, j] = prefixSum[0, j-1] + a[0, j]；</li>
 <li>j == 0，最上面一排，与i == 0类似prefixSum[i, o] = prefixSum[i-1, 0] + a[i, 0];</li>
-<li>i!=0 || j!=0，其公式为 prefixSum[i][j] = prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];<br>其代码模板如下所示</li>
+<li>i!=0 || j!=0，其公式为 prefixSum[i][j] = prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];<br>
+其代码模板如下所示</li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
  * 二维前缀和
@@ -580,8 +600,10 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
     &#125;
 &#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="二维前缀和的使用情况"><a href="#二维前缀和的使用情况" class="headerlink" title="二维前缀和的使用情况"></a>二维前缀和的使用情况</h2><p>&emsp;&emsp;一般使用二维前缀和可以求子矩阵的最大值。通过求解出整个矩阵的二维前缀和数组，然后对二位前缀和数组中的元素进行查询，找到其和最大的子矩阵。</p>
-<h2 id="二维前缀和的差分"><a href="#二维前缀和的差分" class="headerlink" title="二维前缀和的差分"></a>二维前缀和的差分</h2><p>&emsp;&emsp;二维前缀和也可以使用差分的形式。方法是和一维类似的，我们也是需要另开一个数组记录修改操作，最后求前缀和时统计修改操作，只是二维每一次操作需要记录4个位置，一维只需要记录2个位置。具体模板代码如下所示。</p>
+<h2 id="二维前缀和的使用情况"><a class="header-anchor" href="#二维前缀和的使用情况">¶</a>二维前缀和的使用情况</h2>
+<p>  一般使用二维前缀和可以求子矩阵的最大值。通过求解出整个矩阵的二维前缀和数组，然后对二位前缀和数组中的元素进行查询，找到其和最大的子矩阵。</p>
+<h2 id="二维前缀和的差分"><a class="header-anchor" href="#二维前缀和的差分">¶</a>二维前缀和的差分</h2>
+<p>  二维前缀和也可以使用差分的形式。方法是和一维类似的，我们也是需要另开一个数组记录修改操作，最后求前缀和时统计修改操作，只是二维每一次操作需要记录4个位置，一维只需要记录2个位置。具体模板代码如下所示。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void chafen()&#123;
 	for(int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;m是修改操作次数 
 		int x1,y1,x2,y2,p;
@@ -592,9 +614,8 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
 		b[x1][y2+1]-&#x3D;p;
 	&#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>&emsp;&emsp;以上部分来自个人理解以及从其他大佬的博客中领悟到的，有些内容可能与其他大佬相似，如有侵权，请及时指出，立马进行修正。有写的不好地方也请及时指出，本人菜鸡，勿喷。</p>
-<font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font>
-
+<p>  以上部分来自个人理解以及从其他大佬的博客中领悟到的，有些内容可能与其他大佬相似，如有侵权，请及时指出，立马进行修正。有写的不好地方也请及时指出，本人菜鸡，勿喷。</p>
+<p><font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p>
 
                 
             </div>
@@ -1130,7 +1151,7 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">18.1k</span>&nbsp;字
+                class="white-color">19.2k</span>&nbsp;字
             
             
             
