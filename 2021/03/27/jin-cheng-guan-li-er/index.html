@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="计算机系统概述（三）, Live My Life">
+    <meta name="keywords" content="进程管理（二）, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>计算机系统概述（三） | Live My Life</title>
+    <title>进程管理（二） | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">计算机系统概述（三）</h1>
+                    <h1 class="description center-align post-title">进程管理（二）</h1>
                 </div>
             </div>
         </div>
@@ -460,28 +460,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-03-22
+                    2021-03-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-22
+                    2021-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
 
@@ -504,54 +504,94 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>操作系统的运行环境</h1>
-<h2 id="操作系统的运行机制"><a class="header-anchor" href="#操作系统的运行机制">¶</a>操作系统的运行机制</h2>
-<p>  在计算机系统中，CPU通常会执行两种不同性质的程序，（1）<strong>操作系统的内核程序即管理程序</strong>，（2）<strong>用户自编程序即应用程序</strong>。<br>
-  <strong>管理程序</strong>：执行一些特权指令，这些指令不允许用户直接使用，例如I/O指令、置中断指令、存取用于内存保护的寄存器等。<br>
-  <strong>用户自编程序</strong>：出于安全考虑不能执行这些指令。<br>
-  用户自编程序运行在用户态，操作系统内核程序运行在核心态。并且现在操作系统几乎都是层次式的结构。操作系统的各项功能分别被设置在不同的层次上。一些与硬件关联较紧密的模块，如时钟管理、中断处理、设备驱动等处于最底层；其次是一些运行频率较高的程序，如进程管理、存储器管理和设备管理等。并且上面的这两部分构成了操作系统的<strong>内核</strong>，内核的指令操作工作在<strong>核心态</strong>。内核主要包括以下四部分内容。</p>
-<h3 id="时钟管理"><a class="header-anchor" href="#时钟管理">¶</a>时钟管理</h3>
-<p>  时钟管理的主要作用如下几点：<br>
-  （1）计时，即向用户提供标准的系统时间。<br>
-  （2）<strong>通过时钟中断的管理，切换进程</strong>。在分时操作系统中就有很好的体现（采用时间片轮转调度）。<br>
-  （3）衡量作业的运行程度（在批处理系统中，无论是多道批处理系统还是单道批处理系统，在微观上都是属于串行，因此可以用作业的执行时间来衡量作业的运行程度）。</p>
-<h3 id="中断机制"><a class="header-anchor" href="#中断机制">¶</a>中断机制</h3>
-<p>  在中断机制中，只有一小部分功能属于内核，它们保护和恢复中断现场的信息，转移控制权到相关的处理程序。提高系统的并行处理能力。并且可以提高多道程序运行环境中CPU的利用率。例如：<strong>进程的管理和调度</strong>，<strong>系统功能的调用</strong>，<strong>设备驱动</strong>……</p>
-<h3 id="原语"><a class="header-anchor" href="#原语">¶</a>原语</h3>
-<p>  按照上述所说的，操作系统是层次式的结构，那么在其底层一定是一些可被调用的具有特定功能的公用程序，例如：CPU切换、设备驱动等，因此将这些称为<strong>原语</strong>。其具有以下的特征：<br>
-  （1）处于操作系统的最底层，最接近硬件的部分。<br>
-  （2）其运行具有原子性，其操作必须一次性完成。<br>
-  （3）被频繁调用，且运行时间较短。</p>
-<h3 id="系统控制的数据结构及处理"><a class="header-anchor" href="#系统控制的数据结构及处理">¶</a>系统控制的数据结构及处理</h3>
-<p>  用来等级状态信息的数据结构，如作业控制块、进程控制块、消息队列、链表、内存分配表等。其常见操作有以下3种：<br>
-  （1）<strong>进程管理</strong>：进程状态管理、进程调度和分派、创建与撤销进程控制块等。<br>
-  （2）<strong>存储器管理</strong>存储器的空间分配和回收、内存信息保护程序、代码对换程序等。<br>
-  （3）<strong>设备管理</strong>：缓冲区管理、设备分配和回收。</p>
-<h2 id="中断和异常"><a class="header-anchor" href="#中断和异常">¶</a>中断和异常</h2>
-<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
-<p>  <strong>CPU运行上层程序时，唯一可以实现从用户态进入核心态的方式就是中断或异常</strong>。并且中断可以在程序并未使用某种资源时，把它对那种资源的占有权释放，提高资源利用率。<br>
-  <strong>中断</strong>：指计算机运行过程中，出现某些意外情况需主机干预时，机器能自动停止正在运行的程序并转入处理新情况的程序，处理完毕后又返回原被暂停的程序继续运行。<br>
-  <strong>异常</strong>：指的是在程序运行过程中发生的异常事件，通常是由外部问题（如硬件错误、输入错误）所导致的。</p>
-<h3 id="中断处理过程"><a class="header-anchor" href="#中断处理过程">¶</a>中断处理过程</h3>
-<p>  中断处理流程图如下图所示：<br>
-<img src="/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/1.png" alt="中断处理的流程"><br>
-  （1）<strong>关中断</strong>：CPU响应中断后，首先要保护程序的现场状态，不应响应更高级中断源的中断请求。否则现场会保存不完整。<br>
-  （2）<strong>保存断点</strong>：将原来的程序断点保存起来，在中断服务程序执行完毕后能正确地返回到原来的程序。<br>
-  （3）<strong>中断服务程序寻址</strong>：取出中断服务程序的入口地址送入程序计数器PC。<br>
-  （4）<strong>保存现场和屏蔽字</strong>：现场信息一般是指程序状态字寄存器PSWR和某些通用寄存器的内容。<br>
-  （5）<strong>开中断</strong>：允许更高级中断请求得到响应。<br>
-  （6）<strong>关中断</strong>：保证在恢复现场和屏蔽字时不被中断。<br>
-  （7）<strong>开中断、中断返回</strong>：中断服务程序的最后一条指令通常是一条中断返回指令，使其返回到原程序的断点处，以便继续执行原程序。</p>
-<h3 id="系统调用"><a class="header-anchor" href="#系统调用">¶</a>系统调用</h3>
-<p>  系统中的各种共享资源都由操作系统统一掌管，因此在用户程序种，凡是与资源有关的操作（如存储分配、进行I/O传输及管理文件等），都必须通过系统调用方式向操作系统提出服务请求，并由操作系统代为完成。系统调用功能大致可分为如下几类：<br>
-  （1）<strong>设备管理</strong>：完成设备的请求或释放，以及设备启动等功能。<br>
-  （2）<strong>文件管理</strong>：完成文件的读、写、创建即删除等功能。<br>
-  （3）<strong>进程控制</strong>：完成进程的创建、撤销、阻塞及唤醒等功能。<br>
-  （4）<strong>进程通信</strong>：完成进程之间的消息传递或信号传递等功能。<br>
-  （5）<strong>内存管理</strong>：完成内存的分配、回收以及获取作业占用内存区大小及实址等功能。<br>
-  这样做的好处是<strong>保证系统的稳定性和安全性，防止用户程序随意更改或访问重要的资源系统，影响其他进程的运行</strong>。</p>
-<p>  操作系统的运行环境可以理解为：用户通过操作系统运行上层程序（如用户自编程序），而上层程序的运行需要操作系统的底层管程序提供服务支持。当需要管理程序服务时，系统通过硬件中断机制进入核心态，运行管理程序，或者在出现异常时，被动提供管理程序服务。实现了从用户态转入核心态，在管理服务程序结束后，保存程序现场退出中断处理程序或异常处理程序，返回断点处继续执行用户自编程序。具体流程图如下所示：<br>
-<img src="/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/2.png" alt="系统调用执行过程"></p>
+                <h1>处理机调度</h1>
+<h2 id="调度概念"><a class="header-anchor" href="#调度概念">¶</a>调度概念</h2>
+<h3 id="调度的基本概念"><a class="header-anchor" href="#调度的基本概念">¶</a>调度的基本概念</h3>
+<p>  因为在我们平时使用的多道程序系统中，进程的数量会多于处理机的个数，因此会经常出现进程争用处理机的情况。而处理机的调度就是<strong>对处理机进行分配，从就绪队列中按照一定的算法（公平、高效）选择一个进程并将处理机分配给它允许，以实现进程并发地执行。</strong></p>
+<h3 id="调度层次"><a class="header-anchor" href="#调度层次">¶</a>调度层次</h3>
+<p>  一个作业从提交开始直到完成，往往要经历以下的三级调度：<br>
+  （1）<strong>作业调度</strong>：主要任务是按一定的原则，从外存上处于后备状态的作业中挑选一个（或多个）作业，给它（们）分配内存、输入/输出设备等必要的资源，并建立相应的进程，以使它（们）获得竞争处理机的权利。<strong>多道批处理系统中大多数配有作业调度，而其他系统中通常不需要配置作业调度，并且作业调度的执行频率较低，通常为几分钟一次</strong>。<br>
+  （2）<strong>中级调度</strong>：为了提高内存利用率和系统吞吐量，应将那些暂时不能运行的进程调至外存等待，把此时的进程状态称为<strong>挂起态</strong>。当这些进程已经具备运行条件时且内存有空闲时，就由中级调度来决定把外存上的那些已经具备运行条件的就绪进程重新调入内存，并且修改其状态为就绪态，挂在就绪队列上等待。<br>
+  （3）<strong>进程调度</strong>：也被称为低级调度，按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给它。<strong>进程调度是操作系统中最基本的一种调度</strong>，在一般的操作系统中都必须配置进程调度。<br>
+<img src="/2021/03/27/jin-cheng-guan-li-er/1.png" alt="处理机的三级调度"><br>
+  因为在这里涉及到了作业和进程的调度，所以我在这里按照我的理解以及我参考其他的人博客中的理解来进行一定的解释（有误请大家私聊告诉我）。<br>
+  <strong>作业与进程的区别</strong>：一个进程是一个程序对某个数据集的执行过程，是资源的基本单位。作业是用户需要计算机完成的某项任务，是要求计算机所做工作的集合。一个作业的完成要经过作业提交、作业收容、作业执行和作业完成4个阶段。而进程是对已提交完毕的程序所执行过程的描述，是资源分配的基本单位。主要区别如下：<br>
+  （1）作业是用户向计算机提交任务的任务实体，在用户向计算机提交作业后，系统将它放入外存中的作业等待队列中等待执行。而进程则是完成用户任务的执行实体，是向系统申请分配资源的基本单位，任一进程，只要它被创建，总有相应的部分存在于内存中。<br>
+  （2）一个作业可由多个进程组成，且必须至少由一个进程组成，反过来不成立。<br>
+  （3）<strong>作业的概念主要用在批处理系统中</strong>，像分时系统中就没有作业的概念，而<strong>进程的概念则用在几乎所有的多道程序系统中</strong>。</p>
+<h3 id="三级调度的联系"><a class="header-anchor" href="#三级调度的联系">¶</a>三级调度的联系</h3>
+<p>  （1）作业调度为进程活动做准备，进程调度使进程正常活动起来，中级调度将暂时不能运行的进程挂起，中级调度处于作业调度和进程调度之间。<br>
+  （2）作业调度次数较少，中级调度次数略多，进程调度频率最高。<br>
+  （3）进程调度是最基本的，不可或缺的。</p>
+<h2 id="调度的时机、切换与过程"><a class="header-anchor" href="#调度的时机、切换与过程">¶</a>调度的时机、切换与过程</h2>
+<p>  进程调度和切换程序是操作系统内核程序。一般情况下，在请求调度的事件发生后，才可能运行进程调度程序，调度了新的就绪进程后，才会进行进程间的切换。但是在实际中可能会发送以下一些情况导致不能进行进程的调度与切换。<br>
+  （1）<strong>在处理中断的过程中</strong><br>
+  （2）<strong>进程在操作系统内核程序临界区中</strong>：进入临界区后，需要独占式的访问共享数据，理论上要加锁来防止其他程序进入，在解锁前不应切换到其他进程，以加快共享数据的释放。<br>
+  （3）<strong>其他需要完全屏蔽中断的原子操作过程中</strong>：如加锁、解锁、中断现场保护，即使中断也要进行相应的屏蔽。<br>
+  进行进程调度切换的情况如下:<br>
+  （1）发送引起调度条件且当前进程无法继续马上运行下去时，进行调度切换（非剥夺式调度）<br>
+  （2）中断处理结束或自陷处理结束后，返回被中断进程的用户态程序执行现场前，若置上请求调度标志，马上进行进程调度与切换（剥夺式调度）</p>
+<h2 id="进程调度方式"><a class="header-anchor" href="#进程调度方式">¶</a>进程调度方式</h2>
+<p>  （1）非剥夺调度方式：当一个进程在处理机上执行时，即使有更重要的进程进入就绪队列，处理机上的进程依然可以执行直到变为阻塞状态后，让出处理机。优点是<strong>实现简单，系统开销小适用于大多数的批处理系统，但是不适用于分时系统和大多数的实时系统</strong>。<br>
+  （2）剥夺调度方式：当一个在处理机上运行的进程在遇到另一个更为重要的进程进入就绪队列后，立即暂停，将处理机让出给更为重要的进程。<strong>对提高系统吞吐率和相应效率都有明显的好处</strong>。</p>
+<h2 id="调度的基本准则"><a class="header-anchor" href="#调度的基本准则">¶</a>调度的基本准则</h2>
+<p>  （1）<strong>CPU利用率</strong><br>
+  （2）<strong>系统吞吐量</strong>：表示单位时间内CPU完成作业的数量。<br>
+  （3）<strong>周转时间</strong>：从作业提交到作业完成所经历的时间，是作业等待、在就绪队列中排队、在处理机上运行以及进行输入/输出操作所花费时间的总和。<br>
+  作业的周转时间可用公式表示如下：<br>
+$$周转时间 = 作业完成时间 - 作业提交时间$$<br>
+  平均周转时间是指多个作业周转时间的平均值：<br>
+$$平均周转时间 = (作业1的周转时间 + … + 作业 n 的周转时间) / n$$<br>
+  带权周转时间是指作业周转时间与作业实际运行时间的比值。<br>
+  平均带权周转时间是指多个作业带权周转时间的平均值：<br>
+$$平均带权周转时间 = (作业1的带权周转时间 + … + 作业 n 的带权周转时间) / n$$<br>
+  （4）<strong>等待时间</strong>：指进程处于等处理机状态时间之和。因为处理机调度算法在实际上并不影响作业执行或输入/输出操作，只影响作业在就绪队列中等待所花的时间，所以衡量一个调度算法优劣常常只需简单地考察等待时间。<br>
+  （5）<strong>响应时间</strong>：是指从用户提交请求到系统首次产生响应所用的时间。</p>
+<h2 id="典型的调度算法"><a class="header-anchor" href="#典型的调度算法">¶</a>典型的调度算法</h2>
+<h3 id="先来先服务（FCFS）调度算法"><a class="header-anchor" href="#先来先服务（FCFS）调度算法">¶</a>先来先服务（FCFS）调度算法</h3>
+<p>  在作业调度中，每次从后备队列中选择最先进入该队列的一个或几个作业，将它们调入内存，分配必要的资源，创建进程并放入就绪队列。进程调度类似。算法实例如下图所示：<br>
+<img src="/2021/03/27/jin-cheng-guan-li-er/2.png" alt="FCFS调度算法性能"><br>
+  从上图中可以看出，该算法的特点是：算法简单，但是效率低；对长作业比较有利，对短作业不利；有利于CPU繁忙型作业，而不利于I/O繁忙型作业。</p>
+<h3 id="短作业优先（SJF）调度算法"><a class="header-anchor" href="#短作业优先（SJF）调度算法">¶</a>短作业优先（SJF）调度算法</h3>
+<p>  从队列中选出一个估计运行时间最短的作业优先调度，既可用于作业调度，也可用于进程调度。算法实例如下图所示：<br>
+<img src="/2021/03/27/jin-cheng-guan-li-er/3.png" alt="SJF调度算法性能"><br>
+  SJF调度算法也存在不容忽视的缺点<br>
+  （1）<strong>对长作业不利</strong>。严重的是，若一长作业（进程）进入系统的后备队列（就绪队列），由于调度程序总是优先调度那些（即使是后进来的）短作业（进程），将导致长作业（进程）长期不被调度——饥饿<br>
+  （2）<strong>完全未考虑作业（进程）的紧迫程度，因而不能保证紧迫性作业（进程）会被及时处理</strong>。<br>
+  （3）由于作业（进程）的长短只是根据用户所提供的估计执行时间而定的，而用户又可能会有意或无意地缩短其作业的估计运行时间，致使该算法不一定能真正做到短作业优先调度。<br>
+  <strong>SJF调度算法的平均等待时间、平均周转时间最少</strong>。</p>
+<h3 id="优先级调度算法"><a class="header-anchor" href="#优先级调度算法">¶</a>优先级调度算法</h3>
+<p>  既可用于作业调度，又可用于进程调度。每次从后备作业队列中选择优先级最高的一个或几个作业（进程）进行执行。根据新的更高优先级进程能否抢占正在执行的进程，将调度算法分为两种（1）<strong>非剥夺式优先级调度算法</strong>、（2）<strong>剥夺式优先级调度算法</strong>。（在本文上面以及有讲解，此处省略。）<br>
+  根据进程创建后其优先级是否可以改变，可以将进程优先级分为以下两种。<br>
+  （1）<strong>静态优先权</strong>：静态优先权在创建进程时确定，且在进程的整个运行期间保持不变。确定进程优先权的依据有进程类型、进程对资源的需求、用户要求。<br>
+  （2）<strong>动态优先权</strong>：在创建进程时赋予的优先权是随进程的推进或随其等待时间的增加而改变，以获得更好的调度性能。<br>
+  在一般情况下，进程优先级的设置可以参照以下的原则：<br>
+  （1）<strong>系统进程 &gt; 用户进程</strong><br>
+  （2）交互型进程 &gt; 非交互型进程<br>
+  （3）I/O型进程 &gt; 计算型进程，因为I/O设备的处理速度要比CPU慢很多，所以需要让I/O设备尽早开始工作。</p>
+<h3 id="高响应比优先调度算法"><a class="header-anchor" href="#高响应比优先调度算法">¶</a>高响应比优先调度算法</h3>
+<p>  主要用于作业调度，既考虑作业估计的运行时间也考虑作业的等待时间，综合了先来先服务和最短作业优先两种算法的特点。该算法中的响应比是指作业等待时间与运行比值，响应比公式定义如下：<br>
+$$响应比R_{p} =（等待时间+要求服务时间）/ 要求服务时间$$<br>
+  优点有：（1）等待时间相同的作业，则要求服务的时间愈短，其优先权愈高，——对短作业有利；（2）要求服务的时间相同的作业，则等待时间愈长，其优先权愈高，——是先来先服务；（3）对于长作业，优先权随等待时间的增加而提高，其等待时间足够长时，其优先权便可升到很高， 从而也可获得处理机——对长作业有利。<br>
+  缺点：要进行响应比计算，增加了系统开销。</p>
+<h3 id="时间片轮转调度算法"><a class="header-anchor" href="#时间片轮转调度算法">¶</a>时间片轮转调度算法</h3>
+<p>  系统将所有的就绪进程按先来先服务的原则排成一个队列，每次调度时，把CPU分配给队首进程，并令其执行一个时间片；当执行的时间片用完时，由一个计时器发出时钟中断请求，调度程序便停止该进程的执行，并将其放就绪队列尾；然后，再把处理机分配给就绪队列中新的队首。<br>
+  <strong>时间片大小的选取很重要</strong>，若时间片足够大，以至于所有进程都能在一个时间片内执行完毕，则算法退化为先来先服务调度算法。若时间片很小，则处理机将在进程间过于频繁地切换，使得处理机的开销增大，而真正用于进程处理的时间很少。<br>
+  时间片的长短通常由：系统的响应时间、就绪队列中的进程数目和系统的处理能力来决定。</p>
+<h3 id="多级反馈队列调度算法"><a class="header-anchor" href="#多级反馈队列调度算法">¶</a>多级反馈队列调度算法</h3>
+<p>  是时间片轮转调度算法和优先级调度算法的综合。其具体思路如下：<br>
+  （1）先将它放入第一个队列的末尾，按FCFS原则排队等待调度。<br>
+  （2）如果时间片内完成，便可准备撤离系统。<br>
+  （3）如果时间片内未能完成，调度程序便将该进程转入第二队列的末尾等待再次被调度执行。<br>
+  （4）当第一队列中的进程都执行完，系统再按FCFS原则调度第二队列。在第二队列的稍放长些的时间片内仍未完成，再依次将它放入第三队列。<br>
+  （5）依次降到第n队列后，在第n队列中便采取按时间片轮转的方式运行。<br>
+<img src="/2021/03/27/jin-cheng-guan-li-er/4.png" alt="多级反馈队列调度算法"><br>
+  需要注意的是以下几个方面：<br>
+  （1）设置多个就绪队列，各队列有不同的优先级,优先级从第一个队列依次降低。<br>
+  （2）赋予各队列进程执行时间片大小不同, 优先权越高，时间片越短。<br>
+  （3）仅当优先权高的队列（如第一队列）空闲时，调度程序才调度第二队列中的进程运行。<br>
+  （4）高优先级抢占时，被抢占的进程放回原就绪队列末尾。<br>
+  优点：（1）终端型作业用户：短作业优先。（2）短批处理作业用户：周转时间较短。（3）长批处理作业用户：经过前面几个队列得到部分执行，不会长期得不到处理。</p>
 
                 
             </div>
@@ -578,7 +618,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/">http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/</a>
+                    <a href="http://xbwcj.github.io/2021/03/27/jin-cheng-guan-li-er/">http://xbwcj.github.io/2021/03/27/jin-cheng-guan-li-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -793,6 +833,55 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2021/03/30/2021-hua-wei-ruan-jian-jing-ying-tiao-zhan-sai-chu-sai-dai-ma-ji-si-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="2021华为软件精英挑战赛初赛代码及思路">
+                        
+                        <span class="card-title">2021华为软件精英挑战赛初赛代码及思路</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%AF%94%E8%B5%9B%E6%80%BB%E7%BB%93/" class="post-category">
+                                    比赛总结
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AF%94%E8%B5%9B%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">比赛算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2021/03/23/jin-cheng-guan-li-yi/">
                     <div class="card-image">
                         
@@ -809,57 +898,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-23
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    课本学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/03/22/ji-suan-ji-xi-tong-gai-shu-er/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="计算机系统概述（二）">
-                        
-                        <span class="card-title">计算机系统概述（二）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-23
                             </span>
                         <span class="publish-author">
                             
