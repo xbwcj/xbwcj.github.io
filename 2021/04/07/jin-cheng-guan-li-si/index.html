@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="线段树个人理解, Live My Life">
+    <meta name="keywords" content="进程管理（四）, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>线段树个人理解 | Live My Life</title>
+    <title>进程管理（四） | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -314,12 +314,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">线段树个人理解</h1>
+                    <h1 class="description center-align post-title">进程管理（四）</h1>
                 </div>
             </div>
         </div>
@@ -435,8 +435,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ACM/">
-                                <span class="chip bg-color">ACM</span>
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
                             </a>
                         
                     </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ACM/" class="post-category">
-                                ACM
+                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                课本学习
                             </a>
                         
                     </div>
@@ -460,28 +460,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-27
+                    2021-04-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-04-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -504,129 +504,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>线段树</h1>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/1.png" alt="在这里插入图片描述"></p>
-<h2 id="定义："><a class="header-anchor" href="#定义：">¶</a>定义：</h2>
-<p>  线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度为O(logN)。而未优化的空间复杂度为2N，实际应用时一般还要开4N的数组以免越界，因此有时需要离散化让空间压缩。对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。</p>
-<h2 id="作用范围："><a class="header-anchor" href="#作用范围：">¶</a>作用范围：</h2>
-<p>  线段树的适用范围很广，可以在线维护修改以及查询区间上的最值，求和。更可以扩充到二维线段树（矩阵树）和三维线段树（空间树）。对于一维线段树来说，每次更新以及查询的时间复杂度为O(logN)。还支持区间修改，单点修改等操作。</p>
-<h2 id="实现原理："><a class="header-anchor" href="#实现原理：">¶</a>实现原理：</h2>
-<p>  线段树主要是把一段大区间平均地划分成两段小区间进行维护，再用小区间的值来更新大区间。这样既能保证正确性，又能使时间保持在log级别（因为这棵线段树是平衡的）。也就是说，一个[L…R]的区间会被划分成[L…(L+R)/2]和[(L+R)/2+1…R]这两个小区间进行维护，直到L=R。但是在上述的过程中我们会遇到以下几个问题，就是我们该如何建树，建树的过程中每一个下标我们该如何去分配，分派到的每一个空间我们应该用来存放哪些数据。</p>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/2.png" alt="在这幅图片中"><br>
-  在这里我们仅对线段树中常见的区间最大值问题进行解释讨论。假设所给的区间为F[1:6] = {1, 9, 7, 8, 2, 3}。那么其对应的线段树的结构就如上图所示。其中红色的圆圈就代表线段树对应的每一个结点的下标。蓝色方框中的Max就是我们每一个结点所存放的内容，即每一个区间存放的最大值。Max下面的内容是对这个区间范围的一个说明，并不需要存放在数组中。<br>
-  仔细看这幅图我们会发现，其中结点的下标并不连续（在图中结点的标号并没有10，11）。这是因为我们在用数组对线段树进行模拟的时候，必须要提前对整个树的空间进行提前的开辟，所开辟的空间虽然并没有使用到，但是其仍然真是存在，这也是为什么我们在对数组进行开辟空间时一般会选择4<em>n的大小以避免出现RE。<br>
-  通过观察上面的线段树结点标号我们可以发现，对于一个区间[L,R]来说，最重要的数据当然就是区间的左右端点L和R，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。这种方式用指针好实现，定义两个左右子树递归即可，按时指针表示过于繁琐，而且不方便各种操作，大部分的线段树都是使用数组进行表示，那这里怎么快速使用下标找到左右子树呢。这就会涉及到每个结点下表数字的规律。我们发现在线段树中每个非叶子结点的度都为2，且父亲节点的左右两个孩子分别存储父亲一半的区间，而每个父亲结点存放的欧式孩子的最大值，而且左孩子的下标都为偶数，右孩子的下标都是奇数且左孩子下标数+1，即：<br>
-<strong><em><em>L = Father</em>2 （左子树下标为父亲下标的两倍）<br>
-R = Father</em>2+1（右子树下标为父亲下标的两倍+1）</strong></em>*<br>
-或<br>
-<strong>k&lt;&lt;1（结点k的左子树下标）<br>
-k&lt;&lt;1|1（结点k的右子树下标）</strong><br>
-所以建树的操作可用如下代码实现</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5+5;
-const int INF &#x3D; 0x3f3f3f3f;
-int tree[maxn&lt;&lt;2],temp[maxn];&#x2F;&#x2F;tree[]数组表示线段树数组，temp[]表示存放原始数据的数组
-void Build(int l,int r,int rt)&#123; &#x2F;&#x2F;l,r表示当前节点区间，rt表示当前节点编号  
-    if(l&#x3D;&#x3D;r) &#123;&#x2F;&#x2F;若到达叶节点，即区间的左右值相等   
-        tree[rt]&#x3D;temp[l];&#x2F;&#x2F;储存数组值   
-        return;  
-    &#125;  
-    int mid &#x3D; (l+r)&gt;&gt;1;  &#x2F;&#x2F;mid表示中间点
-    &#x2F;&#x2F;左右递归   
-    Build(l,mid,rt&lt;&lt;1);  
-    Build(mid+1,r,rt&lt;&lt;1|1);  
-    tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];&#x2F;&#x2F;更新信息
-&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="线段树的基本操作："><a class="header-anchor" href="#线段树的基本操作：">¶</a>线段树的基本操作：</h2>
-<h3 id="一、点更新"><a class="header-anchor" href="#一、点更新">¶</a>一、点更新</h3>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>
-  假设我们将上述的区间F[1:6] = {1, 9, 7, 8, 2, 3}中的F[3] = 7通过对其+3更改为10。那么我们应当对线段树进行如下的几个操作。</p>
-<ol>
-<li>我们通过线段树的根结点向下遍历，通过叶子结点所在的区间进行查询，在每一处根结点与我们改变的值相比较，如果F[3] = 10大于当前根结点中存储的Max值，那么将Max = 10，否则不变且继续向下遍历。</li>
-<li>直至到L=R时，即为我们改变的叶子结点，将其中存储的值变为我们上述的F[3] = 10，退出。<br>
-  具体代码实现如下：</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式更新 updata(p,v,1,n,1);
-void updata(int p,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;p为下标，v为要加上的值，l，r为结点区间，rt为结点下标
-    if(l &#x3D;&#x3D; r)&#123;    &#x2F;&#x2F;左端点等于右端点，即为叶子结点，直接加上v即可
-        temp[rt] +&#x3D; v;
-        tree[rt] +&#x3D; v;    &#x2F;&#x2F;原数组和线段树数组都得到更新
-        return ;
-    &#125;
-    int m &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-    if(p &lt;&#x3D; m)    &#x2F;&#x2F;如果需要更新的结点在左子树区间
-        updata(p,v,l,m,rt&lt;&lt;1);
-    else    &#x2F;&#x2F;如果需要更新的结点在右子树区间
-        updata(p,v,m+1,r,rt&lt;&lt;1|1);
-    tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];    &#x2F;&#x2F;更新父节点的值
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="二、区间查询"><a class="header-anchor" href="#二、区间查询">¶</a>二、区间查询</h3>
-<p>  线段树的每个结点存储的都是一段区间的信息 ，这就意味着如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息10即可，查询[1,2]直接返回9。但是有时题目中为了设置难度并不会轻易让我们查询每个结点所表示的区间。比如现在我要查询[2,5]区间的最值，这时候我们会发现并不存在某个节点的区间是[2,5]，那么这时我们应该采取一些什么方法来进行区间信息的查询呢？<br>
-<img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/4.png" alt="在这里插入图片描述"></p>
-<ol>
-<li>首先我们发现区间[2,5]在线段树中包括的节点有[2,2]，[3,3]，[4,4]，[5,5]，[4,5]。但是[4,4]，[5,5]这两个信息的区间已经被[4,5]区间所包含，所以我们真正需要查询的结点为[2,2]，[3,3]，[4,5]这三个区间所在的结点。</li>
-<li>其次从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归。<br>
-  具体代码如下</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式区间查询 query(Ld,Rd,1,n,1);
-int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为要查询的区间，l，r为结点区间，rt为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)    &#x2F;&#x2F;如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
-        return tree[rt];
-    int ans &#x3D; -INF;    &#x2F;&#x2F;返回值变量，根据具体线段树查询的什么而自定义
-    int mid &#x3D; (l+r)&gt;&gt;1;    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-    if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要查询的区间交集非空
-        ans &#x3D; max(ans, query(L,R,l,m,k&lt;&lt;1));
-    if(Rd &gt; m)    &#x2F;&#x2F;如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
-        ans &#x3D; max(ans, query(L,R,m+1,r,k&lt;&lt;1|1));
-    return ans;    &#x2F;&#x2F;返回当前结点得到的信息
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="三、区间更新"><a class="header-anchor" href="#三、区间更新">¶</a>三、区间更新</h3>
-<p>  在线段树的区间更新中我们引进了一个新的思想，Lazy_tag，字面意思就是懒惰标记的意思，实际上它的功能也就是偷懒= =，因为对于一个区间[L,R]来说，我们每次都更新区间中的每一个值，那样的话更新的复杂度将会是O(NlogN)，这太高了，所以引进了Lazy_tag，这个标记一般用于处理线段树的区间更新。<br>
-　　线段树在进行区间更新的时候，为了提高更新的效率，所以每次更新只更新到更新区间完全覆盖线段树结点区间为止，这样就会导致被更新结点的子孙结点的区间得不到需要更新的信息，所以在被更新结点上打上一个标记，称为lazy-tag，等到下次访问这个结点的子结点时再将这个标记传递给子结点，所以也可以叫延迟标记。<br>
-　　也就是说递归更新的过程，更新到结点区间为需要更新的区间的真子集不再往下更新，下次若是遇到需要用这下面的结点的信息，再去更新这些结点，所以这样的话使得区间更新的操作和区间查询类似，复杂度为O(logN)。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void Pushdown(int rt)&#123;    &#x2F;&#x2F;更新子树的lazy值，这里是RMQ的函数，要实现区间和等则需要修改函数内容
-    if(lazy[rt])&#123;    &#x2F;&#x2F;如果有lazy标记
-        lazy[rt&lt;&lt;1] +&#x3D; lazy[rt];    &#x2F;&#x2F;更新左子树的lazy值
-        lazy[rt&lt;&lt;1|1] +&#x3D; lazy[rt];    &#x2F;&#x2F;更新右子树的lazy值
-        t[rt&lt;&lt;1] +&#x3D; lazy[rt];        &#x2F;&#x2F;左子树的最值加上lazy值
-        t[rt&lt;&lt;1|1] +&#x3D; lazy[rt];    &#x2F;&#x2F;右子树的最值加上lazy值
-        lazy[rt] &#x3D; 0;    &#x2F;&#x2F;lazy值归0
-    &#125;
-&#125;
-
-&#x2F;&#x2F;递归更新区间 updata(L,R,v,1,n,1);
-void updata(int Ld,int Rd,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为要更新的区间，l，r为结点区间，k为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)&#123;    &#x2F;&#x2F;如果当前结点的区间真包含于要更新的区间内
-        lazy[rt] +&#x3D; v;    &#x2F;&#x2F;懒惰标记
-        t[rt] +&#x3D; v;    &#x2F;&#x2F;最大值加上v之后，此区间的最大值也肯定是加v
-    &#125;
-    else&#123;
-        Pushdown(k);    &#x2F;&#x2F;重难点，查询lazy标记，更新子树
-        int m &#x3D; l + ((r-l)&gt;&gt;1);
-        if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要更新的区间交集非空
-            update(Ld,Rd,v,l,m,rt&lt;&lt;1);
-        if(m &lt; Rd)    &#x2F;&#x2F;如果右子树和需要更新的区间交集非空
-            update(Ld,Rd,v,m+1,r,rt&lt;&lt;1|1);
-        Pushup(rt);    &#x2F;&#x2F;更新父节点
-    &#125;
-&#125;
-&#x2F;&#x2F;递归方式区间查询 query(Ld,Rd,1,n,1);
-int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要查询的区间，l，r为结点区间，k为结点下标
-    if(Ld &lt;&#x3D; l &amp;&amp; r &lt;&#x3D; Rd)    &#x2F;&#x2F;如果当前结点的区间真包含于要查询的区间内，则返回结点信息且不需要往下递归
-        return t[rt];
-    else&#123;
-        Pushdown(rt);    &#x2F;**每次都需要更新子树的Lazy标记*&#x2F;
-        int res &#x3D; -INF;    &#x2F;&#x2F;返回值变量，根据具体线段树查询的什么而自定义
-        int mid &#x3D; l + ((r-l)&gt;&gt;1);    &#x2F;&#x2F;m则为中间点，左儿子的结点区间为[l,m],右儿子的结点区间为[m+1,r]
-        if(Ld &lt;&#x3D; m)    &#x2F;&#x2F;如果左子树和需要查询的区间交集非空
-            res &#x3D; max(res, query(Ld,Rd,l,m,rt&lt;&lt;1));
-        if(Rd &gt; m)    &#x2F;&#x2F;如果右子树和需要查询的区间交集非空，注意这里不是else if，因为查询区间可能同时和左右区间都有交集
-            res &#x3D; max(res, query(Ld,Rd,m+1,r,rt&lt;&lt;1|1));
-
-        return res;    &#x2F;&#x2F;返回当前结点得到的信息
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p>
+                <h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h2><h3 id="死锁的定义"><a href="#死锁的定义" class="headerlink" title="死锁的定义"></a>死锁的定义</h3><p>&emsp;&emsp;在多道程序系统中，多个进程会并发执行，提高了处理器的吞吐量和资源的利用率。但是在多个进程的并发执行过程中，经常会出现死锁的问题，死锁就是：<strong>多个进程因竞争资源而造成的一种僵局（互相等待），若无外力作用，这些进程都将无法向前进行</strong>。</p>
+<h3 id="死锁产生的原因"><a href="#死锁产生的原因" class="headerlink" title="死锁产生的原因"></a>死锁产生的原因</h3><h4 id="系统资源的竞争"><a href="#系统资源的竞争" class="headerlink" title="系统资源的竞争"></a>系统资源的竞争</h4><p>&emsp;&emsp;通常系统拥有的不可剥夺的资源在数量上不足以满足多个进程运行的需求，使得进程在运行过程中，会因资源争夺而陷入僵局，例如：磁带、打印机等。只有对不可剥夺资源的竞争才可能产生死锁。</p>
+<h4 id="进程推进顺序非法"><a href="#进程推进顺序非法" class="headerlink" title="进程推进顺序非法"></a>进程推进顺序非法</h4><p>&emsp;&emsp;（1）进程在运行过程中，请求和释放资源顺序不当，也会导致死锁。例如：并发进程$P<em>{1}$和$P</em>{2}$分别保持了资源$R<em>{1}$和$R</em>{2}$，而进程$P<em>{1}$申请资源$R</em>{2}$、进程$P<em>{2}$申请资源$R</em>{1}$时，两者都会因为所需资源被占用而阻塞。<br>&emsp;&emsp;（2）信号量使用不当。<br>&emsp;&emsp;（3）进程间彼此相互等待对方发来的消息，也会使得这些进程间无法继续向前推进。例如：进程$A$等待进程$B$发的消息，进程$B$也在等待进程$A$发送的消息，所以可以看出进程$A$和进程$B$不是因为竞争同一资源，而是等待对方的资源导致死锁。</p>
+<h4 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h4><p>&emsp;&emsp;死锁必须同时满足以下的$4$个条件，只要其中任意一个条件不成立，死锁就不会发生。<br>&emsp;&emsp;（1）<strong>互斥条件</strong>：指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。<br>&emsp;&emsp;（2）<strong>不剥夺条件</strong>：指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放（主动释放）。<br>&emsp;&emsp;（3）<strong>请求并保持条件</strong>：指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。<br>&emsp;&emsp;（4）<strong>循环等待条件</strong>：即存在一个等待队列：$P<em>{1}$占有$P</em>{2}$的资源，$P<em>{2}$占有$P</em>{3}$的资源，$P<em>{3}$占有$P</em>{1}$的资源。这样就形成了一个等待环路。若干进程之间形成一种头尾相接的循环等待资源关系。如下图所示：<br><img src="/2021/04/07/jin-cheng-guan-li-si/1.png" alt="循环等待示例图"></p>
+<h2 id="死锁的处理策略"><a href="#死锁的处理策略" class="headerlink" title="死锁的处理策略"></a>死锁的处理策略</h2><p>&emsp;&emsp;设法破坏产生死锁的$4$个必要条件之一，或者允许产生死锁，但是当死锁发生时有能力检测出死锁，并有能力实现恢复。</p>
+<h3 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h3><p>&emsp;&emsp;<strong>通过设置一些限制条件，破坏死锁的四个必要条件中的一个或几个，让死锁无法发生</strong>。例如，将资源分层，得到上一层资源后才能够申请下一层资源，这样就破坏了循环等待条件。用户申请资源时，要求一次性申请所需要的全部资源，这就破坏了占有并等待条件。当一个已经占有某些不可剥夺资源的进程，请求新的资源而得不到满足时，它必须释放已经占有的所有资源，待以后需要时再重新申请，这就破坏了不剥夺条件。<br>&emsp;&emsp;这些预防死锁的方法破坏了系统的并行性和并发性，通常会降低系统的效率。</p>
+<h3 id="避免死锁"><a href="#避免死锁" class="headerlink" title="避免死锁"></a>避免死锁</h3><p>&emsp;&emsp;在资源的动态分配过程中，用某种方法防止系统进入不安全状态，从而避免死锁。<br>&emsp;&emsp;预防死锁的几种策略，会严重地损害系统性能。因此在避免死锁时，要施加较弱的限制，从而获得较满意的系统性能。由于在避免死锁的策略中，允许进程动态地申请资源。因而，系统在进行资源分配之前预先计算资源分配的安全性。若此次分配不会导致系统进入不安全状态，则将资源分配给进程；否则，进程等待。其中最具有代表性的避免死锁算法是银行家算法。</p>
+<h3 id="死锁的检测及解除"><a href="#死锁的检测及解除" class="headerlink" title="死锁的检测及解除"></a>死锁的检测及解除</h3><p>&emsp;&emsp;无须采取任何限制性措施，允许进程在运行过程中发生死锁。通过系统的检测机构及时地检测出死锁的发生，然后采取某种措施解除死锁。<br>&emsp;&emsp;三种思索策略的比较如下表所示：<br><img src="/2021/04/07/jin-cheng-guan-li-si/2.png" alt="死锁处理策略的比较"></p>
+<h2 id="死锁预防-1"><a href="#死锁预防-1" class="headerlink" title="死锁预防"></a>死锁预防</h2><p>&emsp;&emsp;只需要破坏死锁产生的$4$个必要条件之一即可。<br>&emsp;&emsp;（1）<strong>破坏互斥条件</strong>：例如允许系统资源都能共享使用。但是这种方法不可行。<br>&emsp;&emsp;（2）<strong>破坏不剥夺条件</strong>：当一个已保持了某些不可剥夺的进程请求新的资源而得不到满足时，它必须释放已经保持的所有资源，待以后需要时重新申请，但是这样会导致已获得的资源可能造成前一阶段工作的失效，同时反复的申请和释放资源会增加系统开销，降低系统吞吐量。<br>&emsp;&emsp;（3）<strong>破坏请求并保持条件</strong>：采取预先静态分配方法，即进程在运行前一次申请完它所需要的全部资源，在他的资源未满足前，不投入运行，一旦投入运行，不再提出其他资源请求。但这样会导致系统资源被严重浪费。<br>&emsp;&emsp;（4）<strong>破坏循环等待条件</strong>：将系统中的所有资源统一编号，进程可在任何时刻提出资源申请，但所有申请必须按照资源的编号顺序（升序）提出。这样做就能保证系统不出现死锁。这种方法存在的问题是，编号必须稳定，这就限制了新类型设备的增加，而且经常会发生作业使用资源的顺序与系统规定顺序不同，造成资源浪费。</p>
+<h2 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h2><p>&emsp;&emsp;死锁避免同样属于事先预防策略，但是并不是事先采取某种限制措施破坏死锁的必要条件，而是在资源动态分配的过程中，防止系统进入不安全状态，以避免发生死锁。并且这种方法施加的限制条件比较弱，可以获得较好的系统性能。</p>
+<h3 id="系统安全状态"><a href="#系统安全状态" class="headerlink" title="系统安全状态"></a>系统安全状态</h3><p>&emsp;&emsp;安全状态是指系统按某种进程推进顺序$(P<em>{1},P</em>{2},P<em>{3},…,P</em>{n})$为每个进程$P<em>{i}$分配其所需的资源，直至满足每个进程对资源的最大需求，使每个进程都可顺序完成。此时称$(P</em>{1},P<em>{2},P</em>{3},…,P<em>{n})$为安全序列。若系统无法找到一个安全序列，则称系统处于不安全状态。<br>&emsp;&emsp;例如系统中有三个进程$P</em>{1}$、$P<em>{2}$和$P</em>{3}$,共有$12$台磁带机。进程$P<em>{1}$总共需要$10$台磁带机，$P</em>{2}$和$P<em>{3}$ 分别需要$4$台和$9$台。假设在$T</em>{0}$时刻，进程$P<em>{1}$、$P</em>{2}$和$P<em>{3}$已分别获得$5$合、$2$台和$2$台，尚有$3$台未分配，见下表：<br><img src="/2021/04/07/jin-cheng-guan-li-si/3.png" alt="资源分配表"><br>&emsp;&emsp;如果要满足各进程的最大进程，$p</em>{1}$差$5$台，$p<em>{2}$差$2$台，$p</em>{3}$差$7$台，当前可用资源只有$3$台。<br>&emsp;&emsp;将所有进程推进顺序的情况一一列举：<br>&emsp;&emsp;（1）$(P<em>{1}, P</em>{2}, P<em>{3})$，因为$3 &lt; 5$，$P</em>{1}$没法完成，不符合。<br>&emsp;&emsp;（2）$(P<em>{1}, P</em>{3}, P<em>{2})$，因为$3 &lt; 5$，$P</em>{1}$没法完成，不符合。<br>&emsp;&emsp;（3）$(P<em>{2}, P</em>{1}, P<em>{3})$，因为$3 &gt; 2$，$P</em>{2}$可以完成，$P<em>{2}$完成后释放资源，可用资源为$5$台，$5 = 5$，$P</em>{1}$可以完成；$P<em>{1}$完成后释放资源，可用资源为$10$台，$10 &gt; 7$，$P</em>{3}$可以完成；所有进程都可以完成，符合。<br>&emsp;&emsp;（4）$(P<em>{2}, P</em>{3}, P<em>{1})$，因为$3 &gt; 2$，$P</em>{2}$可以完成；$P<em>{2}$完成后释放资源，可用资源为$5$台，$5 &lt; 7$，$P</em>{3}$没法完成，不符合。<br>&emsp;&emsp;（5）$(P<em>{3}, P</em>{1}, P<em>{2})$，$3 &lt; 7$，$P</em>{3}$没法完成，不符合。<br>&emsp;&emsp;（5）$(P<em>{3}, P</em>{2}, P<em>{1})$，$3 &lt; 7$，$P</em>{3}$没法完成，不符合。<br>&emsp;&emsp;综上，存在一个安全序列$(P<em>{2}, P</em>{1}, P_{3})$，即只要系统按此进程序列分配资源，则每个进程都能顺利完成,此时系统便进入安全状态,否则进入不安全状态。</p>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>&emsp;&emsp;在银行中，客户申请贷款的数量是有限的，每个客户在第一次申请贷款时要声明完成该项目所需的最大资金量，在满足所有贷款要求时，客户应及时归还。银行家在客户申请的贷款数量不超过自己拥有的最大值时，都应尽量满足客户的需要。<br>&emsp;&emsp;因此银行家算法的思想是：把操作系统视为银行家，操作系统管理的资源相当于银行家管理的资金，进程向操作系统请求分配资源相当于用户向银行家贷款。操作系统按照银行家制定的规则为进程分配资源。进程运行之前先声明对各种资源的最大需求量，当进程在执行中继续申请资源时，先测试该进程已占用的资源数与本次申请的资源数之和是否超过该进程声明的最大需求量。若超过则拒绝分配资源，若未超过则再测试系统现存的资源能否满足该进程尚需的最大资源量，若能满足则按当前的申请量分配资源，否则也要推迟分配。</p>
+<h4 id="银行家算法数据结构"><a href="#银行家算法数据结构" class="headerlink" title="银行家算法数据结构"></a>银行家算法数据结构</h4><p>&emsp;&emsp;为了实现银行家算法，在系统中必须设置这样四个数据结构，分别用来描述系统中可利用的资源、所有进程对资源的最大需求、系统中的资源分配，以及所有进程还需要多少资源的情况。<br>&emsp;&emsp;（1）可利用资源向量$Available$。这是一个含有$m$个元素的数组，其中的每一个元素代表一类可利用的资源数目，其初始值是系统中所配置的该类全部可用资源的数目，其数值随该类资源的分配和回收而动态地改变。如果$Available[j] = K$，则表示系统中现$R<em>{j}$类资源$K$个。<br>&emsp;&emsp;（2）最大需求矩阵$Max$。这是一个$n * m$的矩阵，它定义了系统中$n$个进程中的每个进程对$m$类资源的最大需求。如果$Max[i, j] = K$，则表示进程$i$需要$R</em>{j}$ 类资源的最大数目为$K$。<br>&emsp;&emsp;（3）分配矩阵$Allocation$。这也是一个$n <em> m$的矩阵，它定义了系统中每一类资源当前已分配给每一进程的资源数。如果$Allocation[i, j] = K$，则表示进程$i$当前己分得$R_{j}$类资源的数目为$K$。<br>&emsp;&emsp;（4）需求矩阵$Need$.这也是一个$n </em> m$的矩阵，用以表示每一个进程尚需的各类资源数。如果$Need[i, j] = K$，则表示进程$i$还需要$R_{j}$类资源$K$个方能完成其任务。<br>&emsp;&emsp;上述三个矩阵间存在下述关系:</p>
+<script type="math/tex; mode=display">Need[i, j] = Max[i, j] - allocation[i, j]</script><h4 id="银行家算法描述"><a href="#银行家算法描述" class="headerlink" title="银行家算法描述"></a>银行家算法描述</h4><p>&emsp;&emsp;设$Request<em>{i}$是进程$P</em>{i}$的请求向量，如果$Requesti<em>{i}[j] = K$，表示进程$P</em>{i}$需要$K$个$R<em>{j}$类型的资源。当$P</em>{i}$发出资源请求后，系统按下述步骤进行检査:<br>&emsp;&emsp;（1）如果$Request<em>{i}[j] ≤ Need[i, j]$便转向步骤$(2)$；否则认为出错，因为它所需要的资源数已超过它所宣布的最大值。<br>&emsp;&emsp;（2）如果$Request</em>{i}[j] ≤ Available[j]$，便转向步骤$(3)$；否则，表示尚无足够资源，$P<em>{i}$须等待。<br>&emsp;&emsp;（3）系统试探着把资源分配给进程$P</em>{i}$，并修改下面数据结构中的数值：</p>
+<script type="math/tex; mode=display">
+　　Available[j] = Available[j] - Request_{i}[j];\\\\
+　　Allocation[i, j] = Allocation[i, j] + Request_{i}[j]; \\\\
+　　Need[i, j] = Need[i,j] - Request_{i}[j];</script><p>&emsp;&emsp;（4）系统执行安全性算法，检查此次资源分配后系统是否处于安全状态。若安全，才正式将资源分配给进程$P<em>{i}$，以完成本次分配；否则，将本次的试探分配作废，恢复原来的资源分配状态，让进程$P</em>{i}$等待。</p>
+<h4 id="安全性算法"><a href="#安全性算法" class="headerlink" title="安全性算法"></a>安全性算法</h4><p>&emsp;&emsp;设置工作向量$Work$，它表示系统中的剩余可用资源数目，它含有$m$个元素，在执行安全算法开始时，$Work = Available$；<br>&emsp;&emsp;（1）初始时安全序列为空。<br>&emsp;&emsp;（2）从$Need$矩阵中找出符合下面条件的行：改行对应的进程不再安全序列中，而且该行小于等于$Work$向量，找到后，把对应的进程加入安全序列；若找不到，执行步骤$(4)$<br>&emsp;&emsp;（3）进程$P<em>{i}$进入安全序列后，可顺利执行，直至完成，并释放分配给它的资源，因此应该执行$Work = Work + Allocation[i]$，其中$Allocatin[i]$表示进程$P</em>{i}$代表的在$Allocation$矩阵中对应的行，返回步骤$(2)$。<br>&emsp;&emsp;（4）若此时安全序列中已有所有进程，则系统处于安全状态，否则系统处于不安全状态。</p>
+<h2 id="死锁检测和解除"><a href="#死锁检测和解除" class="headerlink" title="死锁检测和解除"></a>死锁检测和解除</h2><p>&emsp;&emsp;当系统为进程分配资源时，不采取任何措施，则应该提供死锁检测和解除手段。</p>
+<h3 id="资源分配图"><a href="#资源分配图" class="headerlink" title="资源分配图"></a>资源分配图</h3><p>&emsp;&emsp;系统思索可利用资源分配图来描述，用圆圈代表一个进程，用框代表一类资源，因为一种类型的资源可能有多个，因此用框中的一个圆代表一类资源中的一个资源。从进程到资源的有向边称为<strong>请求边</strong>，表示该进程申请一个单位的该类资源；从资源到进程的边称为<strong>分配边</strong>，表示该类资源已有一个资源分配给了该进程。资源分配图如下图所示：<br><img src="/2021/04/07/jin-cheng-guan-li-si/4.png" alt="资源分配图实例"></p>
+<h3 id="死锁定理"><a href="#死锁定理" class="headerlink" title="死锁定理"></a>死锁定理</h3><p>&emsp;&emsp;$S$为死锁的条件是当且仅当$S$状态的资源分配图是不可完全简化的，该条件为<strong>死锁定理</strong>。</p>
+<h3 id="死锁解除"><a href="#死锁解除" class="headerlink" title="死锁解除"></a>死锁解除</h3><p>&emsp;&emsp;（1）<strong>资源剥夺法</strong>：挂起某些死锁进程，并抢占它的资源，将这些资源分配给其他的死锁进程。<br>&emsp;&emsp;（2）<strong>撤销进程法</strong>：强制撤销部分甚至全部死锁进程，并剥夺这些进程的资源。撤销的原则可以按进程优先级和撤销进程代价的高低进行。<br>&emsp;&emsp;（3）<strong>进程回退法</strong>：让一个或（多个）进程回退到足以回避死锁的地步，进程回退时自愿释放资源而非被剥夺。要求系统保持进程的历史信息，设置还原点。</p>
 
                 
             </div>
@@ -653,7 +553,7 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2020/05/27/xian-duan-shu-ge-ren-li-jie/">http://xbwcj.github.io/2020/05/27/xian-duan-shu-ge-ren-li-jie/</a>
+                    <a href="http://xbwcj.github.io/2021/04/07/jin-cheng-guan-li-si/">http://xbwcj.github.io/2021/04/07/jin-cheng-guan-li-si/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -691,8 +591,8 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ACM/">
-                                    <span class="chip bg-color">ACM</span>
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
                                 </a>
                             
                         </div>
@@ -864,17 +764,18 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/">
+                <a href="/2021/04/07/jin-cheng-guan-li-si/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="前缀和、二维前缀和与差分个人理解">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="进程管理（四）">
                         
-                        <span class="card-title">前缀和、二维前缀和与差分个人理解</span>
+                        <span class="card-title">进程管理（四）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -884,26 +785,27 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ACM/" class="post-category">
-                                    ACM
+                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    课本学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ACM/">
-                        <span class="chip bg-color">ACM</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
@@ -917,13 +819,13 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/05/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-san/">
+                <a href="/2021/04/06/jing-dian-tong-bu-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="武汉理工大学《软件工程》复习总括三">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="经典同步问题">
                         
-                        <span class="card-title">武汉理工大学《软件工程》复习总括三</span>
+                        <span class="card-title">经典同步问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -934,7 +836,7 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-06
                             </span>
                         <span class="publish-author">
                             
@@ -951,8 +853,8 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
-                        <span class="chip bg-color">软件工程</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
