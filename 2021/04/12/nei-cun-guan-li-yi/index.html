@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前缀和、二维前缀和与差分个人理解, Live My Life">
+    <meta name="keywords" content="内存管理（一）, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前缀和、二维前缀和与差分个人理解 | Live My Life</title>
+    <title>内存管理（一） | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前缀和、二维前缀和与差分个人理解</h1>
+                    <h1 class="description center-align post-title">内存管理（一）</h1>
                 </div>
             </div>
         </div>
@@ -436,8 +436,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ACM/">
-                                <span class="chip bg-color">ACM</span>
+                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                <span class="chip bg-color">操作系统</span>
                             </a>
                         
                     </div>
@@ -448,8 +448,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ACM/" class="post-category">
-                                ACM
+                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                课本学习
                             </a>
                         
                     </div>
@@ -461,28 +461,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-28
+                    2021-04-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-20
+                    2021-04-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
 
@@ -505,118 +505,58 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>前缀和</h1>
-<h2 id="什么是前缀和"><a class="header-anchor" href="#什么是前缀和">¶</a>什么是前缀和</h2>
-<p>  前缀和顾名思义就是指一个数组的某一个下标的（包括该下标）之前的所有数组元素的和。现在我们假设有某一数组a = [1, 2, 3, 4, 5, 6, 7, 8, 9]。其前缀和数组为sum，那么sum数组与a数组对应的关系如下图所示。<br>
-<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/1.png" alt="在这里插入图片描述"><br>
-  由上面的对应关系我们可以得到他们满足如下的公式。</p>
-<p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/2.png" alt="在这里插入图片描述"><br>
-  以上的公式即为<strong>一维前缀和</strong>一维前缀和的代码模板如下所示。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
-     * 一维前缀和
-     *
-     * @a 表示原数组
-     * @sum 表示a数组的一维前缀和
-     *&#x2F;
-     const int maxn &#x3D; 1e5 + 10;
-     int a[9] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;; 
-     int sum[maxn];
-    void oneDimen(int num) &#123;&#x2F;&#x2F;num表示数组a的长度
-        sum[0] &#x3D; a[0];
-        for (int i &#x3D; 1; i &lt; num; i++) &#123;
-            sum[i] &#x3D; sum[i - 1] + a[i];
-        &#125;
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="前缀和使用情况"><a class="header-anchor" href="#前缀和使用情况">¶</a>前缀和使用情况</h2>
-<p>  我们在做题的时候经常会遇到查询问题，例如给出一个数组a，再给出m次查询，每次查询都会给出两个数L，R，分表表示查询区间的左右范围。如果我们只是使用最简单的朴素查询的方法，每次遍历区间，进行m次的查询，这样在题目所给数据范围较小的情况下可以进行，但是当查询次数很大时，其时间复杂度为<strong>O（n*m）<strong>会使运行TLE，所以我们使用上述的前缀和可以使时间复杂度降低为</strong>O(m+n)</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">int query(int L, int R)&#123;
-	retrun sum[R] - sum[L - 1];
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h1>差分</h1>
-<h2 id="什么是差分"><a class="header-anchor" href="#什么是差分">¶</a>什么是差分</h2>
-<p>  差分就是指相邻两个数的差，我们假设存在一个数组，如下图所示<br>
-<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>
-  具体代码模板如下：</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5 + 10;
-int a[9] &#x3D; &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;; 
-int diff[maxn];
-&#x2F;&#x2F;求出差分数组
-void chafen(int num)&#123;&#x2F;&#x2F;num表示原数组的长度
-	diff[0] &#x3D; a[0];
-	for(int i &#x3D; 1; i &lt; num; i++)&#123;
-		diff[i] &#x3D; a[i] - a[i - 1];
-	&#125;
-&#125;
-&#x2F;&#x2F;对区间进行加操作
-void addarray(int L, int R, int k)&#123;
-	&#x2F;&#x2F;L和R分别代表对加区间的左右范围，k表示在区间里每个元素加的数字
-	diff[L] +&#x3D; k;
-	diff[R + 1] -&#x3D; k;&#x2F;&#x2F;这里特别要注意，因为在前面进行区间加后，后面一个数与前面这个数的差变小了，所以要在后面这个数的差分数组减去前面区间所增加的数字。
-&#125;
-&#x2F;&#x2F;通过差分数组和原数组a推理得到进行区间加后数组中某一个元素的值
-void get_a()&#123;
-	for(int i &#x3D; 1; i &lt;&#x3D; n; i++)&#123;
-		a[i] &#x3D; doff[i] + a[i - 1];
-	&#125; 
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="差分使用情况"><a class="header-anchor" href="#差分使用情况">¶</a>差分使用情况</h2>
-<p>  区间加：把数组a[l]到a[r]都加上k，这种操作称为区间加。在进行区间加的操作后得到的数组b，我们对数组b进行查询，但可以发现如果是L——-R非常大的情况下，通过朴素的区间范围内主次累加求和这个操作执行的次数又很多，那时间复杂度会很高。所以可以使用差分的思想来降低复杂度。</p>
-<h1>二维前缀和</h1>
-<h2 id="什么是二维前缀和"><a class="header-anchor" href="#什么是二维前缀和">¶</a>什么是二维前缀和</h2>
-<p><img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/4.png" alt="在这里插入图片描述"><br>
-  在上图中深蓝色的部分代表的是二维数组的索引，浅蓝色的部分代表的是二维数组的每个元素的值。其二维前缀和如下图所示<br>
-<img src="/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/5.png" alt="在这里插入图片描述"><br>
-  前缀和数组里每一个位置都表示原数组当前索引左上方的数字的和。<br>
-如上表中的而为前缀和数组：prefixSum[3, 3] = src[0~2, 0~2]的和;<br>
-二维前缀和数组的计算步骤如下所示。<br>
-可以分为四种情况</p>
-<ol>
-<li>i == 0 &amp;&amp; j ==0，只有一个直接赋值即可：prefixSum[0, 0] = a[0, 0]。</li>
-<li>i == 0，最左边的一列，二维前缀和为元素上一行相同列的元素加该数字，公式为prefixSum[0, j] = prefixSum[0, j-1] + a[0, j]；</li>
-<li>j == 0，最上面一排，与i == 0类似prefixSum[i, o] = prefixSum[i-1, 0] + a[i, 0];</li>
-<li>i!=0 || j!=0，其公式为 prefixSum[i][j] = prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];<br>
-其代码模板如下所示</li>
-</ol>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;**
- * 二维前缀和
- *
- * @param src 原数组
- * @return 二维前缀和
- *&#x2F;
- const int maxn &#x3D; 100;
- int prefixSum[maxn][maxn];
-void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维原始数组的行列长度
-    for (int i &#x3D; 0; i &lt; n; i++) &#123;
-        for (int j &#x3D; 0; j &lt; m; j++) &#123;
-            if (i &#x3D;&#x3D; 0 &amp;&amp; j &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第0个，最左上角
-                prefixSum[i][j] &#x3D; a[i][j];
-            &#125; else if (i &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第一行，最顶部一行
-                prefixSum[i][j] &#x3D; prefixSum[i][j - 1] + a[i][j];
-            &#125; else if (j &#x3D;&#x3D; 0) &#123;&#x2F;&#x2F;第一列，最左边一列
-                prefixSum[i][j] &#x3D; prefixSum[i - 1][j] + a[i][j];
-            &#125; else &#123;&#x2F;&#x2F;其他
-                prefixSum[i][j] &#x3D; prefixSum[i - 1][j] + prefixSum[i][j - 1] + a[i][j] - prefixSum[i - 1][j - 1];
-            &#125;
-        &#125;
-    &#125;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="二维前缀和的使用情况"><a class="header-anchor" href="#二维前缀和的使用情况">¶</a>二维前缀和的使用情况</h2>
-<p>  一般使用二维前缀和可以求子矩阵的最大值。通过求解出整个矩阵的二维前缀和数组，然后对二位前缀和数组中的元素进行查询，找到其和最大的子矩阵。</p>
-<h2 id="二维前缀和的差分"><a class="header-anchor" href="#二维前缀和的差分">¶</a>二维前缀和的差分</h2>
-<p>  二维前缀和也可以使用差分的形式。方法是和一维类似的，我们也是需要另开一个数组记录修改操作，最后求前缀和时统计修改操作，只是二维每一次操作需要记录4个位置，一维只需要记录2个位置。具体模板代码如下所示。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void chafen()&#123;
-	for(int i&#x3D;0;i&lt;m;i++)&#123;&#x2F;&#x2F;m是修改操作次数 
-		int x1,y1,x2,y2,p;
-		cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2&gt;&gt;p;
-		b[x1][y1]+&#x3D;p;
-		b[x2+1][y2+1]+&#x3D;p;
-		b[x2+1][y1]-&#x3D;p;
-		b[x1][y2+1]-&#x3D;p;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  以上部分来自个人理解以及从其他大佬的博客中领悟到的，有些内容可能与其他大佬相似，如有侵权，请及时指出，立马进行修正。有写的不好地方也请及时指出，本人菜鸡，勿喷。</p>
-<p><font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p>
+                <h1>内存管理概念</h1>
+<h2 id="内存管理的基本原理和要求"><a class="header-anchor" href="#内存管理的基本原理和要求">¶</a>内存管理的基本原理和要求</h2>
+<p>  内存管理就是操作系统对内存的管理和分配。<br>
+  内存管理的功能有：<br>
+  （1）<strong>内存空间的分配与回收</strong>：由操作系统完成主存储器空间的分配和管理。尤其是在编程时，可以提高编程效率。<br>
+  （2）<strong>地址转换</strong>：在多道程序环境下，程序中的逻辑地址与内存中的物理地址不可能一致，因此存储管理必须提供地址变换功能，把逻辑地址转换成相应的物理地址。<br>
+  （3）<strong>内存空间的扩充</strong>：利用虚拟存储技术或自动覆盖技术，从逻辑上扩充内存。<br>
+  （4）<strong>存储保护</strong>：保证各道作业在各自的存储空间内运行，互不干扰。</p>
+<h3 id="程序装入和链接"><a class="header-anchor" href="#程序装入和链接">¶</a>程序装入和链接</h3>
+<p>  创建进程首先要将程序和数据装入内存。将用户源程序变为可在内存中执行的程序，其主要经过以下几个步骤：<br>
+  （1）<strong>编译</strong>：由编译程序将用户源代码编译成若干目标模块<br>
+  （2）<strong>链接</strong>：由链接程序将编译后形成的一组目标模块及所需的库函数链接在一起，形成一个完整的装入模块。<br>
+  （3）<strong>装入</strong>：由装入程序将装入模块装入内存运行。<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/1.png" alt="将用户程序变为可在内存中执行的程序的步骤"><br>
+  程序的链接有以下三种方式：<br>
+  （1）<strong>静态链接</strong>：在程序运行之前，先将各目标模块及它们所需的库函数链接成一个完整的可执行程序，以后不再拆开。<br>
+  （2）<strong>装入时动态链接</strong>：将用户源程序编译后所得到的一组目标模块，在装入内存时，采用边装入边链接的方式。<br>
+  （3）<strong>运行时动态链接</strong>：对某些目标模块的链接，是在程序执行中需要该目标模块时才进行的，其优点是便于修改和更新，便于实现对目标模块的共享。<br>
+  内存的装入模块在装入内存时，同样有以下三种方式：<br>
+  （1）<strong>绝对装入</strong>：在编译时，如果知道程序将驻留在内存的某个位置，编译程序将产生绝对地址的目标代码。绝对装入程序按照装入模块中的地址，将程序和数据装入内存。由于程序中的逻辑地址与实际内存地址完全相同，故不需对程序和数据的地址进行修改。<strong>绝对装入方式只适用于单道程序环境</strong>。另外，程序中所使用的绝对地址,可在编译或汇编时给出，也可由程序员直接赋予。而通常情况下在程序中采用的是符号地址，编译或汇编时再转换为绝对地址。<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/2.png" alt="绝对装入方式"><br>
+  （2）<strong>可重定位装入</strong>：在多道程序环境下，多个目标模块的起始地址通常都是从$0$开始，程序中的其他地址都是相对于起始地址的,此时应采用可重定位装入方式。根据内存的当前情况，将装入模块装入到内存的适当位置。<strong>装入时对目标程序中指令和数据的修改过程称为重定位</strong>，地址变换通常是在装入时一次完成的，所以又称为静态重定位。静态重定位的特点是在一个作业装入内存时，必须分配其要求的全部内存空间，如果没有足够的内存，就不能装入该作业。此外，作业一旦进入内存后，在整个运行期间不能在内存中移动，也不能再申请内存空间。<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/3.png" alt="可重装定位装入方式"><br>
+  （3）<strong>动态运行时装入</strong>：又称<strong>动态重定位</strong>，装入程序把装入模块装入内存后，并不立即把装入模块中的相对地址转化为绝对地址，而是推迟到程序要真正执行时才进行。因此，装入内存后的所有地址均为相对地址。这种方法需要一个<strong>重定位寄存器</strong>的支持。动态重定位有如下特点：**可以将程序分配到不连续的存储区中；在程序运行之前可以只装入它的部分代码即可投入运行，然后在程序运行期间，根据需要动态申请分配内；便于程序段的共享，可以向用户提供一个比存储空间大得多的地址空间。**如下图所示：<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/4.png" alt="动态重定位"></p>
+<h3 id="逻辑地址空间与物理地址空间"><a class="header-anchor" href="#逻辑地址空间与物理地址空间">¶</a>逻辑地址空间与物理地址空间</h3>
+<p>  程序经过编译后，每个目标模块都是从$0$号单元开始编址，称为该目标模块的<strong>相对地址（或逻辑地址）</strong>。当链接程序将各个模块链接成一个完整的<font color="red"><strong>可执行目标程序</strong></font>时，链接程序顺序依次按各个模块的相对地址构成统一的从$0$号单元开始编址的<strong>逻辑地址空间</strong>。并且用户程序和程序员<font color="red"><strong>只需要知道逻辑地址而内存管理的具体机制则是完全透明的</strong></font>。<strong>不同进程可以有相同的逻辑地址，因为这些相同的逻辑地址可以映射到主存的不同位置</strong>。<br>
+  <font color="blue"><strong>物理地址空间</strong></font>是指内存中<strong>物理单元</strong>的集合，它是地址转换的最终地址，进程在运行时<strong>执行指令和访问数据</strong>都要通过物理地址从主存中存取。当装入程序将可执行代码装入内存时，<strong>必须通过地址转换将逻辑地址转换成物理地址</strong>，这个过程称为<font color="blue"><strong>地址重定位</strong></font>。</p>
+<h3 id="内存保护"><a class="header-anchor" href="#内存保护">¶</a>内存保护</h3>
+<p>  内存分配前，需要保护操作系统不受用户进程的影响，同时保护用户进程不受其他用户进程的影响。可以采取的两种内存保护的方法：<br>
+  （1）在$CPU$中设置一对<font color="blue"><strong>上、下限寄存器</strong></font>，存放用户在主存中的下限和上限地址，每当CPU要访问一个地址时，分别和两个寄存器的值相比，判断有无越界。<br>
+  （2）通过采用<font color="blue"><strong>重定位寄存器（基址寄存器）</strong></font>和<font color="blue"><strong>界地址寄存器（限长寄存器）</strong></font>来实现这种保护。重定位寄存器含最小的物理地址值，界地址寄存器含逻辑地址的最大值。每个逻辑地址值必须小于界地址寄存器，内存管理机构动态的将逻辑地址与界地址寄存器进行比较，如果未发生地址越界，则加上重定位寄存器的值后映射成物理地址，再送交内存单元。其中，<strong>界地址寄存器是用来与逻辑地址进行比较的，如果界地址寄存器中存储的逻辑地址的最大值小于逻辑地址，则未发生越界。而重定位寄存器是用来“加”的，逻辑地址加上重定位寄存器中的值就能得到物理地址</strong>。<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/5.png" alt="重定位和界地址寄存器的硬件支持"></p>
+<h2 id="覆盖与交换"><a class="header-anchor" href="#覆盖与交换">¶</a>覆盖与交换</h2>
+<p>  在多道程序环境下，计算机的内存往往并不充裕，操作系统需要对内存进行管理，进行合理的划分和有效的动态分配，并且需要<strong>进行内存的扩充</strong>，而<font color="red"><strong>覆盖</strong></font>与<font color="red"><strong>交换</strong></font>这两种技术就是用来扩充内存的方法。</p>
+<h3 id="覆盖"><a class="header-anchor" href="#覆盖">¶</a>覆盖</h3>
+<p>  早期的计算机内存很小，经常会出现内存大小不够的情况。后来人们引入了覆盖技术，用来解决<strong>程序大小超过物理内存总和</strong>的问题。<br>
+  <strong>覆盖的基本思想</strong>：因为程序并非任何时候都要访问程序及数据各个部分，因此，将程序分为多个段（多个模块）。常用的段常驻内存，不常用的段在需要时调入内存。内存中分为一个<strong>固定区</strong>和若干个<strong>覆盖区</strong>。需要常驻内存的段放在<strong>固定区</strong>中，其余部分按调用关系分段，首先将那些即将要访问的段放入覆盖区，其他段放在外存中，在需要调用前，系统再将其调入覆盖区，替换覆盖区中原有的段。例如在下图中：该程序正文段所需要的内存空间是：<br>
+$$A(20KB) + B(50KB) + F(30KB) + C(30KB) + D(20KB) + E(40KB) = 190KB$$<br>
+但在采用了覆盖技术后，只需要空间：<br>
+$$A(20KB) + B(50KB) + E(40KB) = 110KB$$<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/6.png" alt="覆盖技术示例图"><br>
+  覆盖技术的特点：（1）打破了必须将一个程序的全部信息装入主存后才能运行的限制。（2）当同时运行程序的代码量大于主存时仍不能运行。（3）内存中能够更新的地方只有覆盖区的段，不在覆盖区中的段会常驻内存。</p>
+<h3 id="交换"><a class="header-anchor" href="#交换">¶</a>交换</h3>
+<p>  <strong>交换（对换）技术的设计思想</strong>：内存空间紧张时，系统将内存中某些处于等待状态（或在$CPU$调度原则下被剥夺运行权利）的程序从内存移到外存，这一过程称为<strong>换出</strong>。把外存中某些已具备运行条件的进程换入内存（进程在内存与磁盘间动态调度）这一过程称为<strong>换入</strong>。那些被换出至外存的进程称为挂起状态，再根据换出之前进程所处的状态又可以分为<font color="blue"><strong>就绪挂起</strong></font>以及<font color="blue"><strong>阻塞挂起</strong></font>两种状态。在之前中提到的<strong>中级调度采用的就是交换技术</strong>。下面是进程各种状态之间的转化关系：<br>
+<img src="/2021/04/12/nei-cun-guan-li-yi/7.png" alt="进程各状态之间的转换关系"><br>
+  交换需要注意的问题：（1）交换需要备份存储。（2）为了有效使用$CPU$，需要使每个进程的执行时间比交换时间长。（3）若换出进程，则必须保证该进程完全处于空闲状态。（4）交换空间通常作为磁盘的一整块，且独立于系统文件。（5）交换通常在有许多进程运行且内存空间吃紧时开始启动，而在系统负荷降低时暂停。<br>
+  <font color="red"><strong>交换技术主要在不同进程（或作业）中进行，而覆盖则用于同一个程序或进程中</strong></font>。现代操作系统是通过虚拟内存技术来解决覆盖技术对于用户和程序员不透明，主存无法存放用户程序的矛盾的。</p>
+<h2 id="连续分配管理方式"><a class="header-anchor" href="#连续分配管理方式">¶</a>连续分配管理方式</h2>
+<p>  连续分配方式是指为一个用户程序分配一个连续的内存空间，连续分配的方式主要包括<strong>单一连续分配</strong>、<strong>固定分区分配</strong>和<strong>动态分区分配</strong>。</p>
+<h3 id="单一连续分配"><a class="header-anchor" href="#单一连续分配">¶</a>单一连续分配</h3>
+<p>  </p>
 
                 
             </div>
@@ -643,7 +583,7 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/">http://xbwcj.github.io/2020/05/28/qian-zhui-he-er-wei-qian-zhui-he-yu-chai-fen-ge-ren-li-jie/</a>
+                    <a href="http://xbwcj.github.io/2021/04/12/nei-cun-guan-li-yi/">http://xbwcj.github.io/2021/04/12/nei-cun-guan-li-yi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -681,8 +621,8 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ACM/">
-                                    <span class="chip bg-color">ACM</span>
+                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                    <span class="chip bg-color">操作系统</span>
                                 </a>
                             
                         </div>
@@ -853,7 +793,7 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-05-28T18-49-12',
+        id: '2021-04-12T18-16-28',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1147,17 +1087,18 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/01/29/bas-suan-fa/">
+                <a href="/2021/04/12/nei-cun-guan-li-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="BAS算法">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="内存管理（一）">
                         
-                        <span class="card-title">BAS算法</span>
+                        <span class="card-title">内存管理（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1167,26 +1108,27 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    课本学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%99%BA%E8%83%BD%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">智能优化算法</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
@@ -1200,13 +1142,13 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/27/xian-duan-shu-ge-ren-li-jie/">
+                <a href="/2021/04/07/jin-cheng-guan-li-si/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="线段树个人理解">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="进程管理（四）">
                         
-                        <span class="card-title">线段树个人理解</span>
+                        <span class="card-title">进程管理（四）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1217,14 +1159,14 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ACM/" class="post-category">
-                                    ACM
+                            <a href="/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    课本学习
                                 </a>
                             
                             
@@ -1234,8 +1176,8 @@ void twoDimen(int a[][], int n, int m) &#123;&#x2F;&#x2F;n和m分别代表二维
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ACM/">
-                        <span class="chip bg-color">ACM</span>
+                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                        <span class="chip bg-color">操作系统</span>
                     </a>
                     
                 </div>
