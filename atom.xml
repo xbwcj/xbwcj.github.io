@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2021-04-15T08:53:15.092Z</updated>
+  <updated>2022-03-03T15:40:31.471Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>受限玻尔兹曼机</title>
+    <link href="http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/"/>
+    <id>http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/</id>
+    <published>2022-03-03T10:54:26.000Z</published>
+    <updated>2022-03-03T15:40:31.471Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;受限玻尔兹曼机（英语：restricted Boltzmann machine,</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="人工智能" scheme="http://xbwcj.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>差分隐私个人理解（一）</title>
+    <link href="http://xbwcj.github.io/2022/01/24/chai-fen-yin-si-ge-ren-li-jie-yi/"/>
+    <id>http://xbwcj.github.io/2022/01/24/chai-fen-yin-si-ge-ren-li-jie-yi/</id>
+    <published>2022-01-24T03:10:05.000Z</published>
+    <updated>2022-03-03T10:55:05.520Z</updated>
+    
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="差分隐私、人工智能" scheme="http://xbwcj.github.io/tags/%E5%B7%AE%E5%88%86%E9%9A%90%E7%A7%81%E3%80%81%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>内存管理（一）</title>
@@ -454,56 +496,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;第六章软件结构体系&quot;&gt;&lt;a href=&quot;#第六章软件结构体系&quot; class=&quot;headerlink&quot; title=&quot;第六章软件结构体系&quot;&gt;&lt;/a&gt;第六章软件结构体系&lt;/h1&gt;&lt;h2 id=&quot;软件结构体系的内容：&quot;&gt;&lt;a href=&quot;#软件结构体系的内容：&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="软件工程" scheme="http://xbwcj.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>武汉理工大学《软件工程》复习总括二</title>
-    <link href="http://xbwcj.github.io/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/"/>
-    <id>http://xbwcj.github.io/2019/11/03/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-er/</id>
-    <published>2019-11-03T12:26:44.000Z</published>
-    <updated>2021-03-20T10:18:46.632Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;第四章需求获取&quot;&gt;&lt;a href=&quot;#第四章需求获取&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="软件工程" scheme="http://xbwcj.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>武汉理工大学《软件工程》复习总括一</title>
-    <link href="http://xbwcj.github.io/2019/11/02/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-yi/"/>
-    <id>http://xbwcj.github.io/2019/11/02/wu-han-li-gong-da-xue-ruan-jian-gong-cheng-fu-xi-zong-gua-yi/</id>
-    <published>2019-11-02T11:38:38.000Z</published>
-    <updated>2021-03-20T10:19:29.938Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;第一章软件工程概述&quot;&gt;&lt;a href=&quot;#第一章软件工程概述&quot; class=&quot;headerlink&quot;</summary>
         
       
     
