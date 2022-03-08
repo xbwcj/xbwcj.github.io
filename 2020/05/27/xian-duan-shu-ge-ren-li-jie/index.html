@@ -505,12 +505,24 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/1.png" alt="在这里插入图片描述"></p>
-<h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>&emsp;&emsp;线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度为O(logN)。而未优化的空间复杂度为2N，实际应用时一般还要开4N的数组以免越界，因此有时需要离散化让空间压缩。对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。</p>
-<h2 id="作用范围："><a href="#作用范围：" class="headerlink" title="作用范围："></a>作用范围：</h2><p>&emsp;&emsp;线段树的适用范围很广，可以在线维护修改以及查询区间上的最值，求和。更可以扩充到二维线段树（矩阵树）和三维线段树（空间树）。对于一维线段树来说，每次更新以及查询的时间复杂度为O(logN)。还支持区间修改，单点修改等操作。</p>
-<h2 id="实现原理："><a href="#实现原理：" class="headerlink" title="实现原理："></a>实现原理：</h2><p>&emsp;&emsp;线段树主要是把一段大区间平均地划分成两段小区间进行维护，再用小区间的值来更新大区间。这样既能保证正确性，又能使时间保持在log级别（因为这棵线段树是平衡的）。也就是说，一个[L…R]的区间会被划分成[L…(L+R)/2]和[(L+R)/2+1…R]这两个小区间进行维护，直到L=R。但是在上述的过程中我们会遇到以下几个问题，就是我们该如何建树，建树的过程中每一个下标我们该如何去分配，分派到的每一个空间我们应该用来存放哪些数据。</p>
-<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/2.png" alt="在这幅图片中"><br>&emsp;&emsp;在这里我们仅对线段树中常见的区间最大值问题进行解释讨论。假设所给的区间为F[1:6] = {1, 9, 7, 8, 2, 3}。那么其对应的线段树的结构就如上图所示。其中红色的圆圈就代表线段树对应的每一个结点的下标。蓝色方框中的Max就是我们每一个结点所存放的内容，即每一个区间存放的最大值。Max下面的内容是对这个区间范围的一个说明，并不需要存放在数组中。<br>&emsp;&emsp;仔细看这幅图我们会发现，其中结点的下标并不连续（在图中结点的标号并没有10，11）。这是因为我们在用数组对线段树进行模拟的时候，必须要提前对整个树的空间进行提前的开辟，所开辟的空间虽然并没有使用到，但是其仍然真是存在，这也是为什么我们在对数组进行开辟空间时一般会选择4<em>n的大小以避免出现RE。<br>&emsp;&emsp;通过观察上面的线段树结点标号我们可以发现，对于一个区间[L,R]来说，最重要的数据当然就是区间的左右端点L和R，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。这种方式用指针好实现，定义两个左右子树递归即可，按时指针表示过于繁琐，而且不方便各种操作，大部分的线段树都是使用数组进行表示，那这里怎么快速使用下标找到左右子树呢。这就会涉及到每个结点下表数字的规律。我们发现在线段树中每个非叶子结点的度都为2，且父亲节点的左右两个孩子分别存储父亲一半的区间，而每个父亲结点存放的欧式孩子的最大值，而且左孩子的下标都为偶数，右孩子的下标都是奇数且左孩子下标数+1，即：<br><em>**</em>L = Father</em>2 （左子树下标为父亲下标的两倍）<br>   R = Father<em>2+1（右子树下标为父亲下标的两倍+1）<strong>**<br>   或
-   </strong>k&lt;&lt;1（结点k的左子树下标）<br>k&lt;&lt;1|1（结点k的右子树下标）*</em><br>所以建树的操作可用如下代码实现</p>
+                <h1>线段树</h1>
+<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/1.png" alt="在这里插入图片描述"></p>
+<h2 id="定义："><a class="header-anchor" href="#定义：">¶</a>定义：</h2>
+<p>  线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度为O(logN)。而未优化的空间复杂度为2N，实际应用时一般还要开4N的数组以免越界，因此有时需要离散化让空间压缩。对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。</p>
+<h2 id="作用范围："><a class="header-anchor" href="#作用范围：">¶</a>作用范围：</h2>
+<p>  线段树的适用范围很广，可以在线维护修改以及查询区间上的最值，求和。更可以扩充到二维线段树（矩阵树）和三维线段树（空间树）。对于一维线段树来说，每次更新以及查询的时间复杂度为O(logN)。还支持区间修改，单点修改等操作。</p>
+<h2 id="实现原理："><a class="header-anchor" href="#实现原理：">¶</a>实现原理：</h2>
+<p>  线段树主要是把一段大区间平均地划分成两段小区间进行维护，再用小区间的值来更新大区间。这样既能保证正确性，又能使时间保持在log级别（因为这棵线段树是平衡的）。也就是说，一个[L…R]的区间会被划分成[L…(L+R)/2]和[(L+R)/2+1…R]这两个小区间进行维护，直到L=R。但是在上述的过程中我们会遇到以下几个问题，就是我们该如何建树，建树的过程中每一个下标我们该如何去分配，分派到的每一个空间我们应该用来存放哪些数据。</p>
+<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/2.png" alt="在这幅图片中"><br>
+  在这里我们仅对线段树中常见的区间最大值问题进行解释讨论。假设所给的区间为F[1:6] = {1, 9, 7, 8, 2, 3}。那么其对应的线段树的结构就如上图所示。其中红色的圆圈就代表线段树对应的每一个结点的下标。蓝色方框中的Max就是我们每一个结点所存放的内容，即每一个区间存放的最大值。Max下面的内容是对这个区间范围的一个说明，并不需要存放在数组中。<br>
+  仔细看这幅图我们会发现，其中结点的下标并不连续（在图中结点的标号并没有10，11）。这是因为我们在用数组对线段树进行模拟的时候，必须要提前对整个树的空间进行提前的开辟，所开辟的空间虽然并没有使用到，但是其仍然真是存在，这也是为什么我们在对数组进行开辟空间时一般会选择4<em>n的大小以避免出现RE。<br>
+  通过观察上面的线段树结点标号我们可以发现，对于一个区间[L,R]来说，最重要的数据当然就是区间的左右端点L和R，但是大部分的情况我们并不会去存储这两个数值，而是通过递归的传参方式进行传递。这种方式用指针好实现，定义两个左右子树递归即可，按时指针表示过于繁琐，而且不方便各种操作，大部分的线段树都是使用数组进行表示，那这里怎么快速使用下标找到左右子树呢。这就会涉及到每个结点下表数字的规律。我们发现在线段树中每个非叶子结点的度都为2，且父亲节点的左右两个孩子分别存储父亲一半的区间，而每个父亲结点存放的欧式孩子的最大值，而且左孩子的下标都为偶数，右孩子的下标都是奇数且左孩子下标数+1，即：<br>
+<strong><em><em>L = Father</em>2 （左子树下标为父亲下标的两倍）<br>
+R = Father</em>2+1（右子树下标为父亲下标的两倍+1）</strong></em>*<br>
+或<br>
+<strong>k&lt;&lt;1（结点k的左子树下标）<br>
+k&lt;&lt;1|1（结点k的右子树下标）</strong><br>
+所以建树的操作可用如下代码实现</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">const int maxn &#x3D; 1e5+5;
 const int INF &#x3D; 0x3f3f3f3f;
 int tree[maxn&lt;&lt;2],temp[maxn];&#x2F;&#x2F;tree[]数组表示线段树数组，temp[]表示存放原始数据的数组
@@ -525,10 +537,14 @@ void Build(int l,int r,int rt)&#123; &#x2F;&#x2F;l,r表示当前节点区间，r
     Build(mid+1,r,rt&lt;&lt;1|1);  
     tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];&#x2F;&#x2F;更新信息
 &#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="线段树的基本操作："><a href="#线段树的基本操作：" class="headerlink" title="线段树的基本操作："></a>线段树的基本操作：</h2><h3 id="一、点更新"><a href="#一、点更新" class="headerlink" title="一、点更新"></a>一、点更新</h3><p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>&emsp;&emsp;假设我们将上述的区间F[1:6] = {1, 9, 7, 8, 2, 3}中的F[3] = 7通过对其+3更改为10。那么我们应当对线段树进行如下的几个操作。</p>
+<h2 id="线段树的基本操作："><a class="header-anchor" href="#线段树的基本操作：">¶</a>线段树的基本操作：</h2>
+<h3 id="一、点更新"><a class="header-anchor" href="#一、点更新">¶</a>一、点更新</h3>
+<p><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/3.png" alt="在这里插入图片描述"><br>
+  假设我们将上述的区间F[1:6] = {1, 9, 7, 8, 2, 3}中的F[3] = 7通过对其+3更改为10。那么我们应当对线段树进行如下的几个操作。</p>
 <ol>
 <li>我们通过线段树的根结点向下遍历，通过叶子结点所在的区间进行查询，在每一处根结点与我们改变的值相比较，如果F[3] = 10大于当前根结点中存储的Max值，那么将Max = 10，否则不变且继续向下遍历。</li>
-<li>直至到L=R时，即为我们改变的叶子结点，将其中存储的值变为我们上述的F[3] = 10，退出。<br>&emsp;&emsp;具体代码实现如下：</li>
+<li>直至到L=R时，即为我们改变的叶子结点，将其中存储的值变为我们上述的F[3] = 10，退出。<br>
+  具体代码实现如下：</li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式更新 updata(p,v,1,n,1);
 void updata(int p,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;p为下标，v为要加上的值，l，r为结点区间，rt为结点下标
@@ -544,10 +560,13 @@ void updata(int p,int v,int l,int r,int rt)&#123;    &#x2F;&#x2F;p为下标，v�
         updata(p,v,m+1,r,rt&lt;&lt;1|1);
     tree[rt] &#x3D; max(tree[rt&lt;&lt;1],tree[rt&lt;&lt;1|1];    &#x2F;&#x2F;更新父节点的值
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="二、区间查询"><a href="#二、区间查询" class="headerlink" title="二、区间查询"></a>二、区间查询</h3><p>&emsp;&emsp;线段树的每个结点存储的都是一段区间的信息 ，这就意味着如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息10即可，查询[1,2]直接返回9。但是有时题目中为了设置难度并不会轻易让我们查询每个结点所表示的区间。比如现在我要查询[2,5]区间的最值，这时候我们会发现并不存在某个节点的区间是[2,5]，那么这时我们应该采取一些什么方法来进行区间信息的查询呢？<br><img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/4.png" alt="在这里插入图片描述"></p>
+<h3 id="二、区间查询"><a class="header-anchor" href="#二、区间查询">¶</a>二、区间查询</h3>
+<p>  线段树的每个结点存储的都是一段区间的信息 ，这就意味着如果我们刚好要查询这个区间，那么则直接返回这个结点的信息即可，比如对于上面线段树，如果我直接查询[1,6]这个区间的最值，那么直接返回根节点信息10即可，查询[1,2]直接返回9。但是有时题目中为了设置难度并不会轻易让我们查询每个结点所表示的区间。比如现在我要查询[2,5]区间的最值，这时候我们会发现并不存在某个节点的区间是[2,5]，那么这时我们应该采取一些什么方法来进行区间信息的查询呢？<br>
+<img src="/2020/05/27/xian-duan-shu-ge-ren-li-jie/4.png" alt="在这里插入图片描述"></p>
 <ol>
 <li>首先我们发现区间[2,5]在线段树中包括的节点有[2,2]，[3,3]，[4,4]，[5,5]，[4,5]。但是[4,4]，[5,5]这两个信息的区间已经被[4,5]区间所包含，所以我们真正需要查询的结点为[2,2]，[3,3]，[4,5]这三个区间所在的结点。</li>
-<li>其次从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归。<br>&emsp;&emsp;具体代码如下</li>
+<li>其次从根节点开始往下递归，如果当前结点是要查询的区间的真子集，则返回这个结点的信息且不需要再往下递归。<br>
+  具体代码如下</li>
 </ol>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;递归方式区间查询 query(Ld,Rd,1,n,1);
 int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为要查询的区间，l，r为结点区间，rt为结点下标
@@ -562,8 +581,10 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[Ld,Rd]即为�
     return ans;    &#x2F;&#x2F;返回当前结点得到的信息
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="三、区间更新"><a href="#三、区间更新" class="headerlink" title="三、区间更新"></a>三、区间更新</h3><p>&emsp;&emsp;在线段树的区间更新中我们引进了一个新的思想，Lazy_tag，字面意思就是懒惰标记的意思，实际上它的功能也就是偷懒= =，因为对于一个区间[L,R]来说，我们每次都更新区间中的每一个值，那样的话更新的复杂度将会是O(NlogN)，这太高了，所以引进了Lazy_tag，这个标记一般用于处理线段树的区间更新。<br>　　线段树在进行区间更新的时候，为了提高更新的效率，所以每次更新只更新到更新区间完全覆盖线段树结点区间为止，这样就会导致被更新结点的子孙结点的区间得不到需要更新的信息，所以在被更新结点上打上一个标记，称为lazy-tag，等到下次访问这个结点的子结点时再将这个标记传递给子结点，所以也可以叫延迟标记。<br>　　也就是说递归更新的过程，更新到结点区间为需要更新的区间的真子集不再往下更新，下次若是遇到需要用这下面的结点的信息，再去更新这些结点，所以这样的话使得区间更新的操作和区间查询类似，复杂度为O(logN)。
-　　</p>
+<h3 id="三、区间更新"><a class="header-anchor" href="#三、区间更新">¶</a>三、区间更新</h3>
+<p>  在线段树的区间更新中我们引进了一个新的思想，Lazy_tag，字面意思就是懒惰标记的意思，实际上它的功能也就是偷懒= =，因为对于一个区间[L,R]来说，我们每次都更新区间中的每一个值，那样的话更新的复杂度将会是O(NlogN)，这太高了，所以引进了Lazy_tag，这个标记一般用于处理线段树的区间更新。<br>
+　　线段树在进行区间更新的时候，为了提高更新的效率，所以每次更新只更新到更新区间完全覆盖线段树结点区间为止，这样就会导致被更新结点的子孙结点的区间得不到需要更新的信息，所以在被更新结点上打上一个标记，称为lazy-tag，等到下次访问这个结点的子结点时再将这个标记传递给子结点，所以也可以叫延迟标记。<br>
+　　也就是说递归更新的过程，更新到结点区间为需要更新的区间的真子集不再往下更新，下次若是遇到需要用这下面的结点的信息，再去更新这些结点，所以这样的话使得区间更新的操作和区间查询类似，复杂度为O(logN)。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void Pushdown(int rt)&#123;    &#x2F;&#x2F;更新子树的lazy值，这里是RMQ的函数，要实现区间和等则需要修改函数内容
     if(lazy[rt])&#123;    &#x2F;&#x2F;如果有lazy标记
         lazy[rt&lt;&lt;1] +&#x3D; lazy[rt];    &#x2F;&#x2F;更新左子树的lazy值
@@ -606,7 +627,8 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
         return res;    &#x2F;&#x2F;返回当前结点得到的信息
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font>
+<p><font face="微软雅黑" size="4">你我都是内卷背景下不起眼的尘埃，被时代的洪流裹挟向前。</font></p>
+
                 
             </div>
             <hr/>
@@ -1407,7 +1429,7 @@ int query(int Ld,int Rd,int l,int r,int rt)&#123;    &#x2F;&#x2F;[L,R]即为要�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">57.9k</span>&nbsp;字
+                class="white-color">56.9k</span>&nbsp;字
             
             
             

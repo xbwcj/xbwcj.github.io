@@ -475,14 +475,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    18 分
                 </div>
                 
 
@@ -505,52 +505,96 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="进程同步的基本概念"><a href="#进程同步的基本概念" class="headerlink" title="进程同步的基本概念"></a>进程同步的基本概念</h2><p>&emsp;&emsp;并发执行的进程之间存在相互制约的关系，为了协调进程之间的相互制约关系，进入了进程同步的概念。例如在系统计算算式：$1+2*3$，其中乘法进程一定要在加法进程之前进行运算（在这里把加、乘运算比作进程），但是因为操作系统具有异步性，如果不加以制约，会出现运行顺序相反的情况。同时熟悉以下概念</p>
-<h3 id="临界资源"><a href="#临界资源" class="headerlink" title="临界资源"></a>临界资源</h3><p>&emsp;&emsp;在操作系统中，虽然多个进程可以共享系统中的各种资源，但其中许多资源一次只能为一个进程所用，将这些一次仅允许一个进程使用的资源称为<strong>临界资源</strong>，许多物理资源如打印机等都属于临界资源，一些变量、数据等都可以被若干进程共享，也属于临界资源。在每个进程中，访问临界资源的那段代码称为<strong>临界区</strong>。为了保证临界资源的正确使用，把其访问过程分为4个部分：<br>&emsp;&emsp;（1）进入区：在进入区要检查可否进入临界区，若能进入临界区，则应设置正在访问临界区的标志，以阻止其他进程同时进入临界区。<br>&emsp;&emsp;（2）临界区：访问临界资源的那段代码称。<br>&emsp;&emsp;（3）退出区：将正在访问临界区的标志清除。<br>&emsp;&emsp;（4）剩余区：代码中的剩余部分。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">do &#123;
+                <h1>进程同步</h1>
+<h2 id="进程同步的基本概念"><a class="header-anchor" href="#进程同步的基本概念">¶</a>进程同步的基本概念</h2>
+<p>  并发执行的进程之间存在相互制约的关系，为了协调进程之间的相互制约关系，进入了进程同步的概念。例如在系统计算算式：$1+2*3$，其中乘法进程一定要在加法进程之前进行运算（在这里把加、乘运算比作进程），但是因为操作系统具有异步性，如果不加以制约，会出现运行顺序相反的情况。同时熟悉以下概念</p>
+<h3 id="临界资源"><a class="header-anchor" href="#临界资源">¶</a>临界资源</h3>
+<p>  在操作系统中，虽然多个进程可以共享系统中的各种资源，但其中许多资源一次只能为一个进程所用，将这些一次仅允许一个进程使用的资源称为<strong>临界资源</strong>，许多物理资源如打印机等都属于临界资源，一些变量、数据等都可以被若干进程共享，也属于临界资源。在每个进程中，访问临界资源的那段代码称为<strong>临界区</strong>。为了保证临界资源的正确使用，把其访问过程分为4个部分：<br>
+  （1）进入区：在进入区要检查可否进入临界区，若能进入临界区，则应设置正在访问临界区的标志，以阻止其他进程同时进入临界区。<br>
+  （2）临界区：访问临界资源的那段代码称。<br>
+  （3）退出区：将正在访问临界区的标志清除。<br>
+  （4）剩余区：代码中的剩余部分。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">do &#123;
     entry section     &#x2F;&#x2F; 进入区
     critical section  &#x2F;&#x2F; 临界区
     exit section      &#x2F;&#x2F; 退出区
     remainder section &#x2F;&#x2F; 剩余区 
-&#125; while(true)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p>&emsp;&emsp;同步即直接制约关系，是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而等待、传递信息所产生的制约关系。</p>
-<h3 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h3><p>&emsp;&emsp;互斥即间接制约关系，当一个进程进入临界区使用临界资源时，另一个进程必须等待，当占用临界资源的进程退出临界区后，另一进程才允许去访问此临界资源。为了禁止两个进程同时进入临界区，同步机制应遵循以下准则：<br>&emsp;&emsp;（1）<strong>空闲让进</strong><br>&emsp;&emsp;（2）<strong>忙则等待</strong><br>&emsp;&emsp;（3）<strong>有限等待</strong>：对请求访问的进程，应保证能在有限时间内进入临界区。<br>&emsp;&emsp;（4）<strong>让权等待</strong>：当进程不能进入临界区时，应立即释放处理器，防止进程忙等待。</p>
-<h2 id="实现临界区互斥的基本方法"><a href="#实现临界区互斥的基本方法" class="headerlink" title="实现临界区互斥的基本方法"></a>实现临界区互斥的基本方法</h2><h3 id="软件实现法"><a href="#软件实现法" class="headerlink" title="软件实现法"></a>软件实现法</h3><p>&emsp;&emsp;在进入区设置并检查一些标志来标明是否有进程在临界区中，若已有进程在临界区，则在进入临界区通过循环检查进行等待，进程离开临界区后则在退出区修改标志。</p>
-<h4 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h4><p>&emsp;&emsp;设置一个公用型整数变量turn，用于指示被允许进入临界区的进程编号，即若$turn = 0$，则允许$P_{0}$进程进入临界区。该算法可确保每次只允许一个进程进入临界区。但两个进程必须交替进入临界区。若某个进程不再进入临界区，则另一个进程也无法进入临界区，这样很容易造成资源利用不充分。该情况如下所示：<br>&emsp;&emsp;$P_{0}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(turn !&#x3D; 0);  &#x2F;&#x2F; 进入区
+&#125; while(true)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="同步"><a class="header-anchor" href="#同步">¶</a>同步</h3>
+<p>  同步即直接制约关系，是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而等待、传递信息所产生的制约关系。</p>
+<h3 id="互斥"><a class="header-anchor" href="#互斥">¶</a>互斥</h3>
+<p>  互斥即间接制约关系，当一个进程进入临界区使用临界资源时，另一个进程必须等待，当占用临界资源的进程退出临界区后，另一进程才允许去访问此临界资源。为了禁止两个进程同时进入临界区，同步机制应遵循以下准则：<br>
+  （1）<strong>空闲让进</strong><br>
+  （2）<strong>忙则等待</strong><br>
+  （3）<strong>有限等待</strong>：对请求访问的进程，应保证能在有限时间内进入临界区。<br>
+  （4）<strong>让权等待</strong>：当进程不能进入临界区时，应立即释放处理器，防止进程忙等待。</p>
+<h2 id="实现临界区互斥的基本方法"><a class="header-anchor" href="#实现临界区互斥的基本方法">¶</a>实现临界区互斥的基本方法</h2>
+<h3 id="软件实现法"><a class="header-anchor" href="#软件实现法">¶</a>软件实现法</h3>
+<p>  在进入区设置并检查一些标志来标明是否有进程在临界区中，若已有进程在临界区，则在进入临界区通过循环检查进行等待，进程离开临界区后则在退出区修改标志。</p>
+<h4 id="单标志法"><a class="header-anchor" href="#单标志法">¶</a>单标志法</h4>
+<p>  设置一个公用型整数变量turn，用于指示被允许进入临界区的进程编号，即若$turn = 0$，则允许$P_{0}$进程进入临界区。该算法可确保每次只允许一个进程进入临界区。但两个进程必须交替进入临界区。若某个进程不再进入临界区，则另一个进程也无法进入临界区，这样很容易造成资源利用不充分。该情况如下所示：<br>
+  $P_{0}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(turn !&#x3D; 0);  &#x2F;&#x2F; 进入区
 critical section;  &#x2F;&#x2F; 临界区
 turn &#x3D; 1;          &#x2F;&#x2F; 退出区
-remainder section; &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$P_{1}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(turn !&#x3D; 1);  &#x2F;&#x2F; 进入区
+remainder section; &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $P_{1}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(turn !&#x3D; 1);  &#x2F;&#x2F; 进入区
 critical section;  &#x2F;&#x2F; 临界区
 turn &#x3D; 0;          &#x2F;&#x2F; 退出区
-remainder section; &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;若$P_{0}$顺利进入临界区并从临界区离开，则此时临界区是空闲的，但$P_{1}$并没有进入临界区的打算，$turn = 1$一直成立，$P_{0}$就无法再次进入临界区（一直被while循环困住）。</p>
-<h4 id="双标志法先检查"><a href="#双标志法先检查" class="headerlink" title="双标志法先检查"></a>双标志法先检查</h4><p>&emsp;&emsp;基本思想是在每个进程访问临界区资源之前，先查看临界资源是否正被访问，若正在被访问，该进程需等待；否则，进程才进入自己的临界区。因此，设置一个数据$flag[i]$,如果第$i$个元素值为$FALSE$，表示$P_{i}$进程未进入临界区，值为$TRUE$，表示$P_{i}$进程进入临界区。例如下面的代码表示：<br>&emsp;&emsp;$P_{i}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(flag[j]);      &#x2F;&#x2F; 进入区  （1）
+remainder section; &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  若$P_{0}$顺利进入临界区并从临界区离开，则此时临界区是空闲的，但$P_{1}$并没有进入临界区的打算，$turn = 1$一直成立，$P_{0}$就无法再次进入临界区（一直被while循环困住）。</p>
+<h4 id="双标志法先检查"><a class="header-anchor" href="#双标志法先检查">¶</a>双标志法先检查</h4>
+<p>  基本思想是在每个进程访问临界区资源之前，先查看临界资源是否正被访问，若正在被访问，该进程需等待；否则，进程才进入自己的临界区。因此，设置一个数据$flag[i]$,如果第$i$个元素值为$FALSE$，表示$P_{i}$进程未进入临界区，值为$TRUE$，表示$P_{i}$进程进入临界区。例如下面的代码表示：<br>
+  $P_{i}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(flag[j]);      &#x2F;&#x2F; 进入区  （1）
 flag[i] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  （3）
 critical section;    &#x2F;&#x2F; 临界区
 flag[i] &#x3D; FALSE;     &#x2F;&#x2F; 退出区
-remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$P_{j}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(flag[i]);      &#x2F;&#x2F; 进入区  （2）
+remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $P_{j}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while(flag[i]);      &#x2F;&#x2F; 进入区  （2）
 flag[j] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  （3）
 critical section;    &#x2F;&#x2F; 临界区
 flag[j] &#x3D; FALSE;     &#x2F;&#x2F; 退出区
-remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;这样做的优点是：<strong>不用交替进入，可连续使用</strong>。<br>&emsp;&emsp;缺点是：$P_{i}$和$P_{j}$可能同时进入临界区。当两个进程都没有进入时，$flag[i]$和$flag[j]$全部为$FALSE$，上述算法按照（1）（2）（3）（4）执行时，会同时进入临界区（违背了“忙则等待”）。即在检查对方的$flag$后和切换自己的$flag$前有一段时间，结果都检查通过。这里的问题出在检查和修改操作不能一次进行。</p>
-<h4 id="双标志法后检查"><a href="#双标志法后检查" class="headerlink" title="双标志法后检查"></a>双标志法后检查</h4><p>&emsp;&emsp;与<strong>双标志法先检查</strong>不同的是，该算法先将自己的标志设置为$TRUE$，再检测对方的状态标志，若对方标志为$TRUE$，则进程等待；否则进入临界区。<br>&emsp;&emsp;$P_{i}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[i] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  
+remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  这样做的优点是：<strong>不用交替进入，可连续使用</strong>。<br>
+  缺点是：$P_{i}$和$P_{j}$可能同时进入临界区。当两个进程都没有进入时，$flag[i]$和$flag[j]$全部为$FALSE$，上述算法按照（1）（2）（3）（4）执行时，会同时进入临界区（违背了“忙则等待”）。即在检查对方的$flag$后和切换自己的$flag$前有一段时间，结果都检查通过。这里的问题出在检查和修改操作不能一次进行。</p>
+<h4 id="双标志法后检查"><a class="header-anchor" href="#双标志法后检查">¶</a>双标志法后检查</h4>
+<p>  与<strong>双标志法先检查</strong>不同的是，该算法先将自己的标志设置为$TRUE$，再检测对方的状态标志，若对方标志为$TRUE$，则进程等待；否则进入临界区。<br>
+  $P_{i}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[i] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  
 while(flag[j]);      &#x2F;&#x2F; 进入区  
 critical section;    &#x2F;&#x2F; 临界区
 flag[i] &#x3D; FALSE;     &#x2F;&#x2F; 退出区
-remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$P_{j}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[j] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  
+remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $P_{j}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[j] &#x3D; TRUE;      &#x2F;&#x2F; 进入区  
 while(flag[i]);      &#x2F;&#x2F; 进入区  
 critical section;    &#x2F;&#x2F; 临界区
 flag[j] &#x3D; FALSE;     &#x2F;&#x2F; 退出区
-remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;在这种情况下，可能会发生两个进程同时都想进入临界区时，它们分别将自己的标志值$flag$设置为$TRUE$，并且同时检测对方的状态（执行$while$语句），发现对方也要进入临界区时，双方互相谦让，结果两个进程都无法进入临界区，从而导致“饥饿”现象。</p>
-<h4 id="Peterson’s-Algorithm"><a href="#Peterson’s-Algorithm" class="headerlink" title="Peterson’s Algorithm"></a>Peterson’s Algorithm</h4><p>&emsp;&emsp;为了防止两个进程为进入临界区而无限期等待，又设置了变量$turn$，每个进程在先设置自己的标志后再设置$turn$标志。这时，再同时检测另一个进程状态标志和不允许进入标志，以便保证两个进程同时要求进入临界区时，只允许一个进程进入临界区。<br>&emsp;&emsp;$P_{i}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[i] &#x3D; TRUE; turn &#x3D; j;      &#x2F;&#x2F; 进入区  
+remainder section;   &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  在这种情况下，可能会发生两个进程同时都想进入临界区时，它们分别将自己的标志值$flag$设置为$TRUE$，并且同时检测对方的状态（执行$while$语句），发现对方也要进入临界区时，双方互相谦让，结果两个进程都无法进入临界区，从而导致“饥饿”现象。</p>
+<h4 id="Peterson’s-Algorithm"><a class="header-anchor" href="#Peterson’s-Algorithm">¶</a>Peterson’s Algorithm</h4>
+<p>  为了防止两个进程为进入临界区而无限期等待，又设置了变量$turn$，每个进程在先设置自己的标志后再设置$turn$标志。这时，再同时检测另一个进程状态标志和不允许进入标志，以便保证两个进程同时要求进入临界区时，只允许一个进程进入临界区。<br>
+  $P_{i}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[i] &#x3D; TRUE; turn &#x3D; j;      &#x2F;&#x2F; 进入区  
 while(flag[j] &amp;&amp; turn &#x3D;&#x3D; j);   &#x2F;&#x2F; 进入区  
 critical section;              &#x2F;&#x2F; 临界区
 flag[i] &#x3D; FALSE;               &#x2F;&#x2F; 退出区
-remainder section;             &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$P_{j}$进程：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[j] &#x3D; TRUE; turn &#x3D; i;      &#x2F;&#x2F; 进入区  
+remainder section;             &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $P_{j}$进程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">flag[j] &#x3D; TRUE; turn &#x3D; i;      &#x2F;&#x2F; 进入区  
 while(flag[i] &amp;&amp; turn &#x3D;&#x3D; i);   &#x2F;&#x2F; 进入区  
 critical section;              &#x2F;&#x2F; 临界区
 flag[j] &#x3D; FALSE;               &#x2F;&#x2F; 退出区
-remainder section;             &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;当进程$P_{i}$设置$flag[i] = true$时，就表示该进程想要进入临界区，同时$turn = j$，此时进程$P_{j}$已在临界区中，符合进程$P_{i}$中的循环条件，所以$P_{i}$不能进入临界区。若$P_{j}$不想要进入临界区，即$flag[i] = false$,循环条件不符合，则$P_{i}$可以顺利进入，反之亦然。</p>
-<h3 id="硬件实现方法"><a href="#硬件实现方法" class="headerlink" title="硬件实现方法"></a>硬件实现方法</h3><p>&emsp;&emsp;计算机提供了特殊的硬件指令，允许对一个字中的内容进行检测和修正，或对两个字的内容进行交换。通过硬件支持实现临界段问题的方法称为<strong>低级方法</strong>，或者<strong>元方法</strong>。</p>
-<h4 id="中断屏蔽方法"><a href="#中断屏蔽方法" class="headerlink" title="中断屏蔽方法"></a>中断屏蔽方法</h4><p>&emsp;&emsp;当一个进程正在使用处理机执行它的临界区代码时，防止其他进程进入其临界区进行访问的最简方法是，禁止一切中断发生，或称之为屏蔽中断、关中断。因为CPU只发生在中断时引起进程切换，因此屏蔽中断能够保证当前允许的进程让临界区代码顺利地执行完，进而保证互斥的正确实现，然后执行开中断。其典型模式为：<br><pre class="line-numbers language-none"><code class="language-none">.
+remainder section;             &#x2F;&#x2F; 剩余区 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  当进程$P_{i}$设置$flag[i] = true$时，就表示该进程想要进入临界区，同时$turn = j$，此时进程$P_{j}$已在临界区中，符合进程$P_{i}$中的循环条件，所以$P_{i}$不能进入临界区。若$P_{j}$不想要进入临界区，即$flag[i] = false$,循环条件不符合，则$P_{i}$可以顺利进入，反之亦然。</p>
+<h3 id="硬件实现方法"><a class="header-anchor" href="#硬件实现方法">¶</a>硬件实现方法</h3>
+<p>  计算机提供了特殊的硬件指令，允许对一个字中的内容进行检测和修正，或对两个字的内容进行交换。通过硬件支持实现临界段问题的方法称为<strong>低级方法</strong>，或者<strong>元方法</strong>。</p>
+<h4 id="中断屏蔽方法"><a class="header-anchor" href="#中断屏蔽方法">¶</a>中断屏蔽方法</h4>
+<p>  当一个进程正在使用处理机执行它的临界区代码时，防止其他进程进入其临界区进行访问的最简方法是，禁止一切中断发生，或称之为屏蔽中断、关中断。因为CPU只发生在中断时引起进程切换，因此屏蔽中断能够保证当前允许的进程让临界区代码顺利地执行完，进而保证互斥的正确实现，然后执行开中断。其典型模式为：</p>
+<pre class="line-numbers language-none"><code class="language-none">.
 .
 .
 关中断
@@ -558,53 +602,77 @@ remainder section;             &#x2F;&#x2F; 剩余区 <span aria-hidden="true" c
 开中断
 .
 .
-.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;但是<strong>这种方法限制了处理机交替执行程序的能力，因此执行的效率会明显降低</strong>。对内核来说，在它执行更新变量或列表的几条指令期间，关中断是很方便的，但关中断的权力交给用户则很不明智，若一个进程关中断后不再开中断，则系统可能会因此终止。</p>
-<h4 id="硬件指令方法"><a href="#硬件指令方法" class="headerlink" title="硬件指令方法"></a>硬件指令方法</h4><p>&emsp;&emsp;$TestAndSet$指令：这条指令为原子操作，即执行代码时不允许被中断，其功能是读出指定标志后把该标志设置为真。具体指令功能如下：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">boolean TestAndSet(boolean *lock) &#123;
+.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  但是<strong>这种方法限制了处理机交替执行程序的能力，因此执行的效率会明显降低</strong>。对内核来说，在它执行更新变量或列表的几条指令期间，关中断是很方便的，但关中断的权力交给用户则很不明智，若一个进程关中断后不再开中断，则系统可能会因此终止。</p>
+<h4 id="硬件指令方法"><a class="header-anchor" href="#硬件指令方法">¶</a>硬件指令方法</h4>
+<p>  $TestAndSet$指令：这条指令为原子操作，即执行代码时不允许被中断，其功能是读出指定标志后把该标志设置为真。具体指令功能如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">boolean TestAndSet(boolean *lock) &#123;
     boolean old;
     old &#x3D; *lock;
     *lock &#x3D; true;
     return old;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;为每个临界资源设置一个共享变量$lock$，表示资源的两种状态：$ture$表示正在被占用，其初值为$false$。在进程访问临界资源之前，利用$TsetAndSet$检查和修改标志$lock$；若有进程在临界区，则重复检查，直到退出进程，利用该指令实现进程互斥算法描述如下：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while TestAndSet(&amp;lock);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  为每个临界资源设置一个共享变量$lock$，表示资源的两种状态：$ture$表示正在被占用，其初值为$false$。在进程访问临界资源之前，利用$TsetAndSet$检查和修改标志$lock$；若有进程在临界区，则重复检查，直到退出进程，利用该指令实现进程互斥算法描述如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">while TestAndSet(&amp;lock);
 &#x2F;&#x2F; 进程的临界区代码段
 lock &#x3D; false;
-&#x2F;&#x2F; 进程的其他代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$Swap$指令：功能是交换两个字（字节）的内容，具体功能描述如下:<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Swap(boolean *a, boolean *b) &#123;
+&#x2F;&#x2F; 进程的其他代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $Swap$指令：功能是交换两个字（字节）的内容，具体功能描述如下:</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Swap(boolean *a, boolean *b) &#123;
     boolean temp;
     temp &#x3D; *a;
     a* &#x3D; *b;
     *b &#x3D; temp;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;<strong>上述两个指令的描述仅是功能实现，而并非软件实现的定义，真正是由硬件逻辑直接实现的，不会被中断</strong>。利用$Swap$指令实现进程互斥的算法描述如下：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">key &#x3D; true;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  <strong>上述两个指令的描述仅是功能实现，而并非软件实现的定义，真正是由硬件逻辑直接实现的，不会被中断</strong>。利用$Swap$指令实现进程互斥的算法描述如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">key &#x3D; true;
 while(key !&#x3D; false) &#123;
     Swap(&amp;lock, &amp;key);
 &#125;
 &#x2F;&#x2F; 进程的临界区代码段
 lock &#x3D; false;
-&#x2F;&#x2F; 进程的其他代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;为每个临界资源设置一个变量$lock$，初值为$false$；在每个进程中再设置一个局部布尔变量$key$，用于与$lock$交换信息。在进入临界区前，先利用$Swap$指令交换$lock$与$key$的内容，然后检查$key$的状态；有进程在临界区时，重复交换和检查过程，直到进程退出。</p>
-<p>&emsp;&emsp;硬件方法的优点是：（1）适用于任意数目的进程，不管是单处理机还是多处理机.（2）简单，容易验证其正确性。（3）支持进程内有多个临界区，只需要为每个临界区设立一个布尔值变量。<br>&emsp;&emsp;但是其任然存在缺点：（1）进程等待进入临界区时要耗费处理机时间，不能实现让权等待。（2）从等待进程中随机选择一个进入临界区，有的进程可能一直选不上，从而导致“饥饿”现象。</p>
-<h2 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h2><p>&emsp;&emsp;信号量机制是一种功能较强的机制，可以用来解决互斥与同步问题，只能被两个原语“$P$操作”和“$V$操作”访问。<strong>原语是指完成某种功能且不被分割，不被中断执行的操作序列</strong>，通常由硬件实现。该特性在单处理机上可由软件通过屏蔽中断方法实现。<strong>原语之所以不能被中断执行，是因为原语对变量的操作过程若被打断，可能会去允许另一个对同一变量的操作过程。从而出现临界段问题</strong>。</p>
-<h3 id="整型信号量"><a href="#整型信号量" class="headerlink" title="整型信号量"></a>整型信号量</h3><p>&emsp;&emsp;整型信号量被定义为一个用于表示资源数目的整型量$S$，$wait$和$signal$操作可描述为<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">wait(S) &#123;
+&#x2F;&#x2F; 进程的其他代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  为每个临界资源设置一个变量$lock$，初值为$false$；在每个进程中再设置一个局部布尔变量$key$，用于与$lock$交换信息。在进入临界区前，先利用$Swap$指令交换$lock$与$key$的内容，然后检查$key$的状态；有进程在临界区时，重复交换和检查过程，直到进程退出。</p>
+<p>  硬件方法的优点是：（1）适用于任意数目的进程，不管是单处理机还是多处理机.（2）简单，容易验证其正确性。（3）支持进程内有多个临界区，只需要为每个临界区设立一个布尔值变量。<br>
+  但是其任然存在缺点：（1）进程等待进入临界区时要耗费处理机时间，不能实现让权等待。（2）从等待进程中随机选择一个进入临界区，有的进程可能一直选不上，从而导致“饥饿”现象。</p>
+<h2 id="信号量"><a class="header-anchor" href="#信号量">¶</a>信号量</h2>
+<p>  信号量机制是一种功能较强的机制，可以用来解决互斥与同步问题，只能被两个原语“$P$操作”和“$V$操作”访问。<strong>原语是指完成某种功能且不被分割，不被中断执行的操作序列</strong>，通常由硬件实现。该特性在单处理机上可由软件通过屏蔽中断方法实现。<strong>原语之所以不能被中断执行，是因为原语对变量的操作过程若被打断，可能会去允许另一个对同一变量的操作过程。从而出现临界段问题</strong>。</p>
+<h3 id="整型信号量"><a class="header-anchor" href="#整型信号量">¶</a>整型信号量</h3>
+<p>  整型信号量被定义为一个用于表示资源数目的整型量$S$，$wait$和$signal$操作可描述为</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">wait(S) &#123;
     while(S &lt;&#x3D; 0);
     S &#x3D; S - 1;
 &#125;
 signal(S) &#123;
     S &#x3D; S + 1;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$wait$操作中，只要信号量$S &lt;= 0$，就会不断测试，因此一直使进程处于“忙等状态”。</p>
-<h3 id="记录型信号量"><a href="#记录型信号量" class="headerlink" title="记录型信号量"></a>记录型信号量</h3><p>&emsp;&emsp;记录型信号量是不存在“忙等”现象的进程同步机制。除需要一个用于代表资源数目的整型变量$value$外，再增加一个进程链表$L$，用于链接所有等待该资源的进程。其结构体如下：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">typedef struct &#123;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $wait$操作中，只要信号量$S &lt;= 0$，就会不断测试，因此一直使进程处于“忙等状态”。</p>
+<h3 id="记录型信号量"><a class="header-anchor" href="#记录型信号量">¶</a>记录型信号量</h3>
+<p>  记录型信号量是不存在“忙等”现象的进程同步机制。除需要一个用于代表资源数目的整型变量$value$外，再增加一个进程链表$L$，用于链接所有等待该资源的进程。其结构体如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">typedef struct &#123;
     int value;
     struct process *L;
-&#125; semaphore;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;相应的$wait$和$signal$操作如下：<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void wait(semaphore S) &#123;     &#x2F;&#x2F; 相当于申请资源
+&#125; semaphore;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  相应的$wait$和$signal$操作如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void wait(semaphore S) &#123;     &#x2F;&#x2F; 相当于申请资源
     S.value--;
     if(S.value &lt; 0) &#123;
         add this process to S.L;
         block(S.L);
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;在$wait$操作中，$S.value—$表示进程请求一个该类资源，当$S.value &lt; 0$时，表示该资源已分配完毕，因此进程应调用$block$原语，进行自我阻塞，放弃处理机，并插入该类资源的等待队列$S.L$。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void signal(semaphore S) &#123;   &#x2F;&#x2F;相当于释放资源
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  在$wait$操作中，$S.value–$表示进程请求一个该类资源，当$S.value &lt; 0$时，表示该资源已分配完毕，因此进程应调用$block$原语，进行自我阻塞，放弃处理机，并插入该类资源的等待队列$S.L$。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">void signal(semaphore S) &#123;   &#x2F;&#x2F;相当于释放资源
     S.value++;
     if(S.value &lt;&#x3D; 0) &#123;
         remove a process P from S.L;
         wakeup(P);
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;$signal$操作，表示释放一个资源，使系统中可供分配的该类资源数增$1$，因此有$S.value++$。若加$1$后仍是$S.value &lt;= 0$，则表示在$S.L$中仍有等待该资源的进程被阻塞，因此还应调用$wakeup$原语，将$S.L$中的第一个等待进程唤醒。</p>
-<h3 id="利用信号量实现同步"><a href="#利用信号量实现同步" class="headerlink" title="利用信号量实现同步"></a>利用信号量实现同步</h3><p>&emsp;&emsp;信号量机制能用于解决进程间的各种同步问题。设$S$为实现进程$P_{1}$和$P_{2}$同步的公共信号量，初值为$0$。<strong>进程$P_{2}$中的语句$y$要使用进程$P_{1}$中语句$x$的允许结果，所以只有当语句$x$执行完成之后，语句$y$才可以执行</strong>。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">semaphore S &#x3D; 0;     &#x2F;&#x2F; 初始化信号量
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  $signal$操作，表示释放一个资源，使系统中可供分配的该类资源数增$1$，因此有$S.value++$。若加$1$后仍是$S.value &lt;= 0$，则表示在$S.L$中仍有等待该资源的进程被阻塞，因此还应调用$wakeup$原语，将$S.L$中的第一个等待进程唤醒。</p>
+<h3 id="利用信号量实现同步"><a class="header-anchor" href="#利用信号量实现同步">¶</a>利用信号量实现同步</h3>
+<p>  信号量机制能用于解决进程间的各种同步问题。设$S$为实现进程$P_{1}$和$P_{2}$同步的公共信号量，初值为$0$。<strong>进程$P_{2}$中的语句$y$要使用进程$P_{1}$中语句$x$的允许结果，所以只有当语句$x$执行完成之后，语句$y$才可以执行</strong>。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">semaphore S &#x3D; 0;     &#x2F;&#x2F; 初始化信号量
 P1() &#123;
     sqrt(10000);
     x;               &#x2F;&#x2F; 语句x
@@ -616,8 +684,11 @@ P2() &#123;
     P(S);            &#x2F;&#x2F; 检查语句 x 是否运行完成
     y;               &#x2F;&#x2F; 检查无误， 运行 y 语句
     ...
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;若$P_{2}$先执行到$P(S)$时，$S$为$0$，执行$P$操作会把进程$P_{2}$阻塞，并放入阻塞队列，当进程$P_{1}$中的$x$执行完后，执行$V$操作，把$P_{2}$从阻塞队列中放回就绪队列，当$P_{2}$得到处理机时，就继续执行。</p>
-<h3 id="利用信号量实现进程互斥"><a href="#利用信号量实现进程互斥" class="headerlink" title="利用信号量实现进程互斥"></a>利用信号量实现进程互斥</h3><p>&emsp;&emsp;设$S$为实现进程$P_{1}$，$P_{2}$互斥的信号量，由于每次只允许一个进程进入临界区，所以$S$的初值应为$1$（即资源可用数为$1$）。只需要把临界区置于$P(S)$和$V(S)$之间，即可实现两个进程对临界区的互斥访问。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">semaphore S &#x3D; 1;          &#x2F;&#x2F; 初始化信号量
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  若$P_{2}$先执行到$P(S)$时，$S$为$0$，执行$P$操作会把进程$P_{2}$阻塞，并放入阻塞队列，当进程$P_{1}$中的$x$执行完后，执行$V$操作，把$P_{2}$从阻塞队列中放回就绪队列，当$P_{2}$得到处理机时，就继续执行。</p>
+<h3 id="利用信号量实现进程互斥"><a class="header-anchor" href="#利用信号量实现进程互斥">¶</a>利用信号量实现进程互斥</h3>
+<p>  设$S$为实现进程$P_{1}$，$P_{2}$互斥的信号量，由于每次只允许一个进程进入临界区，所以$S$的初值应为$1$（即资源可用数为$1$）。只需要把临界区置于$P(S)$和$V(S)$之间，即可实现两个进程对临界区的互斥访问。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">semaphore S &#x3D; 1;          &#x2F;&#x2F; 初始化信号量
 P1() &#123;
     ...
     P(S);                 &#x2F;&#x2F; 准备开始访问临界资源，加锁
@@ -630,9 +701,18 @@ P2() &#123;
     P(S);                 &#x2F;&#x2F; 准备开始访问临界资源，加锁
     进程 P2 的临界区
     V(S);                 &#x2F;&#x2F; 访问结束，解锁
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;当没有进程在临界区时，任意一个进程要进入临界区，就要执行$P$操作，把$S$的值减为$0$，然后进入临界区；当有进程存在于临界区时，$S$的值为$0$，在有进程要进入临界区，执行$P$操作时将会被阻塞，直至在临界区中的进程退出，这样便实现了临界区的互斥。</p>
-<h3 id="信号量实现前驱关系"><a href="#信号量实现前驱关系" class="headerlink" title="信号量实现前驱关系"></a>信号量实现前驱关系</h3><h2 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h2><p>&emsp;&emsp;在信号量机制中，每个要访问临界资源的进程都必须自备同步的$PV$操作，大量分散的同步操作给系统管理带来了麻烦，且容易因同步操作不当而导致系统死锁。于是产生了一种新的进程同步工具——管程，降低了思索发生的可能性。</p>
-<h3 id="管程的定义"><a href="#管程的定义" class="headerlink" title="管程的定义"></a>管程的定义</h3><p>&emsp;&emsp;系统中的各种硬件资源和软件资源，均可用数据接结构抽象地描述其资源特性。利用共享数据结构抽象地表示系统中的共享资源，而把对数据结构实施的操作定义为一组过程。进程对共享资源的申请、释放等操作，都通过这组过程来实现，这组过程还可以根据资源情况，或接受或阻塞进程的访问，实现进程互斥。<strong>这个代表共享数据结构，以及由对该共享数据结构实施操作的一组过程所组成的资源管理程序，称为管程</strong>。因此管程由以下$4$部分组成：<br>&emsp;&emsp;（1）管程的名称<br>&emsp;&emsp;（2）局部于管程内部的共享结构数据说明。<br>&emsp;&emsp;（3）对该数据结构进行操作的一组过程（或函数）<br>&emsp;&emsp;（4）对局部于管程内部的共享数据设置初始值的语句。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">monitor Demo &#123; &#x2F;&#x2F; 定义一个名称为“Demo”的管程
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  当没有进程在临界区时，任意一个进程要进入临界区，就要执行$P$操作，把$S$的值减为$0$，然后进入临界区；当有进程存在于临界区时，$S$的值为$0$，在有进程要进入临界区，执行$P$操作时将会被阻塞，直至在临界区中的进程退出，这样便实现了临界区的互斥。</p>
+<h3 id="信号量实现前驱关系"><a class="header-anchor" href="#信号量实现前驱关系">¶</a>信号量实现前驱关系</h3>
+<h2 id="管程"><a class="header-anchor" href="#管程">¶</a>管程</h2>
+<p>  在信号量机制中，每个要访问临界资源的进程都必须自备同步的$PV$操作，大量分散的同步操作给系统管理带来了麻烦，且容易因同步操作不当而导致系统死锁。于是产生了一种新的进程同步工具——管程，降低了思索发生的可能性。</p>
+<h3 id="管程的定义"><a class="header-anchor" href="#管程的定义">¶</a>管程的定义</h3>
+<p>  系统中的各种硬件资源和软件资源，均可用数据接结构抽象地描述其资源特性。利用共享数据结构抽象地表示系统中的共享资源，而把对数据结构实施的操作定义为一组过程。进程对共享资源的申请、释放等操作，都通过这组过程来实现，这组过程还可以根据资源情况，或接受或阻塞进程的访问，实现进程互斥。<strong>这个代表共享数据结构，以及由对该共享数据结构实施操作的一组过程所组成的资源管理程序，称为管程</strong>。因此管程由以下$4$部分组成：<br>
+  （1）管程的名称<br>
+  （2）局部于管程内部的共享结构数据说明。<br>
+  （3）对该数据结构进行操作的一组过程（或函数）<br>
+  （4）对局部于管程内部的共享数据设置初始值的语句。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">monitor Demo &#123; &#x2F;&#x2F; 定义一个名称为“Demo”的管程
     &#x2F;&#x2F; 定义共享数据结构，对应系统中的某种共享资源
     &#x2F;&#x2F; 共享数据结构 S；
     &#x2F;&#x2F; 对共享数据结构初始化的语句
@@ -651,8 +731,13 @@ P2() &#123;
         S++;       &#x2F;&#x2F; 可用资源数 +1
         ...
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;管程很像面向对象程序设计中的一个类，<strong>会把所有的共享资源的操作封装起来</strong>，<strong>并且每次仅允许一个进程进入管程</strong>。</p>
-<h3 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h3><p>&emsp;&emsp;当一个进程进入管程后被阻塞，直到阻塞的原因被解除时，在此期间，如果该进程不释放管程，则其他进程无法进入管程。因此将阻塞原因定义为<strong>条件变量$condition$</strong>,因为一个进程被阻塞的原因有多个，因此在管程中设置了多个条件变量，每个条件变量保存了一个等待队列，用于记录因该条件变量而阻塞的所有进程，对条件变量只能进行两种操作，$wait$和$signal$。<br>&emsp;&emsp;<strong>$x.wait$</strong>：当$x$对应的条件不满足时，正在调用管程的进程调用$x.wait$将自己插入$x$条件的等待队列，并释放管程。此时其他进程可以使用该管程。<br>&emsp;&emsp;<strong>$x.signal$</strong>：$x$对应的条件发生了变化，则调用$x.signal$，唤醒一个因$x$条件而阻塞的进程。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">monitor Demo &#123;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  管程很像面向对象程序设计中的一个类，<strong>会把所有的共享资源的操作封装起来</strong>，<strong>并且每次仅允许一个进程进入管程</strong>。</p>
+<h3 id="条件变量"><a class="header-anchor" href="#条件变量">¶</a>条件变量</h3>
+<p>  当一个进程进入管程后被阻塞，直到阻塞的原因被解除时，在此期间，如果该进程不释放管程，则其他进程无法进入管程。因此将阻塞原因定义为<strong>条件变量$condition$</strong>,因为一个进程被阻塞的原因有多个，因此在管程中设置了多个条件变量，每个条件变量保存了一个等待队列，用于记录因该条件变量而阻塞的所有进程，对条件变量只能进行两种操作，$wait$和$signal$。<br>
+  <strong>$x.wait$</strong>：当$x$对应的条件不满足时，正在调用管程的进程调用$x.wait$将自己插入$x$条件的等待队列，并释放管程。此时其他进程可以使用该管程。<br>
+  <strong>$x.signal$</strong>：$x$对应的条件发生了变化，则调用$x.signal$，唤醒一个因$x$条件而阻塞的进程。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">monitor Demo &#123;
     共享数据结构 S;
     condition x;                         &#x2F;&#x2F; 定义一个条件变量
     init_code() &#123;...&#125;
@@ -664,8 +749,12 @@ P2() &#123;
         &#x2F;&#x2F; 归还资源，做一系列相应处理；
         if(&#x2F;*有进程在等待*&#x2F;) x.xignal;    &#x2F;&#x2F; 唤醒一个阻塞进程
     &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>&emsp;&emsp;条件变量和信号量的比较：<br>&emsp;&emsp;相似点：条件变量的$wait/signal$操作类似于信号量的$P/V$操作，可以实现进程的阻塞/唤醒。<br>&emsp;&emsp;不同点：条件变量是“没有值的”，仅实现了“排队等待”功能；而信号量是“有值”的，信号量的值反映了剩余资源数，而在管程中，剩余资源数用共享数据结构记录。</p>
-<h2 id="经典的同步问题"><a href="#经典的同步问题" class="headerlink" title="经典的同步问题"></a>经典的同步问题</h2><p>&emsp;&emsp;这部分内容单独用一章博客进行讲述。</p>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  条件变量和信号量的比较：<br>
+  相似点：条件变量的$wait/signal$操作类似于信号量的$P/V$操作，可以实现进程的阻塞/唤醒。<br>
+  不同点：条件变量是“没有值的”，仅实现了“排队等待”功能；而信号量是“有值”的，信号量的值反映了剩余资源数，而在管程中，剩余资源数用共享数据结构记录。</p>
+<h2 id="经典的同步问题"><a class="header-anchor" href="#经典的同步问题">¶</a>经典的同步问题</h2>
+<p>  这部分内容单独用一章博客进行讲述。</p>
 
                 
             </div>
@@ -1467,7 +1556,7 @@ P2() &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">57.9k</span>&nbsp;字
+                class="white-color">56.9k</span>&nbsp;字
             
             
             
