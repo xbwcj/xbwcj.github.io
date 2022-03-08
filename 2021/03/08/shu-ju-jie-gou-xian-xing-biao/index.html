@@ -505,11 +505,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是线性表？"><a href="#什么是线性表？" class="headerlink" title="什么是线性表？"></a>什么是线性表？</h2><p>线性表（linear_list）是最常用且最简单的一种数据结构，一个线性表相当于是n个数据元素的有限序列，其中每个数据元素表示的内容在不同的情况下并不相同，有可能是一个数字、一个符号之类的。若将线性表用集合表示为:</p>
-<script type="math/tex; mode=display">
-(a_{1}, ..., a_{i-1}, a_{i}, a_{i+1}, ..., a_{n})</script><p>由集合中可以看出，除第一个外，集合中的每个数据元素均只有一个前驱，除最后一个外，集合中的每个数据元素均只有一个后继。</p>
-<h2 id="线性表的两种表示形式"><a href="#线性表的两种表示形式" class="headerlink" title="线性表的两种表示形式"></a>线性表的两种表示形式</h2><p>（1）顺序表示：用一组地址连续的存储单元依次存储线性表的数据元素，称为线性表的顺序存储结构，可随机存取表中任一元素（其实就是数组）<br>（2）链式表示：用一组任意的存储单元存储线性表中的数据元素，称为线性表的链式存储结构。它的存储单元可以是连续的，也可以是不连续的。在表示数据元素之间的逻辑关系时，除了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置），这两部分信息组成数据元素的存储映像，称为结点（node）。它包括两个域；存储数据元素信息的域称为数据域；存储直接后继存储位置的域称为指针域。指针域中存储的信息称为指针或链。<br>可以用下图来更加直观的表示顺序结构和链式结构</p>
-<h2 id="线性表的一般定义"><a href="#线性表的一般定义" class="headerlink" title="线性表的一般定义"></a>线性表的一般定义</h2><p>线性表的抽象数据类型定义如下：<br>数据对象：<script type="math/tex">D \, = \, {a_{i} \, | \, a_{i} \, \in \, ElemSet, \,i = 1,2,\cdots,n, \, n \geq 0}</script><br>数据关系：<script type="math/tex">R1 \, = \, {< a_{i-1},a_{i} > |a_{i-1},a{i} \in D,\,i=2,\cdots,n}</script><br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ADT List &#123;
+                <h2 id="什么是线性表？"><a class="header-anchor" href="#什么是线性表？">¶</a>什么是线性表？</h2>
+<p>线性表（linear_list）是最常用且最简单的一种数据结构，一个线性表相当于是n个数据元素的有限序列，其中每个数据元素表示的内容在不同的情况下并不相同，有可能是一个数字、一个符号之类的。若将线性表用集合表示为:<br>
+$$<br>
+(a_{1}, …, a_{i-1}, a_{i}, a_{i+1}, …, a_{n})<br>
+$$</p>
+<p>由集合中可以看出，除第一个外，集合中的每个数据元素均只有一个前驱，除最后一个外，集合中的每个数据元素均只有一个后继。</p>
+<h2 id="线性表的两种表示形式"><a class="header-anchor" href="#线性表的两种表示形式">¶</a>线性表的两种表示形式</h2>
+<p>（1）顺序表示：用一组地址连续的存储单元依次存储线性表的数据元素，称为线性表的顺序存储结构，可随机存取表中任一元素（其实就是数组）<br>
+（2）链式表示：用一组任意的存储单元存储线性表中的数据元素，称为线性表的链式存储结构。它的存储单元可以是连续的，也可以是不连续的。在表示数据元素之间的逻辑关系时，除了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置），这两部分信息组成数据元素的存储映像，称为结点（node）。它包括两个域；存储数据元素信息的域称为数据域；存储直接后继存储位置的域称为指针域。指针域中存储的信息称为指针或链。<br>
+可以用下图来更加直观的表示顺序结构和链式结构</p>
+<h2 id="线性表的一般定义"><a class="header-anchor" href="#线性表的一般定义">¶</a>线性表的一般定义</h2>
+<p>线性表的抽象数据类型定义如下：<br>
+数据对象：$$D , = , {a_{i} , | , a_{i} , \in , ElemSet, ,i = 1,2,\cdots,n, , n \geq 0}$$<br>
+数据关系：$$R1 , = , {&lt; a_{i-1},a_{i} &gt; |a_{i-1},a{i} \in D,,i=2,\cdots,n}$$</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ADT List &#123;
     &#x2F;&#x2F;基本操作
     InitList(&amp;L) &#x2F;&#x2F;构造空线性表L
     DestoryList(&amp;L) &#x2F;&#x2F;销毁线性表L
@@ -527,8 +537,11 @@
     &#x2F;*
         此处省略部分其他常见的操作
     *&#x2F;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><br>在上述的函数中需要注意，如果要改变原本线性表的内容，则需要传入线性表的地址，如果只是对线性表进行查询等不改变原本的线性表内容的操作，则不需要以地址的形式传入。（这部分其实就是C/C++的对传入函数参数值改变的原理，在此做一个小的提醒）。</p>
-<h2 id="顺序存储结构常见的结构体实现"><a href="#顺序存储结构常见的结构体实现" class="headerlink" title="顺序存储结构常见的结构体实现"></a>顺序存储结构常见的结构体实现</h2><p>我们通过线性表顺序结构来实现线性表的一些基础操作。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include&lt;bits&#x2F;stdc++.h&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在上述的函数中需要注意，如果要改变原本线性表的内容，则需要传入线性表的地址，如果只是对线性表进行查询等不改变原本的线性表内容的操作，则不需要以地址的形式传入。（这部分其实就是C/C++的对传入函数参数值改变的原理，在此做一个小的提醒）。</p>
+<h2 id="顺序存储结构常见的结构体实现"><a class="header-anchor" href="#顺序存储结构常见的结构体实现">¶</a>顺序存储结构常见的结构体实现</h2>
+<p>我们通过线性表顺序结构来实现线性表的一些基础操作。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">#include&lt;bits&#x2F;stdc++.h&gt;
 #define SIZE 100
 #define SIZE_T 150
 
@@ -540,8 +553,10 @@ struct List &#123;
     ElemType *data; &#x2F;&#x2F;数据
     int length; &#x2F;&#x2F;长度
     int size; &#x2F;&#x2F;线性表初始容量
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h2 id="顺序存储结构InitList-函数的实现"><a href="#顺序存储结构InitList-函数的实现" class="headerlink" title="顺序存储结构InitList()函数的实现"></a>顺序存储结构InitList()函数的实现</h2><p>线性表的顺序表示可以看作对数组进行一些操作，初始化函数就是将表的长度变为0，对data进行堆内存的分配和初始容量的初始化。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;创建一个空的线性表
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="顺序存储结构InitList-函数的实现"><a class="header-anchor" href="#顺序存储结构InitList-函数的实现">¶</a>顺序存储结构InitList()函数的实现</h2>
+<p>线性表的顺序表示可以看作对数组进行一些操作，初始化函数就是将表的长度变为0，对data进行堆内存的分配和初始容量的初始化。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;创建一个空的线性表
 void InitList(List &amp;newList) 
 &#123;
     &#x2F;&#x2F;初始容量为startsize
@@ -554,8 +569,9 @@ void InitList(List &amp;newList)
     &#125;
     &#x2F;&#x2F;空表，长度是0
     newList.length &#x3D; 0;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-<h2 id="顺序存储结构DestoryList-函数的实现"><a href="#顺序存储结构DestoryList-函数的实现" class="headerlink" title="顺序存储结构DestoryList()函数的实现"></a>顺序存储结构DestoryList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="顺序存储结构DestoryList-函数的实现"><a class="header-anchor" href="#顺序存储结构DestoryList-函数的实现">¶</a>顺序存储结构DestoryList()函数的实现</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
 void Destory (List &amp;newList)
 &#123;
 	if (newList &#x3D;&#x3D; NULL)
@@ -569,7 +585,8 @@ void Destory (List &amp;newList)
     newList.length &#x3D; 0;
     newList.size &#x3D; 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="顺序存储结构ClearList-函数的实现"><a href="#顺序存储结构ClearList-函数的实现" class="headerlink" title="顺序存储结构ClearList()函数的实现"></a>顺序存储结构ClearList()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
+<h2 id="顺序存储结构ClearList-函数的实现"><a class="header-anchor" href="#顺序存储结构ClearList-函数的实现">¶</a>顺序存储结构ClearList()函数的实现</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F;前提是线性表已经存在
 void ClearList(List &amp;newList) 
 &#123;
     if (newList &#x3D;&#x3D; NULL)
@@ -582,7 +599,8 @@ void ClearList(List &amp;newList)
     &#x2F;&#x2F;重新开辟空间
     newList.data &#x3D; (int *)malloc(SIZE * sizeof(ElemType));
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="顺序存储结构ListEmpty-函数的实现"><a href="#顺序存储结构ListEmpty-函数的实现" class="headerlink" title="顺序存储结构ListEmpty()函数的实现"></a>顺序存储结构ListEmpty()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 判断线性表是否为空
+<h2 id="顺序存储结构ListEmpty-函数的实现"><a class="header-anchor" href="#顺序存储结构ListEmpty-函数的实现">¶</a>顺序存储结构ListEmpty()函数的实现</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 判断线性表是否为空
 bool ListEmpty(List newList) 
 &#123;
     if(newList.length &#x3D;&#x3D; 0)
@@ -595,7 +613,8 @@ bool ListEmpty(List newList)
     &#125;
     return 0;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="顺序存储结构ListLength-函数的实现"><a href="#顺序存储结构ListLength-函数的实现" class="headerlink" title="顺序存储结构ListLength()函数的实现"></a>顺序存储结构ListLength()函数的实现</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 返回线性表的长度
+<h2 id="顺序存储结构ListLength-函数的实现"><a class="header-anchor" href="#顺序存储结构ListLength-函数的实现">¶</a>顺序存储结构ListLength()函数的实现</h2>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">&#x2F;&#x2F; 返回线性表的长度
 int ListEmpty(List newList) 
 &#123;   
     return newList.length;
@@ -1400,7 +1419,7 @@ int ListEmpty(List newList)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">57.5k</span>&nbsp;字
+                class="white-color">56.8k</span>&nbsp;字
             
             
             
