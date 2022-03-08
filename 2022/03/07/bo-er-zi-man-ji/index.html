@@ -513,16 +513,16 @@
   （1）每个随机变量都可以用一个二值的随机变量表示，即0和1。<br>
   （2）所有节点之间都是全连接的。<br>
   （3）每两个变量之间的相互影响是对称的，即权重对称。<br>
-  我们假设 $ {v_{D \times 1} } \in {\left{ {0,1} \right}^D} $，$ {h_{P \times 1} } \in {\left{ {0,1} \right}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：<br>
+  我们假设 $ {v_{D \times 1} } \in { \{0,1\}^D } $，$ {h_{P \times 1} } \in { \{0,1\}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：<br>
 $$<br>
-\left{ \begin{array}{l}<br>
-P(v,h) = \frac{1}{2}\exp {  - E(v,h)} \<br>
+\begin{array}{l}<br>
+P(v,h) = \frac{1}{2}\exp {  - E(v,h)} \\<br>
 E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot Jh)<br>
-\end{array} \right}<br>
+\end{array}<br>
 $$<br>
-其中，$ L = {\left[ { {L_{i,j} } } \right]<em>{D \times D} } $ 表示可见层神经元内部的权重，$ J = {\left[ { {J</em>{i,j} } } \right]<em>{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = {\left[ { {w</em>{i,j} } } \right]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = { W,L,J} $。</p>
+其中，$ L = { [ { {L_{ij} } } ]_{D \times D} } $ 表示可见层神经元内部的权重，$ J = { [ { {J_{ij} } } ]_{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = { [ { {w_{ij} } } ]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = \{ W,L,J\} $。</p>
 <h1>基于极大似然的梯度上升</h1>
-<p>  基于极大似然的梯度上升包括极大似然函数和梯度两个部分。<b>极大似然估计的主要思路是，使极大似然函数最大时的参数</b>。首先明确一下，要求的参数为 $ \theta  = { W,L,J} $。假设样本集合为 $v$，$ |v| = D $，那么似然函数为：<br>
+<p>  基于极大似然的梯度上升包括极大似然函数和梯度两个部分。<b>极大似然估计的主要思路是，使极大似然函数最大时的参数</b>。首先明确一下，要求的参数为 $ \theta  = \{ W,L,J\} $。假设样本集合为 $v$，$ |v| = D $，那么似然函数为：<br>
 $$ \sum\limits_v {P(v) = } \sum\limits_v {\sum\limits_h {P(v,h)} } $$<br>
 那么对数似然函数为：<br>
 $$ \frac{1}{D}\sum\limits_v {\log P(v)} $$</p>
@@ -1382,7 +1382,7 @@ $$<br>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">56.9k</span>&nbsp;字
+                class="white-color">56.8k</span>&nbsp;字
             
             
             
