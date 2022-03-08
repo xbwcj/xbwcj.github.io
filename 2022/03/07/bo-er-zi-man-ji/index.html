@@ -517,7 +517,7 @@
 $$<br>
 \begin{array}{l}<br>
 P(v,h) = \frac{1}{2}\exp {  - E(v,h)} \\<br>
-E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot Jh)<br>
+E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot J \cdot h)<br>
 \end{array}<br>
 $$<br>
 其中，$ L = { [ { {L_{ij} } } ]_{D \times D} } $ 表示可见层神经元内部的权重，$ J = { [ { {J_{ij} } } ]_{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = { [ { {w_{ij} } } ]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = \{ W,L,J\} $。</p>
