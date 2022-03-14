@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-03-08T18:01:55.827Z</updated>
+  <updated>2022-03-14T14:51:25.886Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://xbwcj.github.io/2022/03/07/bo-er-zi-man-ji/"/>
     <id>http://xbwcj.github.io/2022/03/07/bo-er-zi-man-ji/</id>
     <published>2022-03-07T04:17:13.000Z</published>
-    <updated>2022-03-08T18:01:55.827Z</updated>
+    <updated>2022-03-14T14:51:25.886Z</updated>
     
     
       
@@ -46,8 +46,17 @@
     <link href="http://xbwcj.github.io/2022/03/04/shen-du-xin-nian-wang-luo/"/>
     <id>http://xbwcj.github.io/2022/03/04/shen-du-xin-nian-wang-luo/</id>
     <published>2022-03-04T13:52:19.000Z</published>
-    <updated>2022-03-04T13:52:54.127Z</updated>
+    <updated>2022-03-14T14:47:22.118Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
+&lt;p&gt;  $ Deep ; Belief ; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep ; Belief ; Network $</summary>
+        
+      
     
     
     
@@ -63,7 +72,7 @@
     <link href="http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/"/>
     <id>http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/</id>
     <published>2022-03-03T10:54:26.000Z</published>
-    <updated>2022-03-07T11:29:35.966Z</updated>
+    <updated>2022-03-14T14:50:24.107Z</updated>
     
     
       
@@ -71,7 +80,7 @@
         
         
     <summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
-&lt;p&gt;  受限玻尔兹曼机（英语：restricted Boltzmann machine,</summary>
+&lt;p&gt;  受限玻尔兹曼机（英语：$ restricted ; Boltzmann ; machine ; , RBM $</summary>
         
       
     
@@ -96,7 +105,8 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;差分隐私简介&quot;&gt;&lt;a href=&quot;#差分隐私简介&quot; class=&quot;headerlink&quot; title=&quot;差分隐私简介&quot;&gt;&lt;/a&gt;差分隐私简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;差分隐私（differential</summary>
+    <summary type="html">&lt;h1&gt;差分隐私简介&lt;/h1&gt;
+&lt;p&gt;  差分隐私（differential</summary>
         
       
     
