@@ -33,8 +33,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Live My Life" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Live My Life" type="application/atom+xml">
+</head>
 
 
 
@@ -506,15 +506,15 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1>简介</h1>
-<p>  $ Deep ; Belief ; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep ; Belief ; Network $ 这个名字的含义，$ Belief ; Network $ 实际上就是 $ Bayes ; Network $（有向图模型），而 $ Deep $ 的含义就很简单了，代表有很多层。所以，从字面上理解，$ Deep ; Belief ; Network $ 可以认为是有很多层的有向图模型。$ Deep ; Belief ; Network $ 的概率图模型如下所示：<br>
+<p>  $ Deep \; Belief \; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep \; Belief \; Network $ 这个名字的含义，$ Belief \; Network $ 实际上就是 $ Bayes \; Network $（有向图模型），而 $ Deep $ 的含义就很简单了，代表有很多层。所以，从字面上理解，$ Deep \; Belief \; Network $ 可以认为是有很多层的有向图模型。$ Deep \; Belief \; Network $ 的概率图模型如下所示：<br>
 <img src="/2022/03/04/shen-du-xin-nian-wang-luo/1.png" alt="Deep Belief Network 的概率图模型"><br>
-  从上述图中，可以看出 $ DBN $ 是一个混合模型，上面是 $ Restricted ; Boltzmann ; Model $ $ (RBM) $ 模型，下面是一个 $ Sigmoid ; Belief ; Network ; (SBN) $。而每个节点都服从 $ 0/1 $的伯努利分布，实际上就是一个分层模型。深层的含义，我们将会在下文中描述。注意，这里的 $ w $ 是用来描述节点直接连接权重的矩阵。</p>
+  从上述图中，可以看出 $ DBN $ 是一个混合模型，上面是 $ Restricted \; Boltzmann \; Model $ $ (RBM) $ 模型，下面是一个 $ Sigmoid \; Belief \; Network \; (SBN) $。而每个节点都服从 $ 0/1 $的伯努利分布，实际上就是一个分层模型。深层的含义，我们将会在下文中描述。注意，这里的 $ w $ 是用来描述节点直接连接权重的矩阵。</p>
 <h2 id="SBN-简介"><a class="header-anchor" href="#SBN-简介">¶</a>$ SBN $ 简介</h2>
 <p>  $ SBN $ 的概率图模型如下图所示：<br>
 <img src="/2022/03/04/shen-du-xin-nian-wang-luo/2.png" alt="Sigmoid Belief Network 的概率图模型"><br>
 其中：<br>
 $$<br>
-P({S_i} = 1) = \frac{1}{ {1 + \exp \left{ { {b_i} + {w_1}{s_1} + {w_2}{s_2} + {w_3}{s_3} } \right} } }<br>
+P({S_i} = 1) = \frac{1}{ {1 + \exp \left\{ { {b_i} + {w_1}{s_1} + {w_2}{s_2} + {w_3}{s_3} } \right\} } }<br>
 $$</p>
 <h2 id="DBN-的概率联合分布"><a class="header-anchor" href="#DBN-的概率联合分布">¶</a>$ DBN $ 的概率联合分布</h2>
 <p>  在使用极大似然估计法中基本离不开求联合概率分布。所以，这里需要求 $ DBN $ 的联合概率分布，而求联合概率分布最终的就是因子分解。那么，我们首先要理顺一下各层之间的依赖关系。显然，$ v $ 层只和 $ h^{(1)} $ 有关， $ h^{(1)} $ 层只和  $ h^{(2)} $ ，那么有：<br>
@@ -529,17 +529,17 @@ $$<br>
 将这三个部分分布表示。根据 $ SBN $ 公式的结论，可以类比的得出：<br>
 $$<br>
 \begin{array}{cc}<br>
-P({v_i}|{h^{(1)} }) = sigmoid({(W_{: , i}<sup>{(1)})}</sup>{T} \cdot {h^{(1)} } + b_{i}^{(0)}) \\<br>
-P(h_{j}<sup>{(1)}|{h</sup>{(2)} }) = sigmoid({(W_{:,j}<sup>{(2)})</sup>T} \cdot {h^{(2)} } + b_j^{(1)})<br>
+P({v_i}|{h^{(1)} }) = sigmoid({(W_{: , i}^{(1)})}^{T} \cdot {h^{(1)} } + b_{i}^{(0)}) \\<br>
+P(h_{j}^{(1)}|{h^{(2)} }) = sigmoid({(W_{:,j}^{(2)})^T} \cdot {h^{(2)} } + b_j^{(1)})<br>
 \end{array}<br>
 $$<br>
-而 $ h^{(2)} $ 和 $ h^{(3)}  $ 之间是 $ RBM $ 模型，沿用在 $ RBM $ 那一章讲的 $ Boltzmann ; Distribution $ 可以得到：<br>
+而 $ h^{(2)} $ 和 $ h^{(3)}  $ 之间是 $ RBM $ 模型，沿用在 $ RBM $ 那一章讲的 $ Boltzmann \; Distribution $ 可以得到：<br>
 $$<br>
-P({h^{(2)} },{h^{(3)} }) = \frac{1}{Z} \exp { {({h^{(3)} })^T} {w^{(3)} }{h^{(2)} } + {({h^{(2)} })<sup>T}{b</sup>{(2)} } + {({h^{(3)} })<sup>T}{b</sup>{(3)} } }<br>
+P({h^{(2)} },{h^{(3)} }) = \frac{1}{Z} \exp \{ {({h^{(3)} })^T} {w^{(3)} }{h^{(2)} } + {({h^{(2)} })^T}{b^{(2)} } + {({h^{(3)} })^T}{b^{(3)} } \}<br>
 $$<br>
 其中参数为：<br>
 $$<br>
-\theta  = { {W^{(1)} },{W^{(2)} },{W^{(3)} },{b^{(0)} },{b^{(1)} },{b^{(2)} },{b^{(2)} }}<br>
+\theta  = \{ {W^{(1)} },{W^{(2)} },{W^{(3)} },{b^{(0)} },{b^{(1)} },{b^{(2)} },{b^{(2)} }\}<br>
 $$</p>
 <h1>$ DBN $ 的叠加</h1>
 <p>  原始的 $ RBM $ 模型的表达方式是使用对比散度的方法求解。概率图模型如下图所示：<br>
