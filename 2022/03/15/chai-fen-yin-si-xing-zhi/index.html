@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="玻尔兹曼机, Live My Life">
+    <meta name="keywords" content="差分隐私性质, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>玻尔兹曼机 | Live My Life</title>
+    <title>差分隐私性质 | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">玻尔兹曼机</h1>
+                    <h1 class="description center-align post-title">差分隐私性质</h1>
                 </div>
             </div>
         </div>
@@ -436,8 +436,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                                <span class="chip bg-color">人工智能</span>
+                            <a href="/tags/%E5%B7%AE%E5%88%86%E9%9A%90%E7%A7%81/">
+                                <span class="chip bg-color">差分隐私</span>
                             </a>
                         
                     </div>
@@ -461,28 +461,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-07
+                    2022-03-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-03-14
+                    2022-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    710
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    2 分
                 </div>
                 
 
@@ -505,81 +505,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>  在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/qing-kuang-shu-sheng-18-44">知乎主页</a>和大佬的<a target="_blank" rel="noopener" href="https://github.com/2019ChenGong/Machine-Learning-Notes">gthub主页</a>。里面有大佬对于这些模型的公式推导。下面写一些我学习后的个人总结，里面大部分是一些大佬的推导过程，大家想深入研究，直接看大佬的专栏就好，这里仅用来自我总结。</p>
-<h1>介绍</h1>
-<p>  玻尔兹曼机（Boltzmann Machine，BM）可以看作是一种随机动力系统，每个变量的状态都以一定的概率受到其他变量的影响。下面是任何讲到BM都会涉及到的经典模型图：<br>
-<img src="/2022/03/07/bo-er-zi-man-ji/1.png" alt="玻尔兹曼模型图"><br>
-  其中BM模型有如下的三个特性：<br>
-  （1）每个随机变量都可以用一个二值的随机变量表示，即0和1。<br>
-  （2）所有节点之间都是全连接的。<br>
-  （3）每两个变量之间的相互影响是对称的，即权重对称。<br>
-  我们假设 $ {v_{D \times 1} } \in { \{0,1\}^D } $，$ {h_{P \times 1} } \in { \{0,1\}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：<br>
-$$<br>
-\begin{array}{l}<br>
-P(v,h) = \frac{1}{2}\exp {  - E(v,h)} \\<br>
-E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot J \cdot h)<br>
-\end{array}<br>
-$$<br>
-其中，$ L = { [ { {L_{ij} } } ]_{D \times D} } $ 表示可见层神经元内部的权重，$ J = { [ { {J_{ij} } } ]_{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = { [ { {w_{ij} } } ]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = \{ W,L,J\} $。</p>
-<h1>基于极大似然的梯度上升</h1>
-<p>  基于极大似然的梯度上升包括极大似然函数和梯度两个部分。<b>极大似然估计的主要思路是，使极大似然函数最大时的参数</b>。首先明确一下，要求的参数为 $ \theta  = \{ W,L,J\} $。假设样本集合为 $v$，$ |v| = D $，那么似然函数为：<br>
-$$ \sum\limits_v {P(v) = } \sum\limits_v {\sum\limits_h {P(v,h)} } $$<br>
-那么对数似然函数为：<br>
-$$ \frac{1}{D}\sum\limits_v {\log P(v)} $$</p>
-<h2 id="似然导数求解"><a class="header-anchor" href="#似然导数求解">¶</a>似然导数求解</h2>
-<p>  是对对数似然函数求导，即为：<br>
-$$<br>
-\frac{\partial }{ {\partial \theta } }\frac{1}{D}\sum \limits_v {\log p(v) } = \frac{1}{D}\sum\limits_v {\frac{ {\partial \log p(v)} }{ {\partial \theta } } }<br>
-$$<br>
-而Boltzmann Distribution 的 log 似然梯度为：<br>
-$$<br>
-\frac{1}{D}\frac{ \partial }{ { \partial \theta } }\log P(v) = \frac{1}{D}\left( {\sum \limits_h {\sum \limits_v {P(v,h)} } \frac{ \partial }{ { \partial \theta } }E(h,v) - \sum \limits_h {P(h|v)\frac{ \partial }{ { \partial \theta } }E(h,v)} } \right)<br>
-$$<br>
-我们对 $ w $ 求导，可以得到：<br>
-$$<br>
-\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } =  \frac{1}{D}\sum \limits_v {\sum \limits_h {P(v|h)} }  \cdot v{h^T} - \sum \limits_v {\sum \limits_h {P(v,h)} }  \cdot v{h^T}<br>
-$$<br>
-可以简写为：<br>
-$$<br>
-\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } = \mathbb{E}_{P_{data} }[v{h^T}] - \mathbb{E}_{P_{model} }[v{h^T}]<br>
-$$<br>
-其中：<br>
-$$<br>
-\begin{array}{l}<br>
-{P_{data}} = {P_{data}}(v) \cdot {P_{model}}(h|v) \\<br>
-{P_{model}} = {P_{model}}(v,h)<br>
-\end{array}<br>
-$$<br>
-在 $ \sum\limits_v {\sum\limits_h {P(v,h)} } $ 中，$ P(v,h) $ 是生成模型，本身就是我们建立的模型，所以被称为 $P_{model}$。而在 $ \sum\limits_v {\sum\limits_h {P(v|h)} } $ 首先从经验分布 $P(v)$ 从采样得到 $v$，然后利用模型分布来求解 $P(h|v)$，所以 $P_{data} = P_{data}(v) \cdot P_{model}(h|v)$。采样出 $P_{model}(h|v)$ 和 $P_{model}(v)$ 就可以求解出 $P_{model}(h,v)$ 了。按照同样的方法可以求得对 ${L, J}$ 的导数。<br>
-  同理通过计算可以得到每个参数矩阵的似然梯度为：<br>
-$$<br>
-\begin{array}{l}<br>
-\Delta W = \alpha ({\mathbb{E}_{ {P_{data} } } }[v{h^T}] - {\mathbb{E}_{ {P_{model} } } }[v{h^T}]) \\<br>
-\Delta L = \alpha ({\mathbb{E}_{ {P_{data} } } }[v{v^T}] - {\mathbb{E}_{ {P_{model} } } }[v{v^T}]) \\<br>
-\Delta J = \alpha ({\mathbb{E}_{ {P_{data} } } }[h{h^T}] - {\mathbb{E}_{ {P_{model} } } }[h{h^T}])<br>
-\end{array}<br>
-$$</p>
-<h1>基于MCMC的似然梯度下降</h1>
-<h2 id="MCMC似然梯度求解总述"><a class="header-anchor" href="#MCMC似然梯度求解总述">¶</a>MCMC似然梯度求解总述</h2>
-<p>  在上面我们使用梯度上升法来使 log 似然函数达到最大，从而求解对应的最优参数。参数更新公式为：<br>
-$$<br>
-{\theta ^{(t + 1)} } = {\theta ^{(t)} } + \Delta \theta<br>
-$$<br>
-其中，$ \Delta \theta  = \{ {\Delta W,\Delta L,\Delta J} \} $ 。以 $ \Delta W $ 为例，$ \Delta W $ 是一个矩阵 $ \Delta W = \left[ {\Delta {w_{ij} } } \right] $。其中：<br>
-$$<br>
-\Delta {w_{ij} } = \alpha \left[ {\underbrace { {\mathbb{E}_{ {P_{data} } } }\left[ { {v_i}{h_j} } \right]}_{Postive \; phase} - \underbrace { {\mathbb{E}_{ {P_{\bmod el} } } }\left[ { {v_i}{h_j} } \right]}_{Negative \; phase} } \right]<br>
-$$<br>
-  在 Boltzmann Machines 中，Postive phase 和 Negative phase 都是 Intractable。所以，Hinton 提出了用 MCMC 来对 $ P(h|v) $ 进行采样。<b>在求解 $ \Delta W $ 中，主要是解决三个部分，$ P_{data}(v) $, $ P_{model}(h|v) $, $ P_{model}(v, h) $，其中 $ P_{model}(v, h) = P_{model}(h|v) · P_{model}(v) $。所以，而 $ P_{data}(v) $ 和 $ P_{model}(v) $ 相对比较简单，所以难点在于 $ P_{model}(h|v) $ 的求解。</b>但在 Boltzmann Machines 中，由于关系过于复杂，没有办法分解，甚至最大团分解都没有用，因为最大团就是自己，那么连 $ P_{model}(h|v) $ 都求不出来，那么 Postive phase 和 Negative phase 都是 Intractable。<br>
-  但是通过推导可以得出：<br>
-$$<br>
-\begin{array}{l}<br>
-P({v_i} = 1|h,{v_{ - i} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{h_j} }  + \sum\nolimits_{k = 1\backslash i}^D { {L_{ik} }{v_k} } )\<br>
-P({h_j} = 1|v,{h_{ - j} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{v_i} }  + \sum\nolimits_{m = 1\backslash j}^D { {J_{im} }{h_n} } )<br>
-\end{array}<br>
-$$<br>
-  公式表达的是，在已知一个节点以外的所有的点的条件下，这个节点的条件概率是可求的。其中 $ 1 \backslash i $ 表达的意思是 $ 1 ∼ D $ 但不包括 $ i $ 的所有节点。<br>
-  具体的推导过程在大佬的博客和github中有，这里不再搬运。<br>
-  <b>其他具体的介绍以及推导过程，点击该链接可以下载查看。</b><a href="White_2020_04_08_Boltzmann_Machine.pdf" title="相关资料下载">点击下载</a></p>
+                <h1>差分隐私保护算法的组合性质</h1>
+<p>  一个复杂的隐私保护问题通常需要多次应用差分隐私保护算法才能得以解决．在这种情况下，为了保证整个过程的隐私保护水平控制在给定的预算 $\varepsilon$ 之内，需要合理地将全部预算分配到整个算法的各个步骤中．这时可以利用隐私保护算法的两个组合性质，如下图所示：<br>
+<img src="/2022/03/15/chai-fen-yin-si-xing-zhi/1.png" alt="差分隐私保护算法的组合性质"><br>
+  <b>性质1.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $， 那么对于同一数据集 $ D $，由这些算法构成的组合算法 $ M({M_1}(D)),{M_2}(D), \cdots ,{M_n}(D)) $ 提供 $ (\sum\limits_{i = 1}^n { {\varepsilon _i} } )- $ 差分隐私保护。<br>
+  该性质表明，一个差分隐私保护算法序列构成的组合算法，其提供的隐私保护水平为全部预算的总和。该性质也称为“序列组合性”。<br>
+  <b>性质2.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $，那对于不相交的数据集 $ {D_1},{D_2}, \cdots ,{D_n} $， 这些算法构成的组合算法 $ M({M_1}({D_1})),{M_2}({D_2}), \cdots ,{M_n}({D_n})) $ 提供 $ (\max {\varepsilon _i}) - $ 差分隐私保护。<br>
+  该性质表明，如果一个差分隐私保护算法序列中所有算法处理的数据集彼此不相交，那么该算法序列构成的组合算法提供的隐私保护水平取决于算法序列中的保护水平最差者，即预算最大者。该性质也称为“并行组合性”。</p>
+<h1>差分隐私保护算法的变换不变性</h1>
+<p>  给定任意一个算法 $ A_1 $ 满足 $ \varepsilon - $ 差分隐私。对于任意算法 $ A_2 $ ​（$ A_2 $ 不一定满足差分隐私的算法），则有 $ A(\cdot)=A_2(A_1(\cdot)) $ 满足 $ \varepsilon - $ 差分隐私。<br>
+  说明了差分隐私对于后处理算法具有免疫性, 如果一个算法的结果满足 $ \varepsilon - $ 差分隐私, 那么在这个结果上进行的任何处理都不会对隐私保护有所影响。</p>
+<h1>差分隐私保护算法的中凸性</h1>
+<p>  给定2个算法 $ A_1 $ 和 $ A_2​ $ 满足 $ \varepsilon - $ 差分隐私。对于任意的概率 $ p \in [0,1] $ ，用符号 $ A_p $ 表示为一种机制，它以 $ p $ 的概率使用 $ A_1 $ 算法，以 $ 1 − p $ 的概率使用 $ A_2 $​ 算法则 $ A_p $ 机制满足 $ \varepsilon - $ 差分隐私。<br>
+  说明了如果有 $ 2 $ 个不同的差分隐私算法, 都提供了足够的不确定性来保护隐私, 那么可以通过选择任意的算法来应用到数据上实现对数据的隐私保护, 只要选择的算法和数据是独立的。</p>
 
                 
             </div>
@@ -606,7 +544,7 @@ $$<br>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2022/03/07/bo-er-zi-man-ji/">http://xbwcj.github.io/2022/03/07/bo-er-zi-man-ji/</a>
+                    <a href="http://xbwcj.github.io/2022/03/15/chai-fen-yin-si-xing-zhi/">http://xbwcj.github.io/2022/03/15/chai-fen-yin-si-xing-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -644,8 +582,8 @@ $$<br>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                                    <span class="chip bg-color">人工智能</span>
+                                <a href="/tags/%E5%B7%AE%E5%88%86%E9%9A%90%E7%A7%81/">
+                                    <span class="chip bg-color">差分隐私</span>
                                 </a>
                             
                         </div>
@@ -1083,9 +1021,10 @@ $$<br>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/03/15/chai-fen-yin-si-xing-zhi/">
                     <div class="card-image">
@@ -1103,9 +1042,9 @@ $$<br>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1118,6 +1057,7 @@ $$<br>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1136,13 +1076,13 @@ $$<br>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/04/shen-du-xin-nian-wang-luo/">
+                <a href="/2022/03/07/bo-er-zi-man-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="深度信念网络">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="玻尔兹曼机">
                         
-                        <span class="card-title">深度信念网络</span>
+                        <span class="card-title">玻尔兹曼机</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1153,7 +1093,7 @@ $$<br>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-07
                             </span>
                         <span class="publish-author">
                             
