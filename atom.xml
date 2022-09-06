@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-03-20T09:33:36.212Z</updated>
+  <updated>2022-09-06T07:24:24.185Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Learning》阅读笔记</title>
+    <link href="http://xbwcj.github.io/2022/09/06/advances-and-open-problems-in-federated-learning-yue-du-bi-ji/"/>
+    <id>http://xbwcj.github.io/2022/09/06/advances-and-open-problems-in-federated-learning-yue-du-bi-ji/</id>
+    <published>2022-09-06T07:24:24.000Z</published>
+    <updated>2022-09-06T07:24:24.185Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>差分隐私实现机制</title>
@@ -508,31 +521,6 @@
     
     
     <category term="数据结构" scheme="http://xbwcj.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://xbwcj.github.io/2021/02/13/hello-world/"/>
-    <id>http://xbwcj.github.io/2021/02/13/hello-world/</id>
-    <published>2021-02-13T07:34:52.366Z</published>
-    <updated>2021-02-14T15:42:02.663Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="hexo" scheme="http://xbwcj.github.io/categories/hexo/"/>
-    
-    
-    <category term="hexo blog" scheme="http://xbwcj.github.io/tags/hexo-blog/"/>
     
   </entry>
   
