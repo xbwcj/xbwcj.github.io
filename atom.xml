@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-09-17T13:30:24.876Z</updated>
+  <updated>2022-09-18T08:31:21.612Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://xbwcj.github.io/2022/09/09/practical-secure-aggregation-for-federated-learning-on-user-held-data-yue-du-bi-ji/"/>
     <id>http://xbwcj.github.io/2022/09/09/practical-secure-aggregation-for-federated-learning-on-user-held-data-yue-du-bi-ji/</id>
     <published>2022-09-09T07:30:17.000Z</published>
-    <updated>2022-09-17T13:30:24.876Z</updated>
+    <updated>2022-09-18T08:31:21.612Z</updated>
     
     
       
@@ -53,7 +53,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;3</summary>
+    <summary type="html">&lt;h1 id=&quot;3-efficiency-and-effectiveness&quot;&gt;&lt;a href=&quot;#3-efficiency-and-effectiveness&quot; class=&quot;headerlink&quot; title=&quot;3</summary>
         
       
     
@@ -63,6 +63,31 @@
     
     
     <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://xbwcj.github.io/2022/09/06/hello-world/"/>
+    <id>http://xbwcj.github.io/2022/09/06/hello-world/</id>
+    <published>2022-09-06T03:58:36.488Z</published>
+    <updated>2021-02-14T15:42:02.663Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="hexo" scheme="http://xbwcj.github.io/categories/hexo/"/>
+    
+    
+    <category term="hexo blog" scheme="http://xbwcj.github.io/tags/hexo-blog/"/>
     
   </entry>
   
@@ -78,7 +103,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;  在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \; Mechanism $ 与指数机制 $ Exponential \; Mechanism $</summary>
+    <summary type="html">&lt;p&gt;&amp;emsp;&amp;emsp;在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \\; Mechanism $ 与指数机制 $ Exponential \\;</summary>
         
       
     
@@ -103,8 +128,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;差分隐私保护算法的组合性质&lt;/h1&gt;
-&lt;p&gt;  一个复杂的隐私保护问题通常需要多次应用差分隐私保护算法才能得以解决．在这种情况下，为了保证整个过程的隐私保护水平控制在给定的预算 $\varepsilon$</summary>
+    <summary type="html">&lt;h1 id=&quot;差分隐私保护算法的组合性质&quot;&gt;&lt;a href=&quot;#差分隐私保护算法的组合性质&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -129,7 +153,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;  在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的&lt;a</summary>
+    <summary type="html">&lt;p&gt;&amp;emsp;&amp;emsp;在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的&lt;a</summary>
         
       
     
@@ -154,8 +178,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
-&lt;p&gt;  $ Deep \; Belief \; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep \; Belief \; Network $</summary>
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;$ Deep \\; Belief \\; Network $ 是 $ Hinton $ 在 2006</summary>
         
       
     
@@ -180,8 +203,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;简介&lt;/h1&gt;
-&lt;p&gt;  受限玻尔兹曼机（英语：$ restricted \; Boltzmann \; machine \; , RBM $</summary>
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;受限玻尔兹曼机（英语：$ restricted \\; Boltzmann \\; machine \\; ,</summary>
         
       
     
@@ -206,8 +228,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;差分隐私简介&lt;/h1&gt;
-&lt;p&gt;  差分隐私（differential</summary>
+    <summary type="html">&lt;h1 id=&quot;差分隐私简介&quot;&gt;&lt;a href=&quot;#差分隐私简介&quot; class=&quot;headerlink&quot; title=&quot;差分隐私简介&quot;&gt;&lt;/a&gt;差分隐私简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;差分隐私（differential</summary>
         
       
     
@@ -232,8 +253,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;内存管理概念&lt;/h1&gt;
-&lt;h2 id=&quot;内存管理的基本原理和要求&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;内存管理概念&quot;&gt;&lt;a href=&quot;#内存管理概念&quot; class=&quot;headerlink&quot; title=&quot;内存管理概念&quot;&gt;&lt;/a&gt;内存管理概念&lt;/h1&gt;&lt;h2 id=&quot;内存管理的基本原理和要求&quot;&gt;&lt;a href=&quot;#内存管理的基本原理和要求&quot;</summary>
         
       
     
@@ -258,9 +278,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;死锁&lt;/h1&gt;
-&lt;h2 id=&quot;死锁的概念&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#死锁的概念&quot;&gt;¶&lt;/a&gt;死锁的概念&lt;/h2&gt;
-&lt;h3 id=&quot;死锁的定义&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;死锁&quot;&gt;&lt;a href=&quot;#死锁&quot; class=&quot;headerlink&quot; title=&quot;死锁&quot;&gt;&lt;/a&gt;死锁&lt;/h1&gt;&lt;h2 id=&quot;死锁的概念&quot;&gt;&lt;a href=&quot;#死锁的概念&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -285,8 +303,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;经典同步动作&lt;/h1&gt;
-&lt;h2 id=&quot;生产者-消费者问题&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;经典同步动作&quot;&gt;&lt;a href=&quot;#经典同步动作&quot; class=&quot;headerlink&quot; title=&quot;经典同步动作&quot;&gt;&lt;/a&gt;经典同步动作&lt;/h1&gt;&lt;h2 id=&quot;生产者-消费者问题&quot;&gt;&lt;a href=&quot;#生产者-消费者问题&quot;</summary>
         
       
     
@@ -311,8 +328,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;进程同步&lt;/h1&gt;
-&lt;h2 id=&quot;进程同步的基本概念&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;进程同步&quot;&gt;&lt;a href=&quot;#进程同步&quot; class=&quot;headerlink&quot; title=&quot;进程同步&quot;&gt;&lt;/a&gt;进程同步&lt;/h1&gt;&lt;h2 id=&quot;进程同步的基本概念&quot;&gt;&lt;a href=&quot;#进程同步的基本概念&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -337,7 +353,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;2021华为软件精英挑战赛训练赛、正式赛思路分享&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;2021华为软件精英挑战赛训练赛、正式赛思路分享&quot;&gt;&lt;a href=&quot;#2021华为软件精英挑战赛训练赛、正式赛思路分享&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -362,9 +378,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;处理机调度&lt;/h1&gt;
-&lt;h2 id=&quot;调度概念&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#调度概念&quot;&gt;¶&lt;/a&gt;调度概念&lt;/h2&gt;
-&lt;h3 id=&quot;调度的基本概念&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;处理机调度&quot;&gt;&lt;a href=&quot;#处理机调度&quot; class=&quot;headerlink&quot; title=&quot;处理机调度&quot;&gt;&lt;/a&gt;处理机调度&lt;/h1&gt;&lt;h2 id=&quot;调度概念&quot;&gt;&lt;a href=&quot;#调度概念&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -389,9 +403,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;进程与线程&lt;/h1&gt;
-&lt;h2 id=&quot;进程的概念与特征&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#进程的概念与特征&quot;&gt;¶&lt;/a&gt;进程的概念与特征&lt;/h2&gt;
-&lt;h3 id=&quot;进程的概念&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;进程与线程&quot;&gt;&lt;a href=&quot;#进程与线程&quot; class=&quot;headerlink&quot; title=&quot;进程与线程&quot;&gt;&lt;/a&gt;进程与线程&lt;/h1&gt;&lt;h2 id=&quot;进程的概念与特征&quot;&gt;&lt;a href=&quot;#进程的概念与特征&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -416,8 +428,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;操作系统的运行环境&lt;/h1&gt;
-&lt;h2 id=&quot;操作系统的运行机制&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;操作系统的运行环境&quot;&gt;&lt;a href=&quot;#操作系统的运行环境&quot; class=&quot;headerlink&quot; title=&quot;操作系统的运行环境&quot;&gt;&lt;/a&gt;操作系统的运行环境&lt;/h1&gt;&lt;h2 id=&quot;操作系统的运行机制&quot;&gt;&lt;a href=&quot;#操作系统的运行机制&quot;</summary>
         
       
     
@@ -442,8 +453,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;操作系统的发展与分类&lt;/h1&gt;
-&lt;h2 id=&quot;手工操作阶段&quot;&gt;&lt;a class=&quot;header-anchor&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;操作系统的发展与分类&quot;&gt;&lt;a href=&quot;#操作系统的发展与分类&quot; class=&quot;headerlink&quot; title=&quot;操作系统的发展与分类&quot;&gt;&lt;/a&gt;操作系统的发展与分类&lt;/h1&gt;&lt;h2 id=&quot;手工操作阶段&quot;&gt;&lt;a href=&quot;#手工操作阶段&quot;</summary>
         
       
     
@@ -468,9 +478,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;操作系统的基本概念&lt;/h1&gt;
-&lt;h2 id=&quot;什么是操作系统？&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#什么是操作系统？&quot;&gt;¶&lt;/a&gt;什么是操作系统？&lt;/h2&gt;
-&lt;p&gt;  操作系统（Operating System，</summary>
+    <summary type="html">&lt;h1 id=&quot;操作系统的基本概念&quot;&gt;&lt;a href=&quot;#操作系统的基本概念&quot; class=&quot;headerlink&quot; title=&quot;操作系统的基本概念&quot;&gt;&lt;/a&gt;操作系统的基本概念&lt;/h1&gt;&lt;h2 id=&quot;什么是操作系统？&quot;&gt;&lt;a href=&quot;#什么是操作系统？&quot;</summary>
         
       
     
@@ -480,32 +488,6 @@
     
     
     <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xbwcj的失败史</title>
-    <link href="http://xbwcj.github.io/2021/03/19/xbwcj-de-shi-bai-shi/"/>
-    <id>http://xbwcj.github.io/2021/03/19/xbwcj-de-shi-bai-shi/</id>
-    <published>2021-03-19T02:02:00.000Z</published>
-    <updated>2021-03-20T10:20:07.272Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;分享一句话&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#分享一句话&quot;&gt;¶&lt;/a&gt;分享一句话&lt;/h2&gt;
-&lt;p&gt;&lt;font face=&quot;微软雅黑&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="个人分享" scheme="http://xbwcj.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
-    
-    
-    <category term="个人分享" scheme="http://xbwcj.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
     
   </entry>
   
@@ -521,9 +503,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;XBW&lt;/h1&gt;
-&lt;h2 id=&quot;分享一句话&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#分享一句话&quot;&gt;¶&lt;/a&gt;分享一句话&lt;/h2&gt;
-&lt;p&gt;&lt;font face=&quot;微软雅黑&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;XBW&quot;&gt;&lt;a href=&quot;#XBW&quot; class=&quot;headerlink&quot; title=&quot;XBW&quot;&gt;&lt;/a&gt;XBW&lt;/h1&gt;&lt;h2 id=&quot;分享一句话&quot;&gt;&lt;a href=&quot;#分享一句话&quot; class=&quot;headerlink&quot;</summary>
         
       
     

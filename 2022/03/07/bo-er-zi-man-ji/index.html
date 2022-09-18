@@ -505,81 +505,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>  在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/qing-kuang-shu-sheng-18-44">知乎主页</a>和大佬的<a target="_blank" rel="noopener" href="https://github.com/2019ChenGong/Machine-Learning-Notes">gthub主页</a>。里面有大佬对于这些模型的公式推导。下面写一些我学习后的个人总结，里面大部分是一些大佬的推导过程，大家想深入研究，直接看大佬的专栏就好，这里仅用来自我总结。</p>
-<h1>介绍</h1>
-<p>  玻尔兹曼机（Boltzmann Machine，BM）可以看作是一种随机动力系统，每个变量的状态都以一定的概率受到其他变量的影响。下面是任何讲到BM都会涉及到的经典模型图：<br>
-<img src="/2022/03/07/bo-er-zi-man-ji/1.png" alt="玻尔兹曼模型图"><br>
-  其中BM模型有如下的三个特性：<br>
-  （1）每个随机变量都可以用一个二值的随机变量表示，即0和1。<br>
-  （2）所有节点之间都是全连接的。<br>
-  （3）每两个变量之间的相互影响是对称的，即权重对称。<br>
-  我们假设 $ {v_{D \times 1} } \in { \{0,1\}^D } $，$ {h_{P \times 1} } \in { \{0,1\}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：<br>
-$$<br>
-\begin{array}{l}<br>
-P(v,h) = \frac{1}{2}\exp {  - E(v,h)} \\<br>
-E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot J \cdot h)<br>
-\end{array}<br>
-$$<br>
-其中，$ L = { [ { {L_{ij} } } ]_{D \times D} } $ 表示可见层神经元内部的权重，$ J = { [ { {J_{ij} } } ]_{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = { [ { {w_{ij} } } ]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = \{ W,L,J\} $。</p>
-<h1>基于极大似然的梯度上升</h1>
-<p>  基于极大似然的梯度上升包括极大似然函数和梯度两个部分。<b>极大似然估计的主要思路是，使极大似然函数最大时的参数</b>。首先明确一下，要求的参数为 $ \theta  = \{ W,L,J\} $。假设样本集合为 $v$，$ |v| = D $，那么似然函数为：<br>
-$$ \sum\limits_v {P(v) = } \sum\limits_v {\sum\limits_h {P(v,h)} } $$<br>
-那么对数似然函数为：<br>
-$$ \frac{1}{D}\sum\limits_v {\log P(v)} $$</p>
-<h2 id="似然导数求解"><a class="header-anchor" href="#似然导数求解">¶</a>似然导数求解</h2>
-<p>  是对对数似然函数求导，即为：<br>
-$$<br>
-\frac{\partial }{ {\partial \theta } }\frac{1}{D}\sum \limits_v {\log p(v) } = \frac{1}{D}\sum\limits_v {\frac{ {\partial \log p(v)} }{ {\partial \theta } } }<br>
-$$<br>
-而Boltzmann Distribution 的 log 似然梯度为：<br>
-$$<br>
-\frac{1}{D}\frac{ \partial }{ { \partial \theta } }\log P(v) = \frac{1}{D}\left( {\sum \limits_h {\sum \limits_v {P(v,h)} } \frac{ \partial }{ { \partial \theta } }E(h,v) - \sum \limits_h {P(h|v)\frac{ \partial }{ { \partial \theta } }E(h,v)} } \right)<br>
-$$<br>
-我们对 $ w $ 求导，可以得到：<br>
-$$<br>
-\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } =  \frac{1}{D}\sum \limits_v {\sum \limits_h {P(v|h)} }  \cdot v{h^T} - \sum \limits_v {\sum \limits_h {P(v,h)} }  \cdot v{h^T}<br>
-$$<br>
-可以简写为：<br>
-$$<br>
-\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } = \mathbb{E}_{P_{data} }[v{h^T}] - \mathbb{E}_{P_{model} }[v{h^T}]<br>
-$$<br>
-其中：<br>
-$$<br>
-\begin{array}{l}<br>
-{P_{data}} = {P_{data}}(v) \cdot {P_{model}}(h|v) \\<br>
-{P_{model}} = {P_{model}}(v,h)<br>
-\end{array}<br>
-$$<br>
-在 $ \sum\limits_v {\sum\limits_h {P(v,h)} } $ 中，$ P(v,h) $ 是生成模型，本身就是我们建立的模型，所以被称为 $P_{model}$。而在 $ \sum\limits_v {\sum\limits_h {P(v|h)} } $ 首先从经验分布 $P(v)$ 从采样得到 $v$，然后利用模型分布来求解 $P(h|v)$，所以 $P_{data} = P_{data}(v) \cdot P_{model}(h|v)$。采样出 $P_{model}(h|v)$ 和 $P_{model}(v)$ 就可以求解出 $P_{model}(h,v)$ 了。按照同样的方法可以求得对 ${L, J}$ 的导数。<br>
-  同理通过计算可以得到每个参数矩阵的似然梯度为：<br>
-$$<br>
-\begin{array}{l}<br>
-\Delta W = \alpha ({\mathbb{E}_{ {P_{data} } } }[v{h^T}] - {\mathbb{E}_{ {P_{model} } } }[v{h^T}]) \\<br>
-\Delta L = \alpha ({\mathbb{E}_{ {P_{data} } } }[v{v^T}] - {\mathbb{E}_{ {P_{model} } } }[v{v^T}]) \\<br>
-\Delta J = \alpha ({\mathbb{E}_{ {P_{data} } } }[h{h^T}] - {\mathbb{E}_{ {P_{model} } } }[h{h^T}])<br>
-\end{array}<br>
-$$</p>
-<h1>基于MCMC的似然梯度下降</h1>
-<h2 id="MCMC似然梯度求解总述"><a class="header-anchor" href="#MCMC似然梯度求解总述">¶</a>MCMC似然梯度求解总述</h2>
-<p>  在上面我们使用梯度上升法来使 log 似然函数达到最大，从而求解对应的最优参数。参数更新公式为：<br>
-$$<br>
-{\theta ^{(t + 1)} } = {\theta ^{(t)} } + \Delta \theta<br>
-$$<br>
-其中，$ \Delta \theta  = \{ {\Delta W,\Delta L,\Delta J} \} $ 。以 $ \Delta W $ 为例，$ \Delta W $ 是一个矩阵 $ \Delta W = \left[ {\Delta {w_{ij} } } \right] $。其中：<br>
-$$<br>
-\Delta {w_{ij} } = \alpha \left[ {\underbrace { {\mathbb{E}_{ {P_{data} } } }\left[ { {v_i}{h_j} } \right]}_{Postive \; phase} - \underbrace { {\mathbb{E}_{ {P_{\bmod el} } } }\left[ { {v_i}{h_j} } \right]}_{Negative \; phase} } \right]<br>
-$$<br>
-  在 Boltzmann Machines 中，Postive phase 和 Negative phase 都是 Intractable。所以，Hinton 提出了用 MCMC 来对 $ P(h|v) $ 进行采样。<b>在求解 $ \Delta W $ 中，主要是解决三个部分，$ P_{data}(v) $, $ P_{model}(h|v) $, $ P_{model}(v, h) $，其中 $ P_{model}(v, h) = P_{model}(h|v) · P_{model}(v) $。所以，而 $ P_{data}(v) $ 和 $ P_{model}(v) $ 相对比较简单，所以难点在于 $ P_{model}(h|v) $ 的求解。</b>但在 Boltzmann Machines 中，由于关系过于复杂，没有办法分解，甚至最大团分解都没有用，因为最大团就是自己，那么连 $ P_{model}(h|v) $ 都求不出来，那么 Postive phase 和 Negative phase 都是 Intractable。<br>
-  但是通过推导可以得出：<br>
-$$<br>
-\begin{array}{l}<br>
-P({v_i} = 1|h,{v_{ - i} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{h_j} }  + \sum\nolimits_{k = 1\backslash i}^D { {L_{ik} }{v_k} } )\<br>
-P({h_j} = 1|v,{h_{ - j} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{v_i} }  + \sum\nolimits_{m = 1\backslash j}^D { {J_{im} }{h_n} } )<br>
-\end{array}<br>
-$$<br>
-  公式表达的是，在已知一个节点以外的所有的点的条件下，这个节点的条件概率是可求的。其中 $ 1 \backslash i $ 表达的意思是 $ 1 ∼ D $ 但不包括 $ i $ 的所有节点。<br>
-  具体的推导过程在大佬的博客和github中有，这里不再搬运。<br>
-  <b>其他具体的介绍以及推导过程，点击该链接可以下载查看。</b><a href="White_2020_04_08_Boltzmann_Machine.pdf" title="相关资料下载">点击下载</a></p>
+                <p>&emsp;&emsp;在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/qing-kuang-shu-sheng-18-44">知乎主页</a>和大佬的<a target="_blank" rel="noopener" href="https://github.com/2019ChenGong/Machine-Learning-Notes">gthub主页</a>。里面有大佬对于这些模型的公式推导。下面写一些我学习后的个人总结，里面大部分是一些大佬的推导过程，大家想深入研究，直接看大佬的专栏就好，这里仅用来自我总结。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;玻尔兹曼机（Boltzmann Machine，BM）可以看作是一种随机动力系统，每个变量的状态都以一定的概率受到其他变量的影响。下面是任何讲到BM都会涉及到的经典模型图：<br><img src="/2022/03/07/bo-er-zi-man-ji/1.png" alt="玻尔兹曼模型图"><br>&emsp;&emsp;其中BM模型有如下的三个特性：<br>&emsp;&emsp;（1）每个随机变量都可以用一个二值的随机变量表示，即0和1。<br>&emsp;&emsp;（2）所有节点之间都是全连接的。<br>&emsp;&emsp;（3）每两个变量之间的相互影响是对称的，即权重对称。<br>&emsp;&emsp;我们假设 $ {v_{D \times 1} } \in { \\{0,1\\}^D } $，$ {h_{P \times 1} } \in { \\{0,1\\}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+P(v,h) = \frac{1}{2}\exp \{  - E(v,h)\} \\\\
+E(v,h) =  - ({v^T} \cdot W \cdot h + \frac{1}{2}{v^T} \cdot Lv + \frac{1}{2}{h^T} \cdot J \cdot h)
+\end{array}</script><p>其中，$ L = { [ { {L_{ij} } } ]_{D \times D} } $ 表示可见层神经元内部的权重，$ J = { [ { {J_{ij} } } ]_{P \times P} } $ 表示隐藏层神经元内部的权重，$ W = { [ { {w_{ij} } } ]_{D \times P} } $ 表示可见层和隐藏层神经元之间的权重。在此问题中，要学习的参数集合为 $ \theta  = \\{ W,L,J\\} $。</p>
+<h1 id="基于极大似然的梯度上升"><a href="#基于极大似然的梯度上升" class="headerlink" title="基于极大似然的梯度上升"></a>基于极大似然的梯度上升</h1><p>&emsp;&emsp;基于极大似然的梯度上升包括极大似然函数和梯度两个部分。<b>极大似然估计的主要思路是，使极大似然函数最大时的参数</b>。首先明确一下，要求的参数为 $ \theta  = \\{ W,L,J\\} $。假设样本集合为 $v$，$ |v| = D $，那么似然函数为：</p>
+<script type="math/tex; mode=display">\sum\limits_v {P(v) = } \sum\limits_v {\sum\limits_h {P(v,h)} }</script><p>那么对数似然函数为：</p>
+<script type="math/tex; mode=display">\frac{1}{D}\sum\limits_v {\log P(v)}</script><h2 id="似然导数求解"><a href="#似然导数求解" class="headerlink" title="似然导数求解"></a>似然导数求解</h2><p>&emsp;&emsp;是对对数似然函数求导，即为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial }{ {\partial \theta } }\frac{1}{D}\sum \limits_v {\log p(v) } = \frac{1}{D}\sum\limits_v {\frac{ {\partial \log p(v)} }{ {\partial \theta } } }</script><p>而Boltzmann Distribution 的 log 似然梯度为：</p>
+<script type="math/tex; mode=display">
+\frac{1}{D}\frac{ \partial }{ { \partial \theta } }\log P(v) = \frac{1}{D}\left( {\sum \limits_h {\sum \limits_v {P(v,h)} } \frac{ \partial }{ { \partial \theta } }E(h,v) - \sum \limits_h {P(h|v)\frac{ \partial }{ { \partial \theta } }E(h,v)} } \right)</script><p>我们对 $ w $ 求导，可以得到： </p>
+<script type="math/tex; mode=display">
+\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } =  \frac{1}{D}\sum \limits_v {\sum \limits_h {P(v|h)} }  \cdot v{h^T} - \sum \limits_v {\sum \limits_h {P(v,h)} }  \cdot v{h^T}</script><p>可以简写为： </p>
+<script type="math/tex; mode=display">
+\frac{1}{D}\sum \limits_v {\frac{ {\partial \log P(v)} }{ {\partial W} } } = \mathbb{E}\_{P_{data} }[v{h^T}] - \mathbb{E}\_{P_{model} }[v{h^T}]</script><p>其中：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+{P_{data}} = {P_{data}}(v) \cdot {P_{model}}(h|v) \\\\
+{P_{model}} = {P_{model}}(v,h)
+\end{array}</script><p>在 $ \sum\limits_v {\sum\limits_h {P(v,h)} } $ 中，$ P(v,h) $ 是生成模型，本身就是我们建立的模型，所以被称为 $P_{model}$。而在 $ \sum\limits_v {\sum\limits_h {P(v|h)} } $ 首先从经验分布 $P(v)$ 从采样得到 $v$，然后利用模型分布来求解 $P(h|v)$，所以 $P_{data} = P_{data}(v) \cdot P_{model}(h|v)$。采样出 $P_{model}(h|v)$ 和 $P_{model}(v)$ 就可以求解出 $P_{model}(h,v)$ 了。按照同样的方法可以求得对 ${L, J}$ 的导数。<br>&emsp;&emsp;同理通过计算可以得到每个参数矩阵的似然梯度为： </p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta W = \alpha ({\mathbb{E}\_{ {P_{data} } } }[v{h^T}] - {\mathbb{E}\_{ {P_{model} } } }[v{h^T}]) \\\\
+\Delta L = \alpha ({\mathbb{E}\_{ {P_{data} } } }[v{v^T}] - {\mathbb{E}\_{ {P_{model} } } }[v{v^T}]) \\\\
+\Delta J = \alpha ({\mathbb{E}\_{ {P_{data} } } }[h{h^T}] - {\mathbb{E}\_{ {P_{model} } } }[h{h^T}])
+\end{array}</script><h1 id="基于MCMC的似然梯度下降"><a href="#基于MCMC的似然梯度下降" class="headerlink" title="基于MCMC的似然梯度下降"></a>基于MCMC的似然梯度下降</h1><h2 id="MCMC似然梯度求解总述"><a href="#MCMC似然梯度求解总述" class="headerlink" title="MCMC似然梯度求解总述"></a>MCMC似然梯度求解总述</h2><p>&emsp;&emsp;在上面我们使用梯度上升法来使 log 似然函数达到最大，从而求解对应的最优参数。参数更新公式为：</p>
+<script type="math/tex; mode=display">
+{\theta ^{(t + 1)} } = {\theta ^{(t)} } + \Delta \theta</script><p>其中，$ \Delta \theta  = \\{ {\Delta W,\Delta L,\Delta J} \\} $ 。以 $ \Delta W $ 为例，$ \Delta W $ 是一个矩阵 $ \Delta W = \left[ {\Delta {w_{ij} } } \right] $。其中： </p>
+<script type="math/tex; mode=display">
+\Delta {w_{ij} } = \alpha \left[ {\underbrace { {\mathbb{E}\_{ {P_{data} } } }\left[ { {v_i}{h_j} } \right]}\_{Postive \\; phase} - \underbrace { {\mathbb{E}\_{ {P_{\bmod el} } } }\left[ { {v_i}{h_j} } \right]}\_{Negative \\; phase} } \right]</script><p>&emsp;&emsp;在 Boltzmann Machines 中，Postive phase 和 Negative phase 都是 Intractable。所以，Hinton 提出了用 MCMC 来对 $ P(h|v) $ 进行采样。<b>在求解 $ \Delta W $ 中，主要是解决三个部分，$ P_{data}(v) $, $ P_{model}(h|v) $, $ P_{model}(v, h) $，其中 $ P_{model}(v, h) = P_{model}(h|v) · P_{model}(v) $。所以，而 $ P_{data}(v) $ 和 $ P_{model}(v) $ 相对比较简单，所以难点在于 $ P_{model}(h|v) $ 的求解。</b>但在 Boltzmann Machines 中，由于关系过于复杂，没有办法分解，甚至最大团分解都没有用，因为最大团就是自己，那么连 $ P_{model}(h|v) $ 都求不出来，那么 Postive phase 和 Negative phase 都是 Intractable。<br>&emsp;&emsp;但是通过推导可以得出：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+P({v_i} = 1|h,{v_{ - i} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{h_j} }  + \sum\nolimits_{k = 1\backslash i}^D { {L_{ik} }{v_k} } )\\
+P({h_j} = 1|v,{h_{ - j} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{v_i} }  + \sum\nolimits_{m = 1\backslash j}^D { {J_{im} }{h_n} } )
+\end{array}</script><p>&emsp;&emsp;公式表达的是，在已知一个节点以外的所有的点的条件下，这个节点的条件概率是可求的。其中 $ 1 \backslash i $ 表达的意思是 $ 1 ∼ D $ 但不包括 $ i $ 的所有节点。<br>&emsp;&emsp;具体的推导过程在大佬的博客和github中有，这里不再搬运。<br>&emsp;&emsp;<b>其他具体的介绍以及推导过程，点击该链接可以下载查看。</b><a href="White_2020_04_08_Boltzmann_Machine.pdf" title="相关资料下载">点击下载</a></p>
 
                 
             </div>
@@ -1381,7 +1344,7 @@ $$<br>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">103.2k</span>&nbsp;字
+                class="white-color">104.7k</span>&nbsp;字
             
             
             
