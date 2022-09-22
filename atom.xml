@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-09-18T08:31:21.612Z</updated>
+  <updated>2022-09-22T08:52:34.318Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Learning_differentially_private_recurrent_language_models》</title>
+    <link href="http://xbwcj.github.io/2022/09/19/learning-differentially-private-recurrent-language-models/"/>
+    <id>http://xbwcj.github.io/2022/09/19/learning-differentially-private-recurrent-language-models/</id>
+    <published>2022-09-19T05:50:57.000Z</published>
+    <updated>2022-09-22T08:52:34.318Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《QSFL： A Two-Level Uplink Communication Optimization Framework for Federated Learning 》</title>
+    <link href="http://xbwcj.github.io/2022/09/18/qsfl-a-two-level-uplink-communication-optimization-framework-for-federated-learning/"/>
+    <id>http://xbwcj.github.io/2022/09/18/qsfl-a-two-level-uplink-communication-optimization-framework-for-federated-learning/</id>
+    <published>2022-09-18T11:52:03.000Z</published>
+    <updated>2022-09-18T14:28:49.051Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;摘要&lt;/h1&gt;
+&lt;p&gt;  在跨设备联邦学习(FL)中，由于昂贵、不可靠和低带宽的无线连接，在边缘设备和中心服务器之间传输全精度模型的通信成本是一个重要的瓶颈。作为一种解决方案，我们提出了一种新的FL框架QSFL，旨在客户端和模型层上优化FL上行（客户端到服务器）通信。在客</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《Practical Secure Aggregation for Federated Learning on User-Held Data》阅读笔记</title>
@@ -463,56 +514,6 @@
     
     
     <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机系统概述（一）</title>
-    <link href="http://xbwcj.github.io/2021/03/20/ji-suan-ji-xi-tong-gai-shu-yi/"/>
-    <id>http://xbwcj.github.io/2021/03/20/ji-suan-ji-xi-tong-gai-shu-yi/</id>
-    <published>2021-03-20T05:37:47.000Z</published>
-    <updated>2021-03-22T02:48:40.737Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;操作系统的基本概念&quot;&gt;&lt;a href=&quot;#操作系统的基本概念&quot; class=&quot;headerlink&quot; title=&quot;操作系统的基本概念&quot;&gt;&lt;/a&gt;操作系统的基本概念&lt;/h1&gt;&lt;h2 id=&quot;什么是操作系统？&quot;&gt;&lt;a href=&quot;#什么是操作系统？&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xbwcj的失败史</title>
-    <link href="http://xbwcj.github.io/2021/03/19/xbwcj-de-shi-bai-shi-he-ccr-de-guang-hui-sui-yue/"/>
-    <id>http://xbwcj.github.io/2021/03/19/xbwcj-de-shi-bai-shi-he-ccr-de-guang-hui-sui-yue/</id>
-    <published>2021-03-19T02:02:00.000Z</published>
-    <updated>2021-03-20T10:20:04.545Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;XBW&quot;&gt;&lt;a href=&quot;#XBW&quot; class=&quot;headerlink&quot; title=&quot;XBW&quot;&gt;&lt;/a&gt;XBW&lt;/h1&gt;&lt;h2 id=&quot;分享一句话&quot;&gt;&lt;a href=&quot;#分享一句话&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="个人分享" scheme="http://xbwcj.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
-    
-    
-    <category term="个人分享" scheme="http://xbwcj.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
     
   </entry>
   
