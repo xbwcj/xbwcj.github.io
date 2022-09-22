@@ -540,10 +540,10 @@
 <p><b>加权平均查询的有界灵敏度估计</b>随机抽样用户（或训练示例），以概率 $q$ 选择每个独立用户，这对于通过使用矩会计证明低隐私损失至关重要（Abadi等人，2016a）。然而，这个过程产生可变大小的样本 $\mathcal{C}$ ，当待估计的数量 $f(\mathcal{C})$ 是一个平均值而不是一个和时（如计算FedAvg中的加权平均更新或SGD中具有example-level DP的 minibatch 上的平均损失），这对查询 $f$ 的灵敏度产生了影响。</p>
 <p>  具体来说，我们考虑加权数据库 $d$，其中每一行 $k \in d$ 都与一个特定的用户关联，并且具有关联的权重 $w_{k} \in [0,1]$。此权重捕获行 $k$ 对最终结果的预期影响。例如，我们可以认为第 $k$ 行包含 $n_{k}$ 个不同的训练示例，它们都是由用户 $k$ 生成的，权重 $w_{k}$ 与 $n_{k}$ 成正比。然后，我们对每个用户向量 $\Delta_{k}$ 的 $f(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\sum_{k \in \mathcal{C}} w_{k}}$ 的有界灵敏度估计感兴趣，例如，估计FedAvg中的加权平均用户更新。设 $W=\sum_{k} w_{k}$ 。我们考虑两个这样的估计量：<br>
 $$<br>
-\tilde{f}<em>{\mathrm{f}}(\mathcal{C})=\frac{\sum</em>{k \in \mathcal{C}} w_{k} \Delta_{k}}{q W}<br>
-$$<br>
-$$<br>
-\tilde{f}<em>{\mathrm{c}}(\mathcal{C})=\frac{\sum</em>{k \in \mathcal{C}} w_{k} \Delta_{k}}{\max \left(q W_{\min }, \sum_{k \in \mathcal{C}} w_{k}\right)}<br>
+\tilde{f}_{\mathrm{f}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{q W}<br>
+$$</p>
+<p>$$<br>
+\tilde{f}_{\mathrm{c}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\max \left(q W_{\min }, \sum_{k \in \mathcal{C}} w_{k}\right)}<br>
 $$<br>
   注意 $\tilde{f}_{\mathrm{f}}$ ，因为 $\mathbb{E}\left[\sum_{k \in \mathcal{C}} w_{k}\right]=q W$ ，另一方面，只要样本中有足够的权值， $\tilde{f}_{\mathrm{c}}$ 就完全匹配 $f$。为了保护隐私，我们需要控制查询函数 $\tilde{f}$ 的灵敏度，定义为 $\mathbb{S}(\tilde{f})=\max_{\mathcal{C}, k} ||\tilde{f}(\mathcal{C} \cup { k } ) - \tilde{f}(\mathcal{C}) ||_{2}$ ，其中添加的用户 $k$ 可以有任意数据。为了控制灵敏度，需要在 $\tilde{f}_{\mathrm{c}}$ 的分母上设置下限 $qW_{min}$ 。假设每个 $w_{k} \Delta_{k}$ 有界范数，我们有：<br>
 <b>引理1：</b>如果对于所有用户 $k$，我们有 $|w_{k} \Delta_{k} |_{2} \leq S$ ，那么两个估计器的灵敏度被限定为 $\mathbb{S}\left(\tilde{f}_{\mathrm{f}}\right) \leq \frac{S}{q W} \text { and } \mathbb{S}\left(\tilde{f}_{\mathrm{c}}\right) \leq \frac{2 S}{q W_{\min } }$。</p>
