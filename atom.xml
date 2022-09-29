@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-09-22T14:53:08.314Z</updated>
+  <updated>2022-09-29T12:07:06.279Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Practical and Private （Deep） Learning without Sampling or Shuffling》</title>
+    <link href="http://xbwcj.github.io/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/"/>
+    <id>http://xbwcj.github.io/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/</id>
+    <published>2022-09-24T05:37:45.000Z</published>
+    <updated>2022-09-29T12:07:06.279Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《Learning_differentially_private_recurrent_language_models》</title>
@@ -480,31 +505,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;操作系统的运行环境&quot;&gt;&lt;a href=&quot;#操作系统的运行环境&quot; class=&quot;headerlink&quot; title=&quot;操作系统的运行环境&quot;&gt;&lt;/a&gt;操作系统的运行环境&lt;/h1&gt;&lt;h2 id=&quot;操作系统的运行机制&quot;&gt;&lt;a href=&quot;#操作系统的运行机制&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机系统概述（二）</title>
-    <link href="http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-er/"/>
-    <id>http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-er/</id>
-    <published>2021-03-22T02:40:38.000Z</published>
-    <updated>2021-03-30T03:18:53.106Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;操作系统的发展与分类&quot;&gt;&lt;a href=&quot;#操作系统的发展与分类&quot; class=&quot;headerlink&quot; title=&quot;操作系统的发展与分类&quot;&gt;&lt;/a&gt;操作系统的发展与分类&lt;/h1&gt;&lt;h2 id=&quot;手工操作阶段&quot;&gt;&lt;a href=&quot;#手工操作阶段&quot;</summary>
         
       
     
