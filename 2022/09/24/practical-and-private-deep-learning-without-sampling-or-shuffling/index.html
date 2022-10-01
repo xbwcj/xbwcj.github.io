@@ -468,7 +468,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2022-10-01
                 </div>
                 
 
@@ -516,7 +516,7 @@
 <h2 id="问题制定"><a href="#问题制定" class="headerlink" title="问题制定"></a>问题制定</h2><p>&emsp;&emsp;假设我们有一个数据样本流 $D=\left[d_{1}, \ldots, d_{n}\right] \in \mathcal{D}^{n}$，其中 $\mathcal{D}$ 为数据样本的定域，损失函数 $\ell: \mathcal{C} \times \mathcal{D} \rightarrow \mathbb{R}$，其中 $\mathcal{C} \in \mathbb{R} ^{p}$ 为所有模型的空间。我们考虑以下两个问题设置。</p>
 <p><b>Regret最小化：</b>在每个时间步 $t \in \left[n \right]$，同时观察样本 $\left[d_{1}, \ldots, d_{t−1} \right]$ 时，算法 $\mathcal{A}$ 输出一个模型 $\theta_{t} \in \mathcal{C}$，用于对样例 $d_{t}$ 进行预测。$\mathcal{A}$ 的性能是用regret来衡量的，而不是任意的事后比较器 $\theta ^{*} \in \mathcal{C}$ ：</p>
 <script type="math/tex; mode=display">
-R_{D}\left(\mathcal{A} ; \theta^{*}\right) = \frac{1}{n} \sum\_{t=1}\^{n} \ell \left(\theta\_{t} ; d_{t}\right)-\frac{1}{n} \sum\_{t=1}\^{n} \ell \left(\theta\^{\*} ; d_{t}\right)</script><p>&emsp;&emsp;如果 $R_{D}\left(\mathcal{A} ; \theta^{*}\right)=o(1)$，我们认为算法 $\mathcal{A}$ 是low-regret。为了保证low-regret算法，我们假设 $\\|\nabla \ell(\theta ; d)\\|_{2} \leq L$ 对于任何数据样本 $d$，以及任何模型 $\theta \in \mathcal{C}$。我们考虑两种对抗性遗憾，其中数据样本 $d_{t}$ 基于过去的输出 $\\{ θ_{1}, \cdots , θ_{t} \\}$ [32]和随机后悔[33]，其中 $D$ 中的数据样本是从某个固定分布 $\tau$ 中 $i.i.d.$ 抽取的。</p>
+R_{D}\left(\mathcal{A} ; \theta^{*}\right) = \frac{1}{n} \sum_{t=1}\^{n} \ell \left(\theta\_{t} ; d_{t}\right)-\frac{1}{n} \sum\_{t=1}\^{n} \ell \left(\theta\^{\*} ; d_{t}\right)</script><p>&emsp;&emsp;如果 $R_{D}\left(\mathcal{A} ; \theta^{*}\right)=o(1)$，我们认为算法 $\mathcal{A}$ 是low-regret。为了保证low-regret算法，我们假设 $\\|\nabla \ell(\theta ; d)\\|_{2} \leq L$ 对于任何数据样本 $d$，以及任何模型 $\theta \in \mathcal{C}$。我们考虑两种对抗性遗憾，其中数据样本 $d_{t}$ 基于过去的输出 $\\{ θ_{1}, \cdots , θ_{t} \\}$ [32]和随机后悔[33]，其中 $D$ 中的数据样本是从某个固定分布 $\tau$ 中 $i.i.d.$ 抽取的。</p>
 <p><b>过剩风险最小化：</b>在此背景下，我们着眼于最小化过剩人口风险的问题。假设数据集 $D$ 从分布τ $\tau$ 采样 $i.i.d.$，算法 $\mathcal{A}$ 输出 $\hat{\theta } \in \mathcal{C} $，我们要最小化： </p>
 <script type="math/tex; mode=display">
 \operatorname{PopRisk}(\mathcal{A})=\mathbb{E}\_{d \sim \tau} \ell(\widehat{\theta} ; d)-\min \_{\theta \in \mathcal{C}} \mathbb{E}\_{d \sim \tau} \ell(\theta ; d)</script><p>&emsp;&emsp;本文的所有算法都保证了差分隐私[21,22]和Rényi差分隐私[51]（详见第2节）。单个数据记录的定义可以是一个训练示例（又称示例级隐私），也可以是来自一个人的一组训练示例（又称用户级隐私）。除了FL设置中的经验评估外，我们关注的是示例级别的隐私<br><b>定义1.1</b>（差分隐私[21,22]）。随机化算法 $\mathcal{A}$是 $(ε, δ)$-差分私有的如果对于一个记录中不同的任何相邻数据集 $D$， $D’$，对于 $\mathcal{A}$ 的输出范围内的任何事件 $\mathcal{S}$，我们有：</p>
