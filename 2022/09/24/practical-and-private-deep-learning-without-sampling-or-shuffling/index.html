@@ -565,7 +565,7 @@ $$<br>
 <p>  在本节中，我们将提供DP-FTRL算法（算法1）的形式化描述及其隐私分析然后，我们证明了差分私有随机梯度下降（DP-SGD）的变体[6,65]可以被视为在适当学习率选择下DP-FTRL的实例化。</p>
 <p>  关键的是，我们对DP-FTRL的隐私保证在数据 $D$ 以任意（甚至是恶意选择的）顺序处理时仍然有效，并且不依赖于损失函数的凸性。效用担保，即后悔担保和超额风险担保要求凸损失（即 $\ell( \cdot ; \cdot)$ 第一个参数是凸的）。在下面的演示中，为了简洁起见，我们假设损失是可微的。通过标准使用次微分，这些论证扩展到不可微凸损失[32,62]。</p>
 <h2 id="算法描述"><a class="header-anchor" href="#算法描述">¶</a>算法描述</h2>
-<p>  DP-FTRL的主要思想基于三个观察结果：i）对于在线凸优化，对给定损失函数 $\ell(θ;d_{t})$（即时间步 $t$ 处的损失），它足以使算法在 $θ_{t}$ 处的损失（时间步 $t$ 处的模型输出）的线性化上操作：$: \widetilde{\ell}\left(\theta ; d_{t}\right)=\left\langle\nabla_{\theta} \ell\left(\theta_{t} ; d_{t}\right), \theta-\theta_{t}\right\rangle$, ii） $λ$ 的适当选择下，优化为 $\theta_{t+1}=\arg \min _{\theta \in \mathcal{C}} \sum_{i=1}^{t} \tilde{\ell}\left(\theta ; d_{t}\right)+\frac{\lambda}{2}|\theta|_{2}^{2}$ 除以 $θ \in \mathcal{C}$ 给出了 $t+1$ 步的一个很好的模型，并且iii）对于所有 $t \in [n]$，我们可以私下跟踪 $\sum_{i=1}^{t} \tilde{\ell}\left(\theta ; d_{t}\right)$ 使用现在标准的树聚合协议[14,23]。虽然在[63]中以follow-the-approximate-leader的名义使用了这种想法的变体，但一个关键的区别是，他们使用了正则化损失的二次近似，即 $\ell\left(\theta ; d_{t}\right)+\frac{\lambda}{t}|\theta|_{2}^{2}$。这一公式导致了更复杂的算法、次优regret分析和无法维持复合损耗引入的结构特性（如稀疏性）[18,44,46,72]。<br>
+<p>  DP-FTRL的主要思想基于三个观察结果：i）对于在线凸优化，对给定损失函数 $\ell(θ;d_{t})$（即时间步 $t$ 处的损失），它足以使算法在 $θ_{t}$ 处的损失（时间步 $t$ 处的模型输出）的线性化上操作：$ \widetilde{\ell}\left(\theta ; d_{t}\right)=\left\langle\nabla_{\theta} \ell\left(\theta_{t} ; d_{t}\right), \theta-\theta_{t}\right\rangle$, ii） $λ$ 的适当选择下，优化为 $\theta_{t+1}=\arg \min _{\theta \in \mathcal{C}} \sum_{i=1}^{t} \tilde{\ell}\left(\theta ; d_{t}\right)+\frac{\lambda}{2}|\theta|_{2}^{2}$ 除以 $θ \in \mathcal{C}$ 给出了 $t+1$ 步的一个很好的模型，并且iii）对于所有 $t \in [n]$，我们可以私下跟踪 $\sum_{i=1}^{t} \tilde{\ell}\left(\theta ; d_{t}\right)$ 使用现在标准的树聚合协议[14,23]。虽然在[63]中以follow-the-approximate-leader的名义使用了这种想法的变体，但一个关键的区别是，他们使用了正则化损失的二次近似，即 $\ell\left(\theta ; d_{t}\right)+\frac{\lambda}{t}|\theta|_{2}^{2}$。这一公式导致了更复杂的算法、次优regret分析和无法维持复合损耗引入的结构特性（如稀疏性）[18,44,46,72]。<br>
 <img src="/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/2.png" alt="算法1 $\mathcal{A}_{FTRL}$：差分隐私Follow-The-Regularized-Leader （DP-FTRL）"><br>
   在本文的后面部分，我们提供了两种DP-FTRL变体（动量DP-FTRL和最小二乘损失的DP-FTRL），它们在某些问题设置中具有更好的隐私/效用权衡。</p>
 <p>  DP-FTRL的形式化描述在算法1中。有三个函数，InitializeTree, AddToTree，GetSum，它对应于树聚合算法。在高层次上，InitializeTree初始化树数据结构 $\mathcal{T}$, AddToTree允许在 $\mathcal{T}$ 中添加新的渐变 $\nabla_{t}$, GetSum私有地返回前缀和 $\sum_{i=1}^{t} \nabla_{t}$。关于形式化算法的描述，请参考附录B.1。</p>
@@ -1133,18 +1133,17 @@ $$</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/">
+                <a href="/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="《Practical and Private （Deep） Learning without Sampling or Shuffling》">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》">
                         
-                        <span class="card-title">《Practical and Private （Deep） Learning without Sampling or Shuffling》</span>
+                        <span class="card-title">《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1154,9 +1153,9 @@ $$</p>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1169,7 +1168,6 @@ $$</p>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1433,7 +1431,7 @@ $$</p>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">120.5k</span>&nbsp;字
+                class="white-color">128.6k</span>&nbsp;字
             
             
             

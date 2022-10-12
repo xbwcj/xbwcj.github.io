@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="《Learning_differentially_private_recurrent_language_models》, Live My Life">
+    <meta name="keywords" content="《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》, Live My Life">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>《Learning_differentially_private_recurrent_language_models》 | Live My Life</title>
+    <title>《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》 | Live My Life</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -315,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">《Learning_differentially_private_recurrent_language_models》</h1>
+                    <h1 class="description center-align post-title">《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》</h1>
                 </div>
             </div>
         </div>
@@ -461,28 +461,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-19
+                    2022-10-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-22
+                    2022-10-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    8.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    33 分
                 </div>
                 
 
@@ -505,62 +505,169 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>摘要</h1>
-<p>  我们证明，训练具有用户级差分隐私保证的大型循环语言模型是可能的，而在预测精度方面的成本仅为可以忽略不计。我们的工作建立在深度网络在用户分区数据和随机梯度下降隐私会计方面的训练的最新进展上。特别地，我们将用户级隐私保护添加到联邦平均算法中，从而从用户级数据中进行“large step”更新。我们的研究表明，给定一个拥有足够多用户的数据集（即使是小型互联网规模的数据集也很容易满足这一要求），实现差异隐私的代价是增加计算量，而不是像大多数之前的工作那样降低效用。我们发现，当在大数据集上训练时，我们的私有LSTM语言模型在定量和定性上与无噪声模型相似。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>前缀基础知识</h1>
+<p>  <b>Byzantine Worker：</b>Byzantine worker是指在训练过程中可以随意作恶的worker。比如随意掉线，或者上传恶意、随机的更新梯度。从而达到是的模型优化无法收敛的目的。Byzantine worker 可能上传随机的梯度，也可能故意上传和正确梯度相反的梯度。无论何种方式，这都会导致模型divergence。</p>
+<h1>摘要</h1>
+<p>  在本文中，我们提出了一类鲁棒随机次梯度方法，用于在存在未知数量Byzantine Worker的异构数据集中进行分布式学习。Byzantine Worker在学习过程中，可能会由于数据损坏、通信失败或恶意攻击，向master发送任意错误的消息，从而使学习到的模型产生偏差。该方法的关键是在目标函数中加入正则化项，以增强学习任务的鲁棒性，减轻Byzantine attacks的负面影响。由此产生的基于次梯度的算法被称为Byzantine-鲁棒随机聚合方法，证明了我们今后使用的RSA。与大多数现有算法相比，RSA不依赖于数据在工作者上是独立和同分布的假设，因此适用于更广泛的应用程序。从理论上，我们证明：i) RSA收敛到一个近似最优解，学习误差依赖于Byzantine Worker的数量；ii) RSA在Byzantine attacks下的收敛速度与随机梯度下降法相同，后者不受Byzantine attacks。从数值上讲，在真实数据集上的实验证实了RSA的具有竞争力的性能和与最先进的替代方案相比的复杂性降低。</p>
 <h1>介绍</h1>
-<p>  像长短期记忆（LSTM）循环神经网络（RNNs）这样的深度循环模型已经成为现代语言建模方法的标准构建模块，在语音识别、移动键盘输入解码和语言翻译方面都有应用。由于不同的问题域和数据集，语言的使用差别很大，因此用正确分布的数据训练语言模型是至关重要的。例如，一个帮助在移动键盘上打字的模型，最好是通过在移动应用程序中输入的训练数据，而不是来自扫描的书籍或转录的话语。然而，语言数据可能是唯一隐私敏感的。在手机上输入文本的情况下，这些敏感信息可能包括密码、文本消息和搜索查询。一般来说，语言数据可以明确地通过名字或隐式地（例如通过罕见或独特的短语）识别说话者，并将说话者与秘密或敏感信息联系起来。<br>
-  理想情况下，语言模型的参数应该对许多用户共同使用的语言使用模式进行编码，而不需要记住任何单个用户的独特输入序列。然而，我们知道卷积神经网络可以记住训练数据的任意标签（Zhang等人，2017），循环语言模型也能够记住训练数据中的唯一模式（Carlini等人，2018）。最近对神经网络的攻击，如Shokri等人（2017）的攻击，强调了隐性风险。我们工作的主要目标是提供一个强有力的保证，即训练过的模型保护个人数据的隐私，而不会在模型质量上造成不适当的牺牲。<br>
-  我们的动机是训练模型在移动键盘下一个单词预测的问题，并使用它作为一个运行的例子。这个问题非常适合我们介绍的技术，因为差异隐私可能允许对来自真实分布(实际移动使用)的数据进行训练，而不是对来自其他来源的代理数据进行训练，后者会产生劣质模型。然而，为了便于再现性和与非私有模型的比较，我们的实验是在公共数据集上进行的，这是差异隐私研究的标准。本文的其余部分是围绕以下贡献构建的：</p>
-<ol>
-<li>我们使用用户相邻数据集的概念，将差异隐私应用到模型训练中，导致用户级隐私的正式保证，而不是单个示例的隐私。</li>
-<li>我们在§2中介绍了联邦平均算法（McMahan等人，2016）的噪声版本，该算法通过使用矩会计（Abadi等人，2016a）来满足用户相邻的差分隐私，该会计首先开发用于分析差分隐私随机梯度下降（SGD）的示例级隐私。联邦平均方法将多个SGD更新分组在一起，支持“large step”模型更新</li>
-<li>我们演示了§3中训练的第一个高质量的LSTM语言模型，在足够大的数据集下，模型的准确性没有显著下降。例如，在763,430个用户的数据集上，基线（非私有）训练在4120轮训练中达到17.5%的准确性，其中我们在每轮训练中使用来自100个随机用户的数据。我们在4980轮中以（4.6,$10^{−9}$）的隐私差异实现了相同水平的准确性，平均每轮处理5000个用户，以大约60× <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释1：通过在公共数据集上进行初始化训练，而不是像我们在实验中那样从随机初始化开始，可以减少额外的计算成本。</b>
-">[1]</span></a></sup> 的显著计算成本保持相同水平的准确性。在拥有108个用户的更大数据集上运行相同的计算将提高隐私保障到（1.2,$10^{−9}$）。尽管lstm的内部结构很复杂（每个单词嵌入以及密集的状态转换），但我们使用联邦平均算法保证了隐私性并保持了实用性。我们证明了噪声模型的度量和定性行为（关于标题词）与非私有模型没有显著差异。据我们所知，我们的工作代表了最复杂的机器学习模型（根据模型的大小和复杂性来判断），这是有史以来在隐私保障下训练的最复杂的机器学习模型，也是第一个在用户级隐私保护下训练的这样的模型。</li>
-<li>在§3的大量实验中，当训练具有不同隐私保证的复杂模型时，我们提供了参数调优的指导方针。我们表明，少量的实验可以缩小参数空间，使我们为隐私付出的代价不是效用的损失，而是计算成本的增加。</li>
-</ol>
-<p>  现在我们介绍一些初步的内容。差异隐私（DP）（Dwork等人，2006;Dwork, 2011;Dwork和Roth, 2014）为源自私人数据的信息发布提供了一种经过充分测试的形式化方法。将差分私有训练机制应用到机器学习中，可以公开发布模型参数，并提供强有力的保证：对手在分析参数的基础上对原始训练数据的了解受到严重限制，即使他们可以访问任意的侧信息。在形式上，它说：</p>
-<p><b>定义1：差分隐私：</b>随机机制 $\mathcal{M} :\mathcal{D} \rightarrow \mathcal{R}$ 具有域 $\mathcal{D}$ （例如，可能的训练数据集）和范围 $\mathcal{R}$ （例如，所有可能的训练模型）满足 $(\epsilon, \delta)$-差分隐私如果对于任意两个相邻数据集 $d,d’ \in \mathcal{D}$ 和输出任意子集 $\mathcal{S} \subseteq \mathcal{R}$，则 $\operatorname{Pr}[\mathcal{M}(d) \in S] \leq e^{\epsilon} \operatorname{Pr}\left[\mathcal{M}\left(d^{\prime}\right) \in S\right]+\delta$。<br>
-  上面的定义保留了依赖于应用程序的相邻数据集的定义。大多数之前关于差分隐私机器学习的工作（例如Chaudhuri等人（2011）;Bassily等人（2014）;阿巴迪等人（2016a）;Wu等（2017）;Papernot等人（2017））处理example-level privacy：如果 $d’$ 可以通过从 $d$ 中添加或删除单个训练示例而形成，则两个数据集 $d$ 和 $d’$ 被定义为相邻的。我们指出，虽然（Papernot等人，2017）最近的PATE方法可以被调整为提供用户级隐私，但它不适合类（可能输出的单词）数量很大的语言模型。<br>
-  对于像语言建模这样的问题，保护单个的例子是不够的——每个键入的单词对RNN的训练目标都有自己的贡献，因此一个用户可能为训练数据贡献数千个例子。一个敏感的词或短语可能被个人用户输入多次，但它仍然应该受到保护。<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b>">[2]</span></a></sup> 因此，在这项工作中，我们应用差异隐私的定义来保护训练集中的整个用户历史。通过使用适当的邻接关系来确保用户级隐私:</p>
-<p><b>定义2：用户相邻数据集：</b>设 $d$ 和 $d’$ 是两个训练示例数据集，其中每个示例与一个用户相关联。然后，如果 $d’$ 可以通过从 $d$ 中添加或删除与单个用户相关的所有示例而形成，则 $d$ 和 $d’$ 相邻。<br>
-  对于与用户相邻的数据集，满足不同隐私的模型训练满足了我们旨在为语言建模保护的隐私的直观概念：训练集中任何特定用户数据的存在或不存在对学习模型的参数（分布）有难以察觉的影响。由此可见，查看经过训练的模型的对手无法推断是否在训练中使用了任何特定用户的数据，无论他们可能拥有什么辅助信息。特别地，差别隐私在很强的信息理论意义上排除了对敏感信息的记忆。</p>
-<h1>用户级差分隐私训练算法</h1>
-<p>  我们的私有算法严重依赖于两个之前的工作：McMahan等人（2016）的federated平均（或FedAvg）算法，它在用户分区数据上训练深度网络，Abadi等人（2016a）的矩会计，它为高斯机制结合采样放大的重复应用提供了严密的组成保证。虽然我们试图使当前的工作尽可能独立，但上述参考资料提供了有用的背景。<br>
-  FedAvg是由McMahan等人（2016）为联邦学习引入的，其目标是训练共享模型，同时将训练数据保留在每个用户的移动设备上。相反，设备下载当前模型，并通过对数据集执行本地计算来计算更新。在每个用户的数据上执行额外的计算以最小化训练模型所需的通信轮数是值得的，因为当训练数据在移动设备上保持分散时，带宽非常有限。然而，我们观察到，即使在应用DP的数据中心，FedAvg也是有意义的：较大的更新对噪声的抵抗力更强，更少的训练轮可以意味着更少的隐私成本。最重要的是，算法自然地基于单个用户的数据形成每个用户的更新，然后对这些更新进行平均，以计算每一轮应用于共享模型的最终更新。正如我们将看到的，这种结构使扩展算法成为可能，以提供用户级的差分隐私保障。<br>
-  我们还评估了FederatedSGD算法，本质上是large-batch SGD，其中每个mini-batch由“microbatches（微批次）”组成，包括来自单个不同用户的数据。在某些数据中心应用程序中，FedSGD可能比FedAvg更可取，因为快速网络使运行更多迭代更加实际。然而，这些额外的迭代是以隐私为代价的。此外，联邦学习在隐私保护方面的好处与差分隐私保护方面的好处是很好的互补，FedAvg也可以应用于数据中心，因此我们将重点放在这个算法上，同时展示我们的结果也扩展到FedSGD。<br>
-  FedAvg和FedSGD都是迭代过程，在这两种情况下，我们都对非私有版本进行了以下修改，以实现不同的私有：</p>
-<ol>
-<li>（A）我们使用随机大小的batches，我们以 $q$ 的概率独立选择用户，而不是总是选择固定数量的用户</li>
-<li>（B）我们强制裁剪每个用户的更新，因此总更新有 $L_{2}$ 范数限制</li>
-<li>（C）我们对平均更新使用不同的估计量（接下来介绍）</li>
-<li>（D）我们在最终的平均更新中添加高斯噪声。</li>
-</ol>
-<p><img src="/2022/09/19/learning-differentially-private-recurrent-language-models/1.png" alt="图1：DP-FedAvg和DP-FedSGD的主循环，唯一的区别是用户更新函数（UserUpdateFedAvg或UserUpdateFedSGD）。moments会计 $\mathcal{M}$ 的调用参考Abadi et al. (2016b)的API。"></p>
-<p>  DP-FedAvg和DP-FedSGD的伪代码如算法1所示。在本节的其余部分，我们介绍了（C）的估计量，然后介绍了（B）的不同剪辑策略。添加来自（A）的采样过程和（D）的噪声，允许我们应用矩会计来限制算法的总隐私损失，如定理1所示。最后，我们考虑矩会计的性质，使训练大数据集特别有吸引力。</p>
-<p><b>加权平均查询的有界灵敏度估计</b>随机抽样用户（或训练示例），以概率 $q$ 选择每个独立用户，这对于通过使用矩会计证明低隐私损失至关重要（Abadi等人，2016a）。然而，这个过程产生可变大小的样本 $\mathcal{C}$ ，当待估计的数量 $f(\mathcal{C})$ 是一个平均值而不是一个和时（如计算FedAvg中的加权平均更新或SGD中具有example-level DP的 minibatch 上的平均损失），这对查询 $f$ 的灵敏度产生了影响。</p>
-<p>  具体来说，我们考虑加权数据库 $d$，其中每一行 $k \in d$ 都与一个特定的用户关联，并且具有关联的权重 $w_{k} \in [0,1]$。此权重捕获行 $k$ 对最终结果的预期影响。例如，我们可以认为第 $k$ 行包含 $n_{k}$ 个不同的训练示例，它们都是由用户 $k$ 生成的，权重 $w_{k}$ 与 $n_{k}$ 成正比。然后，我们对每个用户向量 $\Delta_{k}$ 的 $f(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\sum_{k \in \mathcal{C}} w_{k}}$ 的有界灵敏度估计感兴趣，例如，估计FedAvg中的加权平均用户更新。设 $W=\sum_{k} w_{k}$ 。我们考虑两个这样的估计量：<br>
+<p>  过去十年见证了智能手机和物联网（IoT）设备的扩散。它们每天都会产生大量数据，人们可以从中学习网络物理系统的模型，并做出决策来改善人类的福利。然而，要求将培训数据集中在一台机器或数据中心的标准机器学习方法可能不适合此类应用，因为从分布式设备收集并存储在云中的数据会导致重大隐私风险（Sicari等人，2015年）。为了缓解用户隐私问题，谷歌提出了一种称为联合学习的新分布式机器学习框架，并于近期流行起来（McMahan and Ramage 2017；Smith et al.2017）。联合学习允许将培训数据保存在业主设备的本地。数据样本和计算任务分布在多个工人之间，例如智能家居中的物联网（IoT）设备，这些设备被编程为协作学习模型。流行机器学习算法的并行实现，例如随机梯度下降（SGD），应用于从分布式数据中学习（Bottou 2010）。</p>
+<p>  然而，联合学习仍然面临两个重大挑战：高通信开销和严重的安全风险。虽然最近开发了几种方法来解决分布式学习的通信瓶颈（Li等人2014；Liu等人2017；Smith等人2017；Chen等人2018b），但安全问题尚未得到充分解决。在联合学习应用程序中，许多设备可能高度不可靠，甚至很容易被黑客破坏。我们称这些装置为Byzantine Worker。在这种情况下，学习者缺乏安全的训练能力，因此容易失败，更不用说对抗性攻击（Lynch 1996）。例如，作为大规模机器学习的主力军，SGD甚至容易受到一名Byzantine Worker的攻击（Chen、Su和Xu，2017）。</p>
+<p>  在这种背景下，本论文研究了一般Byzantine故障模型下的分布式机器学习，其中Byzantine Worker可以任意修改从他们自己传送给主机的消息。有了这样的模型，它对通信故障或攻击就没有任何限制。我们的目标是开发高效的分布式机器学习方法，为这种环境量身定制，并提供可证明的性能保证。</p>
+<h1>相关工作</h1>
+<p>  Byzantine-robust分布式学习近年来受到了越来越多的关注。大多数现有算法都扩展了SGD，以纳入拜占庭稳健设置，并假设数据在工人身上独立且相同分布（i.i.d.）。在这种假设下，正规工人计算的随机梯度大概分布在真实梯度周围，而拜占庭工人发送给主人的随机梯度可能是任意的。因此，掌握者能够应用稳健估计技术来聚集随机梯度。典型的梯度聚集规则包括几何中值（Chen、Su和Xu 2017）、边缘修剪平均值（Yin et al.2018a；Xie、Koyejo和Gupta 2018b）、维度中值（Xie、Koyejo、Gupta 2018；Alistarh、Allen Zhu和Li 2018）等。一种称为Krum的更复杂算法选择一个梯度，该梯度与给定数量的最近梯度的欧氏距离之和最小（Blanchard等人，2017年）。针对高维学习，在（Su和Xu 2018）中开发了一种迭代滤波算法，在高维范围内实现了最佳错误率。这些现有算法的主要缺点来自i.i.d.假设，这在异构计算单元的联合学习中是不可能的。实际上，将这些算法推广到非身份证设置并不简单。此外，其中一些算法依赖于复杂的梯度选择子程序，如Krum和几何中值子程序，这会导致较高的计算复杂性</p>
+<p>  在此背景下的其他相关工作包括（Yin等人2018b）针对拜占庭攻击下非凸优化问题的逃逸鞍点，以及（Chen等人2018a）利用基于梯度编码的算法进行鲁棒学习。然而，（Chen et al.2018a）中的方法需要重新定位数据点，这在联合学习范式中不容易实现。利用额外数据，（Xie、Koyejo和Gupta 2018c）研究了可信赖的基于分数的计划，即使只有一名非Byzantine Worker，也能保证有效学习，但在实践中可能并不总是有额外数据可用。我们的算法还与在（Ben Ameur，Bianchi，and Jakubowicz 2016；Xu，Li，and Ling 2018）中研究的稳健分散优化有关，这些算法考虑在具有不可靠节点的分散网络上优化静态或动态成本函数。相反，这项工作的重点是拜占庭稳健随机优化。</p>
+<h2 id="贡献"><a class="header-anchor" href="#贡献">¶</a>贡献</h2>
+<p>  本文的贡献总结如下</p>
+<p>  c1）我们开发了一类稳健的随机方法，简称RSA，用于异构数据集和拜占庭攻击下的分布式学习。RSA有几个变体，每个变体都是为“$\ell_{p}$-范数正则化鲁棒化目标函数”量身定制的</p>
+<p>  c2）在收敛速度以及拜占庭攻击所导致的错误方面，严格地为最终的RSA方法建立了性能</p>
+<p>  c3）使用MNIST数据集进行了广泛的数值测试，以证实RSA在拜占庭攻击和运行时的分类精度方面的有效性。</p>
+<h1>分布式SGD</h1>
+<p>  我们考虑一个一般的分布式系统，由一个master和 $m$ 个worker组成，其中 $q$ 个worker是Byzantine的（任意行为）。目标是找到以下问题的优化器：<br>
 $$<br>
-\tilde{f}_{\mathrm{f}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{q W}<br>
+\min _{\tilde{x} \in \mathbb{R}^{d}} \sum_{i=1}^{m} \mathbb{E}\left[F\left(\tilde{x}, \xi_{i}\right)\right]+f_{0}(\tilde{x}) \qquad(1)<br>
+$$<br>
+这里 $\tilde{x} \in \mathbb{R}^{d}$ 是优化变量，$f_{0}(\tilde{x})$ 是正则化项，$F(\tilde{x}, \xi_{i})$ 是worker $i$ 相对于随机变量 $\xi_{i}$ 的损失函数。与之前的工作不同，之前的工作假设worker之间的分布式数据是i.i.d.，我们考虑了一个更实际的情况：$\xi_{i} \sim \mathcal{D}_{i}$，其中 $\mathcal{D}_{i}$ 是workers $i$ 上的数据分布，可能与其他workers上的分布不同。</p>
+<p>  在主-辅结构中，在分布式SGD算法的时间 $k+1$ 时，每个辅 $i$ 从主节点接收当前模型 $\tilde{x}^{k}$，从分布 $\mathcal{D}_{i}$ 中针对随机变量 $\xi_{i}^{k}$ 采样一个数据点，并计算局部经验损失的梯度 $\nabla F\left(\tilde{x}^{k}, \xi_{i}^{k}\right)$ 请注意，此采样过程可以很容易地推广到小批量设置，其中每个worker采样多个i.i.d.数据点，并计算本地经验损失的平均梯度。master收集并聚合workers发送的梯度，并更新模型。其在 $k+1$ 时的更新是：<br>
+$$<br>
+\tilde{x}^{k+1}=\tilde{x}^{k}-\alpha^{k+1}\left(\nabla f_{0}\left(\tilde{x}^{k}\right)+\sum_{i=1}^{m} \nabla F\left(\tilde{x}^{k}, \xi_{i}^{k}\right)\right) \qquad(2)<br>
+$$<br>
+其中，$\alpha^{k+1}$ 是 $k+1$ 时的递减学习率。分布式SGD在算法1中概述。</p>
+<p><b>SGD容易受到Byzantine attacks：</b>虽然SGD在传统的大规模机器学习环境中表现良好，但在Byzantine workers在场的情况下，其表现将显著下降（Chen、Su和Xu，2017）。假设一些workers是Byzantine，他们可以根据其他workers发送的信息报告任意消息或策略性地发送精心设计的消息，从而偏见学习过程。具体来说，如果worker $m$ 是Byzantine，在时间 $k+1$，它可以选择以下两种攻击之一：<br>
+  a1）发送 $\nabla F\left(\tilde{x}^{k}, \xi_{m}^{k}\right)=\infty$</p>
+<p>  a2）发送 $\nabla F\left(\tilde{x}^{k}, \xi_{m}^{k}\right)=-\sum_{i=1}^{m-1} \nabla F\left(\tilde{x}^{k}, \xi_{i}^{k}\right)$<br>
+在任何情况下，SGD更新（2）中使用的聚合梯度 $\sum_{i=1}^{m} \nabla F\left(\tilde{x}^{k}, \xi_{i}^{k}\right)$ 将为无穷大或为空，因此学习的模型 $\tilde{x}^{k}$ 将不会收敛或收敛到错误的值。图1显示了SGD在Byzantine attacks攻击下的运作情况。</p>
+<p><img src="/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/1.png" alt="图1:SGD的操作。有 $m$ 名workers，$r$ 为固定workers，其余 $q=m−r$ 是Byzantine。主进程将当前迭代发送给工作进程，而常规工作进程将返回随机梯度。红色魔鬼标记表示Byzantine workers发送给主人的错误信息。"></p>
+<p>  与使用（2）中的简单平均值不同，稳健的梯度聚集规则已被纳入到SGD中（Blanchard et al.2017；Chen，Su，and Xu 2017；Xie，Koyejo，and Gupta 2018a；Yin et al.2018b；2018a）。然而，在联合学习环境中，由于难以区分统计异质性和Byzantine attacks，这些聚合规则变得不那么有效。接下来，我们开发了一个与SGD相对应的版本，以解决从分布式异构数据中进行健壮学习的问题。</p>
+<h1>RSA用于强健的分布式学习</h1>
+<p>  请注意，由于Byzantine workers的存在，解决（1）是没有意义的，它最小化了所有workers的本地预期损失的总和，而没有区分正规workers和Byzantine workers，因为Byzantine workers总是会阻止学习者访问他们的本地数据并找到最佳解决方案。相反，一个不那么雄心勃勃的目标是找到一个解决方案，最大限度地减少正规workers当地预期成本函数加上正规化术语的总和：<br>
+$$<br>
+\tilde{x}^{*}=\arg \min _{\tilde{x} \in \mathbb{R}^{d}} \sum_{i \in \mathcal{R}} \mathbb{E}\left[F\left(\tilde{x}, \xi_{i}\right)\right]+f_{0}(\tilde{x})  \qquad(3)<br>
+$$<br>
+这里我们用 $|\mathcal{B}|=q$ 和 $|\mathcal{R}|=m-q$ 表示 $\mathcal{B}$ 是Byzantine workers的集合，$\mathcal{R}$ 是regular worker的集合。让每个regular worker $i$ 有局部迭代 $x_{i}$，并且master有局部迭代 $x_{0}$，我们得到（3）的等价形式：<br>
+$$<br>
+\begin{array}{l}<br>
+\min _{x:=\left[x_{i} ; x_{0}\right]} \sum_{i \in \mathcal{R}} \mathbb{E}\left[F(x_{i}, \xi_{i})\right]+f_{0}(x_{0}) \qquad (4a)\\<br>
+\text{s,to} \qquad x_{0}=x_{i}, \forall i \in \mathcal{R} \qquad (4b)<br>
+\end{array}<br>
+$$<br>
+其中 $x:=\left[x_{i} ; x_{0}\right] \in \mathbb{R}^{(|\mathcal{R}|+1) d}$ 是一个向量，用于堆叠regular workers的局部变量 $x_{i}$ 和主变量 $x_{0}$。公式（4）与中的共识优化概念一致，例如（Shi等人，2014）。</p>
+<h2 id="ell-1-norm-RSA"><a class="header-anchor" href="#ell-1-norm-RSA">¶</a>$\ell_{1}$-norm RSA</h2>
+<p>  由于master无法获得Byzantine workers的身份，因此不可能通过迭代更新 $\tilde{x}$ 或 $x$ 直接求解（3）或（4）。因此，我们引入了（4）的“$\ell_{1}$-范数正则形式：<br>
+$$<br>
+x^{*}:=\underset{x:=\left[x_{i} ; x_{0}\right]}{\arg \min } \sum_{i \in \mathcal{R}}\left(\mathbb{E}\left[F\left(x_{i}, \xi_{i}\right)\right]+\lambda\left\|x_{i}-x_{0}\right\|_{1}\right)+f_{0}\left(x_{0}\right) \qquad (5)<br>
+$$<br>
+其中 $\lambda$ 为正常数。代价函数（5）中的第二项是“$\ell_{1}$-范数惩罚”，其最小化迫使每个 $x_{i}$ 接近主变量 $x_{0}$。接下来，我们将展示这种松弛形式如何在Byzantine attacks下带来鲁棒学习的优势。</p>
+<p>  在Byzantine workers身份被揭示的理想情况下，我们可以应用随机次梯度方法求解（5）。优化只涉及regular workers和master。在 $k+1$ 时，regular worker $i$ 的 $x_{i}^{k+1}$ 和主设备的 $x_{0}^{k+1}$ 的更新由以下提供：<br>
+$$<br>
+\begin{array}{l}<br>
+x_{i}^{k+1}=x_{i}^{k}-\alpha^{k+1}(\nabla F(x_{i}^{k}, \xi_{i}^{k})+\lambda \operatorname{sign}(x_{i}^{k}-x_{0}^{k})) \qquad (6a) \\<br>
+x_{0}^{k+1}=x_{0}^{k}-\alpha^{k+1}(\nabla f_{0}(x_{0}^{k})+\lambda(\sum_{i \in \mathcal{R}} \operatorname{sign}(x_{0}^{k}-x_{i}^{k}))) \qquad (6b)<br>
+\end{array}<br>
+$$<br>
+其中，$\operatorname{sign}(\cdot)$ 是元素级符号函数。给定一个 $a \in \mathbb{R}$、 当 $a&gt;0$ 时，符号 $\operatorname{sign}(a)$ 等于1，当 $a&lt;0$ 时为-1，且当 $a=0$ 时，为 $[−1，1]$ 其中的任意值。在时间 $k+1$ 时，每个worker $i$ 将本地迭代 $x_{i}^{k}$ 发送给主进程，而不是在分布式SGD中发送其本地随机梯度。主节点聚合了工作节点发送的模型，以更新自己的模型 $x_{0}^{k+1}$。从这个意义上讲，（6）中的更新基于模型聚合，不同于SGD中的梯度聚合。<font color="red">注意，这里所说的模型聚合是因为前面的worker和master传送的不是梯度，而是优化局部变量。</font></p>
+<p>  现在让我们考虑一下（6）中的更新在Byzantine workers面前的表现。regular worker $i$ 的更新与（6a）相同，即：<br>
+$$<br>
+x_{i}^{k+1}=x_{i}^{k}-\alpha^{k+1}(\nabla F(x_{i}^{k}, \xi_{i}^{k})+\lambda \operatorname{sign}\left(x_{i}^{k}-x_{0}^{k}\right)) \qquad (7)<br>
+$$<br>
+如果worker $i$ 是Byzantine的，那么它不会将从（6a）计算出的值 $x_{i}^{k}$ 发送给master，而是发送一个任意变量 $z_{i}^{k} \in \mathbb{R}^{d}$。master无法区分regular worker 发送的 $x_{i}^{k}$ 或拜占庭工人发送的 $z_{i}^{k}$。因此，在 $k+1$ 时master的更新不再是（6b），而是：<br>
+$$<br>
+\begin{aligned}<br>
+x_{0}^{k+1}=x_{0}^{k}-\alpha^{k+1}(\nabla f_{0}(x_{0}^{k})+\lambda(\sum_{i \in \mathcal{R}} \operatorname{sign}(x_{0}^{k}-x_{i}^{k})+\sum_{j \in \mathcal{B}} \operatorname{sign}(x_{0}^{k}-z_{j}^{k})))<br>
+\end{aligned} \qquad (8)<br>
+$$<br>
+我们将此算法称为 $\ell_{1}$-范数RSA（Byzantine-robust随机聚合）。</p>
+<p><b>$\ell_{1}$-norm RSA对Byzantine attacks非常强大</b>由于在（5）中引入了“$\ell_{1}$-norm正则化术语”，“$\ell_{1}$-normal RSA对Byzantine attacks具有鲁棒性。正则化项允许每个 $x_{i}$ 不同于 $x_{0}$，并且偏差由参数 $\lambda$ 控制。当任何workers是Byzantine workers且行为任意时，此修改使目标函数更加稳健。从算法的角度来看，我们可以从更新（8）中观察到，无论regular worker和Byzantine workers发送给主master值有多大差异，他们对 $x_{0}^{k+1}$ 的影响都是相似的。因此，只有Byzantine workers的数量会影响RSA更新（8），而不是Byzantine workers发送的恶意消息的数量。从这个意义上说，$\ell_{1}$-norm RSA对Byzantine workers的任意攻击非常强大。这与即使是一个Byzantine workers也容易受到伤害的SGD形成鲜明对比。</p>
+<h2 id="ell-p-norm-RSA的推广"><a class="header-anchor" href="#ell-p-norm-RSA的推广">¶</a>$\ell_{p}$-norm RSA的推广</h2>
+<p>  除了解决$\ell_{1}$-norm正则化问题（5）外，我们还可以解决以下 $\ell_{p}$-norm正则问题：<br>
+$$<br>
+x^{*}:=\underset{x:=[x_{i} ; x_{0}]}{\arg \min } \sum_{i \in \mathcal{R}}(\mathbb{E}[F(x_{i}, \xi_{i})]+\lambda\|x_{i}-x_{0}\|_{p})+f_{0}(x_{0}) \qquad (9)<br>
+$$<br>
+其中 $p \ge 1$。类似于（5）中的 $\ell_{1}$-正则化目标情况，$\ell_{p}$ 规范处罚有助于减轻Byzantine workers的负面影响。</p>
+<p>  与 $\ell_{1}$-norm RSA类似，$\ell_{p}$-norm RSA”仍然使用次梯度递归进行操作。对于每个regular worker $i$，其在 $k+1$ 时的本地更新为：<br>
+$$<br>
+x_{i}^{k+1}=x_{i}^{k}-\alpha^{k+1}(\nabla F(x_{i}^{k}, \xi_{i}^{k})+\lambda \partial_{x_{i}} \|x_{i}^{k}-x_{0}^{k} \|_p)  \qquad (10)<br>
+$$<br>
+其中 $\partial_{x_{i}} \|x_{i}^{k}-x_{0}^{k} \|_p$ 是 $\|x_{i}-x_{0}^{k} \|_p$ 在 $x_{i}=x_{i}^{k}$ 的次梯度。同样，对于master，其在 $k+1$ 时的更新为：<br>
+$$<br>
+x_{0}^{k+1}=x_{0}^{k}-\alpha^{k+1}(\nabla f_{0}(x_{0}^{k})+\lambda(\sum_{i \in \mathcal{R}} \partial_{x_{0}} \|x_{0}^{k}-x_{i}^{k} \|_{p} +\sum_{j \in \mathcal{B}} \partial_{x_{0}} \|x_{0}^{k}-z_{j}^{k} \|_{p}))  \qquad (11)<br>
+$$<br>
+其中 $\partial_{x_{0}} \|x_{0}^{k}-x_{i}^{k} \|_{p}$ 和 $\partial_{x_{0}} \|x_{0}^{k}-z_{j}^{k} \|_{p}$ 分别是 $\|x_{0}^{k}-x_{i}^{k} \|_{p}$ 和 $\|x_{0}^{k}-z_{j}^{k} \|_{p}$ 在 $x_{0} = x_{0}^{k}$ 的次梯度。</p>
+<p>  为了计算 $\ell_{p}$-norm RSA中涉及的次梯度，我们将依赖以下命题。</p>
+<p><b>Proposition 1.</b>让 $p \ge 1$ 和 $b$ 满足 $1/b +1/p =1$ 。对于 $x \in \mathbb{R}^{d}$，我们有次微分 $\partial_{x}\|x\|_{p}=\{z \in \mathbb{R}^{d}: \quad\langle z, x\rangle=\|x\|_{p},\|z\|_{b} \leq 1 \}$</p>
+<p>  在这里和之后，我们通过使用 $\partial$ 表示次梯度和次微分。Proposition 1的证明见补充文件。</p>
+<p><img src="/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/2.png" alt="算法2"></p>
+<p>  算法2中总结了在Byzantine attacks下用于鲁棒分布式随机优化的 $\ell_{1}$-norm RSA和 $\ell_{p}$-norm RSA并如图2所示。<br>
+<img src="/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/3.png" alt="图2：RSA的操作。有 $m$ 名workers，$r$ 为regular workers，其余 $q=m−r$ 还是Byzantine。master将其局部变量发送给workers，而regular workers将返回其局部变量。红色魔鬼标记表示Byzantine workers发送给master的错误信息。"></p>
+<p><b>备注 1（模型与梯度聚合）</b>大多数现有的Byzantine-robust方法都是基于梯度聚合的。由于每个worker都使用相同的迭代计算其梯度，因此这些方法不存在共识问题（Blanchard et al.2017；Chen，Su and Xu 2017；Xie，Koyejo and Gupta 2018a；Yin et al.2018b；2018a，Xie，Koyejo，and Gupta 2018c）。然而，为了实现有效的梯度聚合，这些方法要求workers中存储的数据是i.i.d.，这在联合学习环境中是不切实际的。在假设所有workers的数据都是i.i.d.的情况下，regular workers计算的随机梯度也是i.i.d.，他们的期望是相等的。利用这一先验知识，master能够应用稳健估计技术来汇总从regular workers和Byzantine workers收集的随机梯度。当i.i.d.假设不成立时，即使是regular workers计算的随机梯度在预期上也是不同的，因此基于梯度聚合的方法不再有效。相比之下，所提出的RSA方法利用模型聚合来寻找共识模型，并且不依赖于i.i.d.假设。另一方面，现有的梯度聚合方法通常需要设计非平凡的子程序来聚合梯度，因此会产生相对较高的复杂性（Xie、Koyejo和Gupta 2018a；Blanchard et al.2017；Su和Xu 2018）。相比之下，所提出的RSA方法具有更低的复杂性，这与在Byzantine-free环境中工作的标准分布式SGD相同。我们将在数值试验中证明RSA在计算时间方面的优势，并与几种最先进的替代方案进行比较。</p>
+<h1>收敛性分析</h1>
+<p>  本节分析了建议的RSA方法的性能，并在补充文档中给出了证明。我们做出以下假设。</p>
+<p><b>假设1.（强凸性）</b>局部代价函数 $\mathbb{E}[F(\tilde{x},\xi _{i}  )] $ 和正则化项 $f_{0}(\tilde{x})$ 分别与常数 $\mu _{i} $ 和 $\mu _{0} $ 强凸。</p>
+<p><b>假设2.（Lipschitz连续梯度）</b>局部代价函数 $\mathbb{E}[F(\tilde{x},\xi _{i}  )] $ 和正则化项 $f_{0}(\tilde{x})$ 分别具有常数 $L_{i}$ 和 $L_{0}$ 的Lipschit连续梯度。</p>
+<p><b>假设3.（有界方差）</b>对于每个worker $i$，数据采样是跨时间的i.i.d.，因此 $\xi _{i}^{k} \sim \mathcal{D} _{i}$。$\nabla F(\tilde{x},\xi _{i})$ 的方差上界为 $\delta _{i}^{2} $，即 $\mathbb{E}\left[\left\|\nabla \mathbb{E}\left[F\left(\tilde{x}, \xi_i\right)\right]-\nabla F\left(\tilde{x}, \xi_i\right)\right\|^2\right] \leq \delta_i^2$。</p>
+<p>  请注意，假设1-3是基于随机梯度的方法性能分析的标准（Nemirovski等人，2009年），它们适用于广泛的机器学习问题，如 $\ell_{2}$-正则最小二乘法和逻辑回归</p>
+<p>  我们从研究 $\ell_{p}$-norm 正则化问题（9）开始，说明了（9）的最优解是合意的，并且与（3）的最佳解相同的条件。</p>
+<p><b>定理1.</b>假设假设1和假设2成立。如果$\lambda \geq \lambda_{0}:=\max _{i \in \mathcal{R}}\|\nabla \mathbb{E}[F(\tilde{x}^{*}, \xi_{i})]\|_{b}$ 、$p \ge 1$ 并且 $b$ 满足 $1/b+1/p=1$，那么我们有 $x^{*}=[\tilde{x}^{*}]$, 其中 $\tilde{x}^{*}$ 和 $x^{*}$ 分别是（3）和（9）的最优解。</p>
+<p>  定理1断言，如果选择惩罚常数 $\lambda$ 足够大，正则化问题（9）的最优解与（3）的最佳解相同。接下来，我们将检查RSA迭代在Byzantine attacks下关于（9）的最优解的收敛性。</p>
+<p><b>定理2.</b>假设假设1、2和3成立。将 $\ell_{p}$ 的步长设置为 $\alpha ^{k+1} =\min \{\underline{\alpha },\frac{\bar{\alpha } }{k+1} \}$，其中 $\underline{\alpha}$ 和 $\bar{\alpha}$ 取决于 $\{ \mu_{0}, \mu_{i}, L_{0}, L{i} \}$。那么，对于满足 $\min \{k: \underline{\alpha } \ge \frac{\bar{\alpha}}{k+1} \}$ 的 $k_{0}$，我们有：<br>
+$$<br>
+\mathbb{E} \|x^{k+1} - x^{*} \|^{2} \leq(1-\eta \underline{\alpha})^{k} \|x^{0} - x^{*} \|^{2}+\frac{\underline{\alpha} \Delta_{0}+\Delta_{2}}{\eta}, k &lt; k_{0}  \qquad (12)<br>
+$$<br>
+并且<br>
+$$<br>
+\mathbb{E} \|x^{k+1} - x^{*} \|^{2} \leq \frac{\Delta_{1}}{k+1}+\bar{\alpha} \Delta_{2}, k \geq k_{0}<br>
+$$<br>
+其中 $\eta$，$\Delta_{1}$ 和 $\Delta_{2}=\mathcal{O}(\lambda^{2} q^{2})$ 是某些正常数</p>
+<p>  定理2表明局部迭代序列次线性收敛到正则化问题（9）的近似最优解。渐近次优缺口二次依赖于Byzantine workers的数量 $q$。根据定理1和2，我们可以得出以下定理。</p>
+<p><b>定理3.</b>在与定理2中相同的假设下，如果我们选择 $\lambda \ge \lambda _{0}$ 根据定理1，则对于足够大的 $k \ge k_{0}$，我们有：<br>
+$$<br>
+\mathbb{E} \|x^{k} - [\tilde{x}^{*}] \|^{2} \leq \frac{\Delta_{1}}{k+1}+\bar{\alpha} \Delta_{2}<br>
+$$<br>
+如果我们选择 $0 &lt; \lambda &lt; \lambda_{0}$ 并且假设（9）和（3）的优化器之间的差是由 $\|x^{*} - [\tilde{x}^{*}] \|^{2} \le \Delta_{3}$，然后是 $k \ge k_{0}$ 我们有：<br>
+$$<br>
+\mathbb{E} \|x^{k} - [\tilde{x}^{*}] \|^{2} \leq \frac{2 \Delta_{1}}{k+1}+2 \bar{\alpha} \Delta_{2}+2 \Delta_{3}<br>
 $$</p>
-<p>$$<br>
-\tilde{f}_{\mathrm{c}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\max \left(q W_{\min }, \sum_{k \in \mathcal{C}} w_{k}\right)}<br>
+<p>  定理3暗示局部迭代序列也次线性收敛到原（3）的近似最优解。在适当选择的 $\lambda$ 下，极限中的次优差距与Byzantine workers的数量成正比。注意，由于 $\mathcal{O}(1/k)$ 步长对其初始值非常敏感（Nemirovski等人，2009），我们使用 $\mathcal{O}(1/ \sqrt{k})$ 数值测试中的步长。其相应的理论主张和收敛性分析在补充文件中给出</p>
+<p>  关于惩罚常数 $\lambda$ 和 $p$ 范数的最佳选择，下面是注释。</p>
+<p><b>备注2.（ $\lambda$ 和 $p$ 的最佳选择）.</b>在RSA中选择不同的惩罚常数 $\lambda$ 和 $\ell_{p}$ norm 通常会导致不同的性能。对于固定 $\lambda$，如果使用带小 $p$ 的范数 $\ell_{p}$，则对偶范数 $\ell_{b}$ 具有大 $b$，从而在定理1中导致小 $\lambda_{0}$。因此，局部解可能是一致的。通过数值试验，RSA与 $\ell_{\infty}$ 标准不提供竞争绩效，而具有 $\ell_{1}$ 和 $\ell_{2}$ 标准的绩效很好。另一方面，对于固定的 $p$，较小的 $\lambda$ 不能保证局部解之间的一致性，但它给出了一个较小的次优间隙 $\Delta_{2}$。我们建议使用相对小于 $\lambda_{0}$ 的 $\lambda$，稍微牺牲共识，但减少次优差距。</p>
+<h1>数值实验</h1>
+<p>  在本节中，我们评估了所提出的RSA方法对Byzantine attacks的鲁棒性，并将其与几个基准算法进行了比较。我们在MNIST数据集上进行实验，该数据集有 $60k$ 个训练样本和 $10k$ 个测试样本，并使用softmax回归，其 $\ell_{2}$ 范数正则化项 $f_{0}(\tilde{x})=\frac{0.01}{2} \|\tilde{x} \|^{2}$。我们在一台使用Intel i7-6700 CPU@3.40GHz的计算机上启动了20个workers进程和1个master进程。在i.i.d.案例中，训练样本随机平均分配给workers。在异质情况下，每两名workers平均分享一位数的训练样本。在每次迭代中，每个regular worker 都会在一小批32个样本上估计其局部梯度。测试数据集的第1精度（在RSA中用 $x_{0}$ 进行评估，在基准算法中用 $\tilde{x}$ 进行评估）用作性能指标。该代码可从https://github.com/liepill/rsa-byzantine获取</p>
+<h2 id="基准算法"><a class="header-anchor" href="#基准算法">¶</a>基准算法</h2>
+<p>  我们使用无攻击的SGD迭代（2）作为预言机，称为 <b>Ideal SGD</b>。注意，该方法不受Byzantine worker数量 $q$ 的影响。其他基准算法实现以下随机梯度聚合递归：<br>
 $$<br>
-  注意 $\tilde{f}_{\mathrm{f}}$ ，因为 $\mathbb{E}\left[\sum_{k \in \mathcal{C}} w_{k}\right]=q W$ ，另一方面，只要样本中有足够的权值， $\tilde{f}_{\mathrm{c}}$ 就完全匹配 $f$。为了保护隐私，我们需要控制查询函数 $\tilde{f}$ 的灵敏度，定义为 $\mathbb{S}(\tilde{f})=\max_{\mathcal{C}, k} ||\tilde{f}(\mathcal{C} \cup { k } ) - \tilde{f}(\mathcal{C}) ||_{2}$ ，其中添加的用户 $k$ 可以有任意数据。为了控制灵敏度，需要在 $\tilde{f}_{\mathrm{c}}$ 的分母上设置下限 $qW_{min}$ 。假设每个 $w_{k} \Delta_{k}$ 有界范数，我们有：<br>
-<b>引理1：</b>如果对于所有用户 $k$，我们有 $|w_{k} \Delta_{k} |_{2} \leq S$ ，那么两个估计器的灵敏度被限定为 $\mathbb{S}\left(\tilde{f}_{\mathrm{f}}\right) \leq \frac{S}{q W} \text { and } \mathbb{S}\left(\tilde{f}_{\mathrm{c}}\right) \leq \frac{2 S}{q W_{\min } }$。</p>
-<p><b>多层模型的裁剪策略：</b>不幸的是，当用户向量 $\Delta_{k}$ 是来自神经网络的梯度（或梯度的和）时，我们通常没有一个先验边界<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释3：为了控制灵敏度，引理1只要求 $\\|w_{k} \Delta_{k} \\|\_{2} \leq S$ 有界。为了简单起见，我们仅使用 $w_{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。</b>">[3]</span></a></sup> $S$，这样 $\Delta_{k}  \leq S$。因此，我们将需要在应用 $\tilde{f}_{\mathrm{f}}$ 或  $\tilde{f}_{\mathrm{c}}$ 之前“剪辑”我们的更新来强制这样的边界。对于单个向量 $\Delta$ ，我们可以在必要时应用简单的 $L_{2}$ 投影：<br>
+\tilde{x}^{k+1}=\tilde{x}^{k}-\alpha^{k+1} \tilde{\nabla}(\tilde{x}^{k})<br>
 $$<br>
-\pi(\Delta, S) \stackrel{\text { def }}{=} \Delta \cdot \min \left(1, \frac{S}{|\Delta|}\right)<br>
-$$</p>
-<p><img src="/2022/09/19/learning-differentially-private-recurrent-language-models/2.png" alt="表1:不同的用户总数 $K$ （所有的权重相等）的隐私，每轮 $\tilde{\mathcal{C} } $ 采样的用户的预期数量，以及训练的轮数。对于每一行，我们设 $\delta = \frac{1}{K^{1.1} }$，并报告 $\epsilon $ 的值，其中 $ (\epsilon, \delta)$-微分隐私在 $1 ~ 10^{6}$ 轮后保持。对于大型数据集，额外的训练只会带来小的额外隐私损失。"><br>
-  然而，对于深度网络来说，更自然的做法是将每一层的参数视为一个单独的向量。对每一层的更新可能具有截然不同的 $L_{2}$ 规范，因此最好将每一层单独剪辑。<br>
-  形式上，假设每次更新 $\Delta_{k}$ 包含 $m$ 个向量 $\Delta_{k}=\left(\Delta_{k}(1), \ldots, \Delta_{k}(m)\right)$。我们考虑以下的裁剪策略，它们都保证了总更新最多有范数 $S$ ：</p>
-<ol>
-<li><b>平面裁剪</b>给定总体裁剪参数 $S$，我们将所有层的拼接裁剪为 $\Delta_{k}^{\prime}=\pi\left(\Delta_{k}, S\right)$</li>
-<li><b>每层剪切</b>给定每层的每层裁剪参数 $S_{j}$，设 $\Delta_{k}^{\prime}(j) = \pi\left(\Delta_{k}(j), S_{j}\right)$。设 $S=\sqrt{\sum_{j=1}^{m} S_{j}^{2}}$。最简单的与模型无关的选择是对所有的 $j$ 取 $S_{j}=\frac{S}{\sqrt{m}}$，我们在实验中使用。</li>
-</ol>
-<p>  我们在这里指出，剪辑本身会导致额外的偏差，理想情况下，我们应该选择剪辑参数足够大，使几乎所有更新都小于剪辑值。另一方面，一个较大的 $S$ 将需要更多的噪音，以实现隐私，可能会减慢训练。我们将 $S$ 视为超参数并对其进行调优。<br>
-<b>一个隐私保障</b>一旦所选估计量的灵敏度是有界的，我们可以将高斯噪声缩放到该灵敏度上以获得隐私保证。一个简单的方法是使用 $(\epsilon ，\delta )-DP$ 界限，并应用隐私放大引理和高级复合定理得到了总隐私代价的界限。我们使用Abadi等人(2016a)的朋友圈会计来实现更严格的隐私界限。采样高斯机构的矩会计上界为噪声 $N(0,\sigma ^{2})$ 的高斯机构T阶的总隐私成本，$\sigma=z \cdot \mathbb{S}$，其中 $z$ 为参数，$\mathbb{S}$ 为查询的灵敏度，每一行的选择概率为 $q$。给定 $\delta &gt; 0$，矩会计给出一个 $\epsilon$ 这个机制满足 $(\epsilon , \delta)-DP$。以下定理是对Abadi等人(2016a)的结果的轻微推广;见§A的证明草图。<br>
-<b>定理1：</b>对于估计器（$\tilde{f}_{\mathrm{f}}$, $\tilde{f}<em>{\mathrm{c}}$），采样高斯机制的力矩会计，以 $z = \delta / \mathbb{E}$ 和步骤 $T$ 的噪声尺度正确计算隐私损失，其中 $\mathbb{S} = S/qW$ 对于（$\tilde{f}</em>{\mathrm{f}}$），$2S/qW_{min}$ 对于（$\tilde{f}<em>{\mathrm{c}}$）。<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释1：通过在公共数据集上进行初始化训练，而不是像我们在实验中那样从随机初始化开始，可以减少额外的计算成本。</b><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释3：为了控制灵敏度，引理1只要求 $|w</b></span></li></ol></div></div></em>{k} \Delta_{k} |<em>{2} \leq S$ 有界。为了简单起见，我们仅使用 $w</em>{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。<a href="#fnref:3" rev="footnote"> ↩</a></p>
+式中 $\tilde{\nabla}(\tilde{x}^{k})$ 是一种依赖于算法的聚合随机梯度，它在master发送给workers的 $\tilde{x}^{k}$ 点处近似于梯度方向。让worker $i$ 发送给master的消息为 $v_{i}^{k}$ 如果 $i$ 是正则的，则为随机梯度 $\nabla F(\tilde{x}^{k}, \xi _{i}^{k})$；如果 $i$ 是Byzantine的，则是任意的。基准算法使用不同的规则来计算聚集的随机梯度。</p>
+<p><b>GeoMed（Chen，Su，Xu 2017）.</b>$\{v_{i}^{k} : i \in [m]\}$ 的几何中值表示为：<br>
+$$<br>
+\operatorname{GeoMed}({v_{i}^{k}})=\underset{v \in \mathbb{R}^{d}}{\arg \min } \sum_{i=1}^{m} \|v-v_{i}^{k}\|_{2} \qquad (17)<br>
+$$<br>
+在实验中，我们使用快速Weiszfeld算法（Weiszfield and Plastria 2009）计算几何中值。</p>
+<p><b>Krum（Blanchard等人，2017年）.</b>Krum计算 $\tilde{\nabla}(\tilde{x}^{k})$ 依据：<br>
+$$<br>
+\operatorname{Krum}({v_{i}^{k}})=v_{i^{*}}^{k}, i^{*}=\underset{i \in[m]}{\arg \min } \sum_{i \rightarrow j} \|v_{i}^{k}-v_{j}^{k} \|^{2} \qquad (18)<br>
+$$<br>
+其中 $i \rightarrow j (i \ne j)$ 选择 $\{v_{j}^{k} : j \in [m]\}$ 中 $v_{i}^{k}$ 的 $m-q-2$ 近邻索引 $j$ ，用欧氏距离测量。注意 $q$，Byzantine workers的数量，必须在Krum提前知道。</p>
+<p><b>中位数（Xie、Koyejo和Gupta 2018a）.</b>边际中值聚合规则返回矢量 $\{v_{i}^{k} : i \in [m]\}$ 的元素中值。</p>
+<p><b>SGD（Bottou，2010年）.</b>经典SGD聚合 $\{v_{i}^{k} : i \in [m]\}$ 通过返回平均值，因此对拜占庭攻击不可靠。</p>
+<p>  在接下来的实验中，基准算法的步长都是手动调整到最佳的。</p>
+<h2 id="没有Byzantine-attacks"><a class="header-anchor" href="#没有Byzantine-attacks">¶</a>没有Byzantine attacks</h2>
+<p>  在本测试中，我们考虑了无Byzantine workers的学习，并在图3中显示了所有算法的性能。$\ell_{1}$-norm RSA选择参数 $\lambda = 0.1$，步长 $\alpha^{k}=0.003\ \sqrt{k}$。RSA和GeoMed接近Ideal SGD，明显优于Krum和Median。因此，增强RSA中的成本，虽然会带来偏差，但在常规情况下不会牺牲性能。</p>
+<h2 id="Same-value-attacks"><a class="header-anchor" href="#Same-value-attacks">¶</a>Same-value attacks</h2>
+<p>  相同的值攻击将Byzantine worker $i$ 发送的消息设置为 $v_{i}^{k}=c\mathbf{1}$。这里是 $\mathbf{1} \in \mathbb{R}^{d}$ 是一个全一向量，$c$ 是一个常数，我们将其设置为100。我们考虑了两个不同数量的Byzantine workers，$q=4$ 和 $q=8$，并在图4中演示了性能。$\ell_{1}$-norm RSA选择正则化参数 $\lambda=0.07$ 和步长 $\alpha^{k}=0.001/ \sqrt{k}$、 当 $q=4$ 时，RSA和GeoMed仍接近理想SGD，并优于Krum和Median当 $q$ 到 $q=8$ 时，Krum与Median的表现比 $q=4$ 差，而RSA与GeoMed几乎与 $q=4$ 相同。请注意，由于softmax回归的特殊结构，SGD仍能在相同的值攻击下工作。</p>
+<h2 id="Sign-flipping-attacks"><a class="header-anchor" href="#Sign-flipping-attacks">¶</a>Sign-flipping attacks</h2>
+<p>  符号翻转攻击会翻转消息的符号（渐变或局部迭代）并放大其大小。具体来说，Byzantine worker $i$ 首先计算真值 $\hat{v}_{i}^{k}$，然后将 $v_{i}^{k}=\sigma \hat{v}_{i}^{k}$；发送给master，其中 $\sigma$ 是一个负常数。我们在设置 $q=4$ 和 $q=8$ 时测试 $\sigma = -4$，如图5所示。参数为 $\lambda=0.07$ 和 $\alpha=0.001/ \sqrt{k}$ 时 $q=4$，同时当 $\lambda=0.01$ 和 $\alpha=0.0003$ 时，$q=8$。毫不奇怪，SGD在这两种情况下都失败了。GeoMed、Median和 $\ell_{1}$-normal RSA显示出类似的性能，并且Median比其他Byzantine-robust算法稍差。</p>
+<h2 id="Gaussian-attacks"><a class="header-anchor" href="#Gaussian-attacks">¶</a>Gaussian attacks</h2>
+<p>  Gaussian attacks将Byzantine worker $i$ 发送的消息设置为 $v_{i}^{k}$，其中每个元素都遵循高斯分布 $\sim N(0，g^{2})$。如图6所示，当 $q=4$ 和 $q=8$ 时，我们测试 $g=10000$。在 $\ell$-norm RSA中，参数为 $\lambda =0.07$ 和 $\alpha=0.002/ \sqrt{k}$ 对于 $q=4$ 和 $q=8$。在这两种情况下，SGD都失败了。RSA和GeoMed的业绩相似，表现优于Median和Krum。</p>
+<h2 id="实时比较"><a class="header-anchor" href="#实时比较">¶</a>实时比较</h2>
+<p>  我们在图7中显示了在参数 $c=100$ 和 $q=8$ Byzantine workers的相同值攻击下算法的运行时间。每种算法的总迭代次数为 $5000$ 次。虽然这些算法没有在联合学习平台上实现，但比较清楚地表明，在处理Byzantine attacks时，每次迭代都会产生额外的计算成本。由于难以计算几何中值，GeoMed的每次迭代计算成本最高。$\ell_{1}$-norm RSA和Median都比Ideal SGD稍慢，但比Krum快。与理想SDG相比，RSA的唯一计算开销在于计算轻量级的符号函数。因此，与其他复杂的梯度聚集方法相比，RSA在计算复杂性方面具有优势。</p>
+<h2 id="超参数-lambda-的影响"><a class="header-anchor" href="#超参数-lambda-的影响">¶</a>超参数 $\lambda$ 的影响</h2>
+<p>  我们改变了超参数 $\lambda$，并展示了它如何影响性能。我们使用 $c=100$ 的相同值攻击，改变 $\lambda$，运行RSA $5000$ 次迭代，并在图8中描述了最终的top1精度。Byzantine workers的数量为 $q=8$，步长手动调整到最佳。注意，当 $\lambda$ 很小时，regular worker往往依赖自己的数据，因此网络上的信息融合速度很慢，这会导致收敛速度慢和误差大。另一方面，正如我们在收敛分析中所研究的那样，较大的 $\lambda$ 也会导致显著的误差。</p>
+<h2 id="具有不同范数的RSA"><a class="header-anchor" href="#具有不同范数的RSA">¶</a>具有不同范数的RSA</h2>
+<p>  现在我们比较用不同范数规范化的RSA方法。图9和图10分别显示了无Byzantine attacks和 $q=8$ 和 $c=100$ 的相同值攻击下的结果。我们考虑两个性能指标，regular workers本地迭代的top-1精度和方差。一个小的差异意味着regular workers会得出类似的解决方案。如果没有Byzantine workers，$\ell_{1}$ 的 $\lambda =0.1$，$\alpha^{k}=0.001/ \sqrt{k}$、$\ell_{2}$ 是 $\lambda =1.4$ 且 $\alpha^{k}=0.001/ \sqrt{k}$、而 $\ell_{\infty}$ 为 $\lambda=51$ 且 $\alpha^{k}=0.0001/ \sqrt{k}$、在相同的值攻击下，$\ell_{1}$ 表示 $\lambda=0.07$，$\alpha^{k}=0.001/ \sqrt{k}$、 $\ell_{2}$ 是 $\lambda=1.2$ 且 $\alpha^{k}=0.001/ \sqrt{k}$、 而 $\ell_{\infty}$ 为 $\lambda=20$ 且 $\alpha^{k}=0.0001/ \sqrt{k}$、在这两种情况下，$\ell_{1}$-norm RSA和 $\ell_{2}$-norm RSA在top-1精度方面接近，并且两者都优于 $\ell_{\infty}$-RSA标准。这一观察结果与我们的收敛分析一致，即 $\ell_{\infty}$-norm RSA需要一个较大的 $\lambda$ 来确保一致性，这反过来会导致较大的错误。事实上，我们故意为 $\ell_{\infty}$-norm RSA以减少错误，但牺牲一致性。因此，关于regular workers的本地迭代的方差 $\ell_{\infty}$-norm RSA最大，而 $\ell_{2}$-norm RSA小于 $\ell_{1}$-norm RSA。</p>
+<h2 id="异构数据"><a class="header-anchor" href="#异构数据">¶</a>异构数据</h2>
+<p>  为了显示RSA在异构数据集上的健壮性，我们以这种方式重新分发MNIST数据：每两个工作人员都与关于同一手写数字的数据关联。在实验中，每个Byzantine workers $i$ 传输 $v_{i}^{k}=v_{r}^{k}$，其中worker $r$ 是regular workers之一。我们在实验中设置 $r=1$。结果如图11所示。当 $q=4$ 时，两个手写数字的数据在实验中不可用，因此最佳准确度约为 $0.8$。当 $q=8$ 时，最佳准确度大约为 $0.6$。$\ell_{1}$-norm RSA的参数为 $\lambda=0.5$ 和 $\alpha^{k}=0.0005/ \sqrt{k}$、注意，当 $q=4$ 时，Krum失败了，而RSA的表现优于GeoMed和Median。当 $q$ 增加到 $8$ 时，GeoMed、Krum和Median都失败了，但RSA仍然表现良好，达到了接近最佳的精度。</p>
+<h1>结论</h1>
+<p>  本文讨论了Byzantine attacks下的分布式学习。虽然现有的工作主要集中在i.i.d.数据的情况下，并且依赖于昂贵的梯度聚合规则，但我们开发了一种有效的SGD变体，用于在Byzantine attacks下从异构数据集进行分布式学习。由此产生的基于SGD的方法（我们称之为RSA）以 $O(1/k)$ 收敛速度收敛到接近最优解，其中最优差距取决于Byzantine workers的数量。在Byzantine-free环境下，SGD和RSA都以次线性收敛速度收敛到最优解。从数字上看，对真实数据的实验证实了RSA与最先进的替代方案相比具有竞争力。</p>
 
                 
             </div>
@@ -587,7 +694,7 @@ $$</p>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://xbwcj.github.io/2022/09/19/learning-differentially-private-recurrent-language-models/">http://xbwcj.github.io/2022/09/19/learning-differentially-private-recurrent-language-models/</a>
+                    <a href="http://xbwcj.github.io/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/">http://xbwcj.github.io/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1064,17 +1171,18 @@ $$</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/">
+                <a href="/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="《Practical and Private （Deep） Learning without Sampling or Shuffling》">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》">
                         
-                        <span class="card-title">《Practical and Private （Deep） Learning without Sampling or Shuffling》</span>
+                        <span class="card-title">《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1084,9 +1192,9 @@ $$</p>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1099,6 +1207,7 @@ $$</p>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1117,13 +1226,13 @@ $$</p>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/18/qsfl-a-two-level-uplink-communication-optimization-framework-for-federated-learning/">
+                <a href="/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="《QSFL： A Two-Level Uplink Communication Optimization Framework for Federated Learning 》">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="《Practical and Private （Deep） Learning without Sampling or Shuffling》">
                         
-                        <span class="card-title">《QSFL： A Two-Level Uplink Communication Optimization Framework for Federated Learning 》</span>
+                        <span class="card-title">《Practical and Private （Deep） Learning without Sampling or Shuffling》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1134,7 +1243,7 @@ $$</p>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
                             </span>
                         <span class="publish-author">
                             

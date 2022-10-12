@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-10-01T09:04:22.912Z</updated>
+  <updated>2022-10-10T11:54:39.944Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》</title>
+    <link href="http://xbwcj.github.io/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/"/>
+    <id>http://xbwcj.github.io/2022/10/07/rsa-byzantine-robust-stochastic-aggregation-methods-for-distributed-learning-from-heterogeneous-datasets-1/</id>
+    <published>2022-10-07T03:10:57.000Z</published>
+    <updated>2022-10-10T11:54:39.944Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1&gt;前缀基础知识&lt;/h1&gt;
+&lt;p&gt;  &lt;b&gt;Byzantine</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《Practical and Private （Deep） Learning without Sampling or Shuffling》</title>
     <link href="http://xbwcj.github.io/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/"/>
     <id>http://xbwcj.github.io/2022/09/24/practical-and-private-deep-learning-without-sampling-or-shuffling/</id>
     <published>2022-09-24T05:37:45.000Z</published>
-    <updated>2022-10-01T09:04:22.912Z</updated>
+    <updated>2022-10-01T14:13:44.234Z</updated>
     
     
       
@@ -480,31 +506,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;进程与线程&quot;&gt;&lt;a href=&quot;#进程与线程&quot; class=&quot;headerlink&quot; title=&quot;进程与线程&quot;&gt;&lt;/a&gt;进程与线程&lt;/h1&gt;&lt;h2 id=&quot;进程的概念与特征&quot;&gt;&lt;a href=&quot;#进程的概念与特征&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机系统概述（三）</title>
-    <link href="http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/"/>
-    <id>http://xbwcj.github.io/2021/03/22/ji-suan-ji-xi-tong-gai-shu-san/</id>
-    <published>2021-03-22T06:23:45.000Z</published>
-    <updated>2021-03-22T08:40:39.004Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;操作系统的运行环境&quot;&gt;&lt;a href=&quot;#操作系统的运行环境&quot; class=&quot;headerlink&quot; title=&quot;操作系统的运行环境&quot;&gt;&lt;/a&gt;操作系统的运行环境&lt;/h1&gt;&lt;h2 id=&quot;操作系统的运行机制&quot;&gt;&lt;a href=&quot;#操作系统的运行机制&quot;</summary>
         
       
     
