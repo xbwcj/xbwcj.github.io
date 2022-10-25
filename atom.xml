@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-10-10T11:54:39.944Z</updated>
+  <updated>2022-10-16T03:07:55.896Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Federated Continual Learning with Weighted Inter-client Transfer》</title>
+    <link href="http://xbwcj.github.io/2022/10/14/federated-continual-learning-with-weighted-inter-client-transfer/"/>
+    <id>http://xbwcj.github.io/2022/10/14/federated-continual-learning-with-weighted-inter-client-transfer/</id>
+    <published>2022-10-14T14:32:42.000Z</published>
+    <updated>2022-10-16T03:07:55.896Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦连续学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E8%BF%9E%E7%BB%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《RSA- Byzantine-Robust Stochastic Aggregation Methods for Distributed Learning from Heterogeneous Datasets_1》</title>
@@ -481,31 +506,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;处理机调度&quot;&gt;&lt;a href=&quot;#处理机调度&quot; class=&quot;headerlink&quot; title=&quot;处理机调度&quot;&gt;&lt;/a&gt;处理机调度&lt;/h1&gt;&lt;h2 id=&quot;调度概念&quot;&gt;&lt;a href=&quot;#调度概念&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进程管理（一）</title>
-    <link href="http://xbwcj.github.io/2021/03/23/jin-cheng-guan-li-yi/"/>
-    <id>http://xbwcj.github.io/2021/03/23/jin-cheng-guan-li-yi/</id>
-    <published>2021-03-23T02:27:56.000Z</published>
-    <updated>2021-03-23T11:45:27.174Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;进程与线程&quot;&gt;&lt;a href=&quot;#进程与线程&quot; class=&quot;headerlink&quot; title=&quot;进程与线程&quot;&gt;&lt;/a&gt;进程与线程&lt;/h1&gt;&lt;h2 id=&quot;进程的概念与特征&quot;&gt;&lt;a href=&quot;#进程的概念与特征&quot; class=&quot;headerlink&quot;</summary>
         
       
     
