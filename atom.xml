@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-11-28T15:40:27.762Z</updated>
+  <updated>2022-12-08T07:13:55.710Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《A Memory T ransformer Network for Incremental Learning》</title>
+    <link href="http://xbwcj.github.io/2022/12/06/a-memory-t-ransformer-network-for-incremental-learning/"/>
+    <id>http://xbwcj.github.io/2022/12/06/a-memory-t-ransformer-network-for-incremental-learning/</id>
+    <published>2022-12-06T07:05:15.000Z</published>
+    <updated>2022-12-08T07:13:55.710Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《Rethinking Architecture Design for Tackling Data Heterogeneity in Federated Learning》</title>
@@ -482,31 +507,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;死锁&quot;&gt;&lt;a href=&quot;#死锁&quot; class=&quot;headerlink&quot; title=&quot;死锁&quot;&gt;&lt;/a&gt;死锁&lt;/h1&gt;&lt;h2 id=&quot;死锁的概念&quot;&gt;&lt;a href=&quot;#死锁的概念&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>经典同步问题</title>
-    <link href="http://xbwcj.github.io/2021/04/06/jing-dian-tong-bu-wen-ti/"/>
-    <id>http://xbwcj.github.io/2021/04/06/jing-dian-tong-bu-wen-ti/</id>
-    <published>2021-04-06T01:31:39.000Z</published>
-    <updated>2021-04-06T12:07:20.207Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;经典同步动作&quot;&gt;&lt;a href=&quot;#经典同步动作&quot; class=&quot;headerlink&quot; title=&quot;经典同步动作&quot;&gt;&lt;/a&gt;经典同步动作&lt;/h1&gt;&lt;h2 id=&quot;生产者-消费者问题&quot;&gt;&lt;a href=&quot;#生产者-消费者问题&quot;</summary>
         
       
     
