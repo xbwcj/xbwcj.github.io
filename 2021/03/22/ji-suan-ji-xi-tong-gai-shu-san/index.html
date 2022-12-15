@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="操作系统的运行环境"><a href="#操作系统的运行环境" class="headerlink" title="操作系统的运行环境"></a>操作系统的运行环境</h1><h2 id="操作系统的运行机制"><a href="#操作系统的运行机制" class="headerlink" title="操作系统的运行机制"></a>操作系统的运行机制</h2><p>&emsp;&emsp;在计算机系统中，CPU通常会执行两种不同性质的程序，（1）<strong>操作系统的内核程序即管理程序</strong>，（2）<strong>用户自编程序即应用程序</strong>。<br>&emsp;&emsp;<strong>管理程序</strong>：执行一些特权指令，这些指令不允许用户直接使用，例如I/O指令、置中断指令、存取用于内存保护的寄存器等。<br>&emsp;&emsp;<strong>用户自编程序</strong>：出于安全考虑不能执行这些指令。<br>&emsp;&emsp;用户自编程序运行在用户态，操作系统内核程序运行在核心态。并且现在操作系统几乎都是层次式的结构。操作系统的各项功能分别被设置在不同的层次上。一些与硬件关联较紧密的模块，如时钟管理、中断处理、设备驱动等处于最底层；其次是一些运行频率较高的程序，如进程管理、存储器管理和设备管理等。并且上面的这两部分构成了操作系统的<strong>内核</strong>，内核的指令操作工作在<strong>核心态</strong>。内核主要包括以下四部分内容。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="操作系统的运行环境"><a href="#操作系统的运行环境" class="headerlink" title="操作系统的运行环境"></a>操作系统的运行环境</h1><h2 id="操作系统的运行机制"><a href="#操作系统的运行机制" class="headerlink" title="操作系统的运行机制"></a>操作系统的运行机制</h2><p>&emsp;&emsp;在计算机系统中，CPU通常会执行两种不同性质的程序，（1）<strong>操作系统的内核程序即管理程序</strong>，（2）<strong>用户自编程序即应用程序</strong>。<br>&emsp;&emsp;<strong>管理程序</strong>：执行一些特权指令，这些指令不允许用户直接使用，例如I/O指令、置中断指令、存取用于内存保护的寄存器等。<br>&emsp;&emsp;<strong>用户自编程序</strong>：出于安全考虑不能执行这些指令。<br>&emsp;&emsp;用户自编程序运行在用户态，操作系统内核程序运行在核心态。并且现在操作系统几乎都是层次式的结构。操作系统的各项功能分别被设置在不同的层次上。一些与硬件关联较紧密的模块，如时钟管理、中断处理、设备驱动等处于最底层；其次是一些运行频率较高的程序，如进程管理、存储器管理和设备管理等。并且上面的这两部分构成了操作系统的<strong>内核</strong>，内核的指令操作工作在<strong>核心态</strong>。内核主要包括以下四部分内容。</p>
 <h3 id="时钟管理"><a href="#时钟管理" class="headerlink" title="时钟管理"></a>时钟管理</h3><p>&emsp;&emsp;时钟管理的主要作用如下几点：<br>&emsp;&emsp;（1）计时，即向用户提供标准的系统时间。<br>&emsp;&emsp;（2）<strong>通过时钟中断的管理，切换进程</strong>。在分时操作系统中就有很好的体现（采用时间片轮转调度）。<br>&emsp;&emsp;（3）衡量作业的运行程度（在批处理系统中，无论是多道批处理系统还是单道批处理系统，在微观上都是属于串行，因此可以用作业的执行时间来衡量作业的运行程度）。</p>
 <h3 id="中断机制"><a href="#中断机制" class="headerlink" title="中断机制"></a>中断机制</h3><p>&emsp;&emsp;在中断机制中，只有一小部分功能属于内核，它们保护和恢复中断现场的信息，转移控制权到相关的处理程序。提高系统的并行处理能力。并且可以提高多道程序运行环境中CPU的利用率。例如：<strong>进程的管理和调度</strong>，<strong>系统功能的调用</strong>，<strong>设备驱动</strong>……</p>
 <h3 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h3><p>&emsp;&emsp;按照上述所说的，操作系统是层次式的结构，那么在其底层一定是一些可被调用的具有特定功能的公用程序，例如：CPU切换、设备驱动等，因此将这些称为<strong>原语</strong>。其具有以下的特征：<br>&emsp;&emsp;（1）处于操作系统的最底层，最接近硬件的部分。<br>&emsp;&emsp;（2）其运行具有原子性，其操作必须一次性完成。<br>&emsp;&emsp;（3）被频繁调用，且运行时间较短。</p>
@@ -1315,7 +1315,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

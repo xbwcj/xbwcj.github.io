@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;安全聚合(Secure Aggregation)是一类安全多方计算算法，其中相互不信任的一组 $u \in \mathcal{U}$ 各自持有一个私有值 $x_u$ ，并协作计算一个聚合值，例如总和 $\sum_{u \in \mathcal{U}} x_{u}$，除了可以从聚合值本身学到的以外，彼此不透露关于其私有值的任何信息。在这项工作中，我们考虑在联邦学习模型中训练一个深度神经网络，使用分布式梯度下降在移动设备上的用户持有训练数据，使用安全聚合来保护每个用户的模型梯度的隐私。我们确定了效率和鲁棒性要求的组合，据我们所知，这是文献中现有算法无法满足的。我们继续为高维数据设计了一种新颖的、通信高效的安全聚合协议，该协议允许多达 $1/3$ 的用户无法完成协议。对于16位输入值，我们的协议为 $210$ 个用户和 $220$ 维向量提供了 $1.73 × 通信扩展$ ，为 $214$ 个用户和 $224$ 维向量提供了 $1.98 × 通信扩展$ 。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;安全聚合(Secure Aggregation)是一类安全多方计算算法，其中相互不信任的一组 $u \in \mathcal{U}$ 各自持有一个私有值 $x_u$ ，并协作计算一个聚合值，例如总和 $\sum_{u \in \mathcal{U}} x_{u}$，除了可以从聚合值本身学到的以外，彼此不透露关于其私有值的任何信息。在这项工作中，我们考虑在联邦学习模型中训练一个深度神经网络，使用分布式梯度下降在移动设备上的用户持有训练数据，使用安全聚合来保护每个用户的模型梯度的隐私。我们确定了效率和鲁棒性要求的组合，据我们所知，这是文献中现有算法无法满足的。我们继续为高维数据设计了一种新颖的、通信高效的安全聚合协议，该协议允许多达 $1/3$ 的用户无法完成协议。对于16位输入值，我们的协议为 $210$ 个用户和 $220$ 维向量提供了 $1.73 × 通信扩展$ ，为 $214$ 个用户和 $224$ 维向量提供了 $1.98 × 通信扩展$ 。</p>
 <h1 id="用于联邦学习的安全聚合"><a href="#用于联邦学习的安全聚合" class="headerlink" title="用于联邦学习的安全聚合"></a>用于联邦学习的安全聚合</h1><p>&emsp;&emsp;考虑训练一个深度神经网络来预测用户在写短信时将要输入的下一个单词，以提高手机屏幕键盘[11]的打字精度。建模师可能希望针对大量用户中的所有文本消息训练这样的模型。然而，短信经常包含敏感信息；用户可能不愿意将它们的副本上传到建模者的服务器。相反，我们考虑在联邦学习设置中训练这样的模型，在这种设置中，每个用户在自己的移动设备上安全地维护一个关于她的文本消息的私有数据库，并在中央服务器的协调下训练一个共享的全局模型，该服务器基于来自用户的高处理、最小范围、短暂的更新[14,17]。</p>
 <p>&emsp;&emsp;神经网络表示函数 $f(x, \Theta)=y $，将输入 $x$ 映射到输出 $y$，其中 $f$ 由高维向量 $\Theta \in \mathbb{R}^{k}$ 参数化。对于文本消息组合建模，$x$ 可能对目前输入的单词进行编码，$y$ 可能对下一个单词进行概率分布。一个训练例子是观察这一对 $\left\langle x, y \right\rangle$，训练集是集合 $D = \\{ \left\langle x_{i}, y_{i}\right\rangle ; i=1, \ldots, m \\} $ 。我们定义训练集 $ \mathcal{L}_{f}(D, \Theta)=\frac{1}{|D|}  \sum_{ \left\langle x, y \right\rangle \in D} \mathcal{L}_{f} (x_{i}, y_{i}, \Theta)$ 上的损失，其中对于损失函数 $\ell$， $\mathcal{L}_{f} (x_{i}, y_{i}, \Theta) = \ell(y, f(x, \Theta))$，例如 $\ell(y, \hat{y})=(y-\hat{y})^{2}$。训练包括寻找实现小 $\mathcal{L}_{f}(D, \Theta)$ 的参数 $\Theta$ ，通常使用可变的小批量随机梯度下降[4,10]</p>
 <p>&emsp;&emsp;在联邦学习设置中，每个用户 $u \in \mathcal{U}$ 都拥有一个训练样例的私有集合 $D_{u}$，其中 $D=\bigcup_{u \in \mathcal{U}} D_{u}$。为了运行随机梯度下降，对于每次更新，我们从一个随机子集 $\mathcal{U}^{\prime} \subset \mathcal{U}$ 中选择数据，并形成一个（虚拟）小批 $B=\bigcup_{u \in \mathcal{U}^{\prime}} D_{u}$ （在实践中，我们可能会说 $ | \mathcal{U}^{\prime} |=10^{4} $ 而 $|\mathcal{U}|=10^{7}$ ；我们可能只考虑每个用户本地数据集的一个子集）。小批损耗梯度 $\nabla \mathcal{L}_{f}(B, \Theta)$ 可以改写为跨用户的加权平均值： $\nabla \mathcal{L}_{f}(B, \Theta)=\frac{1}{|B|} \sum_{u \in \mathcal{U}^{\prime}} \delta_{u}^{t}$，其中 $\delta_{u}^{t}=\left|D_{u}\right| \nabla \mathcal{L}_{f}\left(D_{u}, \Theta^{t}\right)$。因此，用户可以只与服务器共享 $\left\langle |D_{u}|, \delta_{u}^{t}\right\rangle$ ，从中可以得到一个梯度下降步骤 $\Theta^{t+1} \leftarrow \Theta^{t}-\eta \frac{\sum_{u \in \mathcal{U}^{\prime}} \delta_{u}^{t}}{\sum_{u \in \mathcal{U}^{\prime}}\left|D_{u}\right|}$ 。</p>
@@ -1348,7 +1348,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

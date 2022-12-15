@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="3-efficiency-and-effectiveness"><a href="#3-efficiency-and-effectiveness" class="headerlink" title="3 efficiency_and_effectiveness"></a>3 efficiency_and_effectiveness</h1><p>&emsp;&emsp;在本节中，我们会探索各种技术和开放性的问题，以解决使联邦学习更加高效和有效的挑战。其中包含了无数种可能的方法，包括：探索更好的优化算法；提供不同的模型给不同的客户端；让机器学习任务，例如：参数搜索、结构搜索和调试在联邦学习场景中更加容易；提高通信效率等等。<br>&emsp;&emsp;解决这些目标的一个基本挑战就是non-IID（非独立同分布）数据的存在，因此，我们首先分析这个问题，并强调潜在的解决方案。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="3-efficiency-and-effectiveness"><a href="#3-efficiency-and-effectiveness" class="headerlink" title="3 efficiency_and_effectiveness"></a>3 efficiency_and_effectiveness</h1><p>&emsp;&emsp;在本节中，我们会探索各种技术和开放性的问题，以解决使联邦学习更加高效和有效的挑战。其中包含了无数种可能的方法，包括：探索更好的优化算法；提供不同的模型给不同的客户端；让机器学习任务，例如：参数搜索、结构搜索和调试在联邦学习场景中更加容易；提高通信效率等等。<br>&emsp;&emsp;解决这些目标的一个基本挑战就是non-IID（非独立同分布）数据的存在，因此，我们首先分析这个问题，并强调潜在的解决方案。</p>
 <h2 id="3-1联邦学习中的Non-IID数据"><a href="#3-1联邦学习中的Non-IID数据" class="headerlink" title="3.1联邦学习中的Non-IID数据"></a>3.1联邦学习中的Non-IID数据</h2><p>&emsp;&emsp;虽然通常情况下IID的含义很清楚，但是数据non-IID则有很多种可能。在本节中，我们提供了一种对于non-IID数据的分类方法，对任何客户端分区的数据集可能出现的数据non-IID情况进行分类。最常见的独立但是非同分布的来源是每个客户端对应着一类特定的用户，一片地理区域，或者一段特定的时间。提出的分类法与数据漂移的概念有密切的关系[304, 327]，它研究训练集分布和测试集分布之间的差异。这里，我们仅考虑每个客户端上数据分布的差异。<br>&emsp;&emsp;对于以下内容，我们假设一个监督任务有特征$x$和其对应的标签$y$。联邦学习的统计模型涉及到两个层面的采样： 第一层是对客户端 $i \sim Q$ 进行采样（在可用客户端上的数据分布），第二层是对客户端本地数据分布进行采样 $(x,y) \sim \mathcal{P}_i(x,y)$。<br>&emsp;&emsp;当在联邦学习中提到数据non-IID时，我们通常指的是客户端$i$和客户端$j$所对应的 $\mathcal{P}_i$ 与 $\mathcal{P}_j$ 不同。然而，有一点需要我们特别注意的是：$\mathcal{Q}$ 和 $\mathcal{P_i}$ 是可能随着时间的推移而改变，从而导致另一维度上的non-IID。<br>&emsp;&emsp;为了完整起见，我们注意到，即使对于单个设备上的数据，如果数据没有经过充分的随机打乱顺序，比如：按照时间排列，那么本地数据的独立性也无法保证。一个简单的例子：视频中连续的帧是高度相关的。客户端内部相关性的来源通常可以通过在本地随机打乱顺序来解决。<br><b>非同分布的客户端分布：</b> 根据Hsieh et al.[205]，我们首先研究了数据偏离同分布的一些常见方式，即对于不用的客户端 $i$ 和客户端 $j$ 的分布不同 $P_i \not= P_j$。我们将 $P_i(x,y)$ 重写为 $P_i(y|x)P_i(x)$ 和 $P_i(x|y)P_i(y)$ 让我们能够更加准确地描述他们的区别。</p>
 <p><I>特征分布倾斜（协变量飘移）：</I>即使共享 $\mathcal{P}(y|x)$ ，不同客户端上的边缘分布 $\mathcal{P}_i(x)$ 也可能不同 $^4$ 。比如，在手写识别领域，用户在书写同一个单词时也可能有着不同的笔画宽度、斜度等。</p>
 <p><I>标签分布倾斜（先验概率飘移）：</I>即使 $\mathcal{P}(x|y)$ 是相同的，对于不同客户端上的边缘分布 $\mathcal{P}_i(y)$ 也可能不同。比如，当客户端与特定的地理区域绑定时，标签的分布在不同的客户端上是不同的。比如：袋鼠只在澳大利亚或动物园里；一个人的脸只在出现在全球的几个地方；对于手机设备的键盘，某些特定人群使用某些表情，而其他人不使用。</p>
@@ -1453,7 +1453,7 @@ P(A(D) \in S) \leq \operatorname{e\varepsilon } P\left(A\left(D^{\prime}\right) 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

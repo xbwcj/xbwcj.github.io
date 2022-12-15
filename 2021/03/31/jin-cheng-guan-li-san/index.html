@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="进程同步的基本概念"><a href="#进程同步的基本概念" class="headerlink" title="进程同步的基本概念"></a>进程同步的基本概念</h2><p>&emsp;&emsp;并发执行的进程之间存在相互制约的关系，为了协调进程之间的相互制约关系，进入了进程同步的概念。例如在系统计算算式：$1+2*3$，其中乘法进程一定要在加法进程之前进行运算（在这里把加、乘运算比作进程），但是因为操作系统具有异步性，如果不加以制约，会出现运行顺序相反的情况。同时熟悉以下概念</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h1><h2 id="进程同步的基本概念"><a href="#进程同步的基本概念" class="headerlink" title="进程同步的基本概念"></a>进程同步的基本概念</h2><p>&emsp;&emsp;并发执行的进程之间存在相互制约的关系，为了协调进程之间的相互制约关系，进入了进程同步的概念。例如在系统计算算式：$1+2*3$，其中乘法进程一定要在加法进程之前进行运算（在这里把加、乘运算比作进程），但是因为操作系统具有异步性，如果不加以制约，会出现运行顺序相反的情况。同时熟悉以下概念</p>
 <h3 id="临界资源"><a href="#临界资源" class="headerlink" title="临界资源"></a>临界资源</h3><p>&emsp;&emsp;在操作系统中，虽然多个进程可以共享系统中的各种资源，但其中许多资源一次只能为一个进程所用，将这些一次仅允许一个进程使用的资源称为<strong>临界资源</strong>，许多物理资源如打印机等都属于临界资源，一些变量、数据等都可以被若干进程共享，也属于临界资源。在每个进程中，访问临界资源的那段代码称为<strong>临界区</strong>。为了保证临界资源的正确使用，把其访问过程分为4个部分：<br>&emsp;&emsp;（1）进入区：在进入区要检查可否进入临界区，若能进入临界区，则应设置正在访问临界区的标志，以阻止其他进程同时进入临界区。<br>&emsp;&emsp;（2）临界区：访问临界资源的那段代码称。<br>&emsp;&emsp;（3）退出区：将正在访问临界区的标志清除。<br>&emsp;&emsp;（4）剩余区：代码中的剩余部分。<br><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">do &#123;
     entry section     &#x2F;&#x2F; 进入区
     critical section  &#x2F;&#x2F; 临界区
@@ -1467,7 +1467,7 @@ P2() &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

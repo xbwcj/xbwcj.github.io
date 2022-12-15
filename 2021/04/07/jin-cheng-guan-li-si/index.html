@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h2><h3 id="死锁的定义"><a href="#死锁的定义" class="headerlink" title="死锁的定义"></a>死锁的定义</h3><p>&emsp;&emsp;在多道程序系统中，多个进程会并发执行，提高了处理器的吞吐量和资源的利用率。但是在多个进程的并发执行过程中，经常会出现死锁的问题，死锁就是：<strong>多个进程因竞争资源而造成的一种僵局（互相等待），若无外力作用，这些进程都将无法向前进行</strong>。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><h2 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h2><h3 id="死锁的定义"><a href="#死锁的定义" class="headerlink" title="死锁的定义"></a>死锁的定义</h3><p>&emsp;&emsp;在多道程序系统中，多个进程会并发执行，提高了处理器的吞吐量和资源的利用率。但是在多个进程的并发执行过程中，经常会出现死锁的问题，死锁就是：<strong>多个进程因竞争资源而造成的一种僵局（互相等待），若无外力作用，这些进程都将无法向前进行</strong>。</p>
 <h3 id="死锁产生的原因"><a href="#死锁产生的原因" class="headerlink" title="死锁产生的原因"></a>死锁产生的原因</h3><h4 id="系统资源的竞争"><a href="#系统资源的竞争" class="headerlink" title="系统资源的竞争"></a>系统资源的竞争</h4><p>&emsp;&emsp;通常系统拥有的不可剥夺的资源在数量上不足以满足多个进程运行的需求，使得进程在运行过程中，会因资源争夺而陷入僵局，例如：磁带、打印机等。只有对不可剥夺资源的竞争才可能产生死锁。</p>
 <h4 id="进程推进顺序非法"><a href="#进程推进顺序非法" class="headerlink" title="进程推进顺序非法"></a>进程推进顺序非法</h4><p>&emsp;&emsp;（1）进程在运行过程中，请求和释放资源顺序不当，也会导致死锁。例如：并发进程$P_{1}, P_{2}$分别保持了资源$R_{1}, R_{2}$，而进程$P_{1}$申请资源$R_{2}$、进程$P_{2}$申请资源$R_{1}$时，两者都会因为所需资源被占用而阻塞。<br>&emsp;&emsp;（2）信号量使用不当。<br>&emsp;&emsp;（3）进程间彼此相互等待对方发来的消息，也会使得这些进程间无法继续向前推进。例如：进程$A$等待进程$B$发的消息，进程$B$也在等待进程$A$发送的消息，所以可以看出进程$A$和进程$B$不是因为竞争同一资源，而是等待对方的资源导致死锁。</p>
 <h4 id="死锁产生的必要条件"><a href="#死锁产生的必要条件" class="headerlink" title="死锁产生的必要条件"></a>死锁产生的必要条件</h4><p>&emsp;&emsp;死锁必须同时满足以下的$4$个条件，只要其中任意一个条件不成立，死锁就不会发生。<br>&emsp;&emsp;（1）<strong>互斥条件</strong>：指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。<br>&emsp;&emsp;（2）<strong>不剥夺条件</strong>：指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放（主动释放）。<br>&emsp;&emsp;（3）<strong>请求并保持条件</strong>：指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。<br>&emsp;&emsp;（4）<strong>循环等待条件</strong>：即存在一个等待队列：$P_{1}$占有$P_{2}$的资源，$P_{2}$占有$P_{3}$的资源，$P_{3}$占有$P_{1}$的资源。这样就形成了一个等待环路。若干进程之间形成一种头尾相接的循环等待资源关系。如下图所示：<br><img src="/2021/04/07/jin-cheng-guan-li-si/1.png" alt="循环等待示例图"></p>
@@ -1329,7 +1329,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

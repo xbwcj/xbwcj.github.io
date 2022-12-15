@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>&emsp;&emsp;$ Deep \\; Belief \\; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep \\; Belief \\; Network $ 这个名字的含义，$ Belief \\; Network $ 实际上就是 $ Bayes \\; Network $（有向图模型），而 $ Deep $ 的含义就很简单了，代表有很多层。所以，从字面上理解，$ Deep \\; Belief \\; Network $ 可以认为是有很多层的有向图模型。$ Deep \\; Belief \\; Network $ 的概率图模型如下所示：<br><img src="/2022/03/04/shen-du-xin-nian-wang-luo/1.png" alt="Deep Belief Network 的概率图模型"><br>&emsp;&emsp;从上述图中，可以看出 $ DBN $ 是一个混合模型，上面是 $ Restricted \\; Boltzmann \\; Model $ $ (RBM) $ 模型，下面是一个 $ Sigmoid \\; Belief \\; Network \\; (SBN) $。而每个节点都服从 $ 0/1 $的伯努利分布，实际上就是一个分层模型。深层的含义，我们将会在下文中描述。注意，这里的 $ w $ 是用来描述节点直接连接权重的矩阵。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>&emsp;&emsp;$ Deep \\; Belief \\; Network $ 是 $ Hinton $ 在 2006 年提出的方法，应用在分类问题上的效果明显好过 $ SVM $。首先，来看看 $ Deep \\; Belief \\; Network $ 这个名字的含义，$ Belief \\; Network $ 实际上就是 $ Bayes \\; Network $（有向图模型），而 $ Deep $ 的含义就很简单了，代表有很多层。所以，从字面上理解，$ Deep \\; Belief \\; Network $ 可以认为是有很多层的有向图模型。$ Deep \\; Belief \\; Network $ 的概率图模型如下所示：<br><img src="/2022/03/04/shen-du-xin-nian-wang-luo/1.png" alt="Deep Belief Network 的概率图模型"><br>&emsp;&emsp;从上述图中，可以看出 $ DBN $ 是一个混合模型，上面是 $ Restricted \\; Boltzmann \\; Model $ $ (RBM) $ 模型，下面是一个 $ Sigmoid \\; Belief \\; Network \\; (SBN) $。而每个节点都服从 $ 0/1 $的伯努利分布，实际上就是一个分层模型。深层的含义，我们将会在下文中描述。注意，这里的 $ w $ 是用来描述节点直接连接权重的矩阵。</p>
 <h2 id="SBN-简介"><a href="#SBN-简介" class="headerlink" title="$ SBN $ 简介"></a>$ SBN $ 简介</h2><p>&emsp;&emsp;$ SBN $ 的概率图模型如下图所示：<br><img src="/2022/03/04/shen-du-xin-nian-wang-luo/2.png" alt="Sigmoid Belief Network 的概率图模型"><br>其中：</p>
 <script type="math/tex; mode=display">
 P({S_i} = 1) = \frac{1}{ {1 + \exp \left\\{ { {b_i} + {w_1}{s_1} + {w_2}{s_2} + {w_3}{s_3} } \right\\} } }</script><h2 id="DBN-的概率联合分布"><a href="#DBN-的概率联合分布" class="headerlink" title="$ DBN $ 的概率联合分布"></a>$ DBN $ 的概率联合分布</h2><p>&emsp;&emsp;在使用极大似然估计法中基本离不开求联合概率分布。所以，这里需要求 $ DBN $ 的联合概率分布，而求联合概率分布最终的就是因子分解。那么，我们首先要理顺一下各层之间的依赖关系。显然，$ v $ 层只和 $ h^{(1)} $ 有关， $ h^{(1)} $ 层只和  $ h^{(2)} $ ，那么有：</p>
@@ -1336,7 +1336,7 @@ P(v) = \sum\limits_{ {h^{(1)} } } {P(v,{h^{(1)} })}  = \sum\limits_{ {h^{(1)}}} 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

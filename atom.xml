@@ -28,7 +28,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -53,7 +53,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -78,7 +78,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -103,8 +103,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1&gt;摘要&lt;/h1&gt;
-&lt;p&gt;  联邦学习（Federated</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -129,7 +128,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -154,7 +153,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -179,8 +178,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1&gt;前缀基础知识&lt;/h1&gt;
-&lt;p&gt;  &lt;b&gt;Byzantine</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;前缀基础知识&quot;&gt;&lt;a href=&quot;#前缀基础知识&quot;</summary>
         
       
     
@@ -205,7 +203,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -230,7 +228,7 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -255,8 +253,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;摘要&lt;/h1&gt;
-&lt;p&gt;  在跨设备联邦学习(FL)中，由于昂贵、不可靠和低带宽的无线连接，在边缘设备和中心服务器之间传输全精度模型的通信成本是一个重要的瓶颈。作为一种解决方案，我们提出了一种新的FL框架QSFL，旨在客户端和模型层上优化FL上行（客户端到服务器）通信。在客</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot;</summary>
         
       
     
@@ -281,7 +278,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;安全聚合(Secure Aggregation)是一类安全多方计算算法，其中相互不信任的一组 $u \in</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot;</summary>
         
       
     
@@ -306,7 +303,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;3-efficiency-and-effectiveness&quot;&gt;&lt;a href=&quot;#3-efficiency-and-effectiveness&quot; class=&quot;headerlink&quot; title=&quot;3</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1</summary>
         
       
     
@@ -331,7 +328,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;Welcome to &lt;a</summary>
         
       
     
@@ -356,7 +353,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;&amp;emsp;&amp;emsp;在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \\; Mechanism $ 与指数机制 $ Exponential \\;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
         
       
     
@@ -381,7 +378,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;差分隐私保护算法的组合性质&quot;&gt;&lt;a href=&quot;#差分隐私保护算法的组合性质&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;差分隐私保护算法的组合性质&quot;&gt;&lt;a</summary>
         
       
     
@@ -406,7 +403,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;&amp;emsp;&amp;emsp;在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的&lt;a</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
         
       
     
@@ -431,7 +428,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;$ Deep \\; Belief \\; Network $ 是 $ Hinton $ 在 2006</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
         
       
     
@@ -456,7 +453,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;受限玻尔兹曼机（英语：$ restricted \\; Boltzmann \\; machine \\; ,</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
         
       
     
@@ -481,7 +478,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;差分隐私简介&quot;&gt;&lt;a href=&quot;#差分隐私简介&quot; class=&quot;headerlink&quot; title=&quot;差分隐私简介&quot;&gt;&lt;/a&gt;差分隐私简介&lt;/h1&gt;&lt;p&gt;&amp;emsp;&amp;emsp;差分隐私（differential</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;差分隐私简介&quot;&gt;&lt;a href=&quot;#差分隐私简介&quot;</summary>
         
       
     
@@ -506,7 +503,7 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;内存管理概念&quot;&gt;&lt;a href=&quot;#内存管理概念&quot; class=&quot;headerlink&quot; title=&quot;内存管理概念&quot;&gt;&lt;/a&gt;内存管理概念&lt;/h1&gt;&lt;h2 id=&quot;内存管理的基本原理和要求&quot;&gt;&lt;a href=&quot;#内存管理的基本原理和要求&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;内存管理概念&quot;&gt;&lt;a href=&quot;#内存管理概念&quot;</summary>
         
       
     

@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    4.7k
                 </div>
                 
 
@@ -505,12 +505,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>摘要</h1>
-<p>  我们证明，训练具有用户级差分隐私保证的大型循环语言模型是可能的，而在预测精度方面的成本仅为可以忽略不计。我们的工作建立在深度网络在用户分区数据和随机梯度下降隐私会计方面的训练的最新进展上。特别地，我们将用户级隐私保护添加到联邦平均算法中，从而从用户级数据中进行“large step”更新。我们的研究表明，给定一个拥有足够多用户的数据集（即使是小型互联网规模的数据集也很容易满足这一要求），实现差异隐私的代价是增加计算量，而不是像大多数之前的工作那样降低效用。我们发现，当在大数据集上训练时，我们的私有LSTM语言模型在定量和定性上与无噪声模型相似。</p>
-<h1>介绍</h1>
-<p>  像长短期记忆（LSTM）循环神经网络（RNNs）这样的深度循环模型已经成为现代语言建模方法的标准构建模块，在语音识别、移动键盘输入解码和语言翻译方面都有应用。由于不同的问题域和数据集，语言的使用差别很大，因此用正确分布的数据训练语言模型是至关重要的。例如，一个帮助在移动键盘上打字的模型，最好是通过在移动应用程序中输入的训练数据，而不是来自扫描的书籍或转录的话语。然而，语言数据可能是唯一隐私敏感的。在手机上输入文本的情况下，这些敏感信息可能包括密码、文本消息和搜索查询。一般来说，语言数据可以明确地通过名字或隐式地（例如通过罕见或独特的短语）识别说话者，并将说话者与秘密或敏感信息联系起来。<br>
-  理想情况下，语言模型的参数应该对许多用户共同使用的语言使用模式进行编码，而不需要记住任何单个用户的独特输入序列。然而，我们知道卷积神经网络可以记住训练数据的任意标签（Zhang等人，2017），循环语言模型也能够记住训练数据中的唯一模式（Carlini等人，2018）。最近对神经网络的攻击，如Shokri等人（2017）的攻击，强调了隐性风险。我们工作的主要目标是提供一个强有力的保证，即训练过的模型保护个人数据的隐私，而不会在模型质量上造成不适当的牺牲。<br>
-  我们的动机是训练模型在移动键盘下一个单词预测的问题，并使用它作为一个运行的例子。这个问题非常适合我们介绍的技术，因为差异隐私可能允许对来自真实分布(实际移动使用)的数据进行训练，而不是对来自其他来源的代理数据进行训练，后者会产生劣质模型。然而，为了便于再现性和与非私有模型的比较，我们的实验是在公共数据集上进行的，这是差异隐私研究的标准。本文的其余部分是围绕以下贡献构建的：</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>&emsp;&emsp;我们证明，训练具有用户级差分隐私保证的大型循环语言模型是可能的，而在预测精度方面的成本仅为可以忽略不计。我们的工作建立在深度网络在用户分区数据和随机梯度下降隐私会计方面的训练的最新进展上。特别地，我们将用户级隐私保护添加到联邦平均算法中，从而从用户级数据中进行“large step”更新。我们的研究表明，给定一个拥有足够多用户的数据集（即使是小型互联网规模的数据集也很容易满足这一要求），实现差异隐私的代价是增加计算量，而不是像大多数之前的工作那样降低效用。我们发现，当在大数据集上训练时，我们的私有LSTM语言模型在定量和定性上与无噪声模型相似。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;像长短期记忆（LSTM）循环神经网络（RNNs）这样的深度循环模型已经成为现代语言建模方法的标准构建模块，在语音识别、移动键盘输入解码和语言翻译方面都有应用。由于不同的问题域和数据集，语言的使用差别很大，因此用正确分布的数据训练语言模型是至关重要的。例如，一个帮助在移动键盘上打字的模型，最好是通过在移动应用程序中输入的训练数据，而不是来自扫描的书籍或转录的话语。然而，语言数据可能是唯一隐私敏感的。在手机上输入文本的情况下，这些敏感信息可能包括密码、文本消息和搜索查询。一般来说，语言数据可以明确地通过名字或隐式地（例如通过罕见或独特的短语）识别说话者，并将说话者与秘密或敏感信息联系起来。<br>&emsp;&emsp;理想情况下，语言模型的参数应该对许多用户共同使用的语言使用模式进行编码，而不需要记住任何单个用户的独特输入序列。然而，我们知道卷积神经网络可以记住训练数据的任意标签（Zhang等人，2017），循环语言模型也能够记住训练数据中的唯一模式（Carlini等人，2018）。最近对神经网络的攻击，如Shokri等人（2017）的攻击，强调了隐性风险。我们工作的主要目标是提供一个强有力的保证，即训练过的模型保护个人数据的隐私，而不会在模型质量上造成不适当的牺牲。<br>&emsp;&emsp;我们的动机是训练模型在移动键盘下一个单词预测的问题，并使用它作为一个运行的例子。这个问题非常适合我们介绍的技术，因为差异隐私可能允许对来自真实分布(实际移动使用)的数据进行训练，而不是对来自其他来源的代理数据进行训练，后者会产生劣质模型。然而，为了便于再现性和与非私有模型的比较，我们的实验是在公共数据集上进行的，这是差异隐私研究的标准。本文的其余部分是围绕以下贡献构建的：</p>
 <ol>
 <li>我们使用用户相邻数据集的概念，将差异隐私应用到模型训练中，导致用户级隐私的正式保证，而不是单个示例的隐私。</li>
 <li>我们在§2中介绍了联邦平均算法（McMahan等人，2016）的噪声版本，该算法通过使用矩会计（Abadi等人，2016a）来满足用户相邻的差分隐私，该会计首先开发用于分析差分隐私随机梯度下降（SGD）的示例级隐私。联邦平均方法将多个SGD更新分组在一起，支持“large step”模型更新</li>
@@ -518,49 +514,34 @@
 ">[1]</span></a></sup> 的显著计算成本保持相同水平的准确性。在拥有108个用户的更大数据集上运行相同的计算将提高隐私保障到（1.2,$10^{−9}$）。尽管lstm的内部结构很复杂（每个单词嵌入以及密集的状态转换），但我们使用联邦平均算法保证了隐私性并保持了实用性。我们证明了噪声模型的度量和定性行为（关于标题词）与非私有模型没有显著差异。据我们所知，我们的工作代表了最复杂的机器学习模型（根据模型的大小和复杂性来判断），这是有史以来在隐私保障下训练的最复杂的机器学习模型，也是第一个在用户级隐私保护下训练的这样的模型。</li>
 <li>在§3的大量实验中，当训练具有不同隐私保证的复杂模型时，我们提供了参数调优的指导方针。我们表明，少量的实验可以缩小参数空间，使我们为隐私付出的代价不是效用的损失，而是计算成本的增加。</li>
 </ol>
-<p>  现在我们介绍一些初步的内容。差异隐私（DP）（Dwork等人，2006;Dwork, 2011;Dwork和Roth, 2014）为源自私人数据的信息发布提供了一种经过充分测试的形式化方法。将差分私有训练机制应用到机器学习中，可以公开发布模型参数，并提供强有力的保证：对手在分析参数的基础上对原始训练数据的了解受到严重限制，即使他们可以访问任意的侧信息。在形式上，它说：</p>
-<p><b>定义1：差分隐私：</b>随机机制 $\mathcal{M} :\mathcal{D} \rightarrow \mathcal{R}$ 具有域 $\mathcal{D}$ （例如，可能的训练数据集）和范围 $\mathcal{R}$ （例如，所有可能的训练模型）满足 $(\epsilon, \delta)$-差分隐私如果对于任意两个相邻数据集 $d,d’ \in \mathcal{D}$ 和输出任意子集 $\mathcal{S} \subseteq \mathcal{R}$，则 $\operatorname{Pr}[\mathcal{M}(d) \in S] \leq e^{\epsilon} \operatorname{Pr}\left[\mathcal{M}\left(d^{\prime}\right) \in S\right]+\delta$。<br>
-  上面的定义保留了依赖于应用程序的相邻数据集的定义。大多数之前关于差分隐私机器学习的工作（例如Chaudhuri等人（2011）;Bassily等人（2014）;阿巴迪等人（2016a）;Wu等（2017）;Papernot等人（2017））处理example-level privacy：如果 $d’$ 可以通过从 $d$ 中添加或删除单个训练示例而形成，则两个数据集 $d$ 和 $d’$ 被定义为相邻的。我们指出，虽然（Papernot等人，2017）最近的PATE方法可以被调整为提供用户级隐私，但它不适合类（可能输出的单词）数量很大的语言模型。<br>
-  对于像语言建模这样的问题，保护单个的例子是不够的——每个键入的单词对RNN的训练目标都有自己的贡献，因此一个用户可能为训练数据贡献数千个例子。一个敏感的词或短语可能被个人用户输入多次，但它仍然应该受到保护。<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b>">[2]</span></a></sup> 因此，在这项工作中，我们应用差异隐私的定义来保护训练集中的整个用户历史。通过使用适当的邻接关系来确保用户级隐私:</p>
-<p><b>定义2：用户相邻数据集：</b>设 $d$ 和 $d’$ 是两个训练示例数据集，其中每个示例与一个用户相关联。然后，如果 $d’$ 可以通过从 $d$ 中添加或删除与单个用户相关的所有示例而形成，则 $d$ 和 $d’$ 相邻。<br>
-  对于与用户相邻的数据集，满足不同隐私的模型训练满足了我们旨在为语言建模保护的隐私的直观概念：训练集中任何特定用户数据的存在或不存在对学习模型的参数（分布）有难以察觉的影响。由此可见，查看经过训练的模型的对手无法推断是否在训练中使用了任何特定用户的数据，无论他们可能拥有什么辅助信息。特别地，差别隐私在很强的信息理论意义上排除了对敏感信息的记忆。</p>
-<h1>用户级差分隐私训练算法</h1>
-<p>  我们的私有算法严重依赖于两个之前的工作：McMahan等人（2016）的federated平均（或FedAvg）算法，它在用户分区数据上训练深度网络，Abadi等人（2016a）的矩会计，它为高斯机制结合采样放大的重复应用提供了严密的组成保证。虽然我们试图使当前的工作尽可能独立，但上述参考资料提供了有用的背景。<br>
-  FedAvg是由McMahan等人（2016）为联邦学习引入的，其目标是训练共享模型，同时将训练数据保留在每个用户的移动设备上。相反，设备下载当前模型，并通过对数据集执行本地计算来计算更新。在每个用户的数据上执行额外的计算以最小化训练模型所需的通信轮数是值得的，因为当训练数据在移动设备上保持分散时，带宽非常有限。然而，我们观察到，即使在应用DP的数据中心，FedAvg也是有意义的：较大的更新对噪声的抵抗力更强，更少的训练轮可以意味着更少的隐私成本。最重要的是，算法自然地基于单个用户的数据形成每个用户的更新，然后对这些更新进行平均，以计算每一轮应用于共享模型的最终更新。正如我们将看到的，这种结构使扩展算法成为可能，以提供用户级的差分隐私保障。<br>
-  我们还评估了FederatedSGD算法，本质上是large-batch SGD，其中每个mini-batch由“microbatches（微批次）”组成，包括来自单个不同用户的数据。在某些数据中心应用程序中，FedSGD可能比FedAvg更可取，因为快速网络使运行更多迭代更加实际。然而，这些额外的迭代是以隐私为代价的。此外，联邦学习在隐私保护方面的好处与差分隐私保护方面的好处是很好的互补，FedAvg也可以应用于数据中心，因此我们将重点放在这个算法上，同时展示我们的结果也扩展到FedSGD。<br>
-  FedAvg和FedSGD都是迭代过程，在这两种情况下，我们都对非私有版本进行了以下修改，以实现不同的私有：</p>
+
+<p>&emsp;&emsp;现在我们介绍一些初步的内容。差异隐私（DP）（Dwork等人，2006;Dwork, 2011;Dwork和Roth, 2014）为源自私人数据的信息发布提供了一种经过充分测试的形式化方法。将差分私有训练机制应用到机器学习中，可以公开发布模型参数，并提供强有力的保证：对手在分析参数的基础上对原始训练数据的了解受到严重限制，即使他们可以访问任意的侧信息。在形式上，它说：</p>
+<p><b>定义1：差分隐私：</b>随机机制 $\mathcal{M} :\mathcal{D} \rightarrow \mathcal{R}$ 具有域 $\mathcal{D}$ （例如，可能的训练数据集）和范围 $\mathcal{R}$ （例如，所有可能的训练模型）满足 $(\epsilon, \delta)$-差分隐私如果对于任意两个相邻数据集 $d,d’ \in \mathcal{D}$ 和输出任意子集 $\mathcal{S} \subseteq \mathcal{R}$，则 $\operatorname{Pr}[\mathcal{M}(d) \in S] \leq e^{\epsilon} \operatorname{Pr}\left[\mathcal{M}\left(d^{\prime}\right) \in S\right]+\delta$。<br>&emsp;&emsp;上面的定义保留了依赖于应用程序的相邻数据集的定义。大多数之前关于差分隐私机器学习的工作（例如Chaudhuri等人（2011）;Bassily等人（2014）;阿巴迪等人（2016a）;Wu等（2017）;Papernot等人（2017））处理example-level privacy：如果 $d’$ 可以通过从 $d$ 中添加或删除单个训练示例而形成，则两个数据集 $d$ 和 $d’$ 被定义为相邻的。我们指出，虽然（Papernot等人，2017）最近的PATE方法可以被调整为提供用户级隐私，但它不适合类（可能输出的单词）数量很大的语言模型。<br>&emsp;&emsp;对于像语言建模这样的问题，保护单个的例子是不够的——每个键入的单词对RNN的训练目标都有自己的贡献，因此一个用户可能为训练数据贡献数千个例子。一个敏感的词或短语可能被个人用户输入多次，但它仍然应该受到保护。<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b>">[2]</span></a></sup> 因此，在这项工作中，我们应用差异隐私的定义来保护训练集中的整个用户历史。通过使用适当的邻接关系来确保用户级隐私:</p>
+<p><b>定义2：用户相邻数据集：</b>设 $d$ 和 $d’$ 是两个训练示例数据集，其中每个示例与一个用户相关联。然后，如果 $d’$ 可以通过从 $d$ 中添加或删除与单个用户相关的所有示例而形成，则 $d$ 和 $d’$ 相邻。<br>&emsp;&emsp;对于与用户相邻的数据集，满足不同隐私的模型训练满足了我们旨在为语言建模保护的隐私的直观概念：训练集中任何特定用户数据的存在或不存在对学习模型的参数（分布）有难以察觉的影响。由此可见，查看经过训练的模型的对手无法推断是否在训练中使用了任何特定用户的数据，无论他们可能拥有什么辅助信息。特别地，差别隐私在很强的信息理论意义上排除了对敏感信息的记忆。</p>
+<h1 id="用户级差分隐私训练算法"><a href="#用户级差分隐私训练算法" class="headerlink" title="用户级差分隐私训练算法"></a>用户级差分隐私训练算法</h1><p>&emsp;&emsp;我们的私有算法严重依赖于两个之前的工作：McMahan等人（2016）的federated平均（或FedAvg）算法，它在用户分区数据上训练深度网络，Abadi等人（2016a）的矩会计，它为高斯机制结合采样放大的重复应用提供了严密的组成保证。虽然我们试图使当前的工作尽可能独立，但上述参考资料提供了有用的背景。<br>&emsp;&emsp;FedAvg是由McMahan等人（2016）为联邦学习引入的，其目标是训练共享模型，同时将训练数据保留在每个用户的移动设备上。相反，设备下载当前模型，并通过对数据集执行本地计算来计算更新。在每个用户的数据上执行额外的计算以最小化训练模型所需的通信轮数是值得的，因为当训练数据在移动设备上保持分散时，带宽非常有限。然而，我们观察到，即使在应用DP的数据中心，FedAvg也是有意义的：较大的更新对噪声的抵抗力更强，更少的训练轮可以意味着更少的隐私成本。最重要的是，算法自然地基于单个用户的数据形成每个用户的更新，然后对这些更新进行平均，以计算每一轮应用于共享模型的最终更新。正如我们将看到的，这种结构使扩展算法成为可能，以提供用户级的差分隐私保障。<br>&emsp;&emsp;我们还评估了FederatedSGD算法，本质上是large-batch SGD，其中每个mini-batch由“microbatches（微批次）”组成，包括来自单个不同用户的数据。在某些数据中心应用程序中，FedSGD可能比FedAvg更可取，因为快速网络使运行更多迭代更加实际。然而，这些额外的迭代是以隐私为代价的。此外，联邦学习在隐私保护方面的好处与差分隐私保护方面的好处是很好的互补，FedAvg也可以应用于数据中心，因此我们将重点放在这个算法上，同时展示我们的结果也扩展到FedSGD。<br>&emsp;&emsp;FedAvg和FedSGD都是迭代过程，在这两种情况下，我们都对非私有版本进行了以下修改，以实现不同的私有：</p>
 <ol>
 <li>（A）我们使用随机大小的batches，我们以 $q$ 的概率独立选择用户，而不是总是选择固定数量的用户</li>
 <li>（B）我们强制裁剪每个用户的更新，因此总更新有 $L_{2}$ 范数限制</li>
 <li>（C）我们对平均更新使用不同的估计量（接下来介绍）</li>
 <li>（D）我们在最终的平均更新中添加高斯噪声。</li>
 </ol>
+
 <p><img src="/2022/09/19/learning-differentially-private-recurrent-language-models/1.png" alt="图1：DP-FedAvg和DP-FedSGD的主循环，唯一的区别是用户更新函数（UserUpdateFedAvg或UserUpdateFedSGD）。moments会计 $\mathcal{M}$ 的调用参考Abadi et al. (2016b)的API。"></p>
-<p>  DP-FedAvg和DP-FedSGD的伪代码如算法1所示。在本节的其余部分，我们介绍了（C）的估计量，然后介绍了（B）的不同剪辑策略。添加来自（A）的采样过程和（D）的噪声，允许我们应用矩会计来限制算法的总隐私损失，如定理1所示。最后，我们考虑矩会计的性质，使训练大数据集特别有吸引力。</p>
+<p>&emsp;&emsp;DP-FedAvg和DP-FedSGD的伪代码如算法1所示。在本节的其余部分，我们介绍了（C）的估计量，然后介绍了（B）的不同剪辑策略。添加来自（A）的采样过程和（D）的噪声，允许我们应用矩会计来限制算法的总隐私损失，如定理1所示。最后，我们考虑矩会计的性质，使训练大数据集特别有吸引力。</p>
 <p><b>加权平均查询的有界灵敏度估计</b>随机抽样用户（或训练示例），以概率 $q$ 选择每个独立用户，这对于通过使用矩会计证明低隐私损失至关重要（Abadi等人，2016a）。然而，这个过程产生可变大小的样本 $\mathcal{C}$ ，当待估计的数量 $f(\mathcal{C})$ 是一个平均值而不是一个和时（如计算FedAvg中的加权平均更新或SGD中具有example-level DP的 minibatch 上的平均损失），这对查询 $f$ 的灵敏度产生了影响。</p>
-<p>  具体来说，我们考虑加权数据库 $d$，其中每一行 $k \in d$ 都与一个特定的用户关联，并且具有关联的权重 $w_{k} \in [0,1]$。此权重捕获行 $k$ 对最终结果的预期影响。例如，我们可以认为第 $k$ 行包含 $n_{k}$ 个不同的训练示例，它们都是由用户 $k$ 生成的，权重 $w_{k}$ 与 $n_{k}$ 成正比。然后，我们对每个用户向量 $\Delta_{k}$ 的 $f(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\sum_{k \in \mathcal{C}} w_{k}}$ 的有界灵敏度估计感兴趣，例如，估计FedAvg中的加权平均用户更新。设 $W=\sum_{k} w_{k}$ 。我们考虑两个这样的估计量：<br>
-$$<br>
-\tilde{f}_{\mathrm{f}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{q W}<br>
-$$</p>
-<p>$$<br>
-\tilde{f}_{\mathrm{c}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\max \left(q W_{\min }, \sum_{k \in \mathcal{C}} w_{k}\right)}<br>
-$$<br>
-  注意 $\tilde{f}_{\mathrm{f}}$ ，因为 $\mathbb{E}\left[\sum_{k \in \mathcal{C}} w_{k}\right]=q W$ ，另一方面，只要样本中有足够的权值， $\tilde{f}_{\mathrm{c}}$ 就完全匹配 $f$。为了保护隐私，我们需要控制查询函数 $\tilde{f}$ 的灵敏度，定义为 $\mathbb{S}(\tilde{f})=\max_{\mathcal{C}, k} ||\tilde{f}(\mathcal{C} \cup { k } ) - \tilde{f}(\mathcal{C}) ||_{2}$ ，其中添加的用户 $k$ 可以有任意数据。为了控制灵敏度，需要在 $\tilde{f}_{\mathrm{c}}$ 的分母上设置下限 $qW_{min}$ 。假设每个 $w_{k} \Delta_{k}$ 有界范数，我们有：<br>
-<b>引理1：</b>如果对于所有用户 $k$，我们有 $|w_{k} \Delta_{k} |_{2} \leq S$ ，那么两个估计器的灵敏度被限定为 $\mathbb{S}\left(\tilde{f}_{\mathrm{f}}\right) \leq \frac{S}{q W} \text { and } \mathbb{S}\left(\tilde{f}_{\mathrm{c}}\right) \leq \frac{2 S}{q W_{\min } }$。</p>
-<p><b>多层模型的裁剪策略：</b>不幸的是，当用户向量 $\Delta_{k}$ 是来自神经网络的梯度（或梯度的和）时，我们通常没有一个先验边界<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释3：为了控制灵敏度，引理1只要求 $\\|w_{k} \Delta_{k} \\|\_{2} \leq S$ 有界。为了简单起见，我们仅使用 $w_{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。</b>">[3]</span></a></sup> $S$，这样 $\Delta_{k}  \leq S$。因此，我们将需要在应用 $\tilde{f}_{\mathrm{f}}$ 或  $\tilde{f}_{\mathrm{c}}$ 之前“剪辑”我们的更新来强制这样的边界。对于单个向量 $\Delta$ ，我们可以在必要时应用简单的 $L_{2}$ 投影：<br>
-$$<br>
-\pi(\Delta, S) \stackrel{\text { def }}{=} \Delta \cdot \min \left(1, \frac{S}{|\Delta|}\right)<br>
-$$</p>
-<p><img src="/2022/09/19/learning-differentially-private-recurrent-language-models/2.png" alt="表1:不同的用户总数 $K$ （所有的权重相等）的隐私，每轮 $\tilde{\mathcal{C} } $ 采样的用户的预期数量，以及训练的轮数。对于每一行，我们设 $\delta = \frac{1}{K^{1.1} }$，并报告 $\epsilon $ 的值，其中 $ (\epsilon, \delta)$-微分隐私在 $1 ~ 10^{6}$ 轮后保持。对于大型数据集，额外的训练只会带来小的额外隐私损失。"><br>
-  然而，对于深度网络来说，更自然的做法是将每一层的参数视为一个单独的向量。对每一层的更新可能具有截然不同的 $L_{2}$ 规范，因此最好将每一层单独剪辑。<br>
-  形式上，假设每次更新 $\Delta_{k}$ 包含 $m$ 个向量 $\Delta_{k}=\left(\Delta_{k}(1), \ldots, \Delta_{k}(m)\right)$。我们考虑以下的裁剪策略，它们都保证了总更新最多有范数 $S$ ：</p>
+<p>&emsp;&emsp;具体来说，我们考虑加权数据库 $d$，其中每一行 $k \in d$ 都与一个特定的用户关联，并且具有关联的权重 $w_{k} \in [0,1]$。此权重捕获行 $k$ 对最终结果的预期影响。例如，我们可以认为第 $k$ 行包含 $n_{k}$ 个不同的训练示例，它们都是由用户 $k$ 生成的，权重 $w_{k}$ 与 $n_{k}$ 成正比。然后，我们对每个用户向量 $\Delta_{k}$ 的 $f(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\sum_{k \in \mathcal{C}} w_{k}}$ 的有界灵敏度估计感兴趣，例如，估计FedAvg中的加权平均用户更新。设 $W=\sum_{k} w_{k}$ 。我们考虑两个这样的估计量： </p>
+<script type="math/tex; mode=display">
+\tilde{f}\_{\mathrm{f}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{q W}</script><script type="math/tex; mode=display">
+\tilde{f}\_{\mathrm{c}}(\mathcal{C})=\frac{\sum_{k \in \mathcal{C}} w_{k} \Delta_{k}}{\max \left(q W_{\min }, \sum_{k \in \mathcal{C}} w_{k}\right)}</script><p>&emsp;&emsp;注意 $\tilde{f}_{\mathrm{f}}$ ，因为 $\mathbb{E}\left[\sum_{k \in \mathcal{C}} w_{k}\right]=q W$ ，另一方面，只要样本中有足够的权值， $\tilde{f}_{\mathrm{c}}$ 就完全匹配 $f$。为了保护隐私，我们需要控制查询函数 $\tilde{f}$ 的灵敏度，定义为 $\mathbb{S}(\tilde{f})=\max_{\mathcal{C}, k} ||\tilde{f}(\mathcal{C} \cup \{ k \} ) - \tilde{f}(\mathcal{C}) ||_{2}$ ，其中添加的用户 $k$ 可以有任意数据。为了控制灵敏度，需要在 $\tilde{f}_{\mathrm{c}}$ 的分母上设置下限 $qW_{min}$ 。假设每个 $w_{k} \Delta_{k}$ 有界范数，我们有：<br><b>引理1：</b>如果对于所有用户 $k$，我们有 $\|w_{k} \Delta_{k} \|_{2} \leq S$ ，那么两个估计器的灵敏度被限定为 $\mathbb{S}\left(\tilde{f}_{\mathrm{f}}\right) \leq \frac{S}{q W} \text { and } \mathbb{S}\left(\tilde{f}_{\mathrm{c}}\right) \leq \frac{2 S}{q W_{\min } }$。</p>
+<p><b>多层模型的裁剪策略：</b>不幸的是，当用户向量 $\Delta_{k}$ 是来自神经网络的梯度（或梯度的和）时，我们通常没有一个先验边界<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="<b>注释3：为了控制灵敏度，引理1只要求 $\\|w_{k} \Delta_{k} \\|\_{2} \leq S$ 有界。为了简单起见，我们仅使用 $w_{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。</b>">[3]</span></a></sup> $S$，这样 $\Delta_{k}  \leq S$。因此，我们将需要在应用 $\tilde{f}_{\mathrm{f}}$ 或  $\tilde{f}_{\mathrm{c}}$ 之前“剪辑”我们的更新来强制这样的边界。对于单个向量 $\Delta$ ，我们可以在必要时应用简单的 $L_{2}$ 投影： </p>
+<script type="math/tex; mode=display">
+\pi(\Delta, S) \stackrel{\text { def }}{=} \Delta \cdot \min \left(1, \frac{S}{\|\Delta\|}\right)</script><p><img src="/2022/09/19/learning-differentially-private-recurrent-language-models/2.png" alt="表1:不同的用户总数 $K$ （所有的权重相等）的隐私，每轮 $\tilde{\mathcal{C} } $ 采样的用户的预期数量，以及训练的轮数。对于每一行，我们设 $\delta = \frac{1}{K^{1.1} }$，并报告 $\epsilon $ 的值，其中 $ (\epsilon, \delta)$-微分隐私在 $1 ~ 10^{6}$ 轮后保持。对于大型数据集，额外的训练只会带来小的额外隐私损失。"><br>&emsp;&emsp;然而，对于深度网络来说，更自然的做法是将每一层的参数视为一个单独的向量。对每一层的更新可能具有截然不同的 $L_{2}$ 规范，因此最好将每一层单独剪辑。<br>&emsp;&emsp;形式上，假设每次更新 $\Delta_{k}$ 包含 $m$ 个向量 $\Delta_{k}=\left(\Delta_{k}(1), \ldots, \Delta_{k}(m)\right)$。我们考虑以下的裁剪策略，它们都保证了总更新最多有范数 $S$ ：</p>
 <ol>
 <li><b>平面裁剪</b>给定总体裁剪参数 $S$，我们将所有层的拼接裁剪为 $\Delta_{k}^{\prime}=\pi\left(\Delta_{k}, S\right)$</li>
 <li><b>每层剪切</b>给定每层的每层裁剪参数 $S_{j}$，设 $\Delta_{k}^{\prime}(j) = \pi\left(\Delta_{k}(j), S_{j}\right)$。设 $S=\sqrt{\sum_{j=1}^{m} S_{j}^{2}}$。最简单的与模型无关的选择是对所有的 $j$ 取 $S_{j}=\frac{S}{\sqrt{m}}$，我们在实验中使用。</li>
 </ol>
-<p>  我们在这里指出，剪辑本身会导致额外的偏差，理想情况下，我们应该选择剪辑参数足够大，使几乎所有更新都小于剪辑值。另一方面，一个较大的 $S$ 将需要更多的噪音，以实现隐私，可能会减慢训练。我们将 $S$ 视为超参数并对其进行调优。<br>
-<b>一个隐私保障</b>一旦所选估计量的灵敏度是有界的，我们可以将高斯噪声缩放到该灵敏度上以获得隐私保证。一个简单的方法是使用 $(\epsilon ，\delta )-DP$ 界限，并应用隐私放大引理和高级复合定理得到了总隐私代价的界限。我们使用Abadi等人(2016a)的朋友圈会计来实现更严格的隐私界限。采样高斯机构的矩会计上界为噪声 $N(0,\sigma ^{2})$ 的高斯机构T阶的总隐私成本，$\sigma=z \cdot \mathbb{S}$，其中 $z$ 为参数，$\mathbb{S}$ 为查询的灵敏度，每一行的选择概率为 $q$。给定 $\delta &gt; 0$，矩会计给出一个 $\epsilon$ 这个机制满足 $(\epsilon , \delta)-DP$。以下定理是对Abadi等人(2016a)的结果的轻微推广;见§A的证明草图。<br>
-<b>定理1：</b>对于估计器（$\tilde{f}_{\mathrm{f}}$, $\tilde{f}<em>{\mathrm{c}}$），采样高斯机制的力矩会计，以 $z = \delta / \mathbb{E}$ 和步骤 $T$ 的噪声尺度正确计算隐私损失，其中 $\mathbb{S} = S/qW$ 对于（$\tilde{f}</em>{\mathrm{f}}$），$2S/qW_{min}$ 对于（$\tilde{f}<em>{\mathrm{c}}$）。<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释1：通过在公共数据集上进行初始化训练，而不是像我们在实验中那样从随机初始化开始，可以减少额外的计算成本。</b><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释3：为了控制灵敏度，引理1只要求 $|w</b></span></li></ol></div></div></em>{k} \Delta_{k} |<em>{2} \leq S$ 有界。为了简单起见，我们仅使用 $w</em>{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。<a href="#fnref:3" rev="footnote"> ↩</a></p>
+
+<p>&emsp;&emsp;我们在这里指出，剪辑本身会导致额外的偏差，理想情况下，我们应该选择剪辑参数足够大，使几乎所有更新都小于剪辑值。另一方面，一个较大的 $S$ 将需要更多的噪音，以实现隐私，可能会减慢训练。我们将 $S$ 视为超参数并对其进行调优。<br><b>一个隐私保障</b>一旦所选估计量的灵敏度是有界的，我们可以将高斯噪声缩放到该灵敏度上以获得隐私保证。一个简单的方法是使用 $(\epsilon ，\delta )-DP$ 界限，并应用隐私放大引理和高级复合定理得到了总隐私代价的界限。我们使用Abadi等人(2016a)的朋友圈会计来实现更严格的隐私界限。采样高斯机构的矩会计上界为噪声 $N(0,\sigma ^{2})$ 的高斯机构T阶的总隐私成本，$\sigma=z \cdot \mathbb{S}$，其中 $z$ 为参数，$\mathbb{S}$ 为查询的灵敏度，每一行的选择概率为 $q$。给定 $\delta &gt; 0$，矩会计给出一个 $\epsilon$ 这个机制满足 $(\epsilon , \delta)-DP$。以下定理是对Abadi等人(2016a)的结果的轻微推广;见§A的证明草图。<br><b>定理1：</b>对于估计器（$\tilde{f}_{\mathrm{f}}$, $\tilde{f}_{\mathrm{c}}$），采样高斯机制的力矩会计，以 $z = \delta / \mathbb{E}$ 和步骤 $T$ 的噪声尺度正确计算隐私损失，其中 $\mathbb{S} = S/qW$ 对于（$\tilde{f}_{\mathrm{f}}$），$2S/qW_{min}$ 对于（$\tilde{f}_{\mathrm{c}}$）。<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释1：通过在公共数据集上进行初始化训练，而不是像我们在实验中那样从随机初始化开始，可以减少额外的计算成本。</b><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释2：差异隐私满足一种称为组隐私的属性，该属性允许以增加 $\epsilon$ 为代价从示例级隐私转换到用户级隐私。在我们的设置中，这样的黑箱方法将产生令人难以承受的隐私成本。这迫使我们直接解决用户级隐私问题。</b><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><b>注释3：为了控制灵敏度，引理1只要求 $\|w_{k} \Delta_{k} \|_{2} \leq S$ 有界。为了简单起见，我们仅使用 $w_{k} \leq 1$ 的事实，对更新 $\Delta_{k}$ 进行裁剪，将重量感知裁剪方案的研究留作以后的工作。</b><a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div>&lt;/div&gt;</div></p>
 
                 
             </div>
@@ -1362,7 +1343,7 @@ $$</p>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \\; Mechanism $ 与指数机制 $ Exponential \\; Mechanism $ 是两种最基础的差分隐私保护实现机制。其中，$ Laplace $ 机制适用于对数值型结果的保护，指数机制则适用于非数值型结果。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>&emsp;&emsp;在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \\; Mechanism $ 与指数机制 $ Exponential \\; Mechanism $ 是两种最基础的差分隐私保护实现机制。其中，$ Laplace $ 机制适用于对数值型结果的保护，指数机制则适用于非数值型结果。</p>
 <h2 id="Laplace-机制"><a href="#Laplace-机制" class="headerlink" title="$ Laplace $ 机制"></a>$ Laplace $ 机制</h2><p>&emsp;&emsp;$ Laplace $ 机制通过向确切的查询结果中加入服从 $ Laplace $ 分布的随机噪声来实现 $ \varepsilon -$ 差分隐私保护。记位置参数为 $ 0 $、尺度参数为 $ b $ 的 $ Laplace $ 分布为 $ Lap(b) $，那么其概率密度函数为</p>
 <script type="math/tex; mode=display">
 p(x) = \frac{1}{ {2b} }\exp ( - \frac{ {|x|} }{b})</script><p>&emsp;&emsp;<b>定义1. $ Laplace $ 机制.</b>给定数据集 $ D $，设有函数 $ f:D \to {R^d} $，其敏感度为 $ \Delta f $，那么随机算法 $ M(D) = f(D) + Y $ 提供 $ \varepsilon -$ 差分隐私保护，其中 $ Y \sim Lap(\Delta f/\varepsilon ) $ 为随机噪声，服从尺度参数为 $ \Delta f/\varepsilon $ 的 $ Laplace $ 分布。<br><img src="/2022/03/17/chai-fen-yin-si-shi-xian-ji-zhi/1.png" alt="Laplace概率密度函数"></p>
@@ -1311,7 +1311,7 @@ p(x) = \frac{1}{ {2b} }\exp ( - \frac{ {|x|} }{b})</script><p>&emsp;&emsp;<b>定
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             

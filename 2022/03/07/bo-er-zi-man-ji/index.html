@@ -505,7 +505,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;&emsp;在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/qing-kuang-shu-sheng-18-44">知乎主页</a>和大佬的<a target="_blank" rel="noopener" href="https://github.com/2019ChenGong/Machine-Learning-Notes">gthub主页</a>。里面有大佬对于这些模型的公式推导。下面写一些我学习后的个人总结，里面大部分是一些大佬的推导过程，大家想深入研究，直接看大佬的专栏就好，这里仅用来自我总结。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>&emsp;&emsp;在本文开始前，为大家强推一位大佬，因为玻尔兹曼机（BM）、受限玻尔兹曼机（RBM）、深度信念网络（DBN）相关内容是我毕设的主题，恰好在网上看到了这位大佬的相关研究，特别赞，以下附上该为大佬的<a target="_blank" rel="noopener" href="https://www.zhihu.com/people/qing-kuang-shu-sheng-18-44">知乎主页</a>和大佬的<a target="_blank" rel="noopener" href="https://github.com/2019ChenGong/Machine-Learning-Notes">gthub主页</a>。里面有大佬对于这些模型的公式推导。下面写一些我学习后的个人总结，里面大部分是一些大佬的推导过程，大家想深入研究，直接看大佬的专栏就好，这里仅用来自我总结。</p>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;玻尔兹曼机（Boltzmann Machine，BM）可以看作是一种随机动力系统，每个变量的状态都以一定的概率受到其他变量的影响。下面是任何讲到BM都会涉及到的经典模型图：<br><img src="/2022/03/07/bo-er-zi-man-ji/1.png" alt="玻尔兹曼模型图"><br>&emsp;&emsp;其中BM模型有如下的三个特性：<br>&emsp;&emsp;（1）每个随机变量都可以用一个二值的随机变量表示，即0和1。<br>&emsp;&emsp;（2）所有节点之间都是全连接的。<br>&emsp;&emsp;（3）每两个变量之间的相互影响是对称的，即权重对称。<br>&emsp;&emsp;我们假设 $ {v_{D \times 1} } \in { \\{0,1\\}^D } $，$ {h_{P \times 1} } \in { \\{0,1\\}^P} $。根据“受限玻尔兹曼”那节的知识，可以得出，概率图的联合概率分布为：</p>
 <script type="math/tex; mode=display">
 \begin{array}{l}
@@ -1344,7 +1344,7 @@ P({h_j} = 1|v,{h_{ - j} }) = \sigma (\sum\nolimits_{j = 1}^P { {w_{ij} }{v_i} } 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">171.7k</span>&nbsp;字
+                class="white-color">161.9k</span>&nbsp;字
             
             
             
