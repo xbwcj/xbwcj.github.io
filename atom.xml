@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-12-08T07:13:55.710Z</updated>
+  <updated>2022-12-15T01:51:09.337Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《SS-IL Separated Softmax for Incremental Learning》</title>
+    <link href="http://xbwcj.github.io/2022/12/11/ss-il-separated-softmax-for-incremental-learning/"/>
+    <id>http://xbwcj.github.io/2022/12/11/ss-il-separated-softmax-for-incremental-learning/</id>
+    <published>2022-12-11T03:55:58.000Z</published>
+    <updated>2022-12-15T01:51:09.337Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《A Memory T ransformer Network for Incremental Learning》</title>
@@ -482,31 +507,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;内存管理概念&quot;&gt;&lt;a href=&quot;#内存管理概念&quot; class=&quot;headerlink&quot; title=&quot;内存管理概念&quot;&gt;&lt;/a&gt;内存管理概念&lt;/h1&gt;&lt;h2 id=&quot;内存管理的基本原理和要求&quot;&gt;&lt;a href=&quot;#内存管理的基本原理和要求&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进程管理（四）</title>
-    <link href="http://xbwcj.github.io/2021/04/07/jin-cheng-guan-li-si/"/>
-    <id>http://xbwcj.github.io/2021/04/07/jin-cheng-guan-li-si/</id>
-    <published>2021-04-07T10:19:59.000Z</published>
-    <updated>2021-04-08T08:43:47.540Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;死锁&quot;&gt;&lt;a href=&quot;#死锁&quot; class=&quot;headerlink&quot; title=&quot;死锁&quot;&gt;&lt;/a&gt;死锁&lt;/h1&gt;&lt;h2 id=&quot;死锁的概念&quot;&gt;&lt;a href=&quot;#死锁的概念&quot; class=&quot;headerlink&quot;</summary>
         
       
     
