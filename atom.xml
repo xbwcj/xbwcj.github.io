@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-12-15T01:51:09.337Z</updated>
+  <updated>2022-12-29T04:00:21.454Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Overcoming catastrophic forgetting in neural networks》</title>
+    <link href="http://xbwcj.github.io/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/"/>
+    <id>http://xbwcj.github.io/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/</id>
+    <published>2022-12-27T11:15:41.000Z</published>
+    <updated>2022-12-29T04:00:21.454Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Learning without Forgetting》</title>
+    <link href="http://xbwcj.github.io/2022/12/21/learning-without-forgetting/"/>
+    <id>http://xbwcj.github.io/2022/12/21/learning-without-forgetting/</id>
+    <published>2022-12-21T09:24:56.000Z</published>
+    <updated>2022-12-22T03:19:41.750Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1&gt;LEARNING WITHOUT</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Accelertion of federated learning with alleviaed forgetting in local training》</title>
+    <link href="http://xbwcj.github.io/2022/12/20/accelertion-of-federated-learning-with-alleviaed-forgetting-in-local-training/"/>
+    <id>http://xbwcj.github.io/2022/12/20/accelertion-of-federated-learning-with-alleviaed-forgetting-in-local-training/</id>
+    <published>2022-12-20T03:16:00.000Z</published>
+    <updated>2022-12-21T09:26:41.064Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="联邦学习" scheme="http://xbwcj.github.io/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《SS-IL Separated Softmax for Incremental Learning》</title>
@@ -438,81 +513,6 @@
     
     
     <category term="人工智能" scheme="http://xbwcj.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>受限玻尔兹曼机</title>
-    <link href="http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/"/>
-    <id>http://xbwcj.github.io/2022/03/03/shou-xian-bo-er-zi-man-ji/</id>
-    <published>2022-03-03T10:54:26.000Z</published>
-    <updated>2022-03-14T15:08:04.239Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="人工智能" scheme="http://xbwcj.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>差分隐私个人理解（一）</title>
-    <link href="http://xbwcj.github.io/2022/01/24/chai-fen-yin-si-ge-ren-li-jie-yi/"/>
-    <id>http://xbwcj.github.io/2022/01/24/chai-fen-yin-si-ge-ren-li-jie-yi/</id>
-    <published>2022-01-24T03:10:05.000Z</published>
-    <updated>2022-03-20T09:59:26.489Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;差分隐私简介&quot;&gt;&lt;a href=&quot;#差分隐私简介&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="数据安全" scheme="http://xbwcj.github.io/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内存管理（一）</title>
-    <link href="http://xbwcj.github.io/2021/04/12/nei-cun-guan-li-yi/"/>
-    <id>http://xbwcj.github.io/2021/04/12/nei-cun-guan-li-yi/</id>
-    <published>2021-04-12T10:16:28.000Z</published>
-    <updated>2021-04-15T08:53:15.092Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;内存管理概念&quot;&gt;&lt;a href=&quot;#内存管理概念&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="课本学习" scheme="http://xbwcj.github.io/categories/%E8%AF%BE%E6%9C%AC%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="操作系统" scheme="http://xbwcj.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   

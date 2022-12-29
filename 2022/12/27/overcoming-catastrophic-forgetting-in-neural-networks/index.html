@@ -1,0 +1,1589 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="《Overcoming catastrophic forgetting in neural networks》, Live My Life">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>《Overcoming catastrophic forgetting in neural networks》 | Live My Life</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Live My Life" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Live My Life</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Live My Life</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/xbwcj/xbwcj.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/xbwcj/xbwcj.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">《Overcoming catastrophic forgetting in neural networks》</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">联邦学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                科研学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-12-27
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-12-29
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>摘要</h1>
+<p>  以连续方式学习任务的能力对人工智能的发展至关重要。一般来说，神经网络无法做到这一点，人们普遍认为灾难性遗忘是连接主义模型不可避免的特征。我们表明，有可能克服这一限制，并训练网络，使其能够在长时间没有经历过的任务上保持专业知识。我们的方法是通过选择性地减缓对这些任务重要的权重的学习来记住旧任务。我们通过解决一组基于MNIST手写数字数据集的分类任务，并通过顺序学习几个Atari 2600游戏，证明了我们的方法是可扩展的和有效的。</p>
+<h1>介绍</h1>
+<p>  实现人工通用智能需要智能体能够学习和记住许多不同的任务Legg和Hutter[2007]。这在现实环境中尤其困难:任务的顺序可能没有明确的标记，任务可能不可预测地切换，任何单独的任务可能不会在很长时间间隔内重复出现。因此，重要的是，智能代理必须展示出持续学习的能力:即学习连续任务而不忘记如何执行先前训练过的任务的能力</p>
+<p>  持续学习对人工神经网络提出了特别的挑战，因为之前学习过的任务(例如任务A)的知识会随着与当前任务（例如任务B）相关的信息的加入而突然丢失。这种现象被称为灾难性遗忘，特别是当网络在多个任务上进行连续训练时，因为网络中对任务A重要的权重被改变以满足任务b的目标。而机器学习特别是深度神经网络的最近进展在各个领域都取得了令人印象深刻的性能提升（例如[Krizhevsky等人，2012,LeCun等人，2015]），但在实现持续学习方面进展甚微。目前的方法通常确保来自所有任务的数据在训练期间同时可用。通过在学习过程中交错来自多个任务的数据，不会发生遗忘，因为网络的权重可以联合优化所有任务的性能。在这种机制中（通常被称为多任务学习范式），深度学习技术已被用于训练单个代理，这些代理可以成功地玩多个雅达利游戏[Rusu等人，2015,Parisotto等人，2015]。如果任务是按顺序呈现的，那么多任务学习只能在数据被情景记忆系统记录并在训练过程中回放到网络时使用。这种方法（通常称为系统级整合[McClelland et al.， 1995]）对于学习大量任务是不切实际的，因为在我们的设置中，它需要存储和回放的内存数量与任务数量成正比。缺少算法arXiv:1612.00796v2 [cs。因此，支持持续学习仍然是人工通用智能发展的关键障碍。</p>
+<p>  与人工神经网络形成鲜明对比的是，人类和其他动物似乎能够以持续的方式学习[chichon和Gan, 2015]。最近的证据表明，哺乳动物的大脑可能通过在新皮层回路中保护之前获得的知识来避免灾难性遗忘[chichon和Gan, 2015, Hayashi-Takagi等人，2015,Y ang等人，2009,2014]。当老鼠获得一项新技能时，一定比例的兴奋性突触会增强;这表现为单个神经元树突棘体积的增加[Yang et al.， 2009]。关键是，尽管随后学习了其他任务，但这些扩大的树突棘仍然存在，这解释了几个月后表现的保留[Y ang等人，2009]。当这些棘被选择性地“擦除”时，相应的技能就被遗忘了[Hayashi-Takagi等人，2015,chicon和Gan, 2015]。这为支持保护这些强化突触的神经机制对保持任务表现至关重要提供了因果证据。总之，这些实验发现——连同神经生物学模型[Fusi等人，2005年，Benna和Fusi, 2016年]——表明哺乳动物新皮层的持续学习依赖于特定任务的突触巩固过程，关于如何执行先前获得的任务的知识持久地编码在突触的比例中，这些突触的可塑性较弱，因此在长时间尺度上稳定</p>
+<p>  在这项工作中，我们证明了任务特定的突触巩固为人工智能的持续学习问题提供了一种新的解决方案。我们开发了一种类似于人工神经网络突触巩固的算法，我们称之为弹性权重巩固（简称EWC）。该算法根据它们对先前看到的任务的重要性，减慢了对某些权重的学习速度。我们展示了如何在监督学习和强化学习问题中使用EWC来连续训练几个任务，而不忘记旧的任务，这与之前的深度学习技术形成了鲜明的对比。</p>
+<h1>EWC</h1>
+<p>  在大脑中，突触巩固通过降低突触的可塑性来实现持续学习，而突触对以前学习的任务至关重要。我们实现了一种在人工神经网络中执行类似操作的算法，通过约束重要参数以保持接近其旧值。在本节中，我们将解释为什么我们希望在旧任务的附近找到一个新任务的解决方案，我们如何实现约束，最后我们如何确定哪些参数是重要的</p>
+<p>  深度神经网络由多层线性投影和元素非线性组成。学习任务包括调整线性投影的权重和偏差 $\theta$，以优化性能。 $\theta$ 的许多配置将导致相同的性能[Nielsen, 1989, Sussmann, 1992]；这与EWC相关:过度参数化使得有可能存在一个任务 $B$ 的解 $\theta ^{*}_{B}$，它接近于任务 $A$ 之前找到的解 $\theta ^{*}_{A}$ 。因此，当学习任务 $B$ 时，EWC通过约束参数保持在以 $\theta ^{*}_{A}$ 为中心的任务A的低误差区域来保护任务 $A$ 中的性能，如图1所示。这个约束是作为一个二次惩罚来实现的，因此可以想象成一个弹簧，将参数锚定在前面的解决方案上，因此得名弹性。重要的是，对于所有参数，弹簧的刚度不应该是相同的；相反，对于任务A中对性能最重要的那些参数，它应该更大。</p>
+<p><img src="/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/1.png" alt="图1：弹性权重巩固（EWC）确保在任务B上训练时记住任务A。训练轨迹在示意图参数空间中表示，参数区域导致任务A（灰色）和任务B（奶油色）的良好表现。在学习了第一个任务后，参数处于 $\theta ^{*}_{A}$ 。如果我们仅根据任务B（蓝色箭头）采取梯度步骤，我们将最大限度地减少任务B的损失，但会破坏我们在任务A中所学到的东西。另一方面，如果我们用相同的系数约束每个权重（绿色箭头），所施加的限制太严格了，我们只能记住任务A，而不学习任务B。通过显式计算任务a的权重有多重要，为任务B找到一个解决方案，而不会对任务a造成重大损失（红色箭头）。"></p>
+<p>为了证明这种约束的选择是正确的，并定义哪个权重对一个任务是最重要的，从概率的角度考虑神经网络训练是有用的。从这个角度来看，优化参数相当于在给定一些数据 $\mathcal{D}$ 的情况下找到它们的最可能值。我们可以用贝叶斯规则从参数 $p(\theta)$ 的先验概率和数据 $p(\mathcal{D} \mid \theta)$ 的概率中计算出这个条件概率 $p(\theta \mid \mathcal{D})$ :<br>
+$$<br>
+\log p(\theta \mid \mathcal{D})=\log p(\mathcal{D} \mid \theta)+\log p(\theta)-\log p(\mathcal{D}) \quad\quad\quad\quad(1)<br>
+$$</p>
+<p>  请注意，给定参数 $\log p(\mathcal{D} \mid \theta)$ 的数据的对数概率仅仅是手头问题的损失函数 $-\mathcal{L}(\theta)$ 的负数。假设数据被分成两个独立的部分，一个定义任务 $A(\mathcal{D}_{A})$ ，另一个定义任务 $B(\mathcal{D}_{B})$ 。那么，我们可以重新排列方程1：<br>
+$$<br>
+\log p(\theta \mid \mathcal{D})=\log p\left(\mathcal{D}_{B} \mid \theta\right)+\log p\left(\theta \mid \mathcal{D}_{A}\right)-\log p\left(\mathcal{D}_{B}\right) \quad\quad\quad\quad(2)<br>
+$$</p>
+<p>  请注意，左边仍然描述了给定整个数据集的参数的后验概率，而右边只依赖于任务B $\log p\left(\mathcal{D}_{B} \mid \theta\right)+$ 的损失函数。</p>
+<p>  因此，关于任务A的所有信息都必须被吸收到后态分布 $p\left(\theta \mid \mathcal{D}_{A}\right)$ 中。这个后验概率必须包含关于哪些参数对任务 $A$ 重要的信息，因此是实现EWC的关键。真正的后经验概率是难以处理的，因此，在Mackay [Mackay, 1992]的拉普拉斯近似工作之后，我们将后经验近似为一个高斯分布，其平均值由参数 $\theta ^{*}_{a}$ 给出，对角精度由Fisher信息矩阵 $F$ 的对角给出。$F$ 有三个关键性质[Pascanu和Bengio, 2013]:（a）它等价于损失的二阶导数接近最小值，（b）它可以仅从一阶导数计算，因此即使对于大型模型也易于计算，（c）它保证是正半定的。注意，这种方法类似于期望传播，其中每个子任务都被视为后验因子[Eskin et al.， 2004]。根据这个近似，我们在EWC中最小化的函数 $\mathcal{L}$ 为：<br>
+$$<br>
+\mathcal{L}(\theta)=\mathcal{L}_{B}(\theta)+\sum_{i} \frac{\lambda}{2} F_{i}(\theta_{i}-\theta_{A, i}^{*})^{2}<br>
+$$<br>
+其中 $\mathcal{L}_{B}(\theta)$ 仅是任务 $B$ 的损失，$\lambda$ 设置旧任务与新任务相比的重要性，$i$ 标记每个参数</p>
+<p>  当移动到第三个任务任务 $C$ 时，EWC将试图使网络参数接近任务 $A$ 和任务 $B$ 的学习参数。这可以通过两个单独的惩罚来强制执行，也可以通过注意两个二次惩罚的和本身就是二次惩罚来强制执行。</p>
+<h2 id="EWC允许在监督学习环境下进行持续学习"><a class="header-anchor" href="#EWC允许在监督学习环境下进行持续学习">¶</a>EWC允许在监督学习环境下进行持续学习</h2>
+<p>  我们首先解决弹性权值巩固是否能让深度神经网络在不发生灾难性遗忘的情况下学习一组复杂任务的问题。特别是，我们训练了一个完全连接的多层神经网络，按顺序执行几个监督学习任务。在每个任务中，我们以传统的方式训练神经网络，即通过洗牌数据和小批量处理。然而，在每个任务上进行固定数量的训练后，我们不允许在该任务的数据集上进行进一步的训练</p>
+<p>  我们从MNIST [LeCun等人，1998年]数据集中的手写数字分类问题构建了任务集，根据以前在持续学习文献中使用的方案[Srivastava等人，2013年，Goodfellow等人，2014年]。对于每个任务，我们生成一个固定的、随机的排列，所有图像的输入像素将被打乱。因此，每一项任务与原始MNIST问题的难度相同，尽管每一项任务都需要不同的解决方案。所使用的设置的详细描述可以在附录4.1中找到。</p>
+<p>  用简单随机梯度下降（SGD）训练这个任务序列会导致灾难性的遗忘，如图2A所示。蓝色曲线表示在两个不同任务的测试集上的表现。当训练机制从第一个任务（A）的训练切换到第二个任务（B）的训练时，任务B的表现迅速下降，而任务A的表现则急剧上升。随着训练时间的增加，以及后续任务的增加，任务A的遗忘进一步加剧。这个问题不能通过对每个权重使用固定的二次约束正则化网络来解决（绿色曲线，$L2$ 正则化）：在这里，任务A的性能下降得不那么严重，但由于约束对所有权重的保护是平等的，因此无法正确地学习任务B，几乎没有多余的容量用于学习B。但是，当我们使用EWC时，考虑到每个权重对任务A的重要性，网络可以很好地学习任务B，而不会忘记任务A（红色曲线）。这正是图1中所描述的预期行为。</p>
+<p>  以前解决深度神经网络持续学习问题的尝试依赖于网络超参数的仔细选择，以及其他标准的正则化方法，以减轻灾难性遗忘。然而，在这项任务中，他们只在最多两个随机排列上取得了合理的结果[Srivastava et al.， 2013, Goodfellow et al.， 2014]。使用类似于[Goodfellow等人，2014]的交叉验证超参数搜索，我们将传统的退出正则化与EWC进行了比较。我们发现，仅使用dropout正则化的随机梯度下降是有限的，并且它不能扩展到更多的任务(图2B)。相比之下，EWC允许按顺序学习大量的任务，错误率只有适度的增长</p>
+<p>  鉴于EWC允许网络有效地将更多功能压缩到具有固定容量的网络中，我们可能会问，它是否为每个任务分配了完全独立的网络部分，或者是否通过共享表示以更有效的方式使用容量。为了评估这一点，我们通过测量任务对各自Fisher信息矩阵之间的重叠来确定每个任务是否依赖于相同的权重集（见附录4.3）。较小的重叠意味着这两个任务依赖于不同的权重集（即EWC为不同的任务细分了网络的权重）;较大的重叠表明两个任务都使用了权重（即EWC支持共享表示）。图2C显示了重叠作为深度的函数。作为一个简单的控制，当一个网络在两个彼此非常相似的任务上训练时（MNIST的两个版本，其中只有几个像素排列)，任务依赖于整个网络中相似的权重集（灰色曲线）。当两个任务之间的差异更大时，网络开始为这两个任务分配独立的容量（即权重）（黑线）。然而，即使对于较大的排列，接近输出的网络层也确实被两种任务重用。这反映了这样一个事实，即排列使输入域非常不同，但输出域（即类标签）是共享的。</p>
+<h2 id="EWC允许在强化学习环境中持续学习"><a class="header-anchor" href="#EWC允许在强化学习环境中持续学习">¶</a>EWC允许在强化学习环境中持续学习</h2>
+<p>  接下来，我们测试了弹性权重巩固是否可以在要求更高的强化学习(RL)领域支持持续学习。在RL中，智能体动态地与环境交互，以制定最大化累积未来奖励的策略。我们询问了深度Q网络(DQNs)——一种在如此具有挑战性的RL设置中取得了令人印象深刻的成功的架构[Mnih等人，2015]——是否可以与EWC一起利用，成功地支持经典Atari 2600任务集中的持续学习[Bellemare等人，2013]。具体来说，每个实验都由DQN从人类或更高水平的游戏中随机选择10个游戏组成。在训练时，智能体在很长一段时间内暴露在每场游戏的经验中。游戏的呈现顺序是随机的，允许玩家多次回到相同的游戏中。我们还会定期测试智能体在这10个游戏中的每一个游戏中的得分，而不允许智能体在这些游戏上进行训练(图3A)。</p>
+<p>  值得注意的是，以前用于持续学习的强化学习方法要么依赖于向网络添加容量[Ring, 1998年，Rusu等人，2016]，要么依赖于在单独的网络中学习每个任务，然后用于训练一个可以玩所有游戏的单一网络[Rusu等人，2015年，Parisotto等人，2015年]。相比之下，这里提出的EWC方法利用具有固定资源(即网络容量)的单个网络，并且具有最小的计算开销</p>
+<p>  除了使用EWC来保护之前获得的知识外，我们还使用RL领域来解决成功的持续学习系统所需的更广泛的需求:特别是，需要更高级别的机制来推断当前正在执行的任务，检测和合并遇到的新任务，并允许在任务之间快速灵活地切换[Collins和Frank, 2013]。在灵长类动物的大脑中，前额叶皮层被广泛认为通过维持任务背景的神经表征来支持这些能力，这些任务背景对低水平区域的感觉处理、工作记忆和行动选择施加自上而下的门控影响[O 'Reilly和Frank, 2006, Mante等人，2013,Miller和Cohen, 2001, Doya等人，2002]。</p>
+<p>  受到这一证据的启发，我们使用了一种与[van Hasselt等人，2016]中描述的非常相似的代理，但差异很少:(a)具有更多参数的网络，（b）更小的过渡表，©每层的任务特定偏差和增益，(d) Atari中的完整动作集，（e）任务识别模型，以及（e）EWC惩罚。超参数的全部细节在附录app:atari中描述。这里我们简要描述了对代理的两个最重要的修改:任务识别模块和EWC惩罚的实现</p>
+<p>  我们将任务上下文作为隐马尔可夫模型的潜变量。因此，每个任务都与观察结果的底层生成模型相关联。我们方法的主要区别在于，我们允许添加新的生成模型，如果它们通过使用受勿忘我过程启发的训练过程，比现有的模型池更好地解释最近的数据<a href="%E8%A7%81%E9%99%84%E5%BD%954.2">Kieran et al.， 2016</a>。</p>
+<p>  为了应用EWC，我们在每个任务开关处计算Fisher信息矩阵。对于每一项任务，都添加了一个惩罚，锚点由参数的当前值给出，权重由Fisher信息矩阵乘以比例因子λ给出，该比例因子由超参数搜索优化。我们只在经历了至少2000万帧的游戏中添加了EWC惩罚</p>
+<p>  我们还允许DQN代理为每个推断任务维护单独的短期记忆缓冲区:这允许使用经验重放机制从策略外学习每个任务的动作值[Mnih等人，2015]。因此，整个系统具有两个时间尺度上的记忆:在短时间尺度上，经验重放机制允许DQN中的学习基于交错和不相关的经验[Mnih等人，2015]。在更长的时间尺度上，通过使用EWC可以巩固任务之间的专门知识。最后，我们允许少量网络参数是针对游戏的，而不是跨游戏共享。特别是，我们允许网络的每一层都有偏差，每个元素都有特定于每个游戏的乘法增益</p>
+<p>  我们在图3中比较了使用EWC的代理（红色）和不使用EWC的代理（蓝色）的性能。我们用所有10款游戏的人类标准化得分来衡量玩家的表现。我们对随机种子和10场比赛的选择进行平均（见附录4.2）。我们还将每个游戏的人类标准化分数剪辑为1。因此，我们对性能的衡量是一个最大为10的数字（至少在所有游戏中是人类的水平），其中0表示代理与随机代理一样好。如果我们依赖于[Mnih等人，2015]中的普通梯度下降方法，智能体永远不会学会玩多个游戏，而忘记旧游戏所造成的伤害意味着人类归一化的总分数仍然低于1。然而，通过使用EWC，代理确实学会了玩多种游戏。作为对照，我们还考虑了如果我们显式地向智能体提供真实的任务标签(图3B，棕色)，而不是依赖于通过FMN算法学习的任务识别（红色），对智能体的好处。这里的改善不大。</p>
+<p>  虽然用EWC增强DQN代理可以让它在不遭受灾难性遗忘的情况下连续学习许多游戏，但它无法达到训练10个独立DQN所能获得的分数（见附录4.2中的图1）。其中一个可能的原因是我们基于参数不确定性的近似（即Fisher信息）整合了每款游戏的权重。因此，我们试图以经验来检验我们估计的质量。为此，我们在一个游戏中训练一个智能体，并测量扰动网络参数如何影响智能体的分数。不管智能体是在哪个游戏上训练，我们观察到相同的模式，如图3C所示。首先，与均匀扰动(黑色)相比，代理对由费雪信息对角线逆形成的参数扰动（蓝色）总是更稳健。这证明了Fisher的对角线可以很好地估计某个参数的重要性。在我们的近似范围内，零空间中的扰动应该对性能没有任何影响。然而，根据经验，我们观察到这个空间（橙色）中的摄动与逆费雪空间中的摄动具有相同的效果。这表明我们对某些参数不重要过于自信:因此，当前实现的主要限制可能是它低估了参数的不确定性。<br>
+$$<br>
+\mathrm{P}(\mathrm{B} \mid \mathrm{A})=\mathrm{P}(\mathrm{A} \mid \mathrm{B}) \frac{\mathrm{P}(\mathrm{B})}{\mathrm{P}(\mathrm{A})}<br>
+$$</p>
+<p>$$<br>
+\mathrm{P}(\theta \mid \mathrm{D})=\mathrm{P}(\mathrm{D} \mid \theta) \frac{\mathrm{P}(\theta)}{\mathrm{P}(\mathrm{D})}<br>
+$$</p>
+<p>$$<br>
+\log \mathrm{P}(\theta \mid \mathrm{D})=\log \left(\mathrm{P}(\mathrm{D} \mid \theta) \frac{\mathrm{P}(\theta)}{\mathrm{P}(\mathrm{D})}\right)=\log \mathrm{P}(\mathrm{D} \mid \theta)+\log \mathrm{P}(\theta)-\log \mathrm{P}(\mathrm{D})<br>
+$$</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">xbwcj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://xbwcj.github.io/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/">http://xbwcj.github.io/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">xbwcj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">联邦学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '3zej8rJ4jeuroIc4wbOGSRTn-gzGzoHsz',
+        appKey: 'ybMabHX5zRIWyISjpqOxDcxk',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="《Overcoming catastrophic forgetting in neural networks》">
+                        
+                        <span class="card-title">《Overcoming catastrophic forgetting in neural networks》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">联邦学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/21/learning-without-forgetting/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="《Learning without Forgetting》">
+                        
+                        <span class="card-title">《Learning without Forgetting》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">联邦学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2022</span>
+            
+            <span id="year">2020</span>
+            <a href="https://github.com/xbwcj" target="_blank">xbwcj</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">169.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xbwcj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1151506163@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1151506163" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1151506163" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
