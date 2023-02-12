@@ -6,7 +6,7 @@
   <link href="http://xbwcj.github.io/atom.xml" rel="self"/>
   
   <link href="http://xbwcj.github.io/"/>
-  <updated>2022-12-29T04:00:21.454Z</updated>
+  <updated>2023-02-12T05:48:27.099Z</updated>
   <id>http://xbwcj.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》</title>
+    <link href="http://xbwcj.github.io/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/"/>
+    <id>http://xbwcj.github.io/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/</id>
+    <published>2023-02-11T03:21:11.000Z</published>
+    <updated>2023-02-12T05:48:27.099Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="增量学习" scheme="http://xbwcj.github.io/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《Overcoming catastrophic forgetting in neural networks》</title>
@@ -479,31 +504,6 @@
         
         
     <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="科研学习" scheme="http://xbwcj.github.io/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="人工智能" scheme="http://xbwcj.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度信念网络</title>
-    <link href="http://xbwcj.github.io/2022/03/04/shen-du-xin-nian-wang-luo/"/>
-    <id>http://xbwcj.github.io/2022/03/04/shen-du-xin-nian-wang-luo/</id>
-    <published>2022-03-04T13:52:19.000Z</published>
-    <updated>2022-03-14T15:07:13.672Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
         
       
     

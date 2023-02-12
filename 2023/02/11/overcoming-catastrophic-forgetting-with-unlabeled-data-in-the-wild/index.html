@@ -1,0 +1,1722 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》, Live My Life">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》 | Live My Life</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Live My Life" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Live My Life</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Live My Life</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/xbwcj/xbwcj.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/xbwcj/xbwcj.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">增量学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                科研学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-02-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-02-12
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    9.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    37 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>摘要</h1>
+<p>  以连续方式学习任务的能力对人工智能的发展至关重要。一般来说，神经网络无法做到这一点，人们普遍认为灾难性遗忘是连接主义模型不可避免的特征。我们表明，有可能克服这一限制，并训练网络，使其能够在长时间没有经历过的任务上保持专业知识。我们的方法是通过选择性地减缓对这些任务重要的权重的学习来记住旧任务。我们通过解决一组基于MNIST手写数字数据集的分类任务，并通过顺序学习几个Atari 2600游戏，证明了我们的方法是可扩展的和有效的。</p>
+<h1>介绍</h1>
+<p>  深度神经网络(DNNs)在许多机器学习应用中取得了显著的成功，例如分类[10]，生成[29]，物体检测[9]和强化学习[39]。然而，在任务数量不断增长的现实世界中，无法一次性给出所有任务；相反，它可能是一系列的任务。类增量学习[33]的目标是丰富模型处理这种情况的能力，目标是同时做好以前的任务和新的任务。（在类-增量学习中，每个任务中都给出一组类。在评估中，它的目标是对迄今为止学习到的任何类中的数据进行分类，没有任务边界。）特别是最近dnn在学习新任务时容易忘记之前的任务，这种现象被称为灾难性遗忘[7,28]，因此备受关注[7,28]</p>
+<p>  灾难性遗忘的主要原因是有限的可扩展性资源：随着任务数量的增加，以前任务的所有训练数据都无法存储在有限的内存大小中。</p>
+<p>  先前的类增量学习研究主要集中在封闭环境下的学习，即模型在训练过程中只能看到给定的标记训练数据集[3,12,23,24,33]。然而，在现实世界中，我们生活在一个连续的、大量的未标记数据流中，这些数据很容易在动态或短暂的情况下获得，例如，通过社交媒体[26]和网络数据[17]上的数据挖掘。基于此，我们建议利用如此庞大的未标记外部数据流来克服灾难性遗忘。我们注意到，我们在无标记数据上的设置类似于自学[31]，而不是半监督学习，因为我们不假设无标记数据和标记训练数据集之间存在任何相关性。</p>
+<p><b>贡献</b>在新的类增量设置下，我们的贡献有三方面（参见图1概述）：</p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/1.png" alt="图1。我们建议利用大量未标记的数据流进行类增量学习。在每个阶段，应用基于置信度的抽样策略来构建外部数据集。具体而言，部分未标记数据基于前阶段 $\mathcal{P}$ 学习的模型预测进行采样，以缓解灾难性遗忘，部分数据随机采样进行置信度校准。在标记的训练数据集和未标记的外部数据集的组合下，教师模型 $\mathcal{C}$ 首先学习当前任务，然后新模型 $\mathcal{M}$ 通过提取 $\mathcal{P}$、$\mathcal{C}$ 及其集合 $\mathcal{Q}$ 的知识来学习之前和当前的任务。"></p>
+<p>  <b>$\mathcal{A}$</b>：我们提出了一种新的学习目标，称为全局蒸馏，它利用数据有效地蒸馏参考模型的知识。</p>
+<p>  <b>$\mathcal{B}$</b>：我们设计了一个三步学习方案来提高全局蒸馏的有效性：（i）训练一个专门从事当前任务的教师，（ii）通过蒸馏前一个模型的知识来训练一个模型，教师在（i）和他们的集合中学习，以及（iii）调整以避免对当前任务过度拟合。</p>
+<p>  <b>$\mathcal{C}$</b>：我们提出了一种基于置信度的抽样方法，以有效地利用大量未标记的数据流。</p>
+<p>  在贡献<b>$\mathcal{A}$</b>中，全局蒸馏鼓励模型在所有先前的任务上学习知识，而先前的工作只应用了任务的局部蒸馏[3,12,24,33]。特别是，提议的全局蒸馏提取了如何在不同任务中区分类的知识，而局部蒸馏则没有。我们表明，如果一些未标记的外部数据可用，由于全局蒸馏的性能增益是特别显著的。</p>
+<p>  在贡献<b>$\mathcal{B}$</b>中，所提出的学习方案的前两个步骤（i）和（ii）是为了保持之前任务的知识，以及学习当前任务。另一方面，最后一步（iii）的目的是为了避免对当前任务的过度拟合：由于可伸缩性的问题，在训练过程中只保留和重放了之前任务中的一小部分数据[3,30,33]。这不可避免地会导致学习模型预测的偏差，这对当前任务是有利的。为了缓解训练不平衡的问题，我们根据以前和当前任务中的数据统计对模型进行了微调。</p>
+<p>  最后，贡献<b>$\mathcal{C}$</b>的动机来自于直觉，即由于未标记数据的数据分布与前面的任务更相似，它可以防止模型更多地发生灾难性遗忘。由于野外未标记的数据不一定与之前的任务有关，因此还远远不清楚它们是否包含缓解灾难性遗忘的有用信息。因此，我们建议通过原则性抽样策略对外部数据集进行抽样。为了从大量未标记的数据流中对有效的外部数据集进行采样，我们建议通过使用不相关数据作为分布外（out-of-distribution, OOD）（OOD是指数据分布与目前学习到的任务的分布相距甚远）样本来训练一个可信度校准模型[19,20]。我们表明，来自OOD的未标记数据也应该进行采样，以维护模型，使其更具信心校准。</p>
+<p>  实验结果表明，本文提出的方法优于现有方法。特别地，我们表明，当未标记的外部数据可用时，所提出的方法中的性能增益更为显著。例如，在我们在ImageNet[6]上的实验设置下，与最先进的方法(E2E)[3]相比，我们使用外部数据集的方法精度提高了15.8 $\%$，遗忘减少了46.5 $\%$（精度提高了4.8 $\%$，忘记减少了6.0 $\%$）。</p>
+<h1>2 方法</h1>
+<p>  在本节中，我们提出了一种新的类增量学习方法。在2.1节中，我们进一步描述了场景和学习目标。在第2.2节中，我们提出了一个新的学习目标，称为全局蒸馏。在第2.3节中，我们提出了一种基于置信度的抽样策略，从大量未标记的数据流中构建外部数据集。</p>
+<h2 id="2-1-Preliminaries-Class-Incremental-Learning（初步：类增量学习）"><a class="header-anchor" href="#2-1-Preliminaries-Class-Incremental-Learning（初步：类增量学习）">¶</a>2.1 Preliminaries: Class-Incremental Learning（初步：类增量学习）</h2>
+<p>  形式上，设 $(x,y) \in \mathcal{D}$ 是数据集 $\mathcal{D}$ 中的数据 $x$ 及其标签 $y$，设 $\mathcal{T}$ 是将 $x$ 映射到 $y$ 的监督任务。如果 $y$ 在 $\mathcal{T}$ 的范围内，那么 $|\mathcal{T}|$ 是 $\mathcal{T}$ 中的类标签的数量，则表示 $y \in \mathcal{T}$。对于第 $t$ 个任务 $\mathcal{T}_{t}$，设 $\mathcal{D}_{t}$ 为对应的训练数据集，$\mathcal{D}_{t-1}^{cor} \subseteq \mathcal{D}_{t-1} \cup \mathcal{D}_{t-2}^{cor}$ 为一个coreset（Coreset是一个保存在有限内存中的小数据集，用于重放以前的任务。初始时 $\mathcal{D}_{0}^{cor} = \emptyset$ ），其中包含了之前任务：$\mathcal{T}_{1:(t-1)}=\{\mathcal{T}_{1}, \ldots, \mathcal{T}_{t-1}\}$，使得 $\mathcal{D}_{t}^{trn} = \mathcal{D}_{t} \cup \mathcal{D}_{t-1}^{cor}$ 为第 $t$ 阶段可用的全部标记训练数据集。设 $\mathcal{M}_{t}=\{\theta, \phi_{1: t}\}$ 是一个模型的可学习参数集，其中 $\theta$ 和 $\phi_{1: t}=\{\phi_{1}, \ldots, \phi_{t}\}$ 分别指示共享参数和特定于任务的参数。（如果给出了多个特定于任务的参数，那么所有类的logit将被连接起来进行预测，没有任务边界。请注意，任务不一定是分离的，这样一个类就可以出现在多个任务中。）</p>
+<p>  第 $t$ 阶段的目标是训练模型 $\mathcal{M}_{t}$ 执行当前任务 $\mathcal{T}_{t}$ 和之前的任务 $\mathcal{T}_{1:(t−1)}$，没有任务边界，即 $\mathcal{T}_{1:(t)}$ 中的所有类标签在测试时都是候选。为此，从上一阶段转移了一个小的coreset $\mathcal{D}_{t-1}^{cor}$ 和之前的模型 $\mathcal{M}_{t-1}$ 。我们还假设大量未标记的数据流是可访问的，并且对一个基本的外部数据集 $\mathcal{D}_{t}^{ext}$ 进行采样，其中采样方法在2.3节中描述。请注意，我们不假设未标记的数据流与任务之间存在任何相关性。第 $t$ 阶段的结果是可以执行所有观察到的任务 $\mathcal{T}_{1:(t)}$ 的模型 $\mathcal{M}_{t}$ ，以及用于后续阶段学习的核心值 $\mathcal{D}_{t}^{cor}$ 。</p>
+<p>  <b>学习目标</b>当数据集 $\mathcal{D}$ 被标记时，训练分类模型 $\mathcal{M}=\{\theta, \phi\}$ 的标准方法是优化交叉熵损失：<br>
+$$<br>
+\mathcal{L}_{\mathrm{cls}}(\theta, \phi ; \mathcal{D})=\frac{1}{|\mathcal{D}|} \sum_{(x, y) \in \mathcal{D}}[-\log p(y \mid x ; \theta, \phi)]<br>
+$$</p>
+<p>另一方面，如果我们有一个参考模型 $\mathcal{R}=\{\theta^{\mathcal{R}}, \phi^{\mathcal{R}}\}$，数据集 $\mathcal{D}$ 不需要任何标签，因为目标标签是由 $\mathcal{R}$ 给出的：<br>
+$$<br>
+\mathcal{L}_{\text {dst}}(\theta, \phi ; \mathcal{R}, \mathcal{D}) =\frac{1}{|\mathcal{D}|} \sum_{x \in \mathcal{D}} \sum_{y \in \mathcal{T}}\left[-p\left(y \mid x ; \theta^{\mathcal{R}}, \phi^{\mathcal{R}}\right) \log p(y \mid x ; \theta, \phi)\right]<br>
+$$<br>
+其中概率可以被平滑，以便更好的蒸馏（见[11]或附录）。</p>
+<p>  <b>以前的方法</b>在第 $t$ 阶段，训练模型 $\mathcal{M}_{t}$ 的标准方法是最小化以下分类损失：<br>
+$$<br>
+\mathcal{L}_{\mathrm{cls}}\left(\theta, \phi_{1: t} ; \mathcal{D}_{t}^{\operatorname{trn}}\right) \quad\quad\quad\quad(1)<br>
+$$</p>
+<p>然而，在类增量学习中，由于核心集的大小有限，学习模型会出现灾难性遗忘。为了克服这一点，利用先前的模型 $\mathcal{P}_{t}=\{\theta^{\mathcal{P}}, \phi_{1:(t-1)}^{\mathcal{P}}\} \triangleq \mathcal{M}_{t-1}$ 来生成软标签，这是 $\mathcal{P}_{t}$ 对给定数据的知识[3,12,24,33]:<br>
+$$<br>
+\sum_{s=1}^{t-1} \mathcal{L}_{\text {dst }}\left(\theta, \phi_{s} ; \mathcal{P}_{t}, \mathcal{D}_{t}^{\mathrm{trn}}\right) \quad\quad\quad\quad(2)<br>
+$$<br>
+其中，该目标与Eq（1）共同优化。我们将这种任务型知识蒸馏称为局部蒸馏（LD），它在每个任务中传递知识。然而，因为它们是以任务明智的方式定义的，所以这个目标忽略了不同任务中类之间的区别。</p>
+<h2 id="2-2-全局蒸馏"><a class="header-anchor" href="#2-2-全局蒸馏">¶</a>2.2 全局蒸馏</h2>
+<p>  基于LD的局限性，我们提出了从全局上提取参考模型的知识。使用参考模型 $\mathcal{P}_{t}$，可以通过最小化以下损失实现知识的全局提炼:<br>
+$$<br>
+\mathcal{L}_{\mathrm{dst}}\left(\theta, \phi_{1:(t-1)} ; \mathcal{P}_{t}, \mathcal{D}_{t}^{\mathrm{trn}} \cup \mathcal{D}_{t}^{\text {ext }}\right) \quad\quad\quad\quad(3)<br>
+$$<br>
+然而，通过最小化Eq（3）来学习会导致偏差：由于 $\mathcal{P}_{t}$ 没有学会执行当前任务 $\mathcal{T}_{t}$，因此当仅最小化Eq（1）+（3）时，关于当前任务的知识将无法正确地学习，即当前任务的性能将不必要地牺牲。为了弥补这一点，我们引入了另一个教师模型 $\mathcal{C}_{t} = \{\theta^{\mathcal{C}}， \phi_{t}^{\mathcal{C}}\}$，专门用于当前任务 $\mathcal{T}_{t}$：<br>
+$$<br>
+\mathcal{L}_{\text {dst }}(\theta, \phi_{t} ; \mathcal{C}_{t}, \mathcal{D}_{t}^{\text {trn }} \cup \mathcal{D}_{t}^{\text {ext }})  \quad\quad\quad\quad(4)<br>
+$$<br>
+该模型可以通过最小化标准交叉熵损失来训练：<br>
+$$<br>
+\mathcal{L}_{\mathrm{cls}}(\theta^{\mathcal{C}}, \phi_{t}^{\mathcal{C}} ; \mathcal{D}_{t})  \quad\quad\quad\quad(5)<br>
+$$<br>
+注意，只使用当前任务 $\mathcal{D}_{t}$ 的数据集，因为 $\mathcal{C}_{t}$ 仅针对当前任务。为了更好地进行外部数据采样，我们在2.3节修改了这一损失。</p>
+<p>  然而，$\mathcal{P}_{t}$ 和 $\mathcal{C}_{t}$ 分别只学会了 $\mathcal{T}_{1:(t−1)}$ 和 $\mathcal{T}_{t}$，从这两个参考模型中提取的知识无法区分 $\mathcal{T}_{1:(t−1)}$ 和 $\mathcal{T}_{t}$。为了补充缺失的知识，我们将 $\mathcal{Q}_{t}$ 定义为 $\mathcal{P}_{t}$ 和  $\mathcal{C}_{t}$ 让：<br>
+$$<br>
+p_{\max }=\max _{y} p(y \mid x, \theta^{\mathcal{P}}, \phi_{1:(t-1)}^{\mathcal{P}}),\\<br>
+y_{\max }=\underset{y}{\arg \max } p(y \mid x, \theta^{\mathcal{P}}, \phi_{1:(t-1)}^{\mathcal{P}}) .<br>
+$$</p>
+<p>  那么 $\mathcal{Q}_{t}$ 的输出可以定义为：<br>
+$$<br>
+p(y \mid x, \theta^{\mathcal{Q}}, \phi_{1: t}^{\mathcal{Q}})= \{ \begin{matrix}<br>
+p_{\max } &amp; \text { if } y=y_{\max }, \\<br>
+\frac{1-p_{\max }-\varepsilon}{1-p_{\max }} p\left(y \mid x, \theta^{\mathcal{P}}, \phi_{1:(t-1)}^{\mathcal{P}}\right) &amp; \text { elif } y \in \mathcal{T}_{1:(t-1)}, \\<br>
+\varepsilon p\left(y \mid x, \theta^{\mathcal{C}}, \phi_{t}^{\mathcal{C}}\right) &amp; \text { elif } y \in \mathcal{T}_{t},<br>
+\end{matrix}\} \quad\quad\quad\quad(6)<br>
+$$</p>
+<p>  使得 $\sum_{y} p(y \mid x, \theta^{\mathcal{Q}}, \phi_{1: t}^{\mathcal{Q}})=1$。这里，$\varepsilon$ 调整给定数据是否在 $\mathcal{T}_{1:(t-1)}$ 或 $\mathcal{T}_{t}$ 中的置信度。这个信息基本上是缺失的，但是可以通过假设所有负类的预期预测概率是相同的 $\forall y \neq y_{\max }$ 来计算，即：<br>
+$$<br>
+\mathbb{E}_{y} [p_{\varepsilon}\left(y \mid x, \theta^{\mathcal{P}}, \phi_{1:(t-1)}^{\mathcal{P}}\right)]=\mathbb{E}_{y \neq y_{\max }}\left[p_{\varepsilon}\left(y \mid x, \theta^{\mathcal{C}}, \phi_{t}^{\mathcal{C}}\right)\right]:<br>
+$$<br>
+$$<br>
+\varepsilon=\frac{\left(1-p_{\max }\right)\left|\mathcal{T}_t\right|}{\left|\mathcal{T}_{1: t}\right|-1} \quad\quad\quad\quad(7)<br>
+$$</p>
+<p>  由于集成模型 $\mathcal{Q}_{t}$ 能够执行所有任务，所以所有参数都可以更新：<br>
+$$<br>
+\mathcal{L}_{\text {dst }}\left(\theta, \phi_{1: t} ; \mathcal{Q}_t, \mathcal{D}_{t}^{\text {ext }}\right) \quad\quad\quad\quad(8)<br>
+$$<br>
+注意，没有使用标记数据集 $\mathcal{D}_{t}^{rnt}$，因为它已经在Eq（1）中用于相同范围的类。</p>
+<p>  最后，我们的全局蒸馏（GD）模型通过优化Eq（1）+（3）+（4）+（8）进行学习：<br>
+$$<br>
+\begin{aligned}<br>
+\mathcal{L}_{\mathrm{cls}}\left(\theta, \phi_{1: t} ; \mathcal{D}_{t}^{\mathrm{trn}}\right) &amp; +\mathcal{L}_{\mathrm{dst}}\left(\theta, \phi_{1:(t-1)} ; \mathcal{P}_{t}, \mathcal{D}_{t}^{\mathrm{trn}} \cup \mathcal{D}_{t}^{\text {ext }}\right) \\<br>
+&amp; +\mathcal{L}_{\text {dst }}\left(\theta, \phi _{t} ; \mathcal{C}_t, \mathcal{D}_{t}^{\mathrm{trn}} \cup \mathcal{D}_{t}^{\text {ext }}\right) \\<br>
+&amp; +\mathcal{L}_{\text {dst }}\left(\theta, \phi_{1: t} ; \mathcal{Q}_{t}, \mathcal{D}_{t}^{\text {ext }}\right)<br>
+\end{aligned} \quad\quad\quad\quad(9)<br>
+$$<br>
+我们研究表2中每个项的贡献。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/2.png" alt="表2。当任务规模为10时，CIFAR-100上不同参考模型学习模型的比较。“ $\mathcal{P}$ ”、“ $\mathcal{C}$ ”和“ $\mathcal{Q}$ ”分别代表先前的模型、当前任务的教师和它们的集成模型。"><br>
+  <b>平衡的调整</b>训练数据集中的类标签统计也是在训练过程中学习到的信息。由于之前任务的数据量远远小于当前任务的数据量，因此模型的预测会偏向于当前任务。为了消除偏差，我们在训练后以相同的学习目标进一步微调模型。在微调时，对于每个 $\mathcal{D}$ 和 $\mathcal{T}$ 的损失，我们按以下方式缩放从标记 $\mathcal{k} \in \mathcal{T}$ 的数据计算的梯度：<br>
+$$<br>
+w_{\mathcal{D}}^{(k)} \propto \frac{1}{|\{(x, y) \in \mathcal{D} \mid y=k\}|} \quad\quad\quad\quad(10)<br>
+$$<br>
+由于缩放梯度相当于多次输入相同的数据，我们将此方法称为数据加权。我们还通过将权重与 $|\mathcal{D}|/|\mathcal{T}|$ 相乘来归一化，这样如果 $\mathcal{D}$ 是平衡的，它们都是一个。</p>
+<p>  我们只对特定任务的参数 $\phi_{1:t}$ 进行数据加权微调，因为所有的训练数据对于表示学习都是同样有用的，即共享参数 $\theta$，而训练分类器时需要去除训练数据集数据分布中的偏差，即 $\phi_{1:t}$ 。平衡微调的效果可以在表4中找到。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/3.png" alt="表4。任务规模为10时不同平衡学习策略在CIFAR-100上的比较。“DW”、“FT-DSet”、“FTDW”分别代表式（10）中对整个训练进行数据加权的训练，对去除当前任务数据平衡的训练数据集进行微调，对数据加权进行微调。"></p>
+<p>  <b>重量损失</b>。我们通过在损失中学习的每个任务的相对大小来平衡每个损失的贡献：对于学习 $\mathcal{T}$ 的每个损失，第 $t$ 阶段的损失权重为：<br>
+$$<br>
+w^{L}=\frac{|\mathcal{T}|}{\left|\mathcal{T}_{1: t}\right|} \quad\quad\quad\quad(11)<br>
+$$<br>
+我们注意到，损失权重可以作为超参数进行调优，但我们发现这个损失权重通常比其他值执行得更好，因为它遵循测试数据集的统计数据：所有类出现的可能性相同。</p>
+<p>  <b>三步学习算法</b>综上所述，我们的学习策略有三个步骤：训练针对当前任务 $\mathcal{T}_{t}$ 的 $\mathcal{C}_{t}$，通过提取参考模型  $\mathcal{P}_{t}$ 、 $\mathcal{C}_{t}$ 和  $\mathcal{Q}_{t}$ 的知识来训练 $\mathcal{M}_{t}$ ，并通过数据加权对任务特定参数 $\phi_{1:t}$ 进行微调。算法1描述了三步学习方案。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/4.png" alt="算法1"></p>
+<p>  对于核心集管理，我们通过为每个类随机选择数据来构建一个平衡的核心集。我们注意到其他更复杂的选择算法，如羊群[33]，其性能并不明显优于随机选择，这在之前的工作中也有报道[3,42]。</p>
+<h2 id="2-3-外部数据集采样"><a class="header-anchor" href="#2-3-外部数据集采样">¶</a>2.3 外部数据集采样</h2>
+<p>  虽然大量未标记的数据很容易获得，但在使用它们进行知识蒸馏时存在两个问题：（a）在大规模外部数据集上的训练是昂贵的，并且（b）大多数数据不会有帮助，因为它们与模型学习的任务无关。为了克服这些问题，我们建议从大量未标记的数据流中抽取一个用于知识蒸馏的外部数据集。注意，采样的外部数据集不需要额外的永久内存；学后即弃。</p>
+<p>  <b>取样进行置信度校准</b>为了缓解由于训练数据集不平衡而导致的灾难性遗忘，需要对之前任务中预计会出现的外部数据进行采样。由于如果数据很可能在之前的任务中，则期望之前的模型 $\mathcal{P}$ 产生高置信度的输出，因此可以使用 $\mathcal{P}$ 的输出进行抽样。然而，现代dnn是高度过度自信的[8,19]，因此，即使数据不是来自之前的任何任务，使用判别损失学习的模型也会产生高置信度的预测。</p>
+<p>  由于大多数未标记的数据与之前的任何任务都不相关，即它们被认为来自分布外（OOD），因此避免对此类不相关的数据进行过度自信的预测是很重要的。为了实现这一点，模型应该通过学习一定数量的OOD数据以及之前任务的数据来学会自信校准[19,20]。在对OOD数据进行抽样时，我们建议对数据进行随机抽样，而不是依赖于之前模型的置信度，因为OOD在数据空间中广泛分布。这种抽样策略的效果可以在表5中找到。算法2描述了我们的抽样策略。通过验证确定OOD数据的比值（Nprev: NOOD）；详见附录。这种采样算法可能会花费很长时间，但是我们在实验中将未标记数据的检索数量限制为 $1M$，即 $N_{max} = 1M$。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/5.png" alt="表5所示。任务规模为10时CIFAR-100上不同外部数据采样策略的比较。“Prev”列和“OOD”列描述了对前一任务数据和分布外数据的抽样方法，其中“Pred”列和“Random”列分别表示基于前一模型 $\mathcal{P}$ 预测的抽样和随机抽样。特别是，当用“Pred”对OOD进行抽样时，我们对数据进行抽样，使置信度损失 $\mathcal{L}_{cnf}$ 最小化。当只对Prev或OOD进行采样时，将匹配所采样的数据数量，以便公平比较。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/6.png" alt="算法2"></p>
+<p>  <b>抽样置信度校准</b>对于置信度校准，我们考虑以下置信度损失 $\mathcal{L}_{cnf}$ ，使模型对与模型学习的任务不相关的数据产生置信度校准输出：<br>
+$$<br>
+\mathcal{L}_{\mathrm{cnf}}(\theta, \phi ; \mathcal{D})=\frac{1}{|\mathcal{D} | \mathcal{T}|} \sum_{x \in \mathcal{D}} \sum_{y \in \mathcal{T}}[-\log p(y \mid x ; \theta, \phi)]<br>
+$$</p>
+<p>在3步学习中，只有训练 $\mathcal{C}_{t}$ 的第一步没有参考模型，所以它应该在信心损失的情况下学习。对于 $\mathcal{C}_{t}$ ，如果 $y \notin \mathcal{T}_{t}$，$(x,y)$ 来自OOD。即，通过优化前面任务 $\mathcal{D}^{cor}_{t−1}$ 和外部数据集  $\mathcal{D}^{ext}_{t}$ 的coreset下的置信度损失，模型学会了对OOD数据产生低置信度的预测，即在类标签上均匀分布的概率。因此，$\mathcal{C}_{t}$ 通过优化以下内容进行学习：<br>
+$$<br>
+\mathcal{L}_{\mathrm{cls}}\left(\theta^{\mathcal{C}}, \phi_{t}^{\mathcal{C}} ; \mathcal{D}_t\right)+\mathcal{L}_{\mathrm{cnf}}\left(\theta^{\mathcal{C}}, \phi_{t}^{\mathcal{C}} ; \mathcal{D}_{t-1}^{\text {cor }} \cup \mathcal{D}_{t}^{\text {ext }}\right) \quad\quad\quad\quad(12)<br>
+$$</p>
+<p>请注意，模型 $\mathcal{M}_{t}$ 不需要额外的置信度校准，因为之前的模型 $\mathcal{P}_{t}$ 预计将在前一阶段进行置信度校准。因此，参考模型的信心校准输出被提炼为模型 $\mathcal{C}_{t}$ 。信心损失的影响如表3所示。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/7.png" alt="表3。在CIFAR-100上，当任务规模为10时，与不同教师学习的当前任务 $\mathcal{C}$ 的模型的比较。对于“cls”，不训练 $\mathcal{C}$ ，而是通过直接优化 $\mathcal{C}$ 的学习目标进行学习。模型使用为“dst”提出的3步学习方法进行学习。信心损失被添加到 $\mathcal{C}$ 的“cnf”的学习目标中。我们在这个实验中没有使用 $\mathcal{Q}$ ，因为“cls”没有显式的 $\mathcal{C}$ 。"></p>
+<h1>相关工作</h1>
+<p>  <b>不断的终身学习</b>最近的许多研究都用不同的假设来解决灾难性遗忘的问题。广义上讲，有三种不同类型的工作[41]：一种是类增量学习[3,33,42]，类标签的数量不断增长。另一种是任务增量学习[12,24]，即假定任务之间的边界是明确的，并且给出了被测任务的信息。（类增量学习和任务增量学习的主要区别在于模型分别具有单头输出层和多头输出层。）最后一种可以被视为数据增量学习，即所有任务的类标签或动作集都是相同的[16,35,36]。</p>
+<p>  这些工作可以概括为持续学习，最近关于持续学习的工作研究了两种克服灾难性遗忘的方法：基于模型的和基于数据的。基于模型的方法[1,4,14,16,21,25,27,30,34,35,36,37,43,45]通过惩罚对前一任务至关重要的参数的变化来保持对前一任务的了解，即，更新的参数被约束在原始值附近，并根据前一任务参数的重要性按比例缩小更新。然而，由于dnn有许多局部最优值，对于以前的和新的任务都会有更好的局部最优值，这是基于模型的方法无法找到的</p>
+<p>另一方面，基于数据的方法[3,12,13,24,33]通过知识蒸馏[11]保留了之前任务的知识，使之前模型和新模型中潜在空间流形之间的距离最小。与基于模型的方法相比，它们需要提供数据来获得潜在空间的特征。因此，知识蒸馏所保留的知识量取决于前一阶段学习前一任务所使用的数据分布与后一阶段知识蒸馏所使用的数据分布的相似程度。为了保证有一定数量的相似数据，一些先前的工作[3,30,33]预留了少量的内存来保留一个coreset，而另一些工作[22,32,38,41,42]则训练了一个生成模型，并在训练新模型时回放生成的数据。请注意，基于模型的方法和基于数据的方法在大多数情况下是正交的，因此它们可以组合起来以获得更好的性能[15]。</p>
+<p>  <b>以前作品中的知识提炼</b>我们提出的方法是一种基于数据的方法，但它与之前的工作[3,12,24,33]不同，因为他们的模型通常使用Eq（2）中的任务局部蒸馏损失进行学习。我们强调局部蒸馏只保留了之前每个任务中的知识，而全局蒸馏对所有任务进行了知识</p>
+<p>  与我们的三步学习类似，[36]和[12]采用了两位老师一起学习的思路。然而，他们保持之前任务知识的策略是不同的:[36]应用了基于模型的方法，[12]则为任务增量学习提取了任务知识。</p>
+<p>  另一方面，[3]也有类似的微调，但他们通过丢弃当前任务的大部分数据并更新整个网络来构建一个平衡的数据集。然而，这种欠采样牺牲了频繁类的多样性，从而降低了性能。过采样可能会解决这个问题，但它会使训练不可扩展：过采样数据集的大小与到目前为止学习的任务数量成正比。相反，我们建议应用数据加权。</p>
+<p>  <b>可伸缩性</b>关于持续学习的早期工作是不可扩展的，因为它们保留了所有先前的模型[2,16,24,35,43]。然而，最近的研究通过最小化任务特定参数的数量来考虑可伸缩性[33,36]。此外，基于数据的方法需要保留一个核心重置或生成模型来重放以前的任务。我们的方法是一种基于数据的方法，但它没有可伸缩性问题，因为我们利用了从大量未标记数据流中采样的外部数据集。我们注意到，与coreset不同，我们的外部数据集不需要永久内存;学后即弃。</p>
+<h1>4 实验</h1>
+<h2 id="4-1-实验设置"><a class="header-anchor" href="#4-1-实验设置">¶</a>4.1 实验设置</h2>
+<p>  <b>比较算法</b>为了提供性能的上限，我们比较了一种oracle方法，该方法通过优化Eq（1）来学习，同时存储之前任务的所有训练数据，并在训练期间回放它们。此外，作为基线，我们提供了在没有知识蒸馏的情况下学习的模型的性能。在之前的研究中，比较了三种最先进的方法:不遗忘学习（LwF）[24]、蒸馏与回顾（DR）[12]和端到端增量学习（E2E）[3]。为了比较公平，我们将LwF和DR用于原本在任务增量学习设置中评估的类增量设置：具体来说，我们扩大了分类损失的范围，即优化了Eq（1）+（2）和Eq（1）+（2）+（4）的复制。</p>
+<p>  我们没有比较基于模型的方法，因为已知数据库方法在类增量学习中优于它们[22,41]，并且它们与基于数据的方法是正交的，因此它们可能与我们的方法结合以获得更好的性能[15]。</p>
+<p>  <b>数据集</b>我们在CIFAR100[18]和ImageNet ILSVRC 2012[6]上评估比较方法，其中所有图像都被下采样到32×32[5]。对于CIFAR-100，类似于之前的工作[3,33]，我们随机统一地对类进行洗牌，并对类进行拆分，以构建一个任务序列。对于ImageNet，我们首先在每次试验中为100个随机选择的类采样500张图像，然后对类进行拆分。为了评估在有大量未标记数据流的环境下的比较方法，我们采用了两个大型数据集：TinyImages数据集[40]和整个ImageNet 2011数据集，其中包含 $80M$ 张图像。CIFAR-100和ILSVRC 2012中出现的类被排除在外，以避免任何潜在的优势。在每个阶段，我们的采样算法从它们中均匀随机地获取未标记的数据，形成一个外部数据集，直到检索到的样本数量为 $1M$。</p>
+<p>  在前面的工作之后，我们将类分为5、10和20个类，这样分别有20、10和5个任务。对于每个任务大小，我们用不同的类顺序(在ImageNet的情况下是不同的类集)对比较的方法进行十次评估，并报告性能的平均值和标准差。</p>
+<p>  <b>评价指标</b>我们在两个指标上报告了比较方法的性能：平均增量精度（ACC）和平均遗忘（FGT）。为了简单起见，我们假设所有类的测试数据的数量是相同的。对于来自第 $r$ 个任务 $(x,y) \in \mathcal{D}_{r}^{test}$ 的测试数据，令 $\hat{y}\left(x ; \mathcal{M}_{s}\right)$ 为第 $s$ 个模型预测的标签，使得<br>
+$$<br>
+A_{r, s}=\frac{1}{\left|\mathcal{D}_{r}^{\text {test }}\right|} \sum_{(x, y) \in \mathcal{D}_{r}^{\text {test }}} \mathbb{I}\left(\hat{y}\left(x ; \mathcal{M}_{s}\right)=y\right)<br>
+$$<br>
+测量第 $s$ 个模型在第 $r$ 个任务时的精度，其中 $s \ge r$。注意，预测是没有任务边界的：例如，在第 $t$ 阶段，随机猜测的期望精度为 $1/|\mathcal{T}_{1:t}|$ ，而不是 $1/|\mathcal{T}_{r}|$。在第 $t$ 阶段，ACC被定义为：<br>
+$$<br>
+\mathrm{ACC}=\frac{1}{t-1} \sum_{s=2}^t \sum_{r=1}^s \frac{\left|\mathcal{T}_{r}\right|}{\left|\mathcal{T}_{1: s}\right|} A_{r, s}<br>
+$$<br>
+请注意，第一阶段的性能没有被考虑，因为它不是类增量学习。ACC直接衡量整体性能，FGT通过平均性能衰减来衡量灾难性遗忘的数量：<br>
+$$<br>
+\mathrm{FGT}=\frac{1}{t-1} \sum_{s=2}^t \sum_{r=1}^{s-1} \frac{\left|\mathcal{T}_{r}\right|}{\left|\mathcal{T}_{1: s}\right|}\left(A_{r, r}-A_{r, s}\right)<br>
+$$<br>
+也就是负的后向传输[25]。注意，FGT越小越好，这意味着模型更少忘记之前的任务。</p>
+<p>  <b>Hyperparameters超参数</b>所有比较模型的主干都是16层的宽残差网络[44]，宽度因子为2（WRN-16-2）， dropout率为0.3。请注意，这与ResNet-32[10]具有相当的性能。最后一个完全连接的层被认为是特定于任务的层，每当有一个带有新类的任务进来时，该层被扩展以生成对新类的预测。与共享层相比，任务特定层的参数数量较少（WRN-16-2中最多约为2 $\%$ ）。所有方法都使用相同大小的coreset，即2000。为了可伸缩性，采样的外部数据集的大小设置为标记数据集的大小，即算法2中的 $N_{D} = |D_{t}^{rnt}|$ 。为了进行验证，使用了一个ImageNet的分割，该分割对其他九个试验是独占的。平滑软最大概率[11]的温度对于 $\mathcal{P}$ 和 $\mathcal{C}$ 的蒸馏设置为2，对于 $\mathcal{Q}$ 设置为1。详见附录。</p>
+<h2 id="4-2评估"><a class="header-anchor" href="#4-2评估">¶</a>4.2评估</h2>
+<p>  <b>方法比较</b>表1和图2比较了我们提出的方法与最先进的方法。首先，即使无法访问未标记的数据，我们的方法也优于最先进的方法，这表明了所提出的3步学习方案的有效性。具体来说，除了损失函数的差异，DR没有平衡的微调，E2E缺少当前任务 $\mathcal{C}_{t}$ 的老师，用小数据集对整个网络进行微调，LwF既没有 $\mathcal{C}_{t}$ 也没有微调。与目前最先进的E2E方法相比，在任务大小为5的情况下，我们的方法在ImageNet上的ACC提高了 $4.8\%$，FGT提高了 $6.0\%$<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/8.png" alt="表1。CIFAR-100与ImageNet方法的比较。我们报告了10个CIFAR-100试验和9个ImageNet试验使用不同随机种子的均值和标准差。“↑（↓）”表示数值越高（越低）越好。"><br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/9.png" alt="图2。CIFAR-100实验结果。（a，b）箭头分别表示使用无标记数据学习的平均增量精度（ACC）和平均遗忘（FGT）的性能增益。（c，d）当任务规模为10时，ACC和FGT随训练类数的变化曲线。我们报告10个试验的平均表现。"></p>
+<p>  另一方面，如图2（a）-2（b）所示，使用未标记的外部数据集学习可以持续地提高比较方法的性能，但在GD中这种改进更为显著。例如，在任务大小为5的ImageNet的情况下，通过使用外部数据集学习，E2E提高了 $3.2\%$ 的ACC，而GD提高了 $10.5\%$。此外，FGT方面的相对性能增益更为显著：E2E健忘 $1.1\%$，而GD健忘 $43.1\%$。总体而言，通过我们提出的学习方案和与外部数据集的知识蒸馏，GD的ACC比E2E提高了 $15.8\%$，FGT提高了 $46.5\%$。</p>
+<p>  <b>参考模型的效果</b>表2显示了不同参考模型的消融研究。如2.2节所述，由于之前的模型 $\mathcal{P}$ 不知道当前的任务，引入 $\mathcal{C}$ 的补偿提高了整体性能。另一方面， $\mathcal{Q}$ 并没有表现出比 $\mathcal{P}$ 和 $\mathcal{C}$ 的组合更好的ACC，这可能是因为，在构建 $\mathcal{Q}$ 的输出时， $\mathcal{P}$ 和 $\mathcal{C}$ 的输出的集成是基于一个假设，而这个假设并不总是正确的。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/2.png" alt="表2。当任务规模为10时，CIFAR-100上不同参考模型学习模型的比较。“ $\mathcal{P}$ ”、“ $\mathcal{C}$ ”和“ $\mathcal{Q}$ ”分别代表先前的模型、当前任务的教师和它们的集成模型。"></p>
+<p>然而，来自 $\mathcal{Q}$ 的知识是有用的，因此所有三个参考模型的组合显示出最佳性能</p>
+<p>  <b>Effect of the teacher for the current task  $\mathcal{C}$</b>表3比较了不同教师对当前任务 $\mathcal{C}_{t}$ 学习的模型。除了没有 $\mathcal{C}_{t}$ 的baseline，我们还比较了Eq（5）或（12）中直接优化 $\mathcal{C}_{t}$ 的学习目标的模型，即优化损失时，模型使用硬标签学习而不是软标签学习。注意，为蒸馏引入单独的模型 $\mathcal{C}$ 是有益的，因为 $\mathcal{C}$ 可以更好地学习当前任务的知识，而不会受到其他分类任务的干扰。通过优化置信度损失来学习可以提高性能，因为如2.3节所述，置信度校准模型对外部数据进行了更好的采样。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/7.png" alt="表3。在CIFAR-100上，当任务规模为10时，与不同教师学习的当前任务 $\mathcal{C}$ 的模型的比较。对于“cls”，不训练 $\mathcal{C}$ ，而是通过直接优化 $\mathcal{C}$ 的学习目标进行学习。模型使用为“dst”提出的3步学习方法进行学习。信心损失被添加到 $\mathcal{C}$ 的“cnf”的学习目标中。我们在这个实验中没有使用 $\mathcal{Q}$ ，因为“cls”没有显式的 $\mathcal{C}$ 。"></p>
+<p>  <b>平衡微调的效果</b>表4显示了平衡学习的效果。首先，平衡的学习策略总体上提高了FGT。如果跳过3步学习中的微调，但在主训练（DW）中应用Eq（10）中的数据加权，则模型显示出比在特定任务参数（FT-DW）上进行平衡微调更高的FGT，如2.2节所述。注意，数据加权（FTDW）比去掉当前任务的数据来构造[3]中提出的小型平衡数据集（FT-DSet）更好，因为所有的训练数据都是有用的。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/3.png" alt="表4。任务规模为10时不同平衡学习策略在CIFAR-100上的比较。“DW”、“FT-DSet”、“FTDW”分别代表式（10）中对整个训练进行数据加权的训练，对去除当前任务数据平衡的训练数据集进行微调，对数据加权进行微调。"></p>
+<p>  <b>外部数据抽样的影响</b>表5比较了不同的外部数据采样策略。未标记数据在所有情况下都是有益的，但不同采样策略的性能增益是不同的。首先，观察到随机采样的数据是有用的，因为它们的预测分布将是多样化的，这样有助于学习参考模型的多样化知识，这使得模型具有信心校准。然而，随机抽样策略虽然比基于之前模型 $\mathcal{P}$ 预测的抽样具有更高的ACC，但也表现出较高的FGT。这意味着基于 $\mathcal{P}$ 预测采样的未标记数据更能防止模型的灾难性遗忘。如2.3节所述，我们提出的抽样策略中，上述两种策略的组合表现最佳。最后，基于 $\mathcal{P}$ 的预测对OOD数据进行采样是没有好处的，因为“最有可能来自OOD的数据”是没有用的。基于 $\mathcal{P}$ 预测采样的OOD数据具有近似均匀的预测分布，是局部分布的。而OOD的概念是模型学习到的数据分布的一种补充集。因此，在我们的例子中，为了更好地区分OOD，模型应该使用广泛分布在前面任务数据分布之外的数据进行学习。</p>
+<h1>5 结论</h1>
+<p>  我们建议利用大量未标记的数据流进行类增量学习。所提出的全局精馏旨在保持参考模型的知识无任务边界，从而实现更好的知识精馏。我们的3步学习方案有效地利用了基于置信度的抽样策略从未标记数据流中采样的外部数据集。</p>
+<h1>附录</h1>
+<h2 id="A-全局蒸馏示意图"><a class="header-anchor" href="#A-全局蒸馏示意图">¶</a>A.全局蒸馏示意图</h2>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/10.png" alt="图A1. 模型 $\mathcal{M}$ 如何使用全局蒸馏（GD）学习的说明。对于GD，使用了三个参考模型： $\mathcal{P}$ 是之前的模型， $\mathcal{C}$ 是当前任务的老师， $\mathcal{Q}$ 是它们的集合。"></p>
+<h2 id="B-实验设置细节"><a class="header-anchor" href="#B-实验设置细节">¶</a>B.实验设置细节</h2>
+<p>  <b>超参数.</b>我们使用小批量训练，每次训练的批次大小为128个，超过200个epoch，以确保收敛。初始学习率为0.1，在没有微调的情况下，在120、160、180个周期后衰减0.1。当应用微调时，首先对模型进行180个epoch的训练，学习率在120、160、170个epoch后衰减，然后对20个epoch进行微调，其中学习率从0.01开始，在10、15个epoch后衰减0.1。我们注意到，即使在对某些方法的整个网络进行微调时，20个epoch也足以实现收敛。我们用动量为0.9,L2权值衰减为0.0005的随机梯度来更新模型参数。coreset的大小设置为2000。由于可伸缩性问题，采样的外部数据集的大小被设置为标记数据集的大小。抽样中OOD数据的比例是通过对ImageNet的分割进行验证来确定的，该比例为0.7。在所有实验中，从 $\mathcal{P}$ 和 $\mathcal{C}$ 中蒸馏时平滑软最大概率的温度设置为2，从 $\mathcal{Q}$ 中蒸馏时为1。为了更具体地说明缩放概率的方法，设 $z=\{z_{y} \mid y \in \mathcal{T}\}=\mathcal{M}(x ; \theta, \phi)$ 是输出的集合（或对数）。然后，在温度为 $\gamma$ 的情况下，概率计算如下：<br>
+$$<br>
+p(y=k \mid x, \theta, \phi)=\frac{\exp (z_{k} / \gamma)}{\sum_{y^{\prime} \in \mathcal{T}} \exp \left(z_{y^{\prime}} / \gamma\right)}<br>
+$$</p>
+<p>  <b>方法的可伸缩性</b>。我们注意到，所有比较的方法都是可扩展的，它们是在公平的条件下进行比较的。我们没有将生成式重放方法与我们的方法进行比较，因为众所周知，coreset方法在可伸缩设置中的类增量学习方面优于它们：特别是，据报道，在ciremote -100等自然图像数据集上，生成式模型的持续学习是一个具有挑战性的问题[22,42]。</p>
+<h2 id="C-更多实验结果"><a class="header-anchor" href="#C-更多实验结果">¶</a>C.更多实验结果</h2>
+<h3 id="C1-更多消融实验"><a class="header-anchor" href="#C1-更多消融实验">¶</a>C1.更多消融实验</h3>
+<p>  <b>OOD比率的影响</b>。我们研究了可能存在于先前任务中的采样数据与OOD数据之间的比率的影响。如图C.1所示，不同数据集的最佳OOD比各不相同，但都高于0.5:具体来说，当CIFAR-100的OOD比为0.8,ImageNet的OOD比为0.7时，ACC达到最佳。另一方面，FGT的最佳OOD比是不同的:具体来说，当CIFAR-100上的OOD比为0.2,ImageNet上的OOD比为0.5时，FGT达到最佳。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/11.png" alt="图C.1。任务规模为10时，CIFAR-100和ImageNet上的实验结果。我们报告了10个CIFAR-100试验和9个ImageNet试验中平均OOD比的ACC和FGT。"></p>
+<p>  <b>训练数据与未标记的外部数据之间相关性的影响</b>。到目前为止，我们没有假设训练数据和外部数据之间有任何相关性。但是，在本实验中，我们基于ImageNet类标签之间的上下名关系来控制它们之间的相关性。具体来说，我们首先计算ImageNet ILSVRC 2012训练数据集中1k个类与整个ImageNet 2011数据集中其他 $21k$ 个类之间的层次距离（层次结构中类之间最短路径的长度）。注意，层次距离可以被认为是类之间的语义差异。然后，我们根据层次距离划分 $21k$ 类，这样每个分割至少有 $1M$ 图像用于模拟未标记的数据流。如图C.2所示，性能与语义相似度成正比，而语义相似度与层次距离成反比。然而，即使在最坏的情况下，未标记的数据也是有益的。<br>
+<img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/12.png" alt="图C.2。任务大小为10时ImageNet上的实验结果。我们报告了ACC和FGT关于在九个试验中平均的训练数据集和未标记数据流之间的层次距离。"></p>
+<h3 id><a class="header-anchor" href="#">¶</a></h3>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/13.png" alt="表C.1。CIFAR-100与ImageNet方法的比较。我们报告了10个CIFAR-100试验和9个ImageNet试验使用不同随机种子的均值和标准差。“↑（↓）”表示数值越高(越低)越好。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/14.png" alt="图C.3。ImageNet实验结果。箭头分别显示了使用未标记数据学习ACC和FGT的性能增益。我们报告9个试验的平均表现。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/15.png" alt="图C.4。任务规模为5时CIFAR-100的实验结果。我们报告ACC和FGT的训练班数平均超过10次试验。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/16.png" alt="图C.5。任务规模为20时CIFAR-100的实验结果。我们报告ACC和FGT的训练班数平均超过10次试验。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/17.png" alt="图C.6。任务大小为5时ImageNet上的实验结果。我们报告了ACC和FGT的训练班数平均超过9次试验。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/18.png" alt="图C.7。任务大小为10时ImageNet上的实验结果。我们报告了ACC和FGT的训练班数平均超过9次试验。"></p>
+<p><img src="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/19.png" alt="图C.8。任务规模为20时ImageNet上的实验结果。我们报告了ACC和FGT的训练班数平均超过9次试验。"></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">xbwcj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://xbwcj.github.io/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/">http://xbwcj.github.io/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">xbwcj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">增量学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '3zej8rJ4jeuroIc4wbOGSRTn-gzGzoHsz',
+        appKey: 'ybMabHX5zRIWyISjpqOxDcxk',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》">
+                        
+                        <span class="card-title">《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">增量学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/12/27/overcoming-catastrophic-forgetting-in-neural-networks/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="《Overcoming catastrophic forgetting in neural networks》">
+                        
+                        <span class="card-title">《Overcoming catastrophic forgetting in neural networks》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">联邦学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2023</span>
+            
+            <span id="year">2020</span>
+            <a href="https://github.com/xbwcj" target="_blank">xbwcj</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">178.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xbwcj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1151506163@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1151506163" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1151506163" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
