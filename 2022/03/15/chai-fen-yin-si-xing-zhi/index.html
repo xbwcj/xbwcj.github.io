@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    728
+                    710
                 </div>
                 
 
@@ -505,9 +505,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="差分隐私保护算法的组合性质"><a href="#差分隐私保护算法的组合性质" class="headerlink" title="差分隐私保护算法的组合性质"></a>差分隐私保护算法的组合性质</h1><p>&emsp;&emsp;一个复杂的隐私保护问题通常需要多次应用差分隐私保护算法才能得以解决．在这种情况下，为了保证整个过程的隐私保护水平控制在给定的预算 $\varepsilon$ 之内，需要合理地将全部预算分配到整个算法的各个步骤中．这时可以利用隐私保护算法的两个组合性质，如下图所示：<br><img src="/2022/03/15/chai-fen-yin-si-xing-zhi/1.png" alt="差分隐私保护算法的组合性质"><br>&emsp;&emsp;<b>性质1.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $， 那么对于同一数据集 $ D $，由这些算法构成的组合算法 $ M({M_1}(D)),{M_2}(D), \cdots ,{M_n}(D)) $ 提供 $ (\sum\limits_{i = 1}^n { {\varepsilon _i} } )- $ 差分隐私保护。<br>&emsp;&emsp;该性质表明，一个差分隐私保护算法序列构成的组合算法，其提供的隐私保护水平为全部预算的总和。该性质也称为“序列组合性”。<br>&emsp;&emsp;<b>性质2.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $，那对于不相交的数据集 $ {D_1},{D_2}, \cdots ,{D_n} $， 这些算法构成的组合算法 $ M({M_1}({D_1})),{M_2}({D_2}), \cdots ,{M_n}({D_n})) $ 提供 $ (\max {\varepsilon _i}) - $ 差分隐私保护。<br>&emsp;&emsp;该性质表明，如果一个差分隐私保护算法序列中所有算法处理的数据集彼此不相交，那么该算法序列构成的组合算法提供的隐私保护水平取决于算法序列中的保护水平最差者，即预算最大者。该性质也称为“并行组合性”。</p>
-<h1 id="差分隐私保护算法的变换不变性"><a href="#差分隐私保护算法的变换不变性" class="headerlink" title="差分隐私保护算法的变换不变性"></a>差分隐私保护算法的变换不变性</h1><p>&emsp;&emsp;给定任意一个算法 $ A_1 $ 满足 $ \varepsilon - $ 差分隐私。对于任意算法 $ A_2 $ ​（$ A_2 $ 不一定满足差分隐私的算法），则有 $ A(\cdot)=A_2(A_1(\cdot)) $ 满足 $ \varepsilon - $ 差分隐私。<br>&emsp;&emsp;说明了差分隐私对于后处理算法具有免疫性, 如果一个算法的结果满足 $ \varepsilon - $ 差分隐私, 那么在这个结果上进行的任何处理都不会对隐私保护有所影响。</p>
-<h1 id="差分隐私保护算法的中凸性"><a href="#差分隐私保护算法的中凸性" class="headerlink" title="差分隐私保护算法的中凸性"></a>差分隐私保护算法的中凸性</h1><p>&emsp;&emsp;给定2个算法 $ A_1 $ 和 $ A_2​ $ 满足 $ \varepsilon - $ 差分隐私。对于任意的概率 $ p \in [0,1] $ ，用符号 $ A_p $ 表示为一种机制，它以 $ p $ 的概率使用 $ A_1 $ 算法，以 $ 1 − p $ 的概率使用 $ A_2 $​ 算法则 $ A_p $ 机制满足 $ \varepsilon - $ 差分隐私。<br>&emsp;&emsp;说明了如果有 $ 2 $ 个不同的差分隐私算法, 都提供了足够的不确定性来保护隐私, 那么可以通过选择任意的算法来应用到数据上实现对数据的隐私保护, 只要选择的算法和数据是独立的。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>差分隐私保护算法的组合性质</h1>
+<p>  一个复杂的隐私保护问题通常需要多次应用差分隐私保护算法才能得以解决．在这种情况下，为了保证整个过程的隐私保护水平控制在给定的预算 $\varepsilon$ 之内，需要合理地将全部预算分配到整个算法的各个步骤中．这时可以利用隐私保护算法的两个组合性质，如下图所示：<br>
+<img src="/2022/03/15/chai-fen-yin-si-xing-zhi/1.png" alt="差分隐私保护算法的组合性质"><br>
+  <b>性质1.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $， 那么对于同一数据集 $ D $，由这些算法构成的组合算法 $ M({M_1}(D)),{M_2}(D), \cdots ,{M_n}(D)) $ 提供 $ (\sum\limits_{i = 1}^n { {\varepsilon _i} } )- $ 差分隐私保护。<br>
+  该性质表明，一个差分隐私保护算法序列构成的组合算法，其提供的隐私保护水平为全部预算的总和。该性质也称为“序列组合性”。<br>
+  <b>性质2.序列组合性.</b>设有算法 $ {M_1},{M_2}, \cdots ,{M_n} $，其隐私保护预算分别为 $ {\varepsilon _1},{\varepsilon _2}, \cdots ,{\varepsilon _n} $，那对于不相交的数据集 $ {D_1},{D_2}, \cdots ,{D_n} $， 这些算法构成的组合算法 $ M({M_1}({D_1})),{M_2}({D_2}), \cdots ,{M_n}({D_n})) $ 提供 $ (\max {\varepsilon _i}) - $ 差分隐私保护。<br>
+  该性质表明，如果一个差分隐私保护算法序列中所有算法处理的数据集彼此不相交，那么该算法序列构成的组合算法提供的隐私保护水平取决于算法序列中的保护水平最差者，即预算最大者。该性质也称为“并行组合性”。</p>
+<h1>差分隐私保护算法的变换不变性</h1>
+<p>  给定任意一个算法 $ A_1 $ 满足 $ \varepsilon - $ 差分隐私。对于任意算法 $ A_2 $ ​（$ A_2 $ 不一定满足差分隐私的算法），则有 $ A(\cdot)=A_2(A_1(\cdot)) $ 满足 $ \varepsilon - $ 差分隐私。<br>
+  说明了差分隐私对于后处理算法具有免疫性, 如果一个算法的结果满足 $ \varepsilon - $ 差分隐私, 那么在这个结果上进行的任何处理都不会对隐私保护有所影响。</p>
+<h1>差分隐私保护算法的中凸性</h1>
+<p>  给定2个算法 $ A_1 $ 和 $ A_2​ $ 满足 $ \varepsilon - $ 差分隐私。对于任意的概率 $ p \in [0,1] $ ，用符号 $ A_p $ 表示为一种机制，它以 $ p $ 的概率使用 $ A_1 $ 算法，以 $ 1 − p $ 的概率使用 $ A_2 $​ 算法则 $ A_p $ 机制满足 $ \varepsilon - $ 差分隐私。<br>
+  说明了如果有 $ 2 $ 个不同的差分隐私算法, 都提供了足够的不确定性来保护隐私, 那么可以通过选择任意的算法来应用到数据上实现对数据的隐私保护, 只要选择的算法和数据是独立的。</p>
 
                 
             </div>
@@ -1309,7 +1319,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.9k</span>&nbsp;字
+                class="white-color">187.2k</span>&nbsp;字
             
             
             

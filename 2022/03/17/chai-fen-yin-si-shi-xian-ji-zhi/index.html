@@ -475,7 +475,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    702
+                    686
                 </div>
                 
 
@@ -505,11 +505,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>&emsp;&emsp;在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \\; Mechanism $ 与指数机制 $ Exponential \\; Mechanism $ 是两种最基础的差分隐私保护实现机制。其中，$ Laplace $ 机制适用于对数值型结果的保护，指数机制则适用于非数值型结果。</p>
-<h2 id="Laplace-机制"><a href="#Laplace-机制" class="headerlink" title="$ Laplace $ 机制"></a>$ Laplace $ 机制</h2><p>&emsp;&emsp;$ Laplace $ 机制通过向确切的查询结果中加入服从 $ Laplace $ 分布的随机噪声来实现 $ \varepsilon -$ 差分隐私保护。记位置参数为 $ 0 $、尺度参数为 $ b $ 的 $ Laplace $ 分布为 $ Lap(b) $，那么其概率密度函数为</p>
-<script type="math/tex; mode=display">
-p(x) = \frac{1}{ {2b} }\exp ( - \frac{ {|x|} }{b})</script><p>&emsp;&emsp;<b>定义1. $ Laplace $ 机制.</b>给定数据集 $ D $，设有函数 $ f:D \to {R^d} $，其敏感度为 $ \Delta f $，那么随机算法 $ M(D) = f(D) + Y $ 提供 $ \varepsilon -$ 差分隐私保护，其中 $ Y \sim Lap(\Delta f/\varepsilon ) $ 为随机噪声，服从尺度参数为 $ \Delta f/\varepsilon $ 的 $ Laplace $ 分布。<br><img src="/2022/03/17/chai-fen-yin-si-shi-xian-ji-zhi/1.png" alt="Laplace概率密度函数"></p>
-<h2 id="指数机制"><a href="#指数机制" class="headerlink" title="指数机制"></a>指数机制</h2><p>&emsp;&emsp;由于 $ Laplace $ 机制仅适用于数值型查询结果，而在许多实际应用中，查询结果为实体对象（例如一种方案或一种选择）。对此，$ McSherry $ 等人提出了指数机制。<br>&emsp;&emsp;设查询函数的输出域为 $ Range $，域中的每个值 $ r \in Range $ 为一实体对象。在指数机制下，函数 $ q(D,r) \to R $ 称为输出值 $ r $ 的可用性函数，用来评估输出值 $ r $ 的优劣程度。<br>&emsp;&emsp;<b>定义2. 指数机制.</b>设随机算法 $ M $ 输入为数据集 $ D $，输出为一实体对象 $ r \in Range $ ， $ q(D,r) $ 为可用性函数，$ \Delta q $ 为函数 $ q(D,r) $ 的敏感度。若算法 $ M $ 以正比于 $ \exp (\frac{ {\varepsilon q(D,r)} }{ {2\Delta q} }) $ 的概率从 $ Range $ 中选择并输出 $ r $ ，那么算法 $ M $ 提供 $ \varepsilon -$ 差分隐私保护。<br>&emsp;&emsp;以下是一个指数机制的应用实例。假如拟举办一场体育比赛，可供选择的项目来自集合｛足球，排球，篮球，网球｝，参与者们为此进行了投票，现要从中确定一个项目，并保证整个决策过程满足 $ \varepsilon -$ 差分隐私保护要求。以得票数量为可用性函数，显然 $ \Delta q = 1 $ 。那么按照指数机制，在给定的隐私保护预算  $ \varepsilon $ 下，可以计算出各种项目的输出概率，如下图所示：<br><img src="/2022/03/17/chai-fen-yin-si-shi-xian-ji-zhi/2.png" alt="指数机制应用示例"><br>&emsp;&emsp;可以看出，在ε较大时（如 $ \varepsilon ＝１ $），可用性最好的选项被输出的概率被放大。当 $ \varepsilon $ 较小时，各选项在可用性上的差异则被平抑，其被输出的概率也随着ε的减小而趋于相等。</p>
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>  在实践中为了使一个算法满足差分隐私保护的要求，对不同的问题有不同的实现方法，这些实现方法称为“机制”。$ Laplace $ 机制 $ Laplace \; Mechanism $ 与指数机制 $ Exponential \; Mechanism $ 是两种最基础的差分隐私保护实现机制。其中，$ Laplace $ 机制适用于对数值型结果的保护，指数机制则适用于非数值型结果。</p>
+<h2 id="Laplace-机制"><a class="header-anchor" href="#Laplace-机制">¶</a>$ Laplace $ 机制</h2>
+<p>  $ Laplace $ 机制通过向确切的查询结果中加入服从 $ Laplace $ 分布的随机噪声来实现 $ \varepsilon -$ 差分隐私保护。记位置参数为 $ 0 $、尺度参数为 $ b $ 的 $ Laplace $ 分布为 $ Lap(b) $，那么其概率密度函数为<br>
+$$<br>
+p(x) = \frac{1}{ {2b} }\exp ( - \frac{ {|x|} }{b})<br>
+$$<br>
+  <b>定义1. $ Laplace $ 机制.</b>给定数据集 $ D $，设有函数 $ f:D \to {R^d} $，其敏感度为 $ \Delta f $，那么随机算法 $ M(D) = f(D) + Y $ 提供 $ \varepsilon -$ 差分隐私保护，其中 $ Y \sim Lap(\Delta f/\varepsilon ) $ 为随机噪声，服从尺度参数为 $ \Delta f/\varepsilon $ 的 $ Laplace $ 分布。<br>
+<img src="/2022/03/17/chai-fen-yin-si-shi-xian-ji-zhi/1.png" alt="Laplace概率密度函数"></p>
+<h2 id="指数机制"><a class="header-anchor" href="#指数机制">¶</a>指数机制</h2>
+<p>  由于 $ Laplace $ 机制仅适用于数值型查询结果，而在许多实际应用中，查询结果为实体对象（例如一种方案或一种选择）。对此，$ McSherry $ 等人提出了指数机制。<br>
+  设查询函数的输出域为 $ Range $，域中的每个值 $ r \in Range $ 为一实体对象。在指数机制下，函数 $ q(D,r) \to R $ 称为输出值 $ r $ 的可用性函数，用来评估输出值 $ r $ 的优劣程度。<br>
+  <b>定义2. 指数机制.</b>设随机算法 $ M $ 输入为数据集 $ D $，输出为一实体对象 $ r \in Range $ ， $ q(D,r) $ 为可用性函数，$ \Delta q $ 为函数 $ q(D,r) $ 的敏感度。若算法 $ M $ 以正比于 $ \exp (\frac{ {\varepsilon q(D,r)} }{ {2\Delta q} }) $ 的概率从 $ Range $ 中选择并输出 $ r $ ，那么算法 $ M $ 提供 $ \varepsilon -$ 差分隐私保护。<br>
+  以下是一个指数机制的应用实例。假如拟举办一场体育比赛，可供选择的项目来自集合｛足球，排球，篮球，网球｝，参与者们为此进行了投票，现要从中确定一个项目，并保证整个决策过程满足 $ \varepsilon -$ 差分隐私保护要求。以得票数量为可用性函数，显然 $ \Delta q = 1 $ 。那么按照指数机制，在给定的隐私保护预算  $ \varepsilon $ 下，可以计算出各种项目的输出概率，如下图所示：<br>
+<img src="/2022/03/17/chai-fen-yin-si-shi-xian-ji-zhi/2.png" alt="指数机制应用示例"><br>
+  可以看出，在ε较大时（如 $ \varepsilon ＝１ $），可用性最好的选项被输出的概率被放大。当 $ \varepsilon $ 较小时，各选项在可用性上的差异则被平抑，其被输出的概率也随着ε的减小而趋于相等。</p>
 
                 
             </div>
@@ -1311,7 +1321,7 @@ p(x) = \frac{1}{ {2b} }\exp ( - \frac{ {|x|} }{b})</script><p>&emsp;&emsp;<b>定
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">178.9k</span>&nbsp;字
+                class="white-color">187.2k</span>&nbsp;字
             
             
             
