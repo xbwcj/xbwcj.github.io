@@ -1,0 +1,1623 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="《Knowledge Lock Overcoming Catastrophic Forgetting in Federated Learning》, Live My Life">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>《Knowledge Lock Overcoming Catastrophic Forgetting in Federated Learning》 | Live My Life</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Live My Life" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Live My Life</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Live My Life</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/xbwcj/xbwcj.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/xbwcj/xbwcj.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">《Knowledge Lock Overcoming Catastrophic Forgetting in Federated Learning》</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">联邦学习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                科研学习
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-03-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-03-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>摘要</h1>
+<p>  联邦学习（FL）旨在通过分散的数据来训练机器学习模型，而不需要直接的数据共享。然而，FL参与者之间数据的异质性极大地阻碍了联邦模型的竞争性能。在本文中，我们认为这个问题是知识遗忘的结果，因为FL的局部更新过程可能会导致从其他参与者那里学到的知识的灾难性遗忘。在增量学习技术的最新进展的推动下，我们通过克服由数据隔离引起的严重知识遗忘来解决这个问题。我们提出了一种新的方法，称为FedKL（带知识锁的联邦学习），其中使用知识蒸馏技术来维护先前学习的知识。我们的大量实验结果表明，FedKL比之前的方法获得了更好的性能，与流行的FL算法FedAvg相比，在CIF AR-10和CIF AR-100上的精度分别提高了3.4 $\%$ 和3.5 $\%$。此外，我们还探讨了向FedKL引入共享示例（局部数据的一部分）的好处。在实验中，我们为FedKL和基线方法每个类选择并共享10个样本。结果，FedKL在CIFAR-10上的准确率提高了2.56 $\%$ ，而不是在先前方法上的边际提高（小于1.5 $\%$ ）</p>
+<h1>Introduction</h1>
+<p>  联邦学习(FL)技术[31]为多方协作提供了一种安全高效的解决方案，参与者能够在不暴露私人数据的情况下协同训练一个全局模型[20]。.其基本思想是聚合模型参数的局部更新，而不是直接的数据共享[10,20]。联邦学习打破了数据合作的障碍。它在训练数据在参与者之间是独立的同分布(iid)的理想假设下工作得很好。</p>
+<p>  然而，在大多数应用场景中，参与者的数据量和类分布差异很大，通常称为非iid或统计异质性[30,34]。结果表明，数据的异构分布往往会对联邦训练的收敛性产生负面影响，联邦模型的精度必然会降低[34]。我们考虑这个问题的角度是，由于数据的异质性，本地培训很容易忘记从其他参与者那里学到的知识。在这项工作中，我们认为解决非iid问题的瓶颈在于克服全局知识的遗忘。</p>
+<p>  我们受到增量学习方法的启发[12,16,22]，其主要目标是在从新访问的数据中学习的同时保持之前学习过的知识。我们发现增量学习和联邦学习之间的内在相似性，即灾难性的知识遗忘是由于整个数据集不可用。实际上，主要的区别只是在于这种不可用性是由于增量学习中的“时间原因”，因为在这种情况下，一旦新数据到来，旧数据就不能被重用，而在联邦学习中是由于“空间原因”，因为训练数据是空间分散的。</p>
+<p>  因此，这种相似性促使我们探索将增量学习策略转换为联邦学习的有效性。我们改进了增量学习中的知识维护方法，提出了一种新的知识锁方案，将训练目标解耦为一个分类项和一个知识维护项。在分类项中，局部训练由数据的原始标签监督，并应用了softmax-crossentropy损失。在知识维护方面，局部不可用类由全局模型的逻辑回归损失的蒸馏[8]来监督。此外，我们还探讨了部分数据共享对我们的方法和基线算法的影响。我们提出的范例选择算法(见算法2)已被经验证明能够在知识锁上产生显著的精度提高。</p>
+<p>  我们进行了一系列实验来评估我们的方法FedKL （Fedrated Learning with Knowledge Lock），并将其与之前的算法进行比较。如第4节所述，在VGG[27]和ResNet[7]架构上，FedKL优于现有的算法，包括FedAvg [20]， FedProx[15]和SCAFFOLD[11]。值得注意的是，与FedAvg[20]相比，使用VGG-16[27]网络的FedKL在CIF AR-10和CIF AR-100[14]上的准确率分别提高了3.46 $\%$ 和3.51 $\%$。此外，FedKL对部分数据共享的适应性更强，在CIF AR-10和CIF AR-100[14]上的准确率分别提高了2.56 $\%$ 和2.11 $\%$。</p>
+<h1>相关工作</h1>
+<p>  联邦学习在可靠数据合作方面的潜力已经引起了人们对其在异构分布数据中的性能的迅速增长的兴趣。我们将现有的数据异构解决方案分为面向参数的方法和面向输出的方法。对于前者，人们试图通过约束模型参数来应对模型的异质性。例如，FedProx[15]在局部模型和全局模型的参数之间增加了欧几里得距离的正则化项来约束局部梯度体面。SCAFFOLD[11]还修改了本地反向传播的损失，引入了额外的参数来跟踪本地更新。这些方法在联邦模型的准确性、收敛性或通信效率方面取得了相当大的改进。我们重新实现FedProx[15]和SCAFFOLD[11]作为竞争基准，以便在第4节中进行比较。</p>
+<p>  对于面向输出的方法，约束直接应用于模型输出，也就是说，它们鼓励局部模型产生与全局模型或其他更强的教师模型相似的输出。在联邦学习任务中使用知识蒸馏技术[8]已经有了一些尝试[18,19]。然而，当数据大量分布且极其异构时，这些方法无法实现与面向参数的方法一样具有竞争力的性能。这可能是因为这些方法忽略了局部未知的类，并对每个类应用相同的蒸馏损失。在联邦学习方法中也报道了元学习策略，以增强鲁棒性[3]。然而，由于缺乏对类差异的考虑，在处理更具挑战性的联邦学习场景时也很困难。</p>
+<p>  值得注意的是，在隐私敏感性相对较低的情况下，部分数据共享是克服数据异构性的另一种有效方法[35]。例如，其中一些尝试通过共享局部数据来修改数据分布[29,33]，这也可以通过数据增强来改进[2,25]。然而，由于他们随机选择要共享的样本，这既不是足够的隐私效率，也不是有效的通信效率。相反，我们提出了一种有效的数据共享策略(参见算法2)，通过只共享很小一部分数据，我们可以获得令人满意的性能改进。</p>
+<p>  值得注意的是，在隐私敏感性相对较低的情况下，部分数据共享是克服数据异构性的另一种有效方法[35]。例如，其中一些尝试通过共享局部数据来修改数据分布[29,33]，这也可以通过数据增强来改进[2,25]。然而，由于他们随机选择要共享的样本，这既不是足够的隐私效率，也不是有效的通信效率。相反，我们提出了一种有效的数据共享策略(参见算法2)，通过只共享很小一部分数据，我们可以获得令人满意的性能改进。</p>
+<p>  此外，也有联邦学习研究工作转向系统设计[4,5,13,23]或个性化正则化[6,9]，重点关注局部模型和全局模型之间的权衡。一些方法[1,17]为参与者设计了一个灵活的网络，其中一部分是协作训练，另一部分是本地训练。联邦算法中还采用了多任务学习[24,28]和迁移学习[21]方法，以增强局部训练的适应性。</p>
+<p>  最近，增量学习（也称为终身学习）已被应用于克服数据异质性的影响。Shoham et al.[26]提出了基于弹性权重巩固的FedCurv算法。在FedCurv中，参与者还上传了Fisher信息矩阵的对角线，这表明了关键的局部知识。在损失函数中加入惩罚项，使局部模型收敛到共同最优。然而，即使有带宽优化技巧，FedCurv中的通信预算也是FedAvg的三倍。Yoon et al.[32]开发了联邦加权客户端间传输(FedWeIT)方法，其中节点通过注意掩码利用来自其他节点的任务自适应参数。</p>
+<h1>Federated Learning with Knowledge Lock</h1>
+<h2 id="Overview"><a class="header-anchor" href="#Overview">¶</a>Overview</h2>
+<p>  训练联邦分类器中最棘手的问题之一是，由于完整的训练数据分散分布在不同的设备上，因此无法获得。特别是，已经被广泛研究的是，设备上训练数据的异质性往往会导致预测性能的大幅下降和优化的难度。在分类任务中，这种异质性往往表现为类分布的不平衡[15,28]。通常，这是一个更尴尬的场景，每个设备上的训练样本只属于整个数据集的部分类，即，给定一个包含 $m$ 个类的完整数据集，$k$ 个设备中的每个设备只有 $m_{k}$ 类中的样本，其中 $m_{k} &lt; m$ 。换句话说，在联邦训练期间，每个设备中都有“未知”类。在本文中，我们重点研究了这种情况，并提出了我们的方法Fed-KL，该方法受到类增量学习方法的启发，以解决训练数据的异质性问题。</p>
+<p>  给定一个分布在 $k$ 个设备上的数据集 $\mathcal{D}=\{(x_{i}, y_{i})\}_{i=1}^{n}$ ，联邦学习的目标是训练一个共享模型 $f: \mathbb{R}^{d} \rightarrow \mathbb{R}^{m}$，其中 $x_{i} \in \mathbb{R}^{d}$ 是训练数据，$y_{i} \in \mathbb{R}$ 是它的标签。具体来说，在分类任务中，模型 $f(·)$ 可以表示为表示编码器 $g(·)$，后面是具有 $m$ 个单元的全连接层，其中 $m$ 为总类数。</p>
+<p>  为了充分利用每个设备上的数据而不直接共享它们，最常用的联邦学习方法(如FedAvg[20])以多轮更新-聚合的方式训练模型。在每一轮中，参与者（设备）在更新步骤中对其本地数据训练共享全局模型，训练周期为一定数量，然后在聚合步骤中将训练好的本地模型聚合为新的全局模型。通常，在FedAvg[20]中，网络通过直接的参数平均聚合，即给定本地网络 $f_{1}, f_{2}, \cdots ,f_{k}$ ，参数为 $\Theta_{1}, \Theta_{2}, \cdots , \Theta_{k}$，全局网络参数由：<br>
+$$<br>
+\Theta \leftarrow \frac{1}{k} \sum_{j=1}^{k} \Theta_{j} \quad\quad (1)<br>
+$$</p>
+<p>  不幸的是，尽管现有的FL方法能够融合从不同参与者那里学到的知识，但它们仍然存在参与者之间训练数据的统计异质性，这使得联邦模型无法与集中式训练相比具有相当的性能。我们从知识遗忘的角度来考虑数据异质性问题，这类似于增量学习、在线学习或终身学习的主题[14,22]。具体来说，我们认为集中式训练和联合训练之间的巨大性能差距是由于（或部分由于）参与者在对他们的本地数据进行训练时忘记了从其他人那里学到的知识。因此，在本文中，知识保持被视为一个基本主题，并作为我们所提出的方法FedKL的主要策略。</p>
+<h2 id="FedKL-with-Distillation"><a class="header-anchor" href="#FedKL-with-Distillation">¶</a>FedKL with Distillation</h2>
+<p>  克服灾难性知识遗忘的一个非常简单但有效的方法是应用知识蒸馏[8]，假设神经网络的输出概率能够表示它已经学习到的知识[14,22]。我们遵循这一关键发现，并进一步提出了一种新的算法，FedKL-Dist（知识锁定联合学习-蒸馏），该算法在分类损失旁边增加了一个蒸馏损失项，以“锁定”从其他参与者那里学到的知识。</p>
+<p>  形式上，一般来说，联邦分类器是由损失局部训练的<br>
+$$<br>
+\mathcal{L}_{clf}=\dfrac{1}{n_k}\sum_{i=1}^{n_k}\mathrm{SoftmaxcrossEntropy}(f_\Theta(x_i),y_i) \quad\quad (2)<br>
+$$</p>
+<p>其中 $n_{k}$ 表示第 $k$ 个设备（参与者）上的训练样本数量，$f(·)$ 表示参数为 $\Theta$ 的网络。这种基本的分类损失迫使网络预测 $x_{i}$ 尽可能接近它的目标 $y_{i}$。但是，如果仅采用这种分类损失，可能会导致严重的知识遗忘。例如，正如我们在3.1节中假设的那样，总是存在“未知类”（这些类的样本不会出现在本地设备上）。因此，网络倾向于在这些类上预测所有训练样本的概率为零，这将导致在这些“未知类”上的预测性能较差。</p>
+<p>  因此，为了约束遗忘，我们进一步对局部未知类应用蒸馏损失。假设一个设备上 $M$ 个类别中有 $M’$ 是未知的，我们首先计算所有本地可用样本的 $M’$ 类上的Sigmoid概率。形式上，我们有：<br>
+$$<br>
+\delta_{i}^{m}=\mathrm{Signoid}(f_\Theta ^{m}(x_i)) \quad\quad (3)<br>
+$$</p>
+<p>式中 $\delta_{i}^{m}$ 表示全局模型 $f_{\Theta}(·)$ 预测的第 $i$ 个样本第 $m$ 个未知类别的概率。然后，定义蒸馏损失为：<br>
+$$<br>
+\mathcal{L}_{dis}=-\dfrac{1}{n_{k}|M’|}\sum_{i=1}^{n_{k}}\sum_{m\in M’}[\delta^{m}_{i}\log(\mathrm{S}(f^{m}_{\Theta}(x_{i})))+(1-\delta^{m}_{i})\log(1-\mathrm{S}(f^{m}_{\Theta}(x_{i})))], \quad\quad (4)<br>
+$$</p>
+<p>其中 $S(·)$ 代表Sigmoid函数。</p>
+<p>  直观地说，$\mathcal{L}_{dis}$ 鼓励局部优化来保持未知类上的概率，而不是强迫它们为零，而在一些增量学习算法中也出现了类似的策略，并被经验证明可以有效地防止知识遗忘[14]。</p>
+<p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/1.png" alt="算法1"><br>
+  本地更新过程已经在算法1中进行了总结。考虑分类损失 $\mathcal{L}_{clf}$ 和蒸馏损失 $\mathcal{L}_{dis}$ 之间的权衡，我们引入了一个新的超参数 $\lambda$，局部更新的总损失可以表示为：<br>
+$$<br>
+\mathcal{L}=\mathcal{L}_{clf}+\lambda \mathcal{L}_{dis}.\quad\quad (5)<br>
+$$</p>
+<p>  我们已经搜索了参数 $\lambda$，并发现将其设置为 $M’ / M$ 左右会导致更好的性能。</p>
+<h2 id="用类样本改进FedKL"><a class="header-anchor" href="#用类样本改进FedKL">¶</a>用类样本改进FedKL</h2>
+<p>  克服知识遗忘的另一种流行策略是用代表性样本[22]重新训练模型。具体来说，在增量学习方法中[14,22]，为了保持之前学习的知识，人们尝试存储一些有代表性的样本作为样本，然后将新的数据与这些样本相结合来训练模型。类似地，部分共享本地数据在联邦学习中也很流行，这以牺牲一部分隐私为代价提高了性能。然而，少量数据的共享并不能带来足够的性能提升，而大量数据的共享可能会违反联邦学习的基本规则。</p>
+<p>  因此，为了效率和最小的隐私成本，选择最具代表性的样本作为样本至关重要。在本文中，我们通过它们的表示来选择例子。形式上，给定一个全局模型 $f(·)$ 和一个编码器 $g(·)$，每个样本的归一化表示可以通过：<br>
+$$<br>
+\gamma_{i}=\dfrac{g(x_{i})}{\|g(x_{i})\|_{2}}. \quad\quad (6)<br>
+$$</p>
+<p>  我们假设最具代表性的样本是最接近平均表示的样本，它可以表述为：<br>
+$$<br>
+p=\mathrm{argmax}_{x\in\mathcal{X}}&lt;\gamma,g(x_{i})/\|g(x_{i})\|_{2}&gt;, \quad\quad (7)<br>
+$$</p>
+<p>  其中 $p=\mathrm{argmax}_{x\in\mathcal{X}}&lt;\gamma,g(x_{i})/\|g(x_{i})\|_{2}&gt;,$ 表示 $n_{k}$ 表示的平均值，$\mathcal{X}$ 是 $n_{k}$ 训练样本的数据集。正如我们在算法2中所描述的，我们选择最具 $L$ 个代表性的样本作为每个类的样本，其中 $L$ 取决于隐私约束。请注意，对于一个特定的类，如果 $L$ 小于拥有这类样本的参与者数量，我们随机选择参与者共享样本。</p>
+<p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/2.png" alt="算法2"></p>
+<p><b>Warming up Epochs. </b>。值得注意的是，为了获得更高的精度，编码器 $g(·)$ 应该是一个经过良好训练的模型。例如，在实际训练中，我们可以先用算法1训练模型一段时间，然后用训练好的模型作为 $g(·)$，之后我们继续用局部数据和共享样本训练模型。</p>
+<h1>实验</h1>
+<h2 id="实验设置"><a class="header-anchor" href="#实验设置">¶</a>实验设置</h2>
+<p><b>数据集</b>。我们在图像分类数据集的基线上评估我们的方法，包括:<br>
+  （1）MNIST手写数字数据库，包含 $60k$ 用于训练的图像和 $10k$ 用于评估的图像，来自 $10$ 个类</p>
+<p>  （2）CIFAR-10和CIFAR-100[14]，分别是从 $10$ 和 $100$ 类中绘制的彩色图像。CIFAR-10和CIFAR-100都有 $50k$ 训练图像和 $10k$ 评估图像。</p>
+<p>  为了模拟联邦学习中的100个参与者，我们将完整的数据集分割为100个部分。正如我们在3.1节中介绍的，每个参与者只访问部分类。具体来说，在每个设备（参与者）上，至少有两个且最多有 $M_{max}$ 类，直观上，$M_{max}$ 越高意味着异质性越低。由于我们在本文中没有研究不平衡，所以在我们的实验中，所有参与者的局部样本数量是相似的。</p>
+<p><b>神经网络架构</b>。正如之前的工作所做的[11,15,20]，我们使用卷积神经网络（cnn）作为基础模型来评估我们的方法和基线。具体采用16层VGG网络[27]和18层ResNet[7]。</p>
+<p><b>baseline</b>在我们的实验中，我们主要将我们的方法与以下联邦学习算法进行比较：</p>
+<p>  FedAvg[20]。联邦平均算法(federal average, FedAvg)是联邦学习中最常用的原型算法，它在局部更新步骤中存在分类损失</p>
+<p>  FedProx[15]。FedProx是最具竞争力的联邦学习方法之一，具有额外的损失函数 $\mu/2\|\Theta-\Theta^{t}\|^{2}$ 约束异构数据的优化</p>
+<p>  SCAFFOLD[11]。SCAFFOLD是另一种有竞争力的联邦学习方法，它解决了集中在“客户端漂移”上的异质性问题，其中分类损失被修改以跟踪优化路径</p>
+<p>  Centralized training。Centralized training作为联邦学习性能的上限，其中模型直接在整个数据集上进行训练。</p>
+<p>  请注意，FedProx和SCAFFOLD中采用的策略也可以被视为克服知识遗忘的方法。然而，我们的方法与这两种算法的主要区别在于FedKL直接约束模型输出，而FedProx和SCAFFOLD专注于约束参数更新。因此，比较基于输出的方法（FedKL）和基于参数的方法（FedProx和SCAFFOLD）在维护知识方面的能力是很有价值的。</p>
+<h2 id="预测的准确性"><a class="header-anchor" href="#预测的准确性">¶</a>预测的准确性</h2>
+<p>  在本节中，我们将探讨我们的方法FedKL的测试准确性和第4.1节中介绍的图像分类数据集的基线。为了进行全面的比较，我们研究了它们在 $100$ 次数据分区下的性能，如表1所示。我们设置 $M_{max} = 2$ 对所有三个数据集模拟高度异构的数据分布。此外，由于存在可能影响性能的重要超参数（FedProx中的 $μ$ 和FedKL中的 $\lambda$），我们分别在两种参数设置下测试了它们的准确性。</p>
+<p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/3.png" alt="$M_{max} = 2$ 下 $100$ 次数据分区的测试准确率（$\%$）报告了不同随机种子 $5$ 次重复实验的平均结果和标准差。每个网络架构的最佳结果以粗体显示。"></p>
+<p>  如表1所述，我们的方法优于Vgg-16[27]和ResNet-18[7]网络架构的基线。值得注意的是，在采用ResNet-18的MNIST上，FedKL与集中训练的准确率差距减小到2.60 $\%$。在CIFAR-10和CIFAR-100上，FedKL的准确率分别超过62 $\%$ 和28 $\%$，显著优于之前的方法。</p>
+<h2 id="Effect-of-Class-Exemplars"><a class="header-anchor" href="#Effect-of-Class-Exemplars">¶</a>Effect of Class Exemplars</h2>
+<p>  进一步，我们探讨了我们提出的部分数据共享算法（见算法2）的效果。为了直接比较，我们使用与第4.2节相同的数据分区设置，即 $k = 100$, $M_{max} = 2$，并为算法2选择的每个类添加 $10$ 个全局共享样本（CIFAR-100为1个）。</p>
+<p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/5.png" alt="表2。采用类样例的测试精度(%)。数据集分为 $100$ 个部分，$M_{max} = 2$，每类共享样本数量MNIST为 $10$ ,CIFAR-10为 $1$ ,CIFAR-100为 $1$ 。我们报告了不同随机种子 $5$ 次重复实验的平均结果和标准差。每个网络架构的最佳结果以粗体显示。"></p>
+<p>  如表2所示，100个共享样本的总数分别使MNIST和CIFAR-10的准确率提高了约1 $\%$ 和3 $\%$ （10个类别中每个类别有10个样本）。此外，还表明样本共享算法在FedKL上的性能优于其他基线方法。以Vgg-16架构的CIFAR-100为例，样本共享在FedKL上提高了2.11 $\%$ 的准确率，而在FedAvg上仅提高了1.23 $\%$。</p>
+<p>  此外，为了充分考察数据共享的效果，我们用不同数量的样本评估了数据共享的性能。如图1所示，部分数据共享显著有利于我们的方法和基线算法，这表明在低隐私敏感性的情况下范例共享的潜力。</p>
+<p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/4.png" alt="图1：每个类在不同数量的共享范例下的性能。"></p>
+<h1>结论</h1>
+<p>  联邦学习的一个主要挑战是克服异构数据分布对模型精度和收敛性的影响。为了解决这一问题，我们提出的FedKL通过引入知识蒸馏技术来维护全局知识。FedKL可以应用于任何CNN技术，以提高其去中心化学习性能。此外，我们还探讨了向FedKL引入共享示例（局部数据的一部分）的好处。综合实验证明了该算法与现有算法相比的有效性。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">xbwcj</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://xbwcj.github.io/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/">http://xbwcj.github.io/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">xbwcj</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">联邦学习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '3zej8rJ4jeuroIc4wbOGSRTn-gzGzoHsz',
+        appKey: 'ybMabHX5zRIWyISjpqOxDcxk',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="《Knowledge Lock Overcoming Catastrophic Forgetting in Federated Learning》">
+                        
+                        <span class="card-title">《Knowledge Lock Overcoming Catastrophic Forgetting in Federated Learning》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">联邦学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/02/11/overcoming-catastrophic-forgetting-with-unlabeled-data-in-the-wild/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》">
+                        
+                        <span class="card-title">《Overcoming Catastrophic Forgetting with Unlabeled Data in the Wild》</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    科研学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%A2%9E%E9%87%8F%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">增量学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2023</span>
+            
+            <span id="year">2020</span>
+            <a href="https://github.com/xbwcj" target="_blank">xbwcj</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">192.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/xbwcj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1151506163@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1151506163" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1151506163" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/shi-er-yue-yu-yi-yue" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
