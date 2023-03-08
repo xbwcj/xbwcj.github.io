@@ -468,7 +468,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-07
+                    2023-03-08
                 </div>
                 
 
@@ -562,7 +562,7 @@ $$</p>
 $$<br>
 p=\mathrm{argmax}_{x\in\mathcal{X}}&lt;\gamma,g(x_{i})/\|g(x_{i})\|_{2}&gt;, \quad\quad (7)<br>
 $$</p>
-<p>  其中 $p=\mathrm{argmax}_{x\in\mathcal{X}}&lt;\gamma,g(x_{i})/\|g(x_{i})\|_{2}&gt;,$ 表示 $n_{k}$ 表示的平均值，$\mathcal{X}$ 是 $n_{k}$ 训练样本的数据集。正如我们在算法2中所描述的，我们选择最具 $L$ 个代表性的样本作为每个类的样本，其中 $L$ 取决于隐私约束。请注意，对于一个特定的类，如果 $L$ 小于拥有这类样本的参与者数量，我们随机选择参与者共享样本。</p>
+<p>  其中 $\gamma=1/n_{k} \sum_{i=1}^{n_{k}}\gamma_{i},$ 表示 $n_{k}$ 表示的平均值，$\mathcal{X}$ 是 $n_{k}$ 训练样本的数据集。正如我们在算法2中所描述的，我们选择最具 $L$ 个代表性的样本作为每个类的样本，其中 $L$ 取决于隐私约束。请注意，对于一个特定的类，如果 $L$ 小于拥有这类样本的参与者数量，我们随机选择参与者共享样本。</p>
 <p><img src="/2023/03/07/knowledge-lock-overcoming-catastrophic-forgetting-in-federated-learning/2.png" alt="算法2"></p>
 <p><b>Warming up Epochs. </b>。值得注意的是，为了获得更高的精度，编码器 $g(·)$ 应该是一个经过良好训练的模型。例如，在实际训练中，我们可以先用算法1训练模型一段时间，然后用训练好的模型作为 $g(·)$，之后我们继续用局部数据和共享样本训练模型。</p>
 <h1>实验</h1>
